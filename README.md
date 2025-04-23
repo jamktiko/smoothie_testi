@@ -20,7 +20,7 @@
 
 \<Projektin nimi>
 
-Tekijät: Jun Fengari, Teemu Sairi, Janika Rahikainen, Lauri Makkonen
+Tekijät: Jun Fengari, Teemu Sairi, Janika Rahikainen, Lauri Makkonen, asd
 
 ## Projektin sisältö
 
