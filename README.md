@@ -35,7 +35,7 @@ _Ketä projektiin kuuluu ja mitkä ovat henkilöiden päävastuut._
 | Nimi           | Vastuurooli          |
 | -------------- | -------------------- |
 | Lauri Makkonen | Git-päällikkö        |
-| Satu Jokinen   | Dokumentti-päällikkö |
+| Janika Rahikainen | Dokumentti-päällikkö |
 | Satu Jokinen   | Dokumentti-päällikkö |
 | Satu Jokinen   | Dokumentti-päällikkö |
 
