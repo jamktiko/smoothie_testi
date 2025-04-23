@@ -20,7 +20,7 @@
 
 \<Projektin nimi>
 
-Tekijät:
+Tekijät: Jun Fengari, Teemu Sairi, Janika Rahikainen, Lauri Makkonen
 
 ## Projektin sisältö
 
@@ -32,12 +32,12 @@ _Lyhyt kuvaus projektista. Minkälaista ohjelmistoa ollaan tekemässä?_
 
 _Ketä projektiin kuuluu ja mitkä ovat henkilöiden päävastuut._
 
-| Nimi           | Vastuurooli          |
-| -------------- | -------------------- |
-| Lauri Makkonen | Git-päällikkö        |
+| Nimi              | Vastuurooli          |
+| ----------------- | -------------------- |
+| Lauri Makkonen    | Git-päällikkö        |
 | Janika Rahikainen | Dokumentti-päällikkö |
-| Satu Jokinen   | Dokumentti-päällikkö |
-| Satu Jokinen   | Dokumentti-päällikkö |
+| Satu Jokinen      | Dokumentti-päällikkö |
+| Satu Jokinen      | Dokumentti-päällikkö |
 
 ### Tavoite
 
