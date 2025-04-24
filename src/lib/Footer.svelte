@@ -1,16 +1,13 @@
 <script lang="ts">
 	interface Props {
-		name: string;
-		company: string;
-		year: number;
+		placeholder: string;
 	}
 
-	// propsit
-	let { name, company, year }: Props = $props();
+	let { placeholder }: Props = $props();
 </script>
 
 <footer>
-	{name} - Copyright by {company}, {year}
+	<span>{placeholder}</span>
 </footer>
 
 <style>

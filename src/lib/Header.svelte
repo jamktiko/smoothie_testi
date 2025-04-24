@@ -1,19 +1,16 @@
 <script lang="ts">
-	// propsit
-	// import { page } from '$app/stores';
+	interface Props {
+		placeholder: string;
+	}
 
-	let { text, logo }: { text: string; logo: string } = $props();
+	let { placeholder }: Props = $props();
 </script>
 
 <header>
-	{#if logo}
-		<img src={logo} alt="" height="75%" />
-	{/if}
-
-	<h1>{text}</h1>
+	<h1>{placeholder}</h1>
 	<nav>
-		<a href="/">Etusivu</a> /
-		<a href="/resepti">Uusi tuote</a>
+		<a href="/">Eka sivu</a> /
+		<a href="/resepti">Toka sivu</a>
 	</nav>
 </header>
 
@@ -49,9 +46,5 @@
 	a {
 		color: var(--sec-color);
 		text-decoration: none;
-	}
-
-	img {
-		margin: 1rem;
 	}
 </style>

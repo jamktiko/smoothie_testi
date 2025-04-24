@@ -8,18 +8,12 @@
 	}
 
 	let { children }: Props = $props();
-
-	const appInfo = {
-		name: 'Tiko-kauppa',
-		company: 'Tikon koodarit',
-		year: new Date().getFullYear()
-	};
 </script>
 
-<Header text={appInfo.name} logo="jamk_tunnus_valkoinen.png" />
+<Header placeholder={'placeholder'} />
 
 <main>
 	{@render children()}
 </main>
 
-<Footer {...appInfo} />
+<Footer placeholder={'placeholder'} />
