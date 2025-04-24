@@ -18,23 +18,32 @@
 		nutritions: NutritionInfo;
 	}
 
-	let hedelmat: Fruit[] = $state([]);
+	interface Smoothie {
+		id: number;
+		name: string;
+		ingredients: string[];
+	}
+
+	let smoothies: Smoothie[] = $state([]);
 	onMount(async () => {
 		try {
-			const response = await fetch('/data/fruits.json');
+			const response = await fetch('/data/smoothies.json');
 			if (!response.ok) {
 				throw new Error('Network response was not ok');
 			}
-			hedelmat = await response.json();
+			smoothies = await response.json();
 		} catch (error) {
 			console.error('Fetch error:', error);
 		}
 	});
-	$inspect(hedelmat);
+	$inspect(smoothies);
 </script>
 
-{#each hedelmat as fruit (fruit.name)}
-	<div>{fruit.name}</div>
+{#each smoothies as smoothie (smoothie.name)}
+	<div>
+		<p>Smoothien nimi: {smoothie.name}</p>
+		<p>Ainekset: {smoothie.ingredients.join(', ')}</p>
+	</div>
 {:else}
 	<div>Loading...</div>
 {/each}
