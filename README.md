@@ -32,12 +32,12 @@ _Lyhyt kuvaus projektista. Minkälaista ohjelmistoa ollaan tekemässä?_
 
 _Ketä projektiin kuuluu ja mitkä ovat henkilöiden päävastuut._
 
-| Nimi              | Vastuurooli          |
-| ----------------- | -------------------- |
-| Lauri Makkonen    | Git-päällikkö        |
-| Janika Rahikainen | Dokumentti-päällikkö |
-| Satu Jokinen      | Dokumentti-päällikkö |
-| Satu Jokinen      | Dokumentti-päällikkö |
+| Nimi              | Vastuurooli                       |
+| ----------------- | --------------------------------- |
+| Lauri Makkonen    | Git-päällikkö                     |
+| Janika Rahikainen | Julkaisu/laadunvalvonta-päällikkö |
+| Teemu Sairi       | Tehtävä-päällikkö                 |
+| Jun Fengari       | Dokumentti-päällikkö              |
 
 ### Tavoite
 
