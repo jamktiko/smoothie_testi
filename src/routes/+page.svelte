@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Button from '$lib/Button_v2.svelte';
 	import { onMount } from 'svelte';
 	interface NutritionInfo {
 		calories: number;
@@ -37,3 +38,5 @@
 {:else}
 	<div>Loading...</div>
 {/each}
+
+<Button buttonText="testipainike" buttonFunction={() => {}} buttonActive={true} />
