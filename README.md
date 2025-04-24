@@ -18,7 +18,7 @@
 
 ## Projektin tiedot
 
-\<Projektin nimi>
+\"Smoothie Sovellus"
 
 Tekijät: Jun Fengari, Teemu Sairi, Janika Rahikainen, Lauri Makkonen, asd
 
@@ -26,7 +26,7 @@ Tekijät: Jun Fengari, Teemu Sairi, Janika Rahikainen, Lauri Makkonen, asd
 
 ### Kuvaus
 
-_Lyhyt kuvaus projektista. Minkälaista ohjelmistoa ollaan tekemässä?_
+Smoothie sovellus jossa käyttäjä voi selata smoothieta ja tarkistella niiden ainesosia, ravintosisältöä, ja mahdollisesti luoda siihen omia reseptejä. 
 
 ### Projektiryhmä
 
@@ -41,7 +41,8 @@ _Ketä projektiin kuuluu ja mitkä ovat henkilöiden päävastuut._
 
 ### Tavoite
 
-_Mikä on ohjelmistoprojektin tavoiteltu lopputulos?_
+- Toimiva ja responsiivinen sovellus
+- Opitaan projektityöskentelyn taidot ja käytännöt
 
 ## Aikataulu
 
@@ -51,6 +52,11 @@ _Kirjaa tähän lukuun aikataulu. Millä tavoin projekti viedään läpi. Voitte
 | ---------------- | ---------- | ---------------------------------------- |
 | Projekti alkaa   | 22.04.2025 | Ohjelmistoprojekti 1 alkaa               |
 | Idean valinta    | 24.04.2025 | Valitaan tuotantoon menevä projekti-idea |
+| Tarkistellaan    | 24.04.2025 | Yhteistyö + git checks                   |
+| Komponentti määritys  | 24.04.2025 | Yhdessä katotaan komponentit        |
+| Figma Wireframes | 29.04.2025 | Wireframes + Prototypes + Väriteema check|
+| ............     | pvm        | Kaikki muut tapahtumat listattuna        |
+| ............     | pvm        | Kaikki muut tapahtumat listattuna        |
 | ............     | pvm        | Kaikki muut tapahtumat listattuna        |
 | Projekti päättyy | 16.05.2025 | Ohjelmistoprojekti 1 päättyy             |
 
@@ -58,34 +64,50 @@ _Kirjaa tähän lukuun aikataulu. Millä tavoin projekti viedään läpi. Voitte
 
 ### Raportointi
 
-_Kuinka projekti raportoi toiminnastaan? Kuka raportoi, kenelle, ja milloin?_
+Dokumenttipäällikkö (Jun Fengari) hoitaa raportoinnin ja dokumentoinnin.
 
 ### Tuntikirjaukset
 
-_Kuinka projekti tekee tuntikirjausta? Missä se tehdään, ja miten se jaetaan?_
+Jokainen tekee excelliin tuntikirjausket ja viikkopalaverin aikana tarkistellaan tehtyjä projektinosia.
 
 ### Palaverikäytänteet
 
-_Projektin viikkopalaveri pidetään xxx paikassa xxx. Kuka kirjoittaa palaveripöytäkirjan, ja missä ne elävät?_
+Viikkopalaverin (perjantai) aikana käydään läpi kaikkien viikko-työt, ja suunnitellaan seuraavan viikon työjaon. 
+Päivittään aamulla pieni tilannekatsaus. 
+Dokumenttipäällikkö kirjoittaa palaveri-raportin. Luokassa AP10, perjantai iltapäivä. 
 
 ### Kommunikointitavat
 
-_Mitkä ovat projektin kommunikointikanavat? Viralliset, epäviralliset? Sisäiset, ulkoiset?_
+Paikan päällä, Teams, Slack, sekä Trellon tehtävähallinta.
 
 ### Dokumentointi
 
-_Kirjaa tähän miten projekti on ajatellut työnsä dokumentoida. Mitä dokumentteja projekti tuottaa?_
+- Intro
+- Valikoituja projektikansioita 
+- Video + Pitch
+- Viikkokatsaukset (projektin vaiheet ja eteneminen)
+- Aikajana ja haasteet
+- Vastuualueet (henk-koht, haasteet + vahvuudet, jne)
+- Kaikista näistä koostettu projektidokumentti. 
 
 ### Dokumenttien hallinta
 
-_Kuvaa dokumenttien säilytys; kenellä on oikeudet dokumenttien hallintaan, miten backupit on hoidettu, kuinka dokumentteja versioidaan (esim. 1.0, 1.1, 1.2 jne.) ja nimetään (onko esim. dokumentin nimessä versionumero)._
+Osittain githubissa, osittain onedrivessa sekä backupit dokumenttipäällikön tietokoneella. 
+Koko ryhmällä on hallintaoikeudet jaetuille dokumenteille. 
+Dokumenttien versiointi dokumentin nimessä, tai githubissa versionumero tägit. 
+
 
 ## Riskien hallinta
 
-_Kuvaa tässä kuinka projekti aikoo hallinnoida ja seurata projektiriskejä._
+Tarkein on kommunikoida usein kaikissa projektin vaiheissa ja ongelmatilanteissa, sekä suunnitella projektivaiheet etukäteen jotta vältettäis ongelmien syntymistä. 
 
 Esimerkiksi näin.
 
 | Riskit                                                       | Todennäköisyys |  Impakti | Minimointi                             |
 | ------------------------------------------------------------ | -------------- | -------- | -------------------------------------- |
-| Työntekijät eivät ole motivoituneita ja eivät saavu paikalle | Pieni          |  Suuri   | Pidetään työpaikalla kahvia ja pullaa. |
+| Työntekijät eivät ole motivoituneita ja eivät saavu paikalle | Pieni          |  Suuri   | Kommunikoidaan usein ja tehokkaasti.   |
+| Aika ei riitä projetkin laajuuteen                           | Suuri          |  Suuri   | Tehokasta ajankäyttöä ja suunnittelua. |
+| Haasteet tavoitteiden ja osaamisen välillä                   | Suuri          |  Keski   | Kommunikointi, yhteistyö ja avun pyytäminen. |
+| Konfliktit                                                   | Pieni          |  Suuri   | Kunnioittava ja asiallinen kommunikointi usein. |
+| Git Merge                                                    | Suuri          |  Varma   | Backups, suunniteltu ja harkittu workflow, yhteistyö, harjoittelu. |
+| Poissaolot                                                   | Pieni          |  Suuri   | Kommunikointi, etätyö, terveelliset elämäntavat. |
