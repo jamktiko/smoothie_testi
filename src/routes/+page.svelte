@@ -39,13 +39,21 @@
 	$inspect(smoothies);
 </script>
 
-{#each smoothies as smoothie (smoothie.name)}
-	<div>
-		<p>Smoothien nimi: {smoothie.name}</p>
-		<p>Ainekset: {smoothie.ingredients.join(', ')}</p>
-	</div>
-{:else}
-	<div>Loading...</div>
-{/each}
+<div class="temp-container">
+	{#each smoothies as smoothie (smoothie.name)}
+		<div>
+			<p>Smoothien nimi: {smoothie.name}</p>
+			<p>Ainekset: {smoothie.ingredients.join(', ')}</p>
+		</div>
+	{:else}
+		<div>Loading...</div>
+	{/each}
 
-<Button buttonText="testipainike" buttonFunction={() => {}} buttonActive={true} />
+	<Button buttonText="testipainike" buttonFunction={() => {}} buttonActive={true} />
+</div>
+
+<style>
+	.temp-container {
+		padding: 1em 0em 1em 0em;
+	}
+</style>
