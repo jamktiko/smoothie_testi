@@ -10,7 +10,7 @@
 	let { children }: Props = $props();
 </script>
 
-<Header placeholder={'placeholder'} />
+<Header placeholder={'Smoothie App'} />
 
 <main>
 	{@render children()}

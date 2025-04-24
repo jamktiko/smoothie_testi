@@ -9,8 +9,8 @@
 <header>
 	<h1>{placeholder}</h1>
 	<nav>
-		<a href="/">Eka sivu</a> /
-		<a href="/resepti">Toka sivu</a>
+		<a href="/">Home Page</a> /
+		<a href="/resepti">Recipe Page</a>
 	</nav>
 </header>
 
