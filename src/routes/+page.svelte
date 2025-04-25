@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/Button_v2.svelte';
+	import Searchbar from '$lib/Searchbar.svelte';
 	import { onMount } from 'svelte';
 	interface NutritionInfo {
 		calories: number;
@@ -49,3 +50,4 @@
 {/each}
 
 <Button buttonText="testipainike" buttonFunction={() => {}} buttonActive={true} />
+<Searchbar placeholder="Etsi smoothieita" />
