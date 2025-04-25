@@ -6,6 +6,8 @@
 	import { onMount } from 'svelte';
 	import Searchbar from '$lib/Searchbar.svelte';
 	import SmoothieCard from '$lib/Card.svelte';
+	import Header from '$lib/Header.svelte';
+	import Footer from '$lib/Footer.svelte';
 
 	let smoothies: Smoothie[] = $state([]);
 	onMount(async () => {
@@ -24,6 +26,9 @@
 
 <Searchbar placeholder={'Hae smoothieita'} />
 <div class="temp-container">
+	<!-- header -->
+	<Header headerText={'froots'} />
+
 	{#each smoothies as smoothie (smoothie.name)}
 		<SmoothieCard nimi={smoothie.name} resepti={smoothie.ingredients.join(', ')} />
 	{:else}
@@ -31,6 +36,9 @@
 	{/each}
 
 	<Button buttonText="testipainike" buttonFunction={() => {}} buttonActive={true} />
+
+	<!-- footer -->
+	<Footer footerText={'Ohjelmistoprojekti 1 by Team 2'} />
 </div>
 
 <style>

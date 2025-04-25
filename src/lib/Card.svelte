@@ -4,6 +4,7 @@
 </script>
 
 <div class="card">
+	<img src="smoothie_placeholder.jpg" alt="placeholder kuva" />
 	<h2>{nimi}</h2>
 	<p>{resepti}</p>
 	<p>Ravintoarvot</p>
@@ -28,5 +29,9 @@
 	p {
 		font-size: 1em;
 		color: #555;
+	}
+	img {
+		height: 200px;
+		border-radius: 8px;
 	}
 </style>
