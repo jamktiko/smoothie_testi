@@ -4,6 +4,8 @@
 	import type { NutritionInfo } from '$lib/types/nutritionInfo';
 	import Button from '$lib/Button.svelte';
 	import { onMount } from 'svelte';
+	import Header from '$lib/Header.svelte';
+	import Footer from '$lib/Footer.svelte';
 
 	let smoothies: Smoothie[] = $state([]);
 	onMount(async () => {
@@ -21,6 +23,9 @@
 </script>
 
 <div class="temp-container">
+	<!-- header -->
+	<Header headerText={'froots'} />
+
 	{#each smoothies as smoothie (smoothie.name)}
 		<div>
 			<p>Smoothien nimi: {smoothie.name}</p>
@@ -31,6 +36,9 @@
 	{/each}
 
 	<Button buttonText="testipainike" buttonFunction={() => {}} buttonActive={true} />
+
+	<!-- footer -->
+	<Footer footerText={'Ohjelmistoprojekti 1 by Team 2'} />
 </div>
 
 <style>
