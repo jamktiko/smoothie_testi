@@ -1,6 +1,8 @@
 <script lang="ts">
+	import SmoothieCard from '$lib/Card.svelte';
 	import Button from '$lib/Button.svelte';
 	import { onMount } from 'svelte';
+	import Searchbar from '$lib/Searchbar.svelte';
 	interface NutritionInfo {
 		calories: number;
 		fat: number;
@@ -39,12 +41,10 @@
 	$inspect(smoothies);
 </script>
 
+<Searchbar placeholder={'Hae smoothieita'} />
 <div class="temp-container">
 	{#each smoothies as smoothie (smoothie.name)}
-		<div>
-			<p>Smoothien nimi: {smoothie.name}</p>
-			<p>Ainekset: {smoothie.ingredients.join(', ')}</p>
-		</div>
+		<SmoothieCard nimi={smoothie.name} resepti={smoothie.ingredients.join(', ')} />
 	{:else}
 		<div>Loading...</div>
 	{/each}

@@ -6,6 +6,8 @@
 <div class="card">
 	<h2>{nimi}</h2>
 	<p>{resepti}</p>
+	<p>Ravintoarvot</p>
+
 	<button onclick={tapahtuma}>Resepti</button>
 </div>
 
