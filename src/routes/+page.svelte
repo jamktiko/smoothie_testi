@@ -1,30 +1,11 @@
 <script lang="ts">
-	import SmoothieCard from '$lib/Card.svelte';
+	import type { Smoothie } from '$lib/types/smoothie';
+	import type { Fruit } from '$lib/types/fruit';
+	import type { NutritionInfo } from '$lib/types/nutritionInfo';
 	import Button from '$lib/Button.svelte';
 	import { onMount } from 'svelte';
 	import Searchbar from '$lib/Searchbar.svelte';
-	interface NutritionInfo {
-		calories: number;
-		fat: number;
-		sugar: number;
-		carbohydrates: number;
-		protein: number;
-	}
-
-	interface Fruit {
-		name: string;
-		id: number;
-		family: string;
-		order: string;
-		genus: string;
-		nutritions: NutritionInfo;
-	}
-
-	interface Smoothie {
-		id: number;
-		name: string;
-		ingredients: string[];
-	}
+	import SmoothieCard from '$lib/Card.svelte';
 
 	let smoothies: Smoothie[] = $state([]);
 	onMount(async () => {
