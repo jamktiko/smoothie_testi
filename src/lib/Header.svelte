@@ -1,18 +1,13 @@
 <script lang="ts">
 	interface Props {
-		placeholder: string;
+		headerText: string;
 	}
 
-	let { placeholder }: Props = $props();
+	let { headerText }: Props = $props();
 </script>
 
 <header>
-	<h1>{placeholder}</h1>
-	<br />
-	<nav>
-		<a href="/">Home Page</a> /
-		<a href="/resepti">Recipe Page</a>
-	</nav>
+	<h1>{headerText}</h1>
 </header>
 
 <style>

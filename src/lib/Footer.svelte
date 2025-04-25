@@ -1,13 +1,13 @@
 <script lang="ts">
 	interface Props {
-		placeholder: string;
+		footerText: string;
 	}
 
-	let { placeholder }: Props = $props();
+	let { footerText }: Props = $props();
 </script>
 
 <footer>
-	<span>{placeholder}</span>
+	<span>{footerText}</span>
 </footer>
 
 <style>

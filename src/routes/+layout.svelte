@@ -10,10 +10,10 @@
 	let { children }: Props = $props();
 </script>
 
-<Header placeholder={'Smoothie App'} />
+<Header headerText={'froots'} />
 
 <main>
 	{@render children()}
 </main>
 
-<Footer placeholder={'placeholder'} />
+<Footer footerText={'Ohjelmistoprojekti 1 by Team 2'} />
