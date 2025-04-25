@@ -21,8 +21,33 @@
 		} catch (error) {
 			console.error('Fetch error:', error);
 		}
+		haeHedelmat();
 	});
+
+	// hakee hedelmät fruits.json tiedostosta taulukkoon asynkronisesti
+	async function haeHedelmat() {
+		fetch('/data/fruits.json')
+			.then((response) => {
+				if (response.ok) {
+					return response.json();
+				} else {
+					throw new Error('Virhe haettaessa hedelmiä');
+				}
+			})
+			.then((data) => {
+				fruits = data;
+			})
+			.catch((error) => {
+				if (error instanceof Error) {
+					console.error(error.message);
+				} else {
+					console.error(error);
+				}
+			});
+	}
+
 	$inspect(smoothies);
+	$inspect(fruits);
 </script>
 
 <Searchbar placeholder={'Hae smoothieita'} />
