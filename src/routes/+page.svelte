@@ -5,11 +5,12 @@
 	import Button from '$lib/Button.svelte';
 	import { onMount } from 'svelte';
 	import Searchbar from '$lib/Searchbar.svelte';
-	import SmoothieCard from '$lib/Card.svelte';
+	import SmoothieCard from '$lib/SmoothieCard.svelte';
 	import Header from '$lib/Header.svelte';
 	import Footer from '$lib/Footer.svelte';
 
 	let smoothies: Smoothie[] = $state([]);
+	let fruits: Fruit[] = $state([]);
 	onMount(async () => {
 		try {
 			const response = await fetch('/data/smoothies.json');
@@ -29,8 +30,8 @@
 	<!-- header -->
 	<Header headerText={'froots'} />
 
-	{#each smoothies as smoothie (smoothie.name)}
-		<SmoothieCard nimi={smoothie.name} resepti={smoothie.ingredients.join(', ')} />
+	{#each smoothies as smoothie (smoothie.id)}
+		<SmoothieCard {smoothie} />
 	{:else}
 		<div>Loading...</div>
 	{/each}

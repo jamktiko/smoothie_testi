@@ -1,12 +1,19 @@
 <script lang="ts">
-	let { nimi, resepti, tapahtuma }: { nimi: string; resepti: string; tapahtuma?: () => void } =
-		$props();
+	import type { Smoothie } from '$lib/types/smoothie';
+	import type { NutritionInfo } from './types/nutritionInfo';
+	interface Props {
+		smoothie: Smoothie;
+		ravintoarvot?: NutritionInfo;
+		tapahtuma?: () => void;
+	}
+	let { smoothie, ravintoarvot = null, tapahtuma = null } = $props();
 </script>
 
 <div class="card">
 	<img src="smoothie_placeholder.jpg" alt="placeholder kuva" />
-	<h2>{nimi}</h2>
-	<p>{resepti}</p>
+	<h2>{smoothie.name}</h2>
+
+	<p>{smoothie}</p>
 	<p>Ravintoarvot</p>
 
 	<button onclick={tapahtuma}>Resepti</button>
