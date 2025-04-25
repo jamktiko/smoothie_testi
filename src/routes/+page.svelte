@@ -11,6 +11,9 @@
 
 	let smoothies: Smoothie[] = $state([]);
 	let fruits: Fruit[] = $state([]);
+	let tamanSmoothienHedelmat: Fruit[] = $state([]);
+	let tamanSmoothienRavintoarvot: NutritionInfo[] = $state([]);
+
 	onMount(async () => {
 		try {
 			const response = await fetch('/data/smoothies.json');
@@ -46,8 +49,23 @@
 			});
 	}
 
+	function haeTamanSmoothienHedelmat(smoothie: Smoothie) {
+		for (let i = 0; i < smoothie.ingredients.length; i++) {
+			console.log(smoothie.ingredients[i]);
+			const hedelma = fruits.find((x) => {
+				x.name === smoothie.ingredients[i];
+			});
+			if (hedelma) {
+				tamanSmoothienHedelmat.push(hedelma);
+			}
+		}
+	}
+
 	$inspect(smoothies);
 	$inspect(fruits);
+	$inspect(tamanSmoothienHedelmat);
+
+	// haeTamanSmoothienHedelmat(smoothie);
 </script>
 
 <Searchbar placeholder={'Hae smoothieita'} />
