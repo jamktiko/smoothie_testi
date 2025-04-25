@@ -1,13 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/Button.svelte';
 	import { onMount } from 'svelte';
-	interface NutritionInfo {
-		calories: number;
-		fat: number;
-		sugar: number;
-		carbohydrates: number;
-		protein: number;
-	}
 
 	interface Fruit {
 		name: string;
@@ -16,6 +9,14 @@
 		order: string;
 		genus: string;
 		nutritions: NutritionInfo;
+	}
+
+	interface NutritionInfo {
+		calories: number;
+		fat: number;
+		sugar: number;
+		carbohydrates: number;
+		protein: number;
 	}
 
 	interface Smoothie {
