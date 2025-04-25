@@ -3,15 +3,24 @@
 	import Button from './Button.svelte';
 	import type { Smoothie } from '$lib/types/smoothie';
 	import type { NutritionInfo } from './types/nutritionInfo';
+	import Modal from './Modal.svelte';
 	interface Props {
 		smoothie: Smoothie;
 		ravintoarvot?: NutritionInfo;
 		tapahtuma?: () => void;
 	}
 	let { smoothie, ravintoarvot = null, tapahtuma = null } = $props();
+
+	// avaa notes tekstikentän
 	let noteskentta = $state(false);
 	function avaanoteskentta() {
 		noteskentta = !noteskentta;
+	}
+
+	// avaa smoothie reseptin
+	let modalauki = $state(false);
+	function avaaSmoothieResepti() {
+		modalauki = !modalauki;
 	}
 </script>
 
@@ -26,7 +35,7 @@
 		<Notes placeholder="Add your notes" />
 	{/if}
 	<Button buttonText="Add Note" buttonFunction={avaanoteskentta} />
-	<Button buttonText="Resepti" buttonFunction={avaanoteskentta} />
+	<Button buttonText="Resepti" buttonFunction={avaaSmoothieResepti} />
 </div>
 
 <style>
