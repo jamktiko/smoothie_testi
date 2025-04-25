@@ -2,6 +2,7 @@
 	import type { Smoothie } from '$lib/types/smoothie';
 	import type { Fruit } from '$lib/types/fruit';
 	import type { NutritionInfo } from '$lib/types/nutritionInfo';
+	import '../app.css';
 	import Button from '$lib/Button.svelte';
 	import { onMount } from 'svelte';
 	import Searchbar from '$lib/Searchbar.svelte';
@@ -25,10 +26,11 @@
 	$inspect(smoothies);
 </script>
 
+<Header headerText={'froots'} />
+
 <Searchbar placeholder={'Hae smoothieita'} />
 <div class="temp-container">
 	<!-- header -->
-	<Header headerText={'froots'} />
 
 	{#each smoothies as smoothie (smoothie.id)}
 		<SmoothieCard {smoothie} />
