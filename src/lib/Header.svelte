@@ -6,14 +6,14 @@
 	let { headerText }: Props = $props();
 </script>
 
-<header>
-	<h1>{headerText}</h1>
+<header class="flex justify-center">
+	<h1 class="text-5xl">{headerText}</h1>
 </header>
 
-<style>
+<!-- <style>
 	header {
 		background-color: rgb(183, 183, 183);
 		/* display: flex; */
 		padding: 0.4em;
 	}
-</style>
+</style> -->
