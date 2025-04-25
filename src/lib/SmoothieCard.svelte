@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Notes from './Notes.svelte';
+	import Button from './Button.svelte';
 	import type { Smoothie } from '$lib/types/smoothie';
 	import type { NutritionInfo } from './types/nutritionInfo';
 	interface Props {
@@ -7,16 +9,24 @@
 		tapahtuma?: () => void;
 	}
 	let { smoothie, ravintoarvot = null, tapahtuma = null } = $props();
+	let noteskentta = $state(false);
+	function avaanoteskentta() {
+		noteskentta = !noteskentta;
+	}
 </script>
 
 <div class="card">
 	<img src="smoothie_placeholder.jpg" alt="placeholder kuva" />
 	<h2>{smoothie.name}</h2>
-
-	<p>{smoothie}</p>
-	<p>Ravintoarvot</p>
-
-	<button onclick={tapahtuma}>Resepti</button>
+	<h3>Ingredients</h3>
+	<p>{smoothie.ingredients}</p>
+	<h3>Nutritional Information</h3>
+	<h3>Notes</h3>
+	{#if noteskentta}
+		<Notes placeholder="Add your notes" />
+	{/if}
+	<Button buttonText="Add Note" buttonFunction={avaanoteskentta} />
+	<Button buttonText="Resepti" buttonFunction={avaanoteskentta} />
 </div>
 
 <style>
