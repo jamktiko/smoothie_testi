@@ -13,7 +13,7 @@
 	>{buttonText}</button
 >
 
-<style>
+<!-- <style>
 	.generic_button {
 		all: unset;
 		display: block;
@@ -35,4 +35,4 @@
 		color: rgba(126, 126, 126, 0.251);
 		cursor: not-allowed;
 	}
-</style>
+</style> -->
