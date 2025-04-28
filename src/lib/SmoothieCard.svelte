@@ -38,7 +38,7 @@
 
 	<Button buttonText="Add Note" buttonFunction={avaanoteskentta} />
 
-	<Button buttonText="Avaa resepti" buttonFunction={avaaModal} />
+	<Button buttonText={smoothie.name} buttonFunction={avaaModal} />
 	{#if noteskentta}
 		<Notes placeholder={'lisää muistiinpanoja'} bind:taytto={teksti} />
 	{/if}
