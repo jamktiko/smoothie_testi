@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import { fly, scale } from 'svelte/transition';
 	interface Props {
 		header: Snippet;
 		children: Snippet;
@@ -10,7 +11,7 @@
 
 <div class="backdrop"></div>
 
-<div class="modal">
+<div class="modal" in:scale={{ duration: 300 }} out:scale={{ duration: 300 }}>
 	<header>
 		{@render header()}
 	</header>
