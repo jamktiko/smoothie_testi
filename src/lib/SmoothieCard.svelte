@@ -38,7 +38,7 @@
 	<p>{smoothie.ingredients}</p>
 	<h2>Nutritional Information</h2>
 	<div class="w-50">
-		<h2 class="text-md laila-medium">Notes</h2>
+		<h2 class="laila-medium text-5xl">Notes</h2>
 		<Notes placeholder={'lisää muistiinpanoja'} bind:taytto={teksti} />
 	</div>
 	<Button buttonText={smoothie.name} buttonFunction={avaaModal} />
@@ -61,7 +61,7 @@
 	</Modal>
 {/if}
 
-<style>
+<!-- <style>
 	.card {
 		background-color: #f9f9f9;
 		border-radius: 8px;
@@ -85,4 +85,4 @@
 		height: 200px;
 		border-radius: 8px;
 	}
-</style>
+</style> -->
