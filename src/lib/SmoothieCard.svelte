@@ -35,15 +35,9 @@
 	<h2>Ingredients</h2>
 	<p>{smoothie.ingredients}</p>
 	<h2>Nutritional Information</h2>
-
-	<Button buttonText="Add Note" buttonFunction={avaanoteskentta} />
-
+	<Notes placeholder={'lisää muistiinpanoja'} bind:taytto={teksti} />
 	<Button buttonText={smoothie.name} buttonFunction={avaaModal} />
-	{#if noteskentta}
-		<Notes placeholder={'lisää muistiinpanoja'} bind:taytto={teksti} />
-	{/if}
 </div>
-s
 
 {#if modalAuki}
 	<Button buttonText="testipainike" buttonFunction={() => {}} buttonActive={true} />
