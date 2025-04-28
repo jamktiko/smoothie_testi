@@ -18,9 +18,9 @@
 	}
 
 	// avaa smoothie reseptin
-	let modalauki = $state(false);
-	function avaaSmoothieResepti() {
-		modalauki = !modalauki;
+	let modalAuki = $state(false);
+	function avaaModal() {
+		modalAuki = !modalAuki;
 	}
 </script>
 
@@ -35,8 +35,24 @@
 		<Notes placeholder="Add your notes" />
 	{/if}
 	<Button buttonText="Add Note" buttonFunction={avaanoteskentta} />
-	<Button buttonText="Resepti" buttonFunction={avaaSmoothieResepti} />
+	<Button buttonText="Resepti" buttonFunction={avaaModal} />
 </div>
+
+{#if modalAuki}
+	<Button buttonText="testipainike" buttonFunction={() => {}} buttonActive={true} />
+	<Modal>
+		{#snippet header()}
+			<h1>{smoothie.name}</h1>
+		{/snippet}
+
+		<h2>Ingredients</h2>
+		<p>{smoothie.ingredients}</p>
+		<h2>Nutritional Information</h2>
+		{#snippet footer()}
+			<Button buttonText="Sulje" buttonFunction={avaaModal} />
+		{/snippet}
+	</Modal>
+{/if}
 
 <style>
 	.card {

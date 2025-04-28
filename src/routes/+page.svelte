@@ -9,6 +9,7 @@
 	import SmoothieCard from '$lib/SmoothieCard.svelte';
 	import Header from '$lib/Header.svelte';
 	import Footer from '$lib/Footer.svelte';
+	import Modal from '$lib/Modal.svelte';
 
 	let smoothies: Smoothie[] = $state([]);
 	let fruits: Fruit[] = $state([]);
@@ -81,7 +82,7 @@
 		<div>Loading...</div>
 	{/each}
 
-	<Button buttonText="testipainike" buttonFunction={() => {}} buttonActive={true} />
+	<!-- Modal ikkuna-->
 
 	<!-- footer -->
 	<Footer footerText={'Ohjelmistoprojekti 1 by Team 2'} />

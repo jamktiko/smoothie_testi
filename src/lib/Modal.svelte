@@ -1,6 +1,25 @@
+<script lang="ts">
+	import type { Snippet } from 'svelte';
+	interface Props {
+		header: Snippet;
+		children: Snippet;
+		footer: Snippet;
+	}
+	let { header, children, footer }: Props = $props();
+</script>
+
 <div class="backdrop"></div>
 
-<div class="modal"></div>
+<div class="modal">
+	<header>
+		{@render header()}
+	</header>
+
+	{@render children()}
+	<footer>
+		{@render footer()}
+	</footer>
+</div>
 
 <style>
 	.backdrop {
