@@ -19,7 +19,12 @@
 	function avaanoteskentta() {
 		noteskentta = !noteskentta;
 	}
-
+	let teksti = $state('');
+	let muistiinpanoja: string[] = $state([]);
+	function muistiinpanojenTallennus() {
+		muistiinpanoja.push(teksti);
+		teksti = '';
+	}
 	// avaa smoothie reseptin
 	let modalAuki = $state(false);
 	function avaaModal() {
@@ -33,11 +38,23 @@
 	<h2>Ingredients</h2>
 	<p>{smoothie.ingredients}</p>
 	<h2>Nutritional Information</h2>
-	<h2>Notes</h2>
-	{#if noteskentta}
-		<Notes placeholder="Add your notes" />
-	{/if}
+
 	<Button buttonText="Add Note" buttonFunction={avaanoteskentta} />
+
+	{#if noteskentta}
+		<Notes placeholder={'lisää muistiinpanoja'} bind:taytto={teksti} />
+		<Button buttonText="Save" buttonFunction={muistiinpanojenTallennus} />
+		<Button buttonText="Close" buttonFunction={avaanoteskentta} />
+	{/if}
+	{#if muistiinpanoja.length > 0}
+		<h2>Your notes</h2>
+		<ul>
+			{#each muistiinpanoja as muistiinpano}
+				<li>{muistiinpano}</li>
+			{/each}
+		</ul>
+		<Button buttonText="Clear" buttonFunction={() => (muistiinpanoja = [])} />
+	{/if}
 	<Button buttonText="Avaa resepti" buttonFunction={avaaModal} />
 </div>
 
@@ -47,11 +64,11 @@
 		{#snippet header()}
 			<h1>{smoothie.name}</h1>
 		{/snippet}
-
 		<h2>Ingredients</h2>
 		<p>{smoothie.ingredients}</p>
 		<h2>Nutritional Information</h2>
 		{#snippet footer()}
+			<p>{muistiinpanoja}</p>
 			<Button buttonText="Sulje" buttonFunction={avaaModal} />
 		{/snippet}
 	</Modal>

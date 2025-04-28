@@ -1,19 +1,21 @@
 <script lang="ts">
-	interface Props {
+	let {
+		taytto = $bindable(),
+		placeholder
+	}: {
+		taytto: string;
 		placeholder: string;
-	}
-
-	let { placeholder }: Props = $props();
+	} = $props();
 </script>
 
-<input type="text" {placeholder} class="text" />
+<textarea bind:value={taytto} {placeholder}></textarea>
 
 <style>
-	input.text {
-		width: 50%;
-		padding: 10px;
+	textarea {
+		width: 100%;
+		padding: 5px;
 		border-radius: 5px;
 		border: 1px solid #ccc;
-		font-size: 16px;
+		font-size: 1rem;
 	}
 </style>
