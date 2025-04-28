@@ -4,13 +4,19 @@
 	import type { Smoothie } from '$lib/types/smoothie';
 	import type { Fruit } from '$lib/types/fruit';
 	import type { NutritionInfo } from './types/nutritionInfo';
+	import type { SmoothieKortti } from '$lib/types/smoothieKortti';
+	import { onMount } from 'svelte';
 
 	import Modal from './Modal.svelte';
+
+	// importataan globaalit muuttujat smoothieille ja hedelmille
+	import { globalSmoothies } from '$lib/globalSmoothies.svelte';
+	import { globalFruits } from '$lib/globalFruits.svelte';
+
 	interface Props {
-		smoothie: Smoothie;
-		fetchFruitsFunction: () => void;
+		smoothieKortti: SmoothieKortti;
 	}
-	let { smoothie, fetchFruitsFunction } = $props();
+	let { smoothieKortti } = $props();
 	let tamanSmoothienHedelmat: Fruit[] = $state([]);
 	let tamanSmoothienRavintoarvot: NutritionInfo[] = $state([]);
 
@@ -25,14 +31,46 @@
 	function avaaSmoothieResepti() {
 		modalauki = !modalauki;
 	}
+
+	function haeTamanSmoothienHedelmat(smoothie: Smoothie) {
+		console.log('nyt ollaan haetamansmoothien funktion sisällä');
+		console.log('nyt ollaan haetamansmoothien funktion sisällä2');
+		for (let i = 0; i < smoothie.ingredients.length; i++) {
+			console.log(`${smoothie.name} - ${smoothie.ingredients[i]}`);
+			globalFruits.get().forEach((fruit) => {
+				console.log(fruit.name);
+				console.log('test2');
+			});
+
+			// console.log(`Hedelma: ${hedelmaIndex}`);
+			// if (hedelma) {
+			// tamanSmoothienHedelmat.push(hedelma);
+			// }
+		}
+	}
+
+	onMount(() => {
+		// haeTamanSmoothienHedelmat(smoothie);
+	});
+
+	// $inspect(tamanSmoothienHedelmat);
+	// $inspect(globalSmoothies.get());
+	// $inspect(globalFruits.get());
+	// $inspect(tamanSmoothienRavintoarvot);
+	$inspect(smoothieKortti.ID);
+	$inspect(smoothieKortti.smoothie.name);
+	$inspect(smoothieKortti.hedelmat);
+	$inspect(smoothieKortti.ravintoarvot);
 </script>
 
 <div class="card">
 	<img src="smoothie_placeholder.jpg" alt="placeholder kuva" />
-	<h2>{smoothie.name}</h2>
+	<h2>{smoothieKortti.smoothie.name}</h2>
 	<h3>Ingredients</h3>
-	<p>{smoothie.ingredients}</p>
+	<p>{smoothieKortti.smoothie.ingredient}</p>
 	<h3>Nutritional Information</h3>
+	<p>{smoothieKortti.ID}</p>
+	<p>{smoothieKortti.ravintoarvot}</p>
 	<h3>Notes</h3>
 	{#if noteskentta}
 		<Notes placeholder="Add your notes" />
