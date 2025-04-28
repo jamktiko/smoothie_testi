@@ -69,8 +69,10 @@
 </script>
 
 <Header headerText={'froots'} />
+<nav class="flex items-center justify-center">
+	<Searchbar placeholder={'Hae smoothieita'} />
+</nav>
 
-<Searchbar placeholder={'Hae smoothieita'} />
 <div class="temp-container">
 	<!-- header -->
 
