@@ -2,14 +2,17 @@
 	import Notes from './Notes.svelte';
 	import Button from './Button.svelte';
 	import type { Smoothie } from '$lib/types/smoothie';
+	import type { Fruit } from '$lib/types/fruit';
 	import type { NutritionInfo } from './types/nutritionInfo';
+
 	import Modal from './Modal.svelte';
 	interface Props {
 		smoothie: Smoothie;
-		ravintoarvot?: NutritionInfo;
-		tapahtuma?: () => void;
+		fetchFruitsFunction: () => void;
 	}
-	let { smoothie, ravintoarvot = null, tapahtuma = null } = $props();
+	let { smoothie, fetchFruitsFunction } = $props();
+	let tamanSmoothienHedelmat: Fruit[] = $state([]);
+	let tamanSmoothienRavintoarvot: NutritionInfo[] = $state([]);
 
 	// avaa notes tekstikentän
 	let noteskentta = $state(false);

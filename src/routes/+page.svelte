@@ -4,16 +4,15 @@
 	import type { NutritionInfo } from '$lib/types/nutritionInfo';
 	import '../app.css';
 	import Button from '$lib/Button.svelte';
-	import { onMount } from 'svelte';
 	import Searchbar from '$lib/Searchbar.svelte';
 	import SmoothieCard from '$lib/SmoothieCard.svelte';
 	import Header from '$lib/Header.svelte';
 	import Footer from '$lib/Footer.svelte';
+	import { onMount } from 'svelte';
 
-	let smoothies: Smoothie[] = $state([]);
-	let fruits: Fruit[] = $state([]);
-	let tamanSmoothienHedelmat: Fruit[] = $state([]);
-	let tamanSmoothienRavintoarvot: NutritionInfo[] = $state([]);
+	// globaalit muuttujat smoothieille ja hedelmille
+	import { globalSmoothies } from '$lib/globalSmoothies.svelte';
+	import { globalFruits } from '$lib/globalFruits.svelte';
 
 	onMount(async () => {
 		try {
@@ -21,7 +20,7 @@
 			if (!response.ok) {
 				throw new Error('Network response was not ok');
 			}
-			smoothies = await response.json();
+			globalSmoothies.set(await response.json());
 		} catch (error) {
 			console.error('Fetch error:', error);
 		}
@@ -39,7 +38,7 @@
 				}
 			})
 			.then((data) => {
-				fruits = data;
+				globalFruits.set(data);
 			})
 			.catch((error) => {
 				if (error instanceof Error) {
@@ -53,18 +52,18 @@
 	function haeTamanSmoothienHedelmat(smoothie: Smoothie) {
 		for (let i = 0; i < smoothie.ingredients.length; i++) {
 			console.log(smoothie.ingredients[i]);
-			const hedelma = fruits.find((x) => {
+			const hedelma = globalFruits.get().find((x) => {
 				x.name === smoothie.ingredients[i];
 			});
 			if (hedelma) {
-				tamanSmoothienHedelmat.push(hedelma);
+				// tamanSmoothienHedelmat.push(hedelma);
 			}
 		}
 	}
 
-	$inspect(smoothies);
-	$inspect(fruits);
-	$inspect(tamanSmoothienHedelmat);
+	$inspect(globalSmoothies);
+	$inspect(globalFruits);
+	// $inspect(tamanSmoothienHedelmat);
 
 	// haeTamanSmoothienHedelmat(smoothie);
 </script>
@@ -75,8 +74,8 @@
 <div class="temp-container">
 	<!-- header -->
 
-	{#each smoothies as smoothie (smoothie.id)}
-		<SmoothieCard {smoothie} />
+	{#each globalSmoothies.get() as smoothie (smoothie.id)}
+		<SmoothieCard {smoothie} fetchFruitsFunction={haeTamanSmoothienHedelmat} />
 	{:else}
 		<div>Loading...</div>
 	{/each}
