@@ -82,8 +82,6 @@
 		<div>Loading...</div>
 	{/each}
 
-	<!-- Modal ikkuna-->
-
 	<!-- footer -->
 	<Footer footerText={'Ohjelmistoprojekti 1 by Team 2'} />
 </div>
