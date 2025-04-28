@@ -1,6 +1,25 @@
+<script lang="ts">
+	import type { Snippet } from 'svelte';
+	interface Props {
+		header: Snippet;
+		children: Snippet;
+		footer: Snippet;
+	}
+	let { header, children, footer }: Props = $props();
+</script>
+
 <div class="backdrop"></div>
 
-<div class="modal"></div>
+<div class="modal">
+	<header>
+		{@render header()}
+	</header>
+
+	{@render children()}
+	<footer>
+		{@render footer()}
+	</footer>
+</div>
 
 <style>
 	.backdrop {
@@ -14,12 +33,11 @@
 	}
 
 	.modal {
-		padding: 1rem;
+		padding: 3rem;
 		position: fixed;
-		top: 10vh;
-		left: 10vw;
-		width: 80%;
-		max-height: 80vh;
+		top: 0;
+		width: 100%;
+		height: 100%;
 		background: white;
 		border-radius: 5px;
 		z-index: 100;

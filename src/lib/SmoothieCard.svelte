@@ -21,25 +21,41 @@
 	}
 
 	// avaa smoothie reseptin
-	let modalauki = $state(false);
-	function avaaSmoothieResepti() {
-		modalauki = !modalauki;
+	let modalAuki = $state(false);
+	function avaaModal() {
+		modalAuki = !modalAuki;
 	}
 </script>
 
 <div class="card">
 	<img src="smoothie_placeholder.jpg" alt="placeholder kuva" />
-	<h2>{smoothie.name}</h2>
-	<h3>Ingredients</h3>
+	<h1>{smoothie.name}</h1>
+	<h2>Ingredients</h2>
 	<p>{smoothie.ingredients}</p>
-	<h3>Nutritional Information</h3>
-	<h3>Notes</h3>
+	<h2>Nutritional Information</h2>
+	<h2>Notes</h2>
 	{#if noteskentta}
 		<Notes placeholder="Add your notes" />
 	{/if}
 	<Button buttonText="Add Note" buttonFunction={avaanoteskentta} />
-	<Button buttonText="Resepti" buttonFunction={avaaSmoothieResepti} />
+	<Button buttonText="Avaa resepti" buttonFunction={avaaModal} />
 </div>
+
+{#if modalAuki}
+	<Button buttonText="testipainike" buttonFunction={() => {}} buttonActive={true} />
+	<Modal>
+		{#snippet header()}
+			<h1>{smoothie.name}</h1>
+		{/snippet}
+
+		<h2>Ingredients</h2>
+		<p>{smoothie.ingredients}</p>
+		<h2>Nutritional Information</h2>
+		{#snippet footer()}
+			<Button buttonText="Sulje" buttonFunction={avaaModal} />
+		{/snippet}
+	</Modal>
+{/if}
 
 <style>
 	.card {
@@ -49,12 +65,14 @@
 		padding: 16px;
 		margin: 16px;
 	}
-
-	h2 {
+	.card h1 {
 		font-size: 1.5em;
 		margin-bottom: 8px;
 	}
-
+	.card h2 {
+		font-size: 1.2em;
+		margin-bottom: 4px;
+	}
 	p {
 		font-size: 1em;
 		color: #555;

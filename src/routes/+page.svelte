@@ -80,8 +80,6 @@
 		<div>Loading...</div>
 	{/each}
 
-	<Button buttonText="testipainike" buttonFunction={() => {}} buttonActive={true} />
-
 	<!-- footer -->
 	<Footer footerText={'Ohjelmistoprojekti 1 by Team 2'} />
 </div>
