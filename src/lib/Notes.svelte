@@ -8,9 +8,9 @@
 	} = $props();
 </script>
 
-<textarea bind:value={taytto} {placeholder}></textarea>
+<textarea class="resize-none" bind:value={taytto} {placeholder}></textarea>
 
-<style>
+<!-- <style>
 	textarea {
 		width: 100%;
 		padding: 5px;
@@ -18,4 +18,4 @@
 		border: 1px solid #ccc;
 		font-size: 1rem;
 	}
-</style>
+</style> -->

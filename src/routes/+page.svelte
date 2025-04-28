@@ -76,11 +76,13 @@
 <div class="temp-container">
 	<!-- header -->
 
-	{#each globalSmoothies.get() as smoothie (smoothie.id)}
-		<SmoothieCard {smoothie} fetchFruitsFunction={haeTamanSmoothienHedelmat} />
-	{:else}
-		<div>Loading...</div>
-	{/each}
+	<div class="m-7 flex flex-wrap justify-center gap-7">
+		{#each globalSmoothies.get() as smoothie (smoothie.id)}
+			<SmoothieCard {smoothie} fetchFruitsFunction={haeTamanSmoothienHedelmat} />
+		{:else}
+			<div>Loading...</div>
+		{/each}
+	</div>
 
 	<!-- footer -->
 	<Footer footerText={'Ohjelmistoprojekti 1 by Team 2'} />

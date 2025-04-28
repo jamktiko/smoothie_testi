@@ -29,13 +29,18 @@
 	}
 </script>
 
-<div class="card">
+<div
+	class="relative flex w-full flex-col overflow-hidden rounded-xl border-2 bg-rose-50 shadow-lg shadow-slate-300 sm:h-165 sm:w-[47%] lg:w-[31%]"
+>
 	<img src="smoothie_placeholder.jpg" alt="placeholder kuva" />
 	<h1>{smoothie.name}</h1>
 	<h2>Ingredients</h2>
 	<p>{smoothie.ingredients}</p>
 	<h2>Nutritional Information</h2>
-	<Notes placeholder={'lisää muistiinpanoja'} bind:taytto={teksti} />
+	<div class="w-50">
+		<h2 class="text-md laila-medium">Notes</h2>
+		<Notes placeholder={'lisää muistiinpanoja'} bind:taytto={teksti} />
+	</div>
 	<Button buttonText={smoothie.name} buttonFunction={avaaModal} />
 </div>
 
