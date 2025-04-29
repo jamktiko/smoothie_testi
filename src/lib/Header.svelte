@@ -1,13 +1,13 @@
 <script lang="ts">
 	interface Props {
-		headerText: string;
+		headerText?: string;
 	}
 
 	let { headerText }: Props = $props();
 </script>
 
 <header class="flex justify-center">
-	<h1 class="text-5xl">{headerText}</h1>
+	<img src="logo-v-1.png" alt="logo" />
 </header>
 
 <!-- <style>
@@ -17,3 +17,9 @@
 		padding: 0.4em;
 	}
 </style> -->
+
+<style>
+	img {
+		width: 300px;
+	}
+</style>

@@ -129,7 +129,7 @@
 
 <span class=""></span>
 
-<Header headerText={'froots'} />
+<Header />
 <nav class="flex items-center justify-center">
 	<Searchbar placeholder={'Hae smoothieita'} />
 </nav>
