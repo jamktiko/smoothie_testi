@@ -66,6 +66,7 @@
 <!-- Kortti -->
 <div
 	class="relative flex w-full flex-col overflow-hidden rounded-xl border-2 bg-rose-50 shadow-lg shadow-slate-300 sm:h-165 sm:w-[47%] lg:w-[31%]"
+	onclick={avaaModal}
 >
 	<!-- Kortin sisältö -->
 	<img
@@ -106,7 +107,6 @@
 			<p class="laila-regular py-1 text-sm text-gray-600">
 				Sugar: {smoothieKortti.ravintoarvotYht.sugar}
 			</p>
-			<!-- <p class="laila-regular py-1 text-sm text-gray-600">Nut info</p> -->
 		</div>
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Notes</h2>
