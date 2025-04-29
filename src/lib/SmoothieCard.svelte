@@ -18,9 +18,6 @@
 
 	// avaa notes tekstikentän
 	let noteskentta = $state(false);
-	function avaanoteskentta() {
-		noteskentta = !noteskentta;
-	}
 	let teksti = $state('');
 	let muistiinpanoja: string[] = $state([]);
 
@@ -66,7 +63,7 @@
 	$inspect(smoothieKortti.ravintoarvotYht);
 </script>
 
-<div class="card">
+<div class="card" onclick={avaaModal}>
 	<img src="smoothie_placeholder.jpg" alt={smoothieKortti.smoothie.name} />
 	<h2>{smoothieKortti.smoothie.name}</h2>
 	<h3>Ingredients</h3>
@@ -82,21 +79,29 @@
 
 	<h3>Notes</h3>
 	{#if noteskentta}
-		<Notes placeholder="Add your notes" />
+		<Notes taytto={teksti} placeholder="Add your notes" />
 	{/if}
-	<Button buttonText="Add Note" buttonFunction={avaanoteskentta} />
-	<Button buttonText="Resepti" buttonFunction={avaaSmoothieResepti} />
+	<Button buttonText={smoothieKortti.smoothie.name} buttonFunction={avaaModal} />
 </div>
 
 {#if modalAuki}
 	<Button buttonText="testipainike" buttonFunction={() => {}} buttonActive={true} />
 	<Modal>
 		{#snippet header()}
-			<h1>{smoothie.name}</h1>
+			<h1>{smoothieKortti.smoothie.name}</h1>
 		{/snippet}
 		<h2>Ingredients</h2>
-		<p>{smoothie.ingredients}</p>
+
+		{#each smoothieKortti.hedelmat as hedelma (hedelma)}
+			<p>{hedelma}</p>
+		{/each}
 		<h2>Nutritional Information</h2>
+		<p>Calories: {smoothieKortti.ravintoarvotYht.calories}</p>
+		<p>Carbohydrates: {smoothieKortti.ravintoarvotYht.carbohydrates}</p>
+		<p>Protein: {smoothieKortti.ravintoarvotYht.protein}</p>
+		<p>Fat: {smoothieKortti.ravintoarvotYht.fat}</p>
+		<p>Sugar: {smoothieKortti.ravintoarvotYht.sugar}</p>
+
 		{#snippet footer()}
 			<h1>Notes</h1>
 			<p>{teksti}</p>
@@ -107,6 +112,9 @@
 
 <style>
 	.card {
+		/* display: revert; */
+		/* all: unset; */
+		/* display: block; */
 		background-color: #f9f9f9;
 		border-radius: 8px;
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
