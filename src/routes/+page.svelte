@@ -3,13 +3,14 @@
 	import type { Fruit } from '$lib/types/fruit';
 	import type { SmoothieKortti } from '$lib/types/smoothieKortti';
 	import type { NutritionInfo } from '$lib/types/nutritionInfo';
-	import '../app.css';
-	import Button from '$lib/Button.svelte';
+
 	import Searchbar from '$lib/Searchbar.svelte';
 	import Header from '$lib/Header.svelte';
 	import Footer from '$lib/Footer.svelte';
-	import { onMount } from 'svelte';
 	import SmoothieCard from '$lib/SmoothieCard.svelte';
+
+	import { onMount } from 'svelte';
+	import '../app.css';
 
 	// suoritetaan heti sivun lataamisen jälkeen
 	onMount(async () => {
@@ -112,8 +113,8 @@
 	let smoothies: Smoothie[] = $state([]);
 	let fruits: Fruit[] = $state([]);
 
-	$inspect(smoothies);
-	$inspect(fruits);
+	//$inspect(smoothies);
+	//$inspect(fruits);
 </script>
 
 <link
@@ -126,8 +127,6 @@
 	href="https://fonts.googleapis.com/css2?family=Honk&family=Kalnia+Glaze:wght@100..700&family=Laila:wght@300;400;500;600;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merienda:wght@300..900&family=Nabla&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
 	rel="stylesheet"
 />
-
-<span class=""></span>
 
 <Header />
 <nav class="flex items-center justify-center">

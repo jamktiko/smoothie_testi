@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import { fly, scale } from 'svelte/transition';
+	import { scale } from 'svelte/transition';
 	interface Props {
 		header: Snippet;
 		children: Snippet;
