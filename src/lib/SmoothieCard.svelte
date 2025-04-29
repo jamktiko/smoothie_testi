@@ -4,13 +4,15 @@
 	import type { Smoothie } from '$lib/types/smoothie';
 	import type { Fruit } from '$lib/types/fruit';
 	import type { NutritionInfo } from './types/nutritionInfo';
+	import type { SmoothieKortti } from '$lib/types/smoothieKortti';
+	import { onMount } from 'svelte';
 
 	import Modal from './Modal.svelte';
+
 	interface Props {
-		smoothie: Smoothie;
-		fetchFruitsFunction: () => void;
+		smoothieKortti: SmoothieKortti;
 	}
-	let { smoothie, fetchFruitsFunction } = $props();
+	let { smoothieKortti } = $props();
 	let tamanSmoothienHedelmat: Fruit[] = $state([]);
 	let tamanSmoothienRavintoarvot: NutritionInfo[] = $state([]);
 
@@ -27,16 +29,63 @@
 	function avaaModal() {
 		modalAuki = !modalAuki;
 	}
+
+	function tulostaNutritionInfo() {
+		smoothieKortti.ravintoarvot.forEach((ravintoarvo: NutritionInfo) => {});
+	}
+
+	// function haeTamanSmoothienHedelmat(smoothie: Smoothie) {
+	// 	console.log('nyt ollaan haetamansmoothien funktion sisällä');
+	// 	console.log('nyt ollaan haetamansmoothien funktion sisällä2');
+	// 	for (let i = 0; i < smoothie.ingredients.length; i++) {
+	// 		console.log(`${smoothie.name} - ${smoothie.ingredients[i]}`);
+	// 		globalFruits.get().forEach((fruit) => {
+	// 			console.log(fruit.name);
+	// 			console.log('test2');
+	// 		});
+
+	// 		// console.log(`Hedelma: ${hedelmaIndex}`);
+	// 		// if (hedelma) {
+	// 		// tamanSmoothienHedelmat.push(hedelma);
+	// 		// }
+	// 	}
+	// }
+
+	onMount(() => {
+		// haeTamanSmoothienHedelmat(smoothie);
+	});
+
+	// $inspect(tamanSmoothienHedelmat);
+	// $inspect(globalSmoothies.get());
+	// $inspect(globalFruits.get());
+	// $inspect(tamanSmoothienRavintoarvot);
+	$inspect(smoothieKortti.ID);
+	$inspect(smoothieKortti.smoothie.name);
+	$inspect(smoothieKortti.hedelmat);
+	$inspect(smoothieKortti.ravintoarvot);
+	$inspect(smoothieKortti.ravintoarvotYht);
 </script>
 
 <div class="card">
-	<img src="smoothie_placeholder.jpg" alt="placeholder kuva" />
-	<h1>{smoothie.name}</h1>
-	<h2>Ingredients</h2>
-	<p>{smoothie.ingredients}</p>
-	<h2>Nutritional Information</h2>
-	<Notes placeholder={'lisää muistiinpanoja'} bind:taytto={teksti} />
-	<Button buttonText={smoothie.name} buttonFunction={avaaModal} />
+	<img src="smoothie_placeholder.jpg" alt={smoothieKortti.smoothie.name} />
+	<h2>{smoothieKortti.smoothie.name}</h2>
+	<h3>Ingredients</h3>
+	{#each smoothieKortti.hedelmat as hedelma (hedelma)}
+		<p>{hedelma}</p>
+	{/each}
+	<h3>Nutritional Information</h3>
+	<p>Calories: {smoothieKortti.ravintoarvotYht.calories}</p>
+	<p>Carbohydrates: {smoothieKortti.ravintoarvotYht.carbohydrates}</p>
+	<p>Protein: {smoothieKortti.ravintoarvotYht.protein}</p>
+	<p>Fat: {smoothieKortti.ravintoarvotYht.fat}</p>
+	<p>Sugar: {smoothieKortti.ravintoarvotYht.sugar}</p>
+
+	<h3>Notes</h3>
+	{#if noteskentta}
+		<Notes placeholder="Add your notes" />
+	{/if}
+	<Button buttonText="Add Note" buttonFunction={avaanoteskentta} />
+	<Button buttonText="Resepti" buttonFunction={avaaSmoothieResepti} />
 </div>
 
 {#if modalAuki}
