@@ -9,10 +9,6 @@
 
 	import Modal from './Modal.svelte';
 
-	// importataan globaalit muuttujat smoothieille ja hedelmille
-	import { globalSmoothies } from '$lib/globalSmoothies.svelte';
-	import { globalFruits } from '$lib/globalFruits.svelte';
-
 	interface Props {
 		smoothieKortti: SmoothieKortti;
 	}
@@ -32,22 +28,26 @@
 		modalauki = !modalauki;
 	}
 
-	function haeTamanSmoothienHedelmat(smoothie: Smoothie) {
-		console.log('nyt ollaan haetamansmoothien funktion sisällä');
-		console.log('nyt ollaan haetamansmoothien funktion sisällä2');
-		for (let i = 0; i < smoothie.ingredients.length; i++) {
-			console.log(`${smoothie.name} - ${smoothie.ingredients[i]}`);
-			globalFruits.get().forEach((fruit) => {
-				console.log(fruit.name);
-				console.log('test2');
-			});
-
-			// console.log(`Hedelma: ${hedelmaIndex}`);
-			// if (hedelma) {
-			// tamanSmoothienHedelmat.push(hedelma);
-			// }
-		}
+	function tulostaNutritionInfo() {
+		smoothieKortti.ravintoarvot.forEach((ravintoarvo: NutritionInfo) => {});
 	}
+
+	// function haeTamanSmoothienHedelmat(smoothie: Smoothie) {
+	// 	console.log('nyt ollaan haetamansmoothien funktion sisällä');
+	// 	console.log('nyt ollaan haetamansmoothien funktion sisällä2');
+	// 	for (let i = 0; i < smoothie.ingredients.length; i++) {
+	// 		console.log(`${smoothie.name} - ${smoothie.ingredients[i]}`);
+	// 		globalFruits.get().forEach((fruit) => {
+	// 			console.log(fruit.name);
+	// 			console.log('test2');
+	// 		});
+
+	// 		// console.log(`Hedelma: ${hedelmaIndex}`);
+	// 		// if (hedelma) {
+	// 		// tamanSmoothienHedelmat.push(hedelma);
+	// 		// }
+	// 	}
+	// }
 
 	onMount(() => {
 		// haeTamanSmoothienHedelmat(smoothie);
@@ -67,10 +67,10 @@
 	<img src="smoothie_placeholder.jpg" alt="placeholder kuva" />
 	<h2>{smoothieKortti.smoothie.name}</h2>
 	<h3>Ingredients</h3>
-	<p>{smoothieKortti.smoothie.ingredient}</p>
+	<p>{smoothieKortti.hedelmat}</p>
 	<h3>Nutritional Information</h3>
-	<p>{smoothieKortti.ID}</p>
-	<p>{smoothieKortti.ravintoarvot}</p>
+	<!-- <p>{smoothieKortti.ID}</p> -->
+	<p>{smoothieKortti.ravintoarvot.carbohydrates}</p>
 	<h3>Notes</h3>
 	{#if noteskentta}
 		<Notes placeholder="Add your notes" />

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { Smoothie } from '$lib/types/smoothie';
 	import type { Fruit } from '$lib/types/fruit';
-	import type { NutritionInfo } from '$lib/types/nutritionInfo';
 	import type { SmoothieKortti } from '$lib/types/smoothieKortti';
 	import '../app.css';
 	import Button from '$lib/Button.svelte';
@@ -11,13 +10,9 @@
 	import { onMount } from 'svelte';
 	import SmoothieCard from '$lib/SmoothieCard.svelte';
 
-	// importataan globaalit muuttujat smoothieille ja hedelmille
-	import { globalSmoothies } from '$lib/globalSmoothies.svelte';
-	import { globalFruits } from '$lib/globalFruits.svelte';
-
 	onMount(async () => {
-		await haeSmoothiet();
 		await haeHedelmat();
+		await haeSmoothiet();
 		luoSmoothieKortit();
 	});
 
@@ -28,7 +23,7 @@
 			if (!response.ok) {
 				throw new Error('Network response was not ok');
 			}
-			globalSmoothies.set(await response.json());
+			smoothies = await response.json();
 		} catch (error) {
 			console.error('Fetch error:', error);
 		}
@@ -45,7 +40,7 @@
 				}
 			})
 			.then((data) => {
-				globalFruits.set(data);
+				fruits = data;
 			})
 			.catch((error) => {
 				if (error instanceof Error) {
@@ -57,23 +52,26 @@
 	}
 
 	const luoSmoothieKortit = () => {
-		globalSmoothies.get().forEach((smoothie) => {
-			let temp: SmoothieKortti = $state({
+		smoothies.forEach((smoothie) => {
+			let temp: SmoothieKortti = {
 				ID: smoothie.id,
 				smoothie: smoothie,
 				hedelmat: [],
 				ravintoarvot: []
-			});
+			};
 
 			for (let i = 0; i < smoothie.ingredients.length; i++) {
 				const ingredient = smoothie.ingredients[i];
 				console.log(`ingredient: (${ingredient})`);
 				// tämä alempi on se ongelma
-				globalFruits.get().forEach((fruit) => {
-					console.log(`fruit name: (${fruit.name})`);
-					console.log(`ingredient: (${ingredient})`);
-					console.log(`onko true vai false: (${fruit.name === ingredient})`);
-					fruit.name === ingredient ? temp.hedelmat.push(fruit) : null;
+				fruits.forEach((fruit) => {
+					// console.log(`fruit name: (${fruit.name})`);
+					// console.log(`ingredient: (${ingredient})`);
+					// console.log(`onko true vai false: (${fruit.name === ingredient})`);
+					if (fruit.name === ingredient) {
+						temp.hedelmat.push(fruit.name);
+						temp.ravintoarvot.push(fruit.nutritions);
+					}
 				});
 			}
 			smoothieKortitTaulukko.push(temp);
@@ -81,21 +79,18 @@
 	};
 
 	let smoothieKortitTaulukko: SmoothieKortti[] = $state([]);
+	let smoothies: Smoothie[] = $state([]);
+	let fruits: Fruit[] = $state([]);
 
-	// $inspect(globalSmoothies.get());
-	// $inspect(globalFruits.get());
-	// $inspect(smoothieKortitTaulukko);
-	// $inspect(tamanSmoothienHedelmat);
-
-	// haeTamanSmoothienHedelmat(smoothie);
+	$inspect(smoothies);
+	$inspect(fruits);
 </script>
 
+<!-- header -->
 <Header headerText={'froots'} />
 
 <Searchbar placeholder={'Hae smoothieita'} />
 <div class="temp-container">
-	<!-- header -->
-
 	{#each smoothieKortitTaulukko as smoothieKortti (smoothieKortti.ID)}
 		<SmoothieCard {smoothieKortti} />
 	{:else}
