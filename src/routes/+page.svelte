@@ -2,6 +2,7 @@
 	import type { Smoothie } from '$lib/types/smoothie';
 	import type { Fruit } from '$lib/types/fruit';
 	import type { SmoothieKortti } from '$lib/types/smoothieKortti';
+	import type { NutritionInfo } from '$lib/types/nutritionInfo';
 	import '../app.css';
 	import Button from '$lib/Button.svelte';
 	import Searchbar from '$lib/Searchbar.svelte';
@@ -10,9 +11,10 @@
 	import { onMount } from 'svelte';
 	import SmoothieCard from '$lib/SmoothieCard.svelte';
 
+	// suoritetaan heti sivun lataamisen jälkeen
 	onMount(async () => {
-		await haeHedelmat();
-		await haeSmoothiet();
+		fruits = await haeHedelmat();
+		smoothies = await haeSmoothiet();
 		luoSmoothieKortit();
 	});
 
@@ -23,7 +25,7 @@
 			if (!response.ok) {
 				throw new Error('Network response was not ok');
 			}
-			smoothies = await response.json();
+			return await response.json();
 		} catch (error) {
 			console.error('Fetch error:', error);
 		}
@@ -31,7 +33,7 @@
 
 	// hakee hedelmät fruits.json tiedostosta taulukkoon asynkronisesti
 	async function haeHedelmat() {
-		fetch('/data/fruits.json')
+		return fetch('/data/fruits.json')
 			.then((response) => {
 				if (response.ok) {
 					return response.json();
@@ -40,7 +42,7 @@
 				}
 			})
 			.then((data) => {
-				fruits = data;
+				return data;
 			})
 			.catch((error) => {
 				if (error instanceof Error) {
@@ -51,31 +53,58 @@
 			});
 	}
 
+	// luo smoothieKortit smoothieista ja hedelmistä
 	const luoSmoothieKortit = () => {
 		smoothies.forEach((smoothie) => {
-			let temp: SmoothieKortti = {
+			let uusiSmoothieKortti: SmoothieKortti = {
 				ID: smoothie.id,
 				smoothie: smoothie,
 				hedelmat: [],
-				ravintoarvot: []
+				ravintoarvot: [],
+				ravintoarvotYht: {
+					calories: 0,
+					carbohydrates: 0,
+					protein: 0,
+					fat: 0,
+					sugar: 0
+				}
 			};
 
 			for (let i = 0; i < smoothie.ingredients.length; i++) {
 				const ingredient = smoothie.ingredients[i];
 				console.log(`ingredient: (${ingredient})`);
-				// tämä alempi on se ongelma
+
 				fruits.forEach((fruit) => {
-					// console.log(`fruit name: (${fruit.name})`);
-					// console.log(`ingredient: (${ingredient})`);
-					// console.log(`onko true vai false: (${fruit.name === ingredient})`);
 					if (fruit.name === ingredient) {
-						temp.hedelmat.push(fruit.name);
-						temp.ravintoarvot.push(fruit.nutritions);
+						uusiSmoothieKortti.hedelmat.push(fruit.name);
+						uusiSmoothieKortti.ravintoarvot.push(fruit.nutritions);
 					}
 				});
 			}
-			smoothieKortitTaulukko.push(temp);
+			uusiSmoothieKortti.ravintoarvotYht = laskeRavintoarvotYhteensa(
+				uusiSmoothieKortti.ravintoarvot
+			);
+			smoothieKortitTaulukko.push(uusiSmoothieKortti);
 		});
+	};
+
+	// laskee smoothienKortin ravintoarvojen yhteenlasketut arvot
+	const laskeRavintoarvotYhteensa = (ravintoarvot: NutritionInfo[]) => {
+		let yhteensa = {
+			calories: 0,
+			carbohydrates: 0,
+			protein: 0,
+			fat: 0,
+			sugar: 0
+		};
+		for (let i = 0; i < ravintoarvot.length; i++) {
+			yhteensa.calories += ravintoarvot[i].calories;
+			yhteensa.carbohydrates += ravintoarvot[i].carbohydrates;
+			yhteensa.protein += ravintoarvot[i].protein;
+			yhteensa.fat += ravintoarvot[i].fat;
+			yhteensa.sugar += ravintoarvot[i].sugar;
+		}
+		return yhteensa;
 	};
 
 	let smoothieKortitTaulukko: SmoothieKortti[] = $state([]);

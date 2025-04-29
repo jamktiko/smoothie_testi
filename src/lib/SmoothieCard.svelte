@@ -61,16 +61,23 @@
 	$inspect(smoothieKortti.smoothie.name);
 	$inspect(smoothieKortti.hedelmat);
 	$inspect(smoothieKortti.ravintoarvot);
+	$inspect(smoothieKortti.ravintoarvotYht);
 </script>
 
 <div class="card">
-	<img src="smoothie_placeholder.jpg" alt="placeholder kuva" />
+	<img src="smoothie_placeholder.jpg" alt={smoothieKortti.smoothie.name} />
 	<h2>{smoothieKortti.smoothie.name}</h2>
 	<h3>Ingredients</h3>
-	<p>{smoothieKortti.hedelmat}</p>
+	{#each smoothieKortti.hedelmat as hedelma (hedelma)}
+		<p>{hedelma}</p>
+	{/each}
 	<h3>Nutritional Information</h3>
-	<!-- <p>{smoothieKortti.ID}</p> -->
-	<p>{smoothieKortti.ravintoarvot.carbohydrates}</p>
+	<p>Calories: {smoothieKortti.ravintoarvotYht.calories}</p>
+	<p>Carbohydrates: {smoothieKortti.ravintoarvotYht.carbohydrates}</p>
+	<p>Protein: {smoothieKortti.ravintoarvotYht.protein}</p>
+	<p>Fat: {smoothieKortti.ravintoarvotYht.fat}</p>
+	<p>Sugar: {smoothieKortti.ravintoarvotYht.sugar}</p>
+
 	<h3>Notes</h3>
 	{#if noteskentta}
 		<Notes placeholder="Add your notes" />

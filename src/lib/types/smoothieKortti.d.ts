@@ -3,6 +3,8 @@ interface SmoothieKortti {
 	smoothie: Smoothie;
 	hedelmat: Fruit[];
 	ravintoarvot: NutritionInfo[];
+	ravintoarvotYht: NutritionInfo;
+	picURL?: string;
 }
 
 export type { SmoothieKortti };
