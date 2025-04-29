@@ -129,7 +129,6 @@
 </div>
 
 {#if modalAuki}
-	<Button buttonText="testipainike" buttonFunction={() => {}} buttonActive={true} />
 	<Modal>
 		{#snippet header()}
 			<h1>{smoothieKortti.smoothie.name}</h1>
