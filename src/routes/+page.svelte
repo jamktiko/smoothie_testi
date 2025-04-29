@@ -67,7 +67,8 @@
 					protein: 0,
 					fat: 0,
 					sugar: 0
-				}
+				},
+				pic: smoothie.pic
 			};
 
 			for (let i = 0; i < smoothie.ingredients.length; i++) {

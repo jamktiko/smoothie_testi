@@ -16,6 +16,8 @@
 	let tamanSmoothienHedelmat: Fruit[] = $state([]);
 	let tamanSmoothienRavintoarvot: NutritionInfo[] = $state([]);
 
+	// let smoothienKuva = smoothieKortti.pic?;
+
 	// avaa notes tekstikentän
 	let noteskentta = $state(false);
 	let teksti = $state('');
@@ -61,6 +63,7 @@
 	$inspect(smoothieKortti.hedelmat);
 	$inspect(smoothieKortti.ravintoarvot);
 	$inspect(smoothieKortti.ravintoarvotYht);
+	$inspect(smoothieKortti.pic);
 </script>
 
 <!-- Kortti -->
@@ -70,7 +73,7 @@
 >
 	<!-- Kortin sisältö -->
 	<img
-		src="smoothie_placeholder.jpg"
+		src={smoothieKortti.pic}
 		alt={smoothieKortti.smoothie.name}
 		class="h-48 w-full rounded-xl border-b-2 object-cover sm:h-60"
 	/>
@@ -93,19 +96,19 @@
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Nutritional Information</h2>
 			<p class="laila-regular py-1 text-sm text-gray-600">
-				Calories: {smoothieKortti.ravintoarvotYht.calories}
+				Calories: {smoothieKortti.ravintoarvotYht.calories.toFixed(1)}
 			</p>
 			<p class="laila-regular py-1 text-sm text-gray-600">
-				Carbohydrates: {smoothieKortti.ravintoarvotYht.carbohydrates}
+				Carbohydrates: {smoothieKortti.ravintoarvotYht.carbohydrates.toFixed(1)}
 			</p>
 			<p class="laila-regular py-1 text-sm text-gray-600">
-				Protein: {smoothieKortti.ravintoarvotYht.protein}
+				Protein: {smoothieKortti.ravintoarvotYht.protein.toFixed(1)}
 			</p>
 			<p class="laila-regular py-1 text-sm text-gray-600">
-				Fat: {smoothieKortti.ravintoarvotYht.fat}
+				Fat: {smoothieKortti.ravintoarvotYht.fat.toFixed(1)}
 			</p>
 			<p class="laila-regular py-1 text-sm text-gray-600">
-				Sugar: {smoothieKortti.ravintoarvotYht.sugar}
+				Sugar: {smoothieKortti.ravintoarvotYht.sugar.toFixed(1)}
 			</p>
 		</div>
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
@@ -137,11 +140,11 @@
 			<p>{hedelma}</p>
 		{/each}
 		<h2>Nutritional Information</h2>
-		<p>Calories: {smoothieKortti.ravintoarvotYht.calories}</p>
-		<p>Carbohydrates: {smoothieKortti.ravintoarvotYht.carbohydrates}</p>
-		<p>Protein: {smoothieKortti.ravintoarvotYht.protein}</p>
-		<p>Fat: {smoothieKortti.ravintoarvotYht.fat}</p>
-		<p>Sugar: {smoothieKortti.ravintoarvotYht.sugar}</p>
+		<p>Calories: {smoothieKortti.ravintoarvotYht.calories.toFixed(1)}</p>
+		<p>Carbohydrates: {smoothieKortti.ravintoarvotYht.carbohydrates.toFixed(1)}</p>
+		<p>Protein: {smoothieKortti.ravintoarvotYht.protein.toFixed(1)}</p>
+		<p>Fat: {smoothieKortti.ravintoarvotYht.fat.toFixed(1)}</p>
+		<p>Sugar: {smoothieKortti.ravintoarvotYht.sugar.toFixed(1)}</p>
 
 		{#snippet footer()}
 			<h1>Notes</h1>
