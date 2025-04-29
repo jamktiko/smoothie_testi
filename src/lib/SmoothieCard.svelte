@@ -86,14 +86,6 @@
 				<span class="material-symbols-outlined">timer</span>
 			</div>
 		</div>
-		<!-- <div class="my-1 rounded-xl border bg-white p-2 pl-3">
-			<h2 class="text-md laila-medium">Ingredients</h2>
-			<ul class="space-y-0 text-sm text-gray-600">
-				{#each smoothieKortti.hedelmat as hedelma (hedelma)}
-					<li class="laila-regular">{hedelma}</li>
-				{/each}
-			</ul>
-		</div> -->
 
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Ingredients</h2>
