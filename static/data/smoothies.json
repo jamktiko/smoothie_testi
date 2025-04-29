@@ -1,0 +1,37 @@
+[
+	{
+		"id": 1,
+		"name": "Mango Pineapple",
+		"ingredients": ["Mango", "Pineapple", "Banana", "Coconut Milk", "Greek Yogurt"]
+	},
+	{
+		"id": 2,
+		"name": "Berry Blast",
+		"ingredients": ["Strawberries", "Blueberries", "Raspberries", "Almond Milk", "Honey"]
+	},
+	{
+		"id": 3,
+		"name": "Green Detox",
+		"ingredients": ["Spinach", "Kale", "Cucumber", "Green Apple", "Lemon Juice"]
+	},
+	{
+		"id": 4,
+		"name": "Chocolate Banana",
+		"ingredients": ["Banana", "Cocoa Powder", "Almond Milk", "Peanut Butter"]
+	},
+	{
+		"id": 5,
+		"name": "Tropical Paradise",
+		"ingredients": ["Mango", "Pineapple", "Coconut Water", "Mint"]
+	},
+	{
+		"id": 6,
+		"name": "Peachy Keen",
+		"ingredients": ["Peach", "Greek Yogurt", "Honey", "Almond Milk"]
+	},
+	{
+		"id": 7,
+		"name": "Avocado Spinach",
+		"ingredients": ["Avocado", "Spinach", "Banana", "Almond Milk"]
+	}
+]
