@@ -1,37 +1,74 @@
 [
 	{
 		"id": 1,
-		"name": "Mango Pineapple",
-		"ingredients": ["Mango", "Pineapple", "Banana", "Coconut Milk", "Greek Yogurt"]
+		"name": "Berry Bliss",
+		"ingredients": ["Strawberry", "Blueberry", "Raspberry", "Banana"],
+		"pic": "https://cdn.pixabay.com/photo/2021/11/01/15/53/smoothie-6760874_1280.jpg"
 	},
 	{
 		"id": 2,
-		"name": "Berry Blast",
-		"ingredients": ["Strawberries", "Blueberries", "Raspberries", "Almond Milk", "Honey"]
+		"name": "Tropical Sunshine",
+		"ingredients": ["Pineapple", "Mango", "Banana"],
+		"pic": "https://cdn.pixabay.com/photo/2018/03/13/11/39/fruit-3222313_1280.jpg"
 	},
 	{
 		"id": 3,
-		"name": "Green Detox",
-		"ingredients": ["Spinach", "Kale", "Cucumber", "Green Apple", "Lemon Juice"]
+		"name": "Green Zing",
+		"ingredients": ["Kiwi", "Green apple", "Pear"],
+		"pic": "smoothie_placeholder.jpg"
 	},
 	{
 		"id": 4,
-		"name": "Chocolate Banana",
-		"ingredients": ["Banana", "Cocoa Powder", "Almond Milk", "Peanut Butter"]
+		"name": "Sweet Orchard",
+		"ingredients": ["Apple", "Banana", "Pear", "Peach"],
+		"pic": "smoothie_placeholder.jpg"
 	},
 	{
 		"id": 5,
-		"name": "Tropical Paradise",
-		"ingredients": ["Mango", "Pineapple", "Coconut Water", "Mint"]
+		"name": "Sunset Fusion",
+		"ingredients": ["Peach", "Mango", "Raspberry"],
+		"pic": "smoothie_placeholder.jpg"
 	},
 	{
 		"id": 6,
-		"name": "Peachy Keen",
-		"ingredients": ["Peach", "Greek Yogurt", "Honey", "Almond Milk"]
+		"name": "Summer Kiss",
+		"ingredients": ["Strawberry", "Peach", "Apple"],
+		"pic": "smoothie_placeholder.jpg"
 	},
 	{
 		"id": 7,
 		"name": "Avocado Spinach",
-		"ingredients": ["Avocado", "Spinach", "Banana", "Almond Milk"]
+		"ingredients": ["Avocado", "Spinach", "Banana"],
+		"pic": "smoothie_placeholder.jpg"
+	},
+	{
+		"id": 8,
+		"name": "Exotic Fruit Punch",
+		"ingredients": ["Pitahaya", "Mangosteen", "Feijoa"],
+		"pic": "smoothie_placeholder.jpg"
+	},
+	{
+		"id": 9,
+		"name": "Tropical Sunrise",
+		"ingredients": ["Jackfruit", "Papaya", "Pineapple"],
+		"pic": "smoothie_placeholder.jpg"
+	},
+	{
+		"id": 10,
+		"name": "Peach Paradise",
+		"ingredients": ["Peach", "Apricot", "Mango"],
+		"pic": "smoothie_placeholder.jpg"
+	},
+	{
+		"id": 11,
+		"name": "Citrus Passion",
+		"ingredients": ["Tangerine", "Lemon", "Pomegranate"],
+		"pic": "smoothie_placeholder.jpg"
+	},
+	{
+		"id": 12,
+		"name": "Melon Dream",
+		"ingredients": ["Melon", "Dragonfruit", "Kiwi"],
+		"pic": "smoothie_placeholder.jpg"
 	}
 ]
