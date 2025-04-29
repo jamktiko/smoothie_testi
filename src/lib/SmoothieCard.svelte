@@ -64,6 +64,9 @@
 </script>
 
 <!-- Kortti -->
+
+<!-- Avaa tämä -->
+
 <div
 	class="relative flex w-full flex-col overflow-hidden rounded-xl border-2 bg-rose-50 shadow-lg shadow-slate-300 sm:h-165 sm:w-[47%] lg:w-[31%]"
 	onclick={avaaModal}
@@ -83,30 +86,25 @@
 				<span class="material-symbols-outlined">timer</span>
 			</div>
 		</div>
+
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Ingredients</h2>
-			{#each smoothieKortti.hedelmat as hedelma (hedelma)}
-				<p class="laila-regular py-1 text-sm text-gray-600">{hedelma}</p>
-			{/each}
-			<!-- <p class="laila-regular py-1 text-sm text-gray-600">{smoothie.ingredients}</p> -->
+			<ul class="space-y-0 text-sm">
+				{#each smoothieKortti.hedelmat as hedelma (hedelma)}
+					<li class="laila-regular text-gray-600">{hedelma}</li>
+				{/each}
+			</ul>
 		</div>
+
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Nutritional Information</h2>
-			<p class="laila-regular py-1 text-sm text-gray-600">
-				Calories: {smoothieKortti.ravintoarvotYht.calories}
-			</p>
-			<p class="laila-regular py-1 text-sm text-gray-600">
-				Carbohydrates: {smoothieKortti.ravintoarvotYht.carbohydrates}
-			</p>
-			<p class="laila-regular py-1 text-sm text-gray-600">
-				Protein: {smoothieKortti.ravintoarvotYht.protein}
-			</p>
-			<p class="laila-regular py-1 text-sm text-gray-600">
-				Fat: {smoothieKortti.ravintoarvotYht.fat}
-			</p>
-			<p class="laila-regular py-1 text-sm text-gray-600">
-				Sugar: {smoothieKortti.ravintoarvotYht.sugar}
-			</p>
+			<ul class="laila-regular py-1 text-sm text-gray-600">
+				<li>Calories: {smoothieKortti.ravintoarvotYht.calories}</li>
+				<li>Carbohydrates: {smoothieKortti.ravintoarvotYht.carbohydrates}</li>
+				<li>Protein: {smoothieKortti.ravintoarvotYht.protein}</li>
+				<li>Fat: {smoothieKortti.ravintoarvotYht.fat}</li>
+				<li>Sugar: {smoothieKortti.ravintoarvotYht.sugar}</li>
+			</ul>
 		</div>
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Notes</h2>

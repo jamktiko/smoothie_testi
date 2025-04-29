@@ -126,11 +126,9 @@
 	rel="stylesheet"
 />
 
-<span class=""></span>
-
 <Header headerText={'froots'} />
 <nav class="flex items-center justify-center">
-	<Searchbar placeholder={'Hae smoothieita'} />
+	<Searchbar placeholder={'Search smoothies'} />
 </nav>
 
 <div class="m-7 flex flex-wrap justify-center gap-7">

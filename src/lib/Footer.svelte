@@ -6,14 +6,6 @@
 	let { footerText }: Props = $props();
 </script>
 
-<footer>
+<footer class="flex items-center justify-center border-t-2 bg-rose-50 p-3">
 	<span>{footerText}</span>
 </footer>
-
-<style>
-	footer {
-		background-color: rgb(183, 183, 183);
-		/* display: flex; */
-		padding: 0.4em;
-	}
-</style>
