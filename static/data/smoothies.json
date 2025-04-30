@@ -8,10 +8,10 @@
 	},
 	{
 		"id": 2,
-		"name": "Tropical Sunshine",
+		"name": "Sunny Smile",
 		"ingredients": ["Pineapple", "Mango", "Banana"],
 		"ingredientsAmount": [1, 2, 2],
-		"pic": "Tropical-Sunshine-2.jpg"
+		"pic": "Sunny-Smile-2.jpg"
 	},
 	{
 		"id": 3,
@@ -50,10 +50,10 @@
 	},
 	{
 		"id": 8,
-		"name": "Exotic Fruit Punch",
+		"name": "Exotic Twist",
 		"ingredients": ["Pitahaya", "Mangosteen", "Feijoa"],
 		"ingredientsAmount": [3, 1, 2],
-		"pic": "Exotic-Fruit-Punch-8.jpg"
+		"pic": "Exotic-Twist-8.jpg"
 	},
 	{
 		"id": 9,
