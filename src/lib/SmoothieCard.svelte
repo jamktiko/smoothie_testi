@@ -19,12 +19,13 @@
 		modalAuki = !modalAuki;
 	}
 
-	$inspect(smoothieKortti.ID);
-	$inspect(smoothieKortti.smoothie.name);
-	$inspect(smoothieKortti.hedelmat);
-	$inspect(smoothieKortti.ravintoarvot);
-	$inspect(smoothieKortti.ravintoarvotYht);
-	$inspect(smoothieKortti.pic);
+	// $inspect(smoothieKortti.ID);
+	// $inspect(smoothieKortti.smoothie.name);
+	// $inspect(smoothieKortti.hedelmat);
+	// $inspect(smoothieKortti.ravintoarvot);
+	// $inspect(smoothieKortti.ravintoarvotYht);
+	// $inspect(smoothieKortti.pic);
+	$inspect(smoothieKortti.hedelmatMaara);
 </script>
 
 <!-- Kortti -->
@@ -53,8 +54,11 @@
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Ingredients</h2>
 			<ul class="space-y-0 text-sm">
-				{#each smoothieKortti.hedelmat as hedelma (hedelma)}
-					<li class="laila-regular text-gray-600">{hedelma}</li>
+				{#each smoothieKortti.hedelmat as hedelma, index}
+					<li class="laila-regular text-gray-600">
+						{smoothieKortti.hedelmatMaara[index]}
+						{hedelma}
+					</li>
 				{/each}
 			</ul>
 		</div>
@@ -62,11 +66,11 @@
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Nutritional Information</h2>
 			<ul class="laila-regular py-1 text-sm text-gray-600">
-				<li>Calories: {smoothieKortti.ravintoarvotYht.calories}</li>
-				<li>Carbohydrates: {smoothieKortti.ravintoarvotYht.carbohydrates}</li>
-				<li>Protein: {smoothieKortti.ravintoarvotYht.protein}</li>
-				<li>Fat: {smoothieKortti.ravintoarvotYht.fat}</li>
-				<li>Sugar: {smoothieKortti.ravintoarvotYht.sugar}</li>
+				<li>Calories: {smoothieKortti.ravintoarvotYht.calories.toFixed(1)}</li>
+				<li>Carbohydrates: {smoothieKortti.ravintoarvotYht.carbohydrates.toFixed(1)}</li>
+				<li>Protein: {smoothieKortti.ravintoarvotYht.protein.toFixed(1)}</li>
+				<li>Fat: {smoothieKortti.ravintoarvotYht.fat.toFixed(1)}</li>
+				<li>Sugar: {smoothieKortti.ravintoarvotYht.sugar.toFixed(1)}</li>
 			</ul>
 		</div>
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">

@@ -65,6 +65,7 @@
 				ID: smoothie.id,
 				smoothie: smoothie,
 				hedelmat: [],
+				hedelmatMaara: smoothie.ingredientsAmount,
 				ravintoarvot: [],
 				ravintoarvotYht: {
 					calories: 0,
@@ -78,7 +79,7 @@
 
 			for (let i = 0; i < smoothie.ingredients.length; i++) {
 				const ingredient = smoothie.ingredients[i];
-				console.log(`ingredient: (${ingredient})`);
+				// console.log(`ingredient: (${ingredient})`);
 
 				fruits.forEach((fruit) => {
 					if (fruit.name === ingredient) {
