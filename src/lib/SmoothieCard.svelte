@@ -33,7 +33,7 @@
 <!-- Siirä	onclick={avaaModal} tämä takaisin alempaan diviin -->
 
 <div
-	class="relative flex w-full flex-col overflow-hidden rounded-xl border-2 bg-rose-50 shadow-lg shadow-slate-300 sm:h-165 sm:w-[47%] lg:w-[31%]"
+	class="relative flex w-full flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300 sm:h-165 sm:w-[47%] lg:w-[31%]"
 >
 	<!-- Kortin sisältö -->
 	<img
@@ -53,7 +53,7 @@
 
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Ingredients</h2>
-			<ul class="space-y-0 text-sm">
+			<ul class="list-disc space-y-0 pl-5 text-sm">
 				{#each smoothieKortti.hedelmat as hedelma, index}
 					<li class="laila-regular text-gray-600">
 						{smoothieKortti.hedelmatMaara[index]}
@@ -75,7 +75,7 @@
 		</div>
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Notes</h2>
-			<Notes placeholder={'lisää muistiinpanoja'} bind:taytto={teksti} />
+			<Notes placeholder={'Add notes'} bind:taytto={teksti} />
 		</div>
 	</div>
 	<!-- Tähän loppuu kortin sisältö -->
