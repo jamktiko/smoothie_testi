@@ -4,83 +4,95 @@
 		"name": "Berry Bliss",
 		"ingredients": ["Strawberry", "Blueberry", "Raspberry", "Banana"],
 		"ingredientsAmount": [5, 2, 2, 1],
-		"pic": "Berry-Bliss-1.jpg"
+		"pic": "Berry-Bliss-1.jpg",
+		"preparationTimeMinutes": 5
 	},
 	{
 		"id": 2,
 		"name": "Sunny Smile",
 		"ingredients": ["Pineapple", "Mango", "Banana"],
 		"ingredientsAmount": [1, 2, 2],
-		"pic": "Sunny-Smile-2.jpg"
+		"pic": "Sunny-Smile-2.jpg",
+		"preparationTimeMinutes": 4
 	},
 	{
 		"id": 3,
 		"name": "Green Zing",
 		"ingredients": ["Kiwi", "Green apple", "Pear"],
 		"ingredientsAmount": [4, 2, 3],
-		"pic": "Green-Zing-3.jpg"
+		"pic": "Green-Zing-3.jpg",
+		"preparationTimeMinutes": 6
 	},
 	{
 		"id": 4,
 		"name": "Sweet Orchard",
 		"ingredients": ["Apple", "Banana", "Pear", "Peach"],
 		"ingredientsAmount": [2, 1, 1, 1],
-		"pic": "Sweet-Orchard-4.jpg"
+		"pic": "Sweet-Orchard-4.jpg",
+		"preparationTimeMinutes": 3
 	},
 	{
 		"id": 5,
 		"name": "Sunset Fusion",
 		"ingredients": ["Peach", "Mango", "Raspberry"],
 		"ingredientsAmount": [3, 3, 3],
-		"pic": "Sunset-Fusion-5.jpg"
+		"pic": "Sunset-Fusion-5.jpg",
+		"preparationTimeMinutes": 3
 	},
 	{
 		"id": 6,
 		"name": "Summer Kiss",
 		"ingredients": ["Strawberry", "Peach", "Apple"],
 		"ingredientsAmount": [6, 2, 1],
-		"pic": "Summer-Kiss-6.jpg"
+		"pic": "Summer-Kiss-6.jpg",
+		"preparationTimeMinutes": 4
 	},
 	{
 		"id": 7,
 		"name": "Avocado Spinach",
 		"ingredients": ["Avocado", "Spinach", "Banana"],
 		"ingredientsAmount": [2, 2, 2],
-		"pic": "Avocado-Spinach-7.jpg"
+		"pic": "Avocado-Spinach-7.jpg",
+		"preparationTimeMinutes": 5
 	},
 	{
 		"id": 8,
 		"name": "Exotic Twist",
 		"ingredients": ["Pitahaya", "Mangosteen", "Feijoa"],
 		"ingredientsAmount": [3, 1, 2],
-		"pic": "Exotic-Twist-8.jpg"
+		"pic": "Exotic-Twist-8.jpg",
+		"preparationTimeMinutes": 5
 	},
 	{
 		"id": 9,
 		"name": "Tropical Sunrise",
 		"ingredients": ["Jackfruit", "Papaya", "Pineapple"],
 		"ingredientsAmount": [5, 3, 2],
-		"pic": "Tropical-Sunrise-9.jpg"
+		"pic": "Tropical-Sunrise-9.jpg",
+		"preparationTimeMinutes": 4
 	},
 	{
 		"id": 10,
 		"name": "Peach Paradise",
 		"ingredients": ["Peach", "Apricot", "Mango"],
 		"ingredientsAmount": [3, 2, 2],
-		"pic": "Peach-Paradise-10.jpg"
+		"pic": "Peach-Paradise-10.jpg",
+		"preparationTimeMinutes": 4
 	},
 	{
 		"id": 11,
 		"name": "Citrus Passion",
 		"ingredients": ["Tangerine", "Lemon", "Pomegranate"],
 		"ingredientsAmount": [3, 1, 2],
-		"pic": "Cirtus-Passion-11.jpg"
+		"pic": "Cirtus-Passion-11.jpg",
+		"preparationTimeMinutes": 3
 	},
 	{
 		"id": 12,
 		"name": "Melon Dream",
 		"ingredients": ["Melon", "Dragonfruit", "Kiwi"],
 		"ingredientsAmount": [3, 2, 2],
-		"pic": "Melon-Dream-12.jpg"
+		"pic": "Melon-Dream-12.jpg",
+		"preparationTimeMinutes": 4
 	}
 ]

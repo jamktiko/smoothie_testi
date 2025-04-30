@@ -25,7 +25,7 @@
 	// $inspect(smoothieKortti.ravintoarvot);
 	// $inspect(smoothieKortti.ravintoarvotYht);
 	// $inspect(smoothieKortti.pic);
-	$inspect(smoothieKortti.hedelmatMaara);
+	// $inspect(smoothieKortti.hedelmatMaara);
 </script>
 
 <!-- Kortti -->
@@ -46,7 +46,7 @@
 		<div class="mb-2 flex items-center justify-between">
 			<h1 class="laila-medium text-2xl">{smoothieKortti.smoothie.name}</h1>
 			<div class="flex items-center gap-1 text-slate-600">
-				<span class="laila-regular pt-1">3 min</span>
+				<span class="laila-regular pt-1">{smoothieKortti.valmistusAika} min</span>
 				<span class="material-symbols-outlined">timer</span>
 			</div>
 		</div>
