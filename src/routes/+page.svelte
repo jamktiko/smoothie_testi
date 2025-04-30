@@ -1,4 +1,6 @@
 <script lang="ts">
+	// ----------------------- IMPORTIT ---------------------------
+
 	import type { Smoothie } from '$lib/types/smoothie';
 	import type { Fruit } from '$lib/types/fruit';
 	import type { SmoothieKortti } from '$lib/types/smoothieKortti';
@@ -11,6 +13,8 @@
 
 	import { onMount } from 'svelte';
 	import '../app.css';
+
+	// ----------------------- FUNKTIOT ---------------------------
 
 	// suoritetaan heti sivun lataamisen jälkeen
 	onMount(async () => {
@@ -109,12 +113,30 @@
 		return yhteensa;
 	};
 
+	// filtteröi smoothieKortit searchBarin valuen mukaan
+	const filteroiSmoothieKortteja = () => {
+		valitutSmoothieKortit = smoothieKortitTaulukko.filter((smoothieKortti) => {
+			return smoothieKortti.smoothie.name.toLowerCase().includes(searchBarinArvo.toLowerCase());
+		});
+	};
+
+	$effect(() => {
+		filteroiSmoothieKortteja();
+	});
+
+	// ----------------------- MUUTTUJAT --------------------------
+
 	let smoothieKortitTaulukko: SmoothieKortti[] = $state([]);
 	let smoothies: Smoothie[] = $state([]);
 	let fruits: Fruit[] = $state([]);
 
-	//$inspect(smoothies);
-	//$inspect(fruits);
+	// searchBariin liittyvät muuttujat
+	let searchBarinArvo: string = $state('');
+	let valitutSmoothieKortit: SmoothieKortti[] = $state([]);
+
+	// $inspect(smoothies);
+	// $inspect(fruits);
+	// $inspect(searchBarinArvo);
 </script>
 
 <link
@@ -130,11 +152,11 @@
 
 <Header />
 <nav class="flex items-center justify-center">
-	<Searchbar placeholder={'Search smoothies'} />
+	<Searchbar placeholder={'Search smoothies'} bind:value={searchBarinArvo} />
 </nav>
 
 <div class="m-7 flex flex-wrap justify-center gap-7">
-	{#each smoothieKortitTaulukko as smoothieKortti (smoothieKortti.ID)}
+	{#each valitutSmoothieKortit as smoothieKortti (smoothieKortti.ID)}
 		<SmoothieCard {smoothieKortti} />
 	{:else}
 		<!-- temporary loading spinner  -->
