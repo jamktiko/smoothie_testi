@@ -74,7 +74,8 @@
 					fat: 0,
 					sugar: 0
 				},
-				pic: smoothie.pic
+				pic: smoothie.pic,
+				valmistusAika: smoothie.preparationTimeMinutes
 			};
 
 			for (let i = 0; i < smoothie.ingredients.length; i++) {
@@ -134,6 +135,8 @@
 	// searchBariin liittyvät muuttujat
 	let searchBarinArvo: string = $state('');
 	let valitutSmoothieKortit: SmoothieKortti[] = $state([]);
+
+	// ------------------------- DEBUG ----------------------------
 
 	// $inspect(smoothies);
 	// $inspect(fruits);

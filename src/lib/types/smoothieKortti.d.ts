@@ -6,6 +6,7 @@ interface SmoothieKortti {
 	ravintoarvot: NutritionInfo[];
 	ravintoarvotYht: NutritionInfo;
 	pic: string;
+	valmistusAika: number;
 }
 
 export type { SmoothieKortti };
