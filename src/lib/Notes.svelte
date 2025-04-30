@@ -10,13 +10,3 @@
 
 <textarea class="w-full resize-none" on:click|stopPropagation bind:value={taytto} {placeholder}
 ></textarea>
-
-<!-- <style>
-	textarea {
-		width: 100%;
-		padding: 5px;
-		border-radius: 5px;
-		border: 1px solid #ccc;
-		font-size: 1rem;
-	}
-</style> -->

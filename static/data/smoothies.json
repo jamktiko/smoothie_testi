@@ -3,72 +3,72 @@
 		"id": 1,
 		"name": "Berry Bliss",
 		"ingredients": ["Strawberry", "Blueberry", "Raspberry", "Banana"],
-		"pic": "https://cdn.pixabay.com/photo/2021/11/01/15/53/smoothie-6760874_1280.jpg"
+		"pic": "Berry-Bliss-1.jpg"
 	},
 	{
 		"id": 2,
 		"name": "Tropical Sunshine",
 		"ingredients": ["Pineapple", "Mango", "Banana"],
-		"pic": "https://cdn.pixabay.com/photo/2018/03/13/11/39/fruit-3222313_1280.jpg"
+		"pic": "Tropical-Sunshine-2.jpg"
 	},
 	{
 		"id": 3,
 		"name": "Green Zing",
 		"ingredients": ["Kiwi", "Green apple", "Pear"],
-		"pic": "smoothie_placeholder.jpg"
+		"pic": "Green-Zing-3.jpg"
 	},
 	{
 		"id": 4,
 		"name": "Sweet Orchard",
 		"ingredients": ["Apple", "Banana", "Pear", "Peach"],
-		"pic": "smoothie_placeholder.jpg"
+		"pic": "Sweet-Orchard-4.jpg"
 	},
 	{
 		"id": 5,
 		"name": "Sunset Fusion",
 		"ingredients": ["Peach", "Mango", "Raspberry"],
-		"pic": "smoothie_placeholder.jpg"
+		"pic": "Sunset-Fusion-5.jpg"
 	},
 	{
 		"id": 6,
 		"name": "Summer Kiss",
 		"ingredients": ["Strawberry", "Peach", "Apple"],
-		"pic": "smoothie_placeholder.jpg"
+		"pic": "Summer-Kiss-6.jpg"
 	},
 	{
 		"id": 7,
 		"name": "Avocado Spinach",
 		"ingredients": ["Avocado", "Spinach", "Banana"],
-		"pic": "smoothie_placeholder.jpg"
+		"pic": "Avocado-Spinach-7.jpg"
 	},
 	{
 		"id": 8,
 		"name": "Exotic Fruit Punch",
 		"ingredients": ["Pitahaya", "Mangosteen", "Feijoa"],
-		"pic": "smoothie_placeholder.jpg"
+		"pic": "Exotic-Fruit-Punch-8.jpg"
 	},
 	{
 		"id": 9,
 		"name": "Tropical Sunrise",
 		"ingredients": ["Jackfruit", "Papaya", "Pineapple"],
-		"pic": "smoothie_placeholder.jpg"
+		"pic": "Tropical-Sunrise-9.jpg"
 	},
 	{
 		"id": 10,
 		"name": "Peach Paradise",
 		"ingredients": ["Peach", "Apricot", "Mango"],
-		"pic": "smoothie_placeholder.jpg"
+		"pic": "Peach-Paradise-10.jpg"
 	},
 	{
 		"id": 11,
 		"name": "Citrus Passion",
 		"ingredients": ["Tangerine", "Lemon", "Pomegranate"],
-		"pic": "smoothie_placeholder.jpg"
+		"pic": "Cirtus-Passion-11.jpg"
 	},
 	{
 		"id": 12,
 		"name": "Melon Dream",
 		"ingredients": ["Melon", "Dragonfruit", "Kiwi"],
-		"pic": "smoothie_placeholder.jpg"
+		"pic": "Melon-Dream-12.jpg"
 	}
 ]

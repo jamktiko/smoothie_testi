@@ -3,13 +3,14 @@
 	import type { Fruit } from '$lib/types/fruit';
 	import type { SmoothieKortti } from '$lib/types/smoothieKortti';
 	import type { NutritionInfo } from '$lib/types/nutritionInfo';
-	import '../app.css';
-	import Button from '$lib/Button.svelte';
+
 	import Searchbar from '$lib/Searchbar.svelte';
 	import Header from '$lib/Header.svelte';
 	import Footer from '$lib/Footer.svelte';
-	import { onMount } from 'svelte';
 	import SmoothieCard from '$lib/SmoothieCard.svelte';
+
+	import { onMount } from 'svelte';
+	import '../app.css';
 
 	// suoritetaan heti sivun lataamisen jälkeen
 	onMount(async () => {
@@ -67,7 +68,8 @@
 					protein: 0,
 					fat: 0,
 					sugar: 0
-				}
+				},
+				pic: smoothie.pic
 			};
 
 			for (let i = 0; i < smoothie.ingredients.length; i++) {
@@ -111,8 +113,8 @@
 	let smoothies: Smoothie[] = $state([]);
 	let fruits: Fruit[] = $state([]);
 
-	$inspect(smoothies);
-	$inspect(fruits);
+	//$inspect(smoothies);
+	//$inspect(fruits);
 </script>
 
 <link
@@ -120,13 +122,13 @@
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
 />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://fonts.gstatic.com" />
 <link
 	href="https://fonts.googleapis.com/css2?family=Honk&family=Kalnia+Glaze:wght@100..700&family=Laila:wght@300;400;500;600;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merienda:wght@300..900&family=Nabla&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
 	rel="stylesheet"
 />
 
-<Header headerText={'froots'} />
+<Header />
 <nav class="flex items-center justify-center">
 	<Searchbar placeholder={'Search smoothies'} />
 </nav>
@@ -135,9 +137,62 @@
 	{#each smoothieKortitTaulukko as smoothieKortti (smoothieKortti.ID)}
 		<SmoothieCard {smoothieKortti} />
 	{:else}
-		<div>Loading...</div>
+		<!-- temporary loading spinner  -->
+		<div class="lds-ring">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
 	{/each}
 </div>
 
 <!-- footer -->
 <Footer footerText={'Ohjelmistoprojekti 1 by Team 2'} />
+
+<style>
+	/* loading spinner styles */
+	.lds-ring {
+		/* change color here */
+		color: #f47e60;
+	}
+	.lds-ring,
+	.lds-ring div {
+		box-sizing: border-box;
+	}
+	.lds-ring {
+		display: inline-block;
+		position: relative;
+		width: 80px;
+		height: 80px;
+	}
+	.lds-ring div {
+		box-sizing: border-box;
+		display: block;
+		position: absolute;
+		width: 64px;
+		height: 64px;
+		margin: 8px;
+		border: 8px solid currentColor;
+		border-radius: 50%;
+		animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+		border-color: currentColor transparent transparent transparent;
+	}
+	.lds-ring div:nth-child(1) {
+		animation-delay: -0.45s;
+	}
+	.lds-ring div:nth-child(2) {
+		animation-delay: -0.3s;
+	}
+	.lds-ring div:nth-child(3) {
+		animation-delay: -0.15s;
+	}
+	@keyframes lds-ring {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+</style>

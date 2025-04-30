@@ -14,13 +14,3 @@
 	/>
 	<span class="material-symbols-outlined absolute right-3 text-slate-600">search</span>
 </div>
-
-<!-- <style>
-	input.searchbar {
-		width: 100%;
-		padding: 10px;
-		border-radius: 5px;
-		border: 1px solid #ccc;
-		font-size: 16px;
-	}
-</style> -->
