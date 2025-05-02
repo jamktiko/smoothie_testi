@@ -80,7 +80,6 @@
 
 			for (let i = 0; i < smoothie.ingredients.length; i++) {
 				const ingredient = smoothie.ingredients[i];
-				// console.log(`ingredient: (${ingredient})`);
 
 				fruits.forEach((fruit) => {
 					if (fruit.name === ingredient) {
@@ -90,14 +89,15 @@
 				});
 			}
 			uusiSmoothieKortti.ravintoarvotYht = laskeRavintoarvotYhteensa(
-				uusiSmoothieKortti.ravintoarvot
+				uusiSmoothieKortti.ravintoarvot,
+				uusiSmoothieKortti.hedelmatMaara
 			);
 			smoothieKortitTaulukko.push(uusiSmoothieKortti);
 		});
 	};
 
 	// laskee smoothienKortin ravintoarvojen yhteenlasketut arvot
-	const laskeRavintoarvotYhteensa = (ravintoarvot: NutritionInfo[]) => {
+	const laskeRavintoarvotYhteensa = (ravintoarvot: NutritionInfo[], maara: number[]) => {
 		let yhteensa = {
 			calories: 0,
 			carbohydrates: 0,
@@ -106,11 +106,13 @@
 			sugar: 0
 		};
 		for (let i = 0; i < ravintoarvot.length; i++) {
-			yhteensa.calories += ravintoarvot[i].calories;
-			yhteensa.carbohydrates += ravintoarvot[i].carbohydrates;
-			yhteensa.protein += ravintoarvot[i].protein;
-			yhteensa.fat += ravintoarvot[i].fat;
-			yhteensa.sugar += ravintoarvot[i].sugar;
+			for (let j = 0; j < maara[i]; j++) {
+				yhteensa.calories += ravintoarvot[i].calories;
+				yhteensa.carbohydrates += ravintoarvot[i].carbohydrates;
+				yhteensa.protein += ravintoarvot[i].protein;
+				yhteensa.fat += ravintoarvot[i].fat;
+				yhteensa.sugar += ravintoarvot[i].sugar;
+			}
 		}
 		return yhteensa;
 	};
