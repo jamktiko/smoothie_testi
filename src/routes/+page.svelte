@@ -11,6 +11,11 @@
 	import Footer from '$lib/Footer.svelte';
 	import SmoothieCard from '$lib/SmoothieCard.svelte';
 
+	// universal reactivity muuttujat
+	import { fruits as globalFruits } from '$lib/globalFruits.svelte';
+	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
+	import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
+
 	import { onMount } from 'svelte';
 	import '../app.css';
 
@@ -18,8 +23,8 @@
 
 	// suoritetaan heti sivun lataamisen jälkeen
 	onMount(async () => {
-		fruits = await haeHedelmat();
-		smoothies = await haeSmoothiet();
+		globalFruits.set(await haeHedelmat());
+		globalSmoothies.set(await haeSmoothiet());
 		luoSmoothieKortit();
 	});
 
@@ -60,7 +65,7 @@
 
 	// luo smoothieKortit smoothieista ja hedelmistä
 	const luoSmoothieKortit = () => {
-		smoothies.forEach((smoothie) => {
+		globalSmoothies.get().forEach((smoothie) => {
 			let uusiSmoothieKortti: SmoothieKortti = {
 				ID: smoothie.id,
 				smoothie: smoothie,
@@ -81,7 +86,7 @@
 			for (let i = 0; i < smoothie.ingredients.length; i++) {
 				const ingredient = smoothie.ingredients[i];
 
-				fruits.forEach((fruit) => {
+				globalFruits.get().forEach((fruit) => {
 					if (fruit.name === ingredient) {
 						uusiSmoothieKortti.hedelmat.push(fruit.name);
 						uusiSmoothieKortti.ravintoarvot.push(fruit.nutritions);
@@ -92,7 +97,7 @@
 				uusiSmoothieKortti.ravintoarvot,
 				uusiSmoothieKortti.hedelmatMaara
 			);
-			smoothieKortitTaulukko.push(uusiSmoothieKortti);
+			globalSmoothieKortit.get().push(uusiSmoothieKortti);
 		});
 	};
 
@@ -119,7 +124,7 @@
 
 	// filtteröi smoothieKortit searchBarin valuen mukaan
 	const filteroiSmoothieKortteja = () => {
-		valitutSmoothieKortit = smoothieKortitTaulukko.filter((smoothieKortti) => {
+		valitutSmoothieKortit = globalSmoothieKortit.get().filter((smoothieKortti) => {
 			return smoothieKortti.smoothie.name.toLowerCase().includes(searchBarinArvo.toLowerCase());
 		});
 	};
@@ -130,9 +135,9 @@
 
 	// ----------------------- MUUTTUJAT --------------------------
 
-	let smoothieKortitTaulukko: SmoothieKortti[] = $state([]);
-	let smoothies: Smoothie[] = $state([]);
-	let fruits: Fruit[] = $state([]);
+	// let smoothieKortitTaulukko: SmoothieKortti[] = $state([]);
+	// let smoothies: Smoothie[] = $state([]);
+	// let fruits: Fruit[] = $state([]);
 
 	// searchBariin liittyvät muuttujat
 	let searchBarinArvo: string = $state('');
@@ -143,6 +148,9 @@
 	// $inspect(smoothies);
 	// $inspect(fruits);
 	// $inspect(searchBarinArvo);
+	$inspect(globalFruits.get());
+	$inspect(globalSmoothies.get());
+	$inspect(globalSmoothieKortit.get());
 </script>
 
 <link
