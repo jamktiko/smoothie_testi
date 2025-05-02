@@ -1,0 +1,117 @@
+---------------- OHJELMISTOPROJEKTI 1 GIT CHEATSHEET -------------------
+
+
+meillä on käytössä projektissa FEATURE BRANCH WORKFLOW
+
+mikä tarkoittaa sitä että meillä on nämä 2 pää-branchia: main, develop
+
+main = lopullisia versioita varten (vain pull requestit toimivat tänne)
+develop = mihin me mergetään tehdyt työt (work in progress branch)
+
+
+------------------------------------------------------------------------
+
+
+-> haetaan githubista meidän projektin repo ja vaihdetaan develop branchin sisälle:
+
+git clone <URL>
+cd kansion sisälle
+git checkout develop
+
+
+------------------------------------------------------------------------
+
+
+-> aina ennen uuden jutun tekemistä tee uusi branch develop branchin sisällä:
+
+git branch <nimi>
+
+-> ja vaihda branchiin sisälle:
+
+git checkout <nimi>
+
+-> tämän sisällä voit tehdä mitä haluat
+
+git add .
+git commit -m ""
+
+-> kun olet saanut jonkun osan valmiiksi täällä, mergee tämä branch develop branchiin:
+
+git checkout develop
+git merge develop <nimi>
+git branch -d <nimi> << poistaa aiemman väliaikaisen branchin
+
+
+------------------------------------------------------------------------
+
+tästä eteenpäin listattu yleisesti hyödyllisiä komentoja peruskomennoista lähtien:
+
+------------------------------------------------------------------------
+
+git status
+
+git config list
+
+git config --global user.name "Jon Doe"
+git config --global user.email "jondoe@gmail.com"
+git config --global init.defaultBranch main
+
+MOVING BETWEEN BRANCHES:
+
+git checkout <nimi>
+git switch <nimi>
+git switch -c <nimi> luo ja vaihtaa uuteen branchiin suoraan
+
+------------------------------------------------------------------------
+
+git fetch << käy hakemassa remote reposta nykyisen tilanteen
+git pull << hakee remote reposta nykyisen tilanteen ja hakee omalle koneelle
+
+git commit -m "" --amend << korvaa aiemman commitin uudella, jos haluaa korjata jotain viime commitista
+
+git reset HEAD~1 # peruuttaa aiemman commitin (menee yhden commitin taaksepäin) mutta pitää paikalliset muutokset mitkä kuuluivat siihen committiin
+
+git reset HEAD~1 --hard # hard reset hylkää myös commitissa tapahtuneet muutokset	
+(normaali reset hylkää commitin mutta pitää tapahtuneet muutokset!)
+
+------------------------------------------------------------------------
+
+git merge --no-ff myfeature
+jos halutaan pitää aiemman myfeature branchin commitit lisättynä siihen branchiin mihin mergetään, ilman --no-ff vetää kaikki commitit sileäksi myfeature branchistä mergen yhteydessä
+
+------------------------------------------------------------------------
+
+git log
+git log --graph
+git log --oneline
+
+(lokien katsomiseen, näyttää aiemmat commitit)
+
+------------------------------------------------------------------------
+
+git rebase -i << interactive rebase, yksinkertaistaa committeja, jos halutaan karsia committeja jne.
+
+git switch main^  menee yhden ylöspäin
+git switch HEAD~2 menee kaksi ylöspäin
+git branch -f main HEAD~3 moves by force the main branch to three parents behind HEAD
+
+------------------------------------------------------------------------
+
+git branch
+git branch -r << shows only remote branches
+git branch -a << shows all branches
+
+------------------------------------------------------------------------
+
+git checkout -- index.html << Tämä komento korvaa työskentelyhakemistossa olevan tiedoston repositoriossa olevalla versiolla
+
+------------------------------------------------------------------------
+
+git push -d origin <branchName>   << deleting remote branch
+git fetch --prune --all  << updating branches to current situation, removes deleted branches etc.
+
+
+
+
+
+
