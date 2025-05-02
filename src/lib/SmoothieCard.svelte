@@ -7,8 +7,9 @@
 
 	interface Props {
 		smoothieKortti: SmoothieKortti;
+		isSmallScreen: boolean;
 	}
-	let { smoothieKortti } = $props();
+	let { smoothieKortti, isSmallScreen } = $props();
 
 	// notes kentän arvo
 	let teksti = $state('');
@@ -33,10 +34,11 @@
 <!-- Siirä	onclick={avaaModal} tämä takaisin alempaan diviin -->
 
 <div
-	onclick={avaaModal}
 	class="relative flex w-full flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300 hover:bg-orange-200 sm:h-165 sm:w-[47%] lg:w-[31%]"
 >
 	<!-- Kortin sisältö -->
+	<button class="dummy-div" onclick={avaaModal} aria-label="modal-button" hidden={isSmallScreen}
+	></button>
 	<img
 		src={smoothieKortti.pic}
 		alt={smoothieKortti.smoothie.name}
@@ -99,8 +101,8 @@
 				<!-- Image -->
 				<div class="relative">
 					<img
-						src="https://cdn.pixabay.com/photo/2018/03/16/04/54/healthy-3230225_1280.jpg"
-						alt="Green Smoothie"
+						src={smoothieKortti.pic}
+						alt={smoothieKortti.smoothie.name}
 						class="max-h-70 w-full rounded-xl border-b-2 object-cover"
 					/>
 				</div>
@@ -112,11 +114,13 @@
 						class="flex flex-col items-start justify-between [@media(min-width:600px)]:flex-row [@media(min-width:600px)]:items-center"
 					>
 						<div class="flex items-center gap-2">
-							<span class="material-symbols-outlined pb-1">arrow_back_ios</span>
-							<h1 class="laila-medium text-2xl">Recipe Title</h1>
+							<button onclick={avaaModal} class="material-symbols-outlined pb-1"
+								>arrow_back_ios</button
+							>
+							<h1 class="laila-medium text-2xl">{smoothieKortti.smoothie.name}</h1>
 						</div>
 						<div class="ml-8 flex items-center gap-1 text-slate-600">
-							<span class="laila-regular pt-1">3 min</span>
+							<span class="laila-regular pt-1">{smoothieKortti.valmistusAika} min</span>
 							<span class="material-symbols-outlined">timer</span>
 						</div>
 					</div>
@@ -125,10 +129,12 @@
 					<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 						<h2 class="text-md laila-medium">Ingredients</h2>
 						<ul class="laila-regular py-1 text-sm text-gray-600">
-							<li>• 2 cups strawberries</li>
-							<li>• 1/2 cup sugar</li>
-							<li>• 1 lemon</li>
-							<li>• 1/2 cinnamon stick</li>
+							{#each smoothieKortti.hedelmat as hedelma, index}
+								<li>
+									• {smoothieKortti.hedelmatMaara[index]}
+									{hedelma}
+								</li>
+							{/each}
 						</ul>
 					</div>
 
@@ -136,25 +142,18 @@
 					<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 						<h2 class="text-md laila-medium">Nutritional Information</h2>
 						<ul class="laila-regular py-1 text-sm text-gray-600">
-							<li>200 kcal</li>
-							<li>15g carbohydrates</li>
-							<li>10g fat</li>
-							<li>6g sugar</li>
-							<li>200 kcal</li>
-							<li>15g carbohydrates</li>
-							<li>10g fat</li>
-							<li>6g sugar</li>
-							<li>200 kcal</li>
-							<li>15g carbohydrates</li>
-							<li>10g fat</li>
-							<li>6g sugar</li>
+							<li>Calories: {smoothieKortti.ravintoarvotYht.calories.toFixed(1)}</li>
+							<li>Carbohydrates: {smoothieKortti.ravintoarvotYht.carbohydrates.toFixed(1)}</li>
+							<li>Protein: {smoothieKortti.ravintoarvotYht.protein.toFixed(1)}</li>
+							<li>Fat: {smoothieKortti.ravintoarvotYht.fat.toFixed(1)}</li>
+							<li>Sugar: {smoothieKortti.ravintoarvotYht.sugar.toFixed(1)}</li>
 						</ul>
 					</div>
 
 					<!-- Notes -->
 					<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 						<h2 class="text-md laila-medium">Notes</h2>
-						<p class="laila-regular text-sm text-slate-700">Add a note</p>
+						<Notes placeholder={'Add notes'} bind:taytto={teksti} />
 					</div>
 				</div>
 			</div>
@@ -163,23 +162,13 @@
 	</Modal>
 {/if}
 
-<!-- {#snippet header()}
-			<h1>{smoothieKortti.smoothie.name}</h1>
-		{/snippet}
-		<h2>Ingredients</h2>
-
-		{#each smoothieKortti.hedelmat as hedelma (hedelma)}
-			<p>{hedelma}</p>
-		{/each}
-		<h2>Nutritional Information</h2>
-		<p>Calories: {smoothieKortti.ravintoarvotYht.calories.toFixed(1)}</p>
-		<p>Carbohydrates: {smoothieKortti.ravintoarvotYht.carbohydrates.toFixed(1)}</p>
-		<p>Protein: {smoothieKortti.ravintoarvotYht.protein.toFixed(1)}</p>
-		<p>Fat: {smoothieKortti.ravintoarvotYht.fat.toFixed(1)}</p>
-		<p>Sugar: {smoothieKortti.ravintoarvotYht.sugar.toFixed(1)}</p>
-
-		{#snippet footer()}
-			<h1>Notes</h1>
-			<p>{teksti}</p>
-			<Button buttonText="Sulje" buttonFunction={avaaModal} />
-		{/snippet} -->
+<style>
+	.dummy-div {
+		/* background-color: aqua; */
+		width: 100%;
+		height: 100%;
+		/* z-index: 100; */
+		position: absolute;
+		/* display: none; */
+	}
+</style>

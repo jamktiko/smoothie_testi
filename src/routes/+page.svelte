@@ -135,6 +135,9 @@
 
 	// ----------------------- MUUTTUJAT --------------------------
 
+	let outerWidth: number = $state(0);
+	let isSmallScreen: boolean = $derived(outerWidth < 654 ? true : false);
+
 	// let smoothieKortitTaulukko: SmoothieKortti[] = $state([]);
 	// let smoothies: Smoothie[] = $state([]);
 	// let fruits: Fruit[] = $state([]);
@@ -148,9 +151,11 @@
 	// $inspect(smoothies);
 	// $inspect(fruits);
 	// $inspect(searchBarinArvo);
-	$inspect(globalFruits.get());
-	$inspect(globalSmoothies.get());
-	$inspect(globalSmoothieKortit.get());
+	// $inspect(globalFruits.get());
+	// $inspect(globalSmoothies.get());
+	// $inspect(globalSmoothieKortit.get());
+	// $inspect(isSmallScreen);
+	// $inspect(outerWidth);
 </script>
 
 <link
@@ -164,6 +169,9 @@
 	rel="stylesheet"
 />
 
+<svelte:window bind:outerWidth />
+<!-- <p>{outerWidth}</p> -->
+
 <Header />
 <nav class="flex items-center justify-center">
 	<Searchbar placeholder={'Search smoothies'} bind:value={searchBarinArvo} />
@@ -171,7 +179,7 @@
 
 <div class="m-7 flex flex-wrap justify-center gap-7">
 	{#each valitutSmoothieKortit as smoothieKortti (smoothieKortti.ID)}
-		<SmoothieCard {smoothieKortti} />
+		<SmoothieCard {smoothieKortti} {isSmallScreen} />
 	{:else}
 		<!-- temporary loading spinner  -->
 		<div class="lds-ring">

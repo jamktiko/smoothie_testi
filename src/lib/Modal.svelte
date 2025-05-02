@@ -11,7 +11,7 @@
 
 <div class="backdrop fixed top-0 left-0 z-10 h-screen w-full bg-black/75"></div>
 
-<div class="modal" in:scale={{ duration: 300 }} out:scale={{ duration: 300 }}>
+<div class="modal">
 	<!-- <header>
 		{@render header()}
 	</header> -->
@@ -21,3 +21,9 @@
 		{@render footer()}
 	</footer> -->
 </div>
+
+<style>
+	.modal {
+		position: absolute;
+	}
+</style>
