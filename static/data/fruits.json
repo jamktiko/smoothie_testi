@@ -659,5 +659,78 @@
 			"carbohydrates": 3.6,
 			"protein": 2.9
 		}
+	},
+	{
+		"name": "Milk",
+		"id": 51,
+		"family": "ingredient",
+		"nutritions": {
+			"calories": 103,
+			"fat": 2.4,
+			"sugar": 12.2,
+			"carbohydrates": 12.2,
+			"protein": 8.2
+		}
+	},
+	{
+		"name": "Yogurt",
+		"id": 52,
+		"family": "ingredient",
+		"nutritions": {
+			"calories": 154,
+			"fat": 4.3,
+			"sugar": 11.4,
+			"carbohydrates": 17.3,
+			"protein": 13.0
+		}
+	},
+
+	{
+		"name": "Almond Milk",
+		"id": 54,
+		"family": "ingredient",
+		"nutritions": {
+			"calories": 30,
+			"fat": 2.5,
+			"sugar": 0.4,
+			"carbohydrates": 1.0,
+			"protein": 1.0
+		}
+	},
+	{
+		"name": "Coconut Milk",
+		"id": 55,
+		"family": "ingredient",
+		"nutritions": {
+			"calories": 230,
+			"fat": 24.0,
+			"sugar": 6.0,
+			"carbohydrates": 6.0,
+			"protein": 2.3
+		}
+	},
+	{
+		"name": "Ice Cream",
+		"id": 56,
+		"family": "ingredient",
+		"nutritions": {
+			"calories": 273,
+			"fat": 14.5,
+			"sugar": 28.0,
+			"carbohydrates": 31.0,
+			"protein": 4.6
+		}
+	},
+	{
+		"name": "Water",
+		"id": 57,
+		"family": "ingredient",
+		"nutritions": {
+			"calories": 0,
+			"fat": 0,
+			"sugar": 0,
+			"carbohydrates": 0,
+			"protein": 0
+		}
 	}
 ]
