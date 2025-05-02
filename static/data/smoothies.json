@@ -18,8 +18,8 @@
 	{
 		"id": 3,
 		"name": "Green Zing",
-		"ingredients": ["Kiwi", "Apple", "Pear", "Water"],
-		"ingredientsAmount": [2, 2, 1],
+		"ingredients": ["Kiwi", "Apple", "Pear", "Lemon"],
+		"ingredientsAmount": [2, 2, 1, 1],
 		"pic": "Green-Zing-3.jpg",
 		"preparationTimeMinutes": 6
 	},
@@ -90,8 +90,8 @@
 	{
 		"id": 12,
 		"name": "Melon Dream",
-		"ingredients": ["Melon", "Dragonfruit", "Kiwi", "Lemon"],
-		"ingredientsAmount": [1, 1, 3, 1],
+		"ingredients": ["Melon", "Dragonfruit", "Kiwi"],
+		"ingredientsAmount": [1, 1, 3],
 		"pic": "Melon-Dream-12.jpg",
 		"preparationTimeMinutes": 4
 	}
