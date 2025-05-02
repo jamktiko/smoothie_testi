@@ -33,7 +33,7 @@
 
 <div
 	onclick={avaaModal}
-	class="relative flex w-full flex-col overflow-hidden rounded-xl border-2 bg-rose-50 shadow-lg shadow-slate-300 sm:h-165 sm:w-[47%] lg:w-[31%]"
+	class="relative flex w-full flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300 hover:bg-orange-200 sm:h-165 sm:w-[47%] lg:w-[31%]"
 >
 	<!-- Kortin sisältö -->
 	<img
@@ -87,7 +87,7 @@
 		<div>
 			<!-- Card (open) -->
 			<div
-				class=" fixed top-[10px] left-1/2 z-100 flex hidden max-h-[97vh] w-1/2 -translate-x-1/2 flex-col justify-center overflow-hidden overflow-y-auto rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-900
+				class=" fixed top-[10px] left-1/2 z-100 flex max-h-[97vh] w-1/2 -translate-x-1/2 flex-col justify-center overflow-hidden overflow-y-auto rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-900
 				[@media(max-width:600px)]:top-0
 				[@media(max-width:600px)]:max-h-screen
 				[@media(max-width:600px)]:w-screen"
