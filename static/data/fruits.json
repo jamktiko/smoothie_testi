@@ -645,5 +645,19 @@
 			"carbohydrates": 3.84,
 			"protein": 0.48
 		}
+	},
+	{
+		"name": "Spinach",
+		"id": 72,
+		"family": "Amaranthaceae",
+		"order": "Caryophyllales",
+		"genus": "Spinacia",
+		"nutritions": {
+			"calories": 23,
+			"fat": 0.4,
+			"sugar": 0.4,
+			"carbohydrates": 3.6,
+			"protein": 2.9
+		}
 	}
 ]
