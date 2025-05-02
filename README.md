@@ -1,113 +1,74 @@
-# Projektisuunnitelma
+# Documentation
 
-- [Projektisuunnitelma](#projektisuunnitelma)
-  - [Projektin tiedot](#projektin-tiedot)
-  - [Projektin sisältö](#projektin-sisältö)
-    - [Kuvaus](#kuvaus)
-    - [Projektiryhmä](#projektiryhmä)
-    - [Tavoite](#tavoite)
-  - [Aikataulu](#aikataulu)
-  - [Raportointi, kommunikointi ja dokumentointi](#raportointi-kommunikointi-ja-dokumentointi)
-    - [Raportointi](#raportointi)
-    - [Tuntikirjaukset](#tuntikirjaukset)
-    - [Palaverikäytänteet](#palaverikäytänteet)
-    - [Kommunikointitavat](#kommunikointitavat)
-    - [Dokumentointi](#dokumentointi)
-    - [Dokumenttien hallinta](#dokumenttien-hallinta)
-  - [Riskien hallinta](#riskien-hallinta)
+## Overview
+- Project Name: Smoothie App "Froots"
+- Project Duration: 22.4.2025 - 16.5.2025
+- Team Members:
+  - Designers: Jun Fengari, Teemu Sairi
+  - Developers: Lauri Makkonen, Janika Rahikainen
+- Overall Project Intro:
+  Our goal is to make a smoothie app.... x
 
-## Projektin tiedot
+---
 
-\"Smoothie Sovellus"
-
-Tekijät: Jun Fengari, Teemu Sairi, Janika Rahikainen, Lauri Makkonen, asd
-
-## Projektin sisältö
-
-### Kuvaus
-
-Smoothie sovellus jossa käyttäjä voi selata smoothieta ja tarkistella niiden ainesosia, ravintosisältöä, ja mahdollisesti luoda siihen omia reseptejä. 
-
-### Projektiryhmä
-
-_Ketä projektiin kuuluu ja mitkä ovat henkilöiden päävastuut._
-
-| Nimi              | Vastuurooli                       |
-| ----------------- | --------------------------------- |
-| Lauri Makkonen    | Git-päällikkö                     |
-| Janika Rahikainen | Julkaisu/laadunvalvonta-päällikkö |
-| Teemu Sairi       | Tehtävä-päällikkö                 |
-| Jun Fengari       | Dokumentti-päällikkö              |
-
-### Tavoite
-
-- Toimiva ja responsiivinen sovellus
-- Opitaan projektityöskentelyn taidot ja käytännöt
-
-## Aikataulu
-
-_Kirjaa tähän lukuun aikataulu. Millä tavoin projekti viedään läpi. Voitte itse päättää mikä taso on teidän projektillenne paras._
-
-| Tapahtuma        | Päivämäärä | Muut tiedot/osanottajat                  |
-| ---------------- | ---------- | ---------------------------------------- |
-| Projekti alkaa   | 22.04.2025 | Ohjelmistoprojekti 1 alkaa               |
-| Idean valinta    | 24.04.2025 | Valitaan tuotantoon menevä projekti-idea |
-| Tarkistellaan    | 24.04.2025 | Yhteistyö + git checks                   |
-| Komponentti määritys  | 24.04.2025 | Yhdessä katotaan komponentit        |
-| Figma Wireframes | 29.04.2025 | Wireframes + Prototypes + Väriteema check|
-| ............     | pvm        | Kaikki muut tapahtumat listattuna        |
-| ............     | pvm        | Kaikki muut tapahtumat listattuna        |
-| ............     | pvm        | Kaikki muut tapahtumat listattuna        |
-| Projekti päättyy | 16.05.2025 | Ohjelmistoprojekti 1 päättyy             |
-
-## Raportointi, kommunikointi ja dokumentointi
-
-### Raportointi
-
-Dokumenttipäällikkö (Jun Fengari) hoitaa raportoinnin ja dokumentoinnin.
-
-### Tuntikirjaukset
-
-Jokainen tekee excelliin tuntikirjausket ja viikkopalaverin aikana tarkistellaan tehtyjä projektinosia.
-
-### Palaverikäytänteet
-
-Viikkopalaverin (perjantai) aikana käydään läpi kaikkien viikko-työt, ja suunnitellaan seuraavan viikon työjaon. 
-Päivittään aamulla pieni tilannekatsaus. 
-Dokumenttipäällikkö kirjoittaa palaveri-raportin. Luokassa AP10, perjantai iltapäivä. 
-
-### Kommunikointitavat
-
-Paikan päällä, Teams, Slack, sekä Trellon tehtävähallinta.
-
-### Dokumentointi
-
-- Intro
-- Valikoituja projektikansioita 
-- Video + Pitch
-- Viikkokatsaukset (projektin vaiheet ja eteneminen)
-- Aikajana ja haasteet
-- Vastuualueet (henk-koht, haasteet + vahvuudet, jne)
-- Kaikista näistä koostettu projektidokumentti. 
-
-### Dokumenttien hallinta
-
-Osittain githubissa, osittain onedrivessa sekä backupit dokumenttipäällikön tietokoneella. 
-Koko ryhmällä on hallintaoikeudet jaetuille dokumenteille. 
-Dokumenttien versiointi dokumentin nimessä, tai githubissa versionumero tägit. 
+## Goals 
+What are we trying to make and how, who is the end user, what issues are we fixing, what niche are we filling? Tools and approach, end goals for project.  
+How did we achieve those goals?
 
 
-## Riskien hallinta
+## User Story
+Level 1 - Basic  
+- As the (small screen) user, I want to click the recipe name button within a recipe card and open the expanded recipe page. 
+- In the recipe page, I can see the recipe ingredients, nutritional information, and additional notes. 
+- As the (large screen) user, I can browse the full recipes on the screen, and scroll down on each recipe card. 
+- As the user I can use the search bar to find a recipe of my choosing from the listing.
 
-Tarkein on kommunikoida usein kaikissa projektin vaiheissa ja ongelmatilanteissa, sekä suunnitella projektivaiheet etukäteen jotta vältettäis ongelmien syntymistä. 
+Level 2 - Advanced  
+- In addition to above, as the user, I want to click the add button and open a recipe creation page. In this page, I can upload a picture, fill in the title, ingredients, and additional notes fields, and save it to my recipes. 
+- As the user, I may also edit and save the notes within ready recipes. 
+- As the user, I am able to view separate tabs: browse recipes, my recipes, and create recipe.
 
-Esimerkiksi näin.
+---
 
-| Riskit                                                       | Todennäköisyys |  Impakti | Minimointi                             |
-| ------------------------------------------------------------ | -------------- | -------- | -------------------------------------- |
-| Työntekijät eivät ole motivoituneita ja eivät saavu paikalle | Pieni          |  Suuri   | Kommunikoidaan usein ja tehokkaasti.   |
-| Aika ei riitä projetkin laajuuteen                           | Suuri          |  Suuri   | Tehokasta ajankäyttöä ja suunnittelua. |
-| Haasteet tavoitteiden ja osaamisen välillä                   | Suuri          |  Keski   | Kommunikointi, yhteistyö ja avun pyytäminen. |
-| Konfliktit                                                   | Pieni          |  Suuri   | Kunnioittava ja asiallinen kommunikointi usein. |
-| Git Merge                                                    | Suuri          |  Varma   | Backups, suunniteltu ja harkittu workflow, yhteistyö, harjoittelu. |
-| Poissaolot                                                   | Pieni          |  Suuri   | Kommunikointi, etätyö, terveelliset elämäntavat. |
+## Design Process 
+- Figma Link: (SmoothieSovellus Sivu): https://www.figma.com/design/hZwyYLCWlpHUJq7bY1xdAD/App-Ideas?node-id=12-65&t=BHifgodVZk2YNkAH-1
+- Design Goals: x (clear card design, fruity and fresh colors with an emphasis on images and recipe clarity, responsive and working layout for both mobile and web views...)
+- Key Screens in Tailwind Play:
+  - First Page (Etusivu): https://play.tailwindcss.com/B2aLLigQWT
+  - Second Page (Modaali-ikkuna / Smoothie Recipe sivu): https://play.tailwindcss.com/BtG0TDeeBk
+- Challenges: x (integrating style into code, card code thing...)
+  
+## Development Process
+- Tech Stack
+  - Tailwind CSS
+  - x
+  - x
+  - x
+- Component Structure
+  - x
+  - x
+  - x
+- Challenges & Solutions:
+  - x
+
+## Tasks by Role
+- Jun Fengari (Dokumentti) and 
+- Lauri Makkonen (Git) and
+- Janika Rahikainen (Laatu + Julkaisu) and
+- Teemu Sairi (Tehtävä) and
+- (jokaisen roolit ja päällikkötehtävät)...
+  
+
+## Credits:
+- Fruit Data by [Fruityvice API](https://fruityvice.com)  
+- Icon assets from [Google Material Symbols](https://fonts.google.com/icons).
+- Font from [Google Material Symbols](https://fonts.google.com/icons).
+- Recipes generated by ChatGPT and Copilot.
+- Images from [Pixabay](https://pixabay.com/) and [Unsplash](https://unsplash.com/)
+- Logo Art & Design by Jun Fengari
+
+---
+
+## Future Development Possibilities
+- x
+- x

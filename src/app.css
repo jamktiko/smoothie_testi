@@ -1,1 +1,39 @@
 @import 'tailwindcss';
+
+.material-symbols-outlined {
+	font-variation-settings:
+		'FILL' 0,
+		'wght' 250,
+		'GRAD' 0,
+		'opsz' 24;
+}
+
+.laila-light {
+	font-family: 'Laila', serif;
+	font-weight: 300;
+	font-style: normal;
+}
+
+.laila-regular {
+	font-family: 'Laila', serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.laila-medium {
+	font-family: 'Laila', serif;
+	font-weight: 500;
+	font-style: normal;
+}
+
+.laila-semibold {
+	font-family: 'Laila', serif;
+	font-weight: 600;
+	font-style: normal;
+}
+
+.laila-bold {
+	font-family: 'Laila', serif;
+	font-weight: 700;
+	font-style: normal;
+}
