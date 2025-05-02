@@ -33,6 +33,7 @@
 <!-- Siirä	onclick={avaaModal} tämä takaisin alempaan diviin -->
 
 <div
+	onclick={avaaModal}
 	class="relative flex w-full flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300 sm:h-165 sm:w-[47%] lg:w-[31%]"
 >
 	<!-- Kortin sisältö -->
