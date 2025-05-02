@@ -28,6 +28,20 @@
 		}
 	},
 	{
+		"name": "Banana",
+		"id": 1,
+		"family": "Musaceae",
+		"order": "Zingiberales",
+		"genus": "Musa",
+		"nutritions": {
+			"calories": 115.2,
+			"fat": 0.24,
+			"sugar": 20.64,
+			"carbohydrates": 26.4,
+			"protein": 1.2
+		}
+	},
+	{
 		"name": "Tomato",
 		"id": 5,
 		"nutritions": {
