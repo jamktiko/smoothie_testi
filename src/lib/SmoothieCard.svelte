@@ -13,6 +13,7 @@
 	// notes kentän arvo
 	let teksti = $state('');
 
+	// avaa smoothie reseptin
 	let modalAuki = $state(false);
 
 	// avaa smoothie reseptin
@@ -151,11 +152,7 @@
 					<!-- Ingredients -->
 					<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 						<h2 class="text-md laila-medium">Ingredients</h2>
-<<<<<<< HEAD
-						<ul class="laila-regular py-1.5 text-sm text-gray-600">
-=======
-						<ul class="laila-regular list-disc py-1 pl-3 text-sm text-gray-600">
->>>>>>> develop
+						<ul class="laila-regular list-disc py-1 pl-3.5 text-sm text-gray-600">
 							{#each smoothieKortti.hedelmat as hedelma, index}
 								<li>
 									{hedelmaMaaranFormatointi(smoothieKortti.hedelmatMaara[index])}
