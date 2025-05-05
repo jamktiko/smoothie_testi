@@ -53,7 +53,7 @@
 	// $inspect(smoothieKortti.pic);
 	// $inspect(smoothieKortti.hedelmatMaara);
 
-	let originalOverflow: string;
+	let originalOverflow = $state('');
 
 	$effect(() => {
 		if (modalAuki) {
