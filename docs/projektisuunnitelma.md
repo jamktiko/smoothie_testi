@@ -26,8 +26,7 @@ Tekijät: Jun Fengari, Teemu Sairi, Janika Rahikainen, Lauri Makkonen
 
 ### Kuvaus
 
-Smoothie sovellus jossa käyttäjä pääsee tarkistelemaan smoothie reseptikortteja, lisäämään muistiinpanoja, ja mahdollisesti lisäämään omia smoothie reseptejä.
-Hedelmien ja muiden ainesosien ravintosisältöä haetaan sovellukseen APIsta. 
+Smoothie sovellus jossa käyttäjä pääsee selaamaan smoothieta ja tarkistelemaan smoothie reseptikortteja ja niiden ainesosia ja ravintoarvoja, lisäämään muistiinpanoja, ja mahdollisesti lisäämään omia smoothie reseptejä.
 
 
 ### Projektiryhmä
@@ -41,17 +40,20 @@ Hedelmien ja muiden ainesosien ravintosisältöä haetaan sovellukseen APIsta.
 
 ### Tavoite
 
-Tavoitteena toimiva ja responsiivinen smoothie sovellus, jossa seuraavat käyttötapaukset täyttyvät:
+Tavoitteena toimiva ja responsiivinen smoothie sovellus, jossa seuraavat käyttötapaukset täyttyvät:  
+
 Taso 1 – Perus
 Pienen näytön käyttäjänä haluan klikata reseptikortissa olevaa reseptin nimipainiketta ja avata laajennetun reseptisivun.
 Reseptisivulla voin nähdä reseptin ainesosat, ravintotiedot ja lisähuomautukset.
 Suuren näytön käyttäjänä voin selata reseptejä suoraan näytöllä ja vierittää alaspäin reseptikorteissa.
-Käyttäjänä voin käyttää hakupalkkia löytääkseni haluamani reseptin listauksesta.
+Käyttäjänä voin käyttää hakupalkkia löytääkseni haluamani reseptin listauksesta.  
 
 Taso 2 – Edistynyt
 Edellisten lisäksi haluan käyttäjänä klikata "lisää" -painiketta ja avata reseptin luontisivun. Tällä sivulla voin ladata kuvan, täyttää otsikon, ainesosat ja lisähuomautukset, ja tallentaa reseptin omiin resepteihini.
 Käyttäjänä voin myös muokata ja tallentaa lisähuomautuksia valmiisiin resepteihin.
 Käyttäjänä voin tarkastella erillisiä välilehtiä: selaa reseptejä, omat reseptit ja luo resepti.
+
+Tavoitteisiin myös kuuluu projetkityöskentelyn taitojen ja käytäntöjen oppiminen. 
 
 ## Aikataulu
 
@@ -85,11 +87,13 @@ Jokaisen tiimijäsenen raportointi myös omassa tuntikirjaus dokumentissa.
 
 ### Tuntikirjaukset
 
-Tuntikirjauksista pidetään ryhmässä henkilökohtaista kirjaa, ja mitä niiden tuntien aikana on tehty. 
+Tuntikirjauksista pidetään ryhmässä henkilökohtaista kirjaa, ja mitä niiden tuntien aikana on tehty. Viikkopalaverin aikana tarkistellan tehtyjä projektinosia. 
 
 ### Palaverikäytänteet
 
-Viikopalaveri pidetään perjantai iltana, "Perjantai Palaveri" jossa katsotaan mitä ollaan saavutettu viikon aikana sekä yleisesti että henkilötasolla, ja miten projekti etenee. Palaverin aikana määritellään myös alustavasti ensi viikon tehtäviä ja lisätään niitä Trelloon. 
+Viikopalaveri pidetään perjantai iltapäivänä, "Perjantai Palaveri" jossa katsotaan mitä ollaan saavutettu viikon aikana sekä yleisesti että henkilötasolla, ja miten projekti etenee. Palaverin aikana määritellään myös alustavasti ensi viikon tehtäviä ja lisätään niitä Trelloon. 
+Dokumenttivastaava kirjoittaa raportin palaverista. 
+Palaveri pidetään luokassa AP10, perjantai iltapäivällä.
 
 ### Kommunikointitavat
 
@@ -100,12 +104,13 @@ Projektin jäsenet kommunikoivat kasvostusten työajoilla, sekä Teamsin ja Slac
 Dokumentoinnissa on osioita seuraavasti:
 Overview, Goals, Design Process, Development Process, Tasks by Role, Credits, Future Development. 
 Jokaiseen osioon lisätään tarvittavat tiedot projektin dokumentoinnista. 
+Dokumentointiin kuuluu myös viikkoraportit, aikajana ja haasteet, video ja pitch, käyttäjätarina jne. 
 
 ### Dokumenttien hallinta
 
 Dokumentointivastaava (Jun) pääsääntöisesti työstää yhteisiä dokumentteja, muut tiimijäsenet täydetävät tarvittaessa. 
 Dokumentit pidetään sekä GitHubin projektikansioissa että varmuuskopioina dokumenttivastaavan tietokoneella. 
-Versiointi dokumentoinnissa pidetään selkeänä vainn yhdellä numerolla dokumentin julkaisussa tai otsikossa. 
+Versiointi dokumentoinnissa pidetään selkeänä vain yhdellä numerolla dokumentin julkaisussa tai otsikossa. 
 
 ## Riskien hallinta
 
@@ -116,8 +121,8 @@ Versiointi dokumentoinnissa pidetään selkeänä vainn yhdellä numerolla dokum
 | Projektin laajus on suurempi kuin siihen varattu aika        | Keski          | Suuri   | Tehdään asioita vaiheissa ja lisätään featureita ajan salliessa. |
 | Taidot eivät riitä projektin vaatimustasoon                  | Keski          | Keski   | Kysytään apua toisiltamme ja opettajilta. |
 | Tiiminjäsen lopettaa kesken projektia                        | Pieni          | Suuri   | Kommunikointi ajoissa, projektin alas-skaalaus. |
-| Tiiminjäsen sairastuu                                        | Keski          | Keski   | Kommunikointi ja mahdollisuuden etätyöhön. |
+| Tiiminjäsen sairastuu / Poissaoloja                          | Keski          | Keski   | Kommunikointi ja mahdollisuuden etätyöhön. |
 | Tiiminjäsenten välissä konflikti                             | Keski          | Suuri   | Kommunikointi ja kompromissin löytäminen. |
-| ------------------------------------------------------------ | -------------- | -------- | -------------------------------------- |
+| Merge konflikteja | Suuri | Suuri | Kommunikointia asiasta ja selvittelyä että mikä muutos on oikein. |
 | ------------------------------------------------------------ | -------------- | -------- | -------------------------------------- |
 | ------------------------------------------------------------ | -------------- | -------- | -------------------------------------- |
