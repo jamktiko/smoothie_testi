@@ -45,7 +45,7 @@
 		class="h-48 w-full rounded-xl border-b-2 object-cover sm:h-60"
 	/>
 	<!-- Nämä menee piiloon mobiilissa -->
-	<div class="hidden flex-1 flex-col overflow-y-auto p-4 sm:flex">
+	<div class="hidden flex-1 flex-col p-4 sm:flex">
 		<div class="mb-2 flex items-center justify-between">
 			<h1 class="laila-medium text-2xl">{smoothieKortti.smoothie.name}</h1>
 			<div class="flex items-center gap-1 text-slate-600">
