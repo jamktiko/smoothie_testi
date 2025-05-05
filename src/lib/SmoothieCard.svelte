@@ -19,6 +19,17 @@
 		modalAuki = !modalAuki;
 	}
 
+	let originalOverflow: string;
+
+	$effect(() => {
+		if (modalAuki) {
+			originalOverflow = document.body.style.overflow;
+			document.body.style.overflow = 'hidden';
+		} else {
+			document.body.style.overflow = originalOverflow;
+		}
+	});
+
 	// $inspect(smoothieKortti.ID);
 	// $inspect(smoothieKortti.smoothie.name);
 	// $inspect(smoothieKortti.hedelmat);
