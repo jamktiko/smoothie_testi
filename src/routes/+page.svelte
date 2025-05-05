@@ -18,6 +18,8 @@
 
 	import { onMount } from 'svelte';
 	import '../app.css';
+	import Button from '$lib/Button.svelte';
+	import { goto } from '$app/navigation';
 
 	// ----------------------- FUNKTIOT ---------------------------
 
@@ -133,6 +135,10 @@
 		filteroiSmoothieKortteja();
 	});
 
+	function newSmoothie() {
+		goto('../new');
+	}
+
 	// ----------------------- MUUTTUJAT --------------------------
 
 	// let smoothieKortitTaulukko: SmoothieKortti[] = $state([]);
@@ -166,11 +172,10 @@
 	rel="stylesheet"
 />
 
-<Header />
 <nav class="flex items-center justify-center">
 	<Searchbar placeholder={'Search smoothies'} bind:value={searchBarinArvo} />
 </nav>
-
+<button onclick={newSmoothie}>Add recipe</button>
 <div class="m-7 flex flex-wrap justify-center gap-7">
 	{#each valitutSmoothieKortit as smoothieKortti (smoothieKortti.ID)}
 		<SmoothieCard {smoothieKortti} />
@@ -202,7 +207,6 @@
 </div>
 
 <!-- footer -->
-<Footer footerText={'Ohjelmistoprojekti 1 by Team 2'} />
 
 <!-- <style>
 	/* loading spinner styles */
