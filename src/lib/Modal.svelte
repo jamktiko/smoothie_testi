@@ -5,11 +5,16 @@
 		header?: Snippet;
 		children: Snippet;
 		footer?: Snippet;
+		avaaModal: () => void;
 	}
-	let { header, children, footer }: Props = $props();
+	let { header, children, footer, avaaModal }: Props = $props();
 </script>
 
-<div class="backdrop fixed top-0 left-0 z-10 h-screen w-full bg-black/75"></div>
+<button
+	class="backdrop fixed top-0 left-0 z-10 h-screen w-full bg-black/75"
+	onclick={avaaModal}
+	aria-label="backdrop"
+></button>
 
 <div class="modal">
 	<!-- <header>

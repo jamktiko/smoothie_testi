@@ -7,9 +7,8 @@
 
 	interface Props {
 		smoothieKortti: SmoothieKortti;
-		isSmallScreen: boolean;
 	}
-	let { smoothieKortti, isSmallScreen } = $props();
+	let { smoothieKortti } = $props();
 
 	// notes kentän arvo
 	let teksti = $state('');
@@ -38,7 +37,7 @@
 >
 	<!-- Kortin sisältö -->
 	<button
-		class="absolute h-full w-full bg-red-900 sm:hidden md:hidden lg:visible"
+		class="absolute hidden h-full w-full sm:block"
 		onclick={avaaModal}
 		aria-label="modal-button"
 	></button>
@@ -92,7 +91,7 @@
 <!-- MY CODE IS HERE -->
 
 {#if modalAuki}
-	<Modal>
+	<Modal {avaaModal}>
 		<div>
 			<!-- Card (open) -->
 			<div
