@@ -52,7 +52,7 @@
 >
 	<!-- Kortin sisältö -->
 	<button
-		class="absolute hidden h-full w-full sm:block"
+		class="absolute hidden h-full w-full cursor-pointer sm:block"
 		onclick={avaaModal}
 		aria-label="modal-button"
 	></button>

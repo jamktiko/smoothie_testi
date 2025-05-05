@@ -175,20 +175,36 @@
 	{#each valitutSmoothieKortit as smoothieKortti (smoothieKortti.ID)}
 		<SmoothieCard {smoothieKortti} />
 	{:else}
-		<!-- temporary loading spinner  -->
-		<div class="lds-ring">
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
+		<div class="flex flex-col text-center items-center">
+			<img
+				src="https://media.tenor.com/JKqs7cUyi9gAAAAj/rick-astley-dance.gif"
+				alt="Get rick rolled xDDDDD"
+				class="w-2/3 h-2/3"
+			/>
+			<p class="w-1/1 laila-medium-italic text-slate-600 italic">
+				<span class="material-symbols-outlined">music_note</span> Never gonna give you results...
+				<span class="material-symbols-outlined">music_note</span>
+			</p>
+			<p class="w-1/1 laila-medium">
+				Either the site isn't loading or the search did not produce any results
+			</p>
 		</div>
+
+		<!-- temporary loading spinner || use this if gif not ok
+	<div class="lds-ring">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div> 
+-->
 	{/each}
 </div>
 
 <!-- footer -->
 <Footer footerText={'Ohjelmistoprojekti 1 by Team 2'} />
 
-<style>
+<!-- <style>
 	/* loading spinner styles */
 	.lds-ring {
 		/* change color here */
@@ -233,4 +249,4 @@
 			transform: rotate(360deg);
 		}
 	}
-</style>
+</style> -->
