@@ -4,6 +4,7 @@
 	import Notes from './Notes.svelte';
 	import Button from './Button.svelte';
 	import Modal from './Modal.svelte';
+	import { fade, scale } from 'svelte/transition';
 
 	interface Props {
 		smoothieKortti: SmoothieKortti;
@@ -94,11 +95,13 @@
 	<Modal {avaaModal}>
 		<div>
 			<!-- Card (open) -->
+			<!-- Animaatio modaliin, duration vaihtaa nopeutta -->
 			<div
 				class=" fixed top-[10px] left-1/2 z-100 flex max-h-[97vh] w-1/2 -translate-x-1/2 flex-col justify-center overflow-hidden overflow-y-auto rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-900
 				[@media(max-width:600px)]:top-0
 				[@media(max-width:600px)]:max-h-screen
 				[@media(max-width:600px)]:w-screen"
+				transition:scale={{ duration: 600 }}
 			>
 				<!-- Image -->
 				<div class="relative">
