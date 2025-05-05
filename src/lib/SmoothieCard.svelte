@@ -23,15 +23,27 @@
 
 	// tämä funktio testaa onko hedelmien määrä kokonaisluku vai desimaaliluku ja palauttaa vastaavan ½, ¼ tai ¾
 	function hedelmaMaaranFormatointi(hedelmanMaara: number) {
-		return hedelmanMaara % 1 === 0
-			? hedelmanMaara.toString()
-			: hedelmanMaara % 1 === 0.75
-				? `${Math.floor(hedelmanMaara)}¾`
-				: hedelmanMaara % 1 === 0.5
-					? `${Math.floor(hedelmanMaara)}½`
-					: hedelmanMaara % 1 === 0.25
-						? `${Math.floor(hedelmanMaara)}¼`
-						: null;
+		if (hedelmanMaara < 1) {
+			return hedelmanMaara % 1 === 0
+				? hedelmanMaara.toString()
+				: hedelmanMaara % 0.75 === 0
+					? `¾`
+					: hedelmanMaara % 0.5 === 0
+						? `½`
+						: hedelmanMaara % 0.25 === 0
+							? `¼`
+							: null;
+		} else {
+			return hedelmanMaara % 1 === 0
+				? hedelmanMaara.toString()
+				: hedelmanMaara % 1 === 0.75
+					? `${Math.floor(hedelmanMaara)}¾`
+					: hedelmanMaara % 1 === 0.5
+						? `${Math.floor(hedelmanMaara)}½`
+						: hedelmanMaara % 1 === 0.25
+							? `${Math.floor(hedelmanMaara)}¼`
+							: null;
+		}
 	}
 
 	// $inspect(smoothieKortti.ID);
