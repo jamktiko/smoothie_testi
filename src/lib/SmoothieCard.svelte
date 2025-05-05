@@ -37,7 +37,10 @@
 	class="relative flex w-full flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300 hover:bg-orange-200 sm:h-165 sm:w-[47%] lg:w-[31%]"
 >
 	<!-- Kortin sisältö -->
-	<button class="dummy-div" onclick={avaaModal} aria-label="modal-button" hidden={isSmallScreen}
+	<button
+		class="absolute h-full w-full bg-red-900 sm:hidden md:hidden lg:visible"
+		onclick={avaaModal}
+		aria-label="modal-button"
 	></button>
 	<img
 		src={smoothieKortti.pic}
@@ -161,14 +164,3 @@
 		</div>
 	</Modal>
 {/if}
-
-<style>
-	.dummy-div {
-		/* background-color: aqua; */
-		width: 100%;
-		height: 100%;
-		/* z-index: 100; */
-		position: absolute;
-		/* display: none; */
-	}
-</style>
