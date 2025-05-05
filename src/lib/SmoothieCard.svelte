@@ -1,10 +1,9 @@
 <script lang="ts">
 	import type { SmoothieKortti } from '$lib/types/smoothieKortti';
-
 	import Notes from './Notes.svelte';
 	import Button from './Button.svelte';
 	import Modal from './Modal.svelte';
-	import { fade, scale } from 'svelte/transition';
+	import { fade, scale, slide, blur } from 'svelte/transition';
 
 	interface Props {
 		smoothieKortti: SmoothieKortti;
@@ -49,6 +48,8 @@
 
 <div
 	class="relative flex w-full flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300 hover:bg-orange-200 sm:h-165 sm:w-[47%] lg:w-[31%]"
+	in:blur={{ duration: 500 }}
+	out:blur={{ duration: 300 }}
 >
 	<!-- Kortin sisältö -->
 	<button
@@ -115,7 +116,8 @@
 				[@media(max-width:600px)]:top-0
 				[@media(max-width:600px)]:max-h-screen
 				[@media(max-width:600px)]:w-screen"
-				transition:scale={{ duration: 600 }}
+				in:scale={{ duration: 400 }}
+				out:scale={{ duration: 500 }}
 			>
 				<!-- Image -->
 				<div class="relative">
