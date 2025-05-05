@@ -3,7 +3,7 @@
 	import Notes from './Notes.svelte';
 	import Button from './Button.svelte';
 	import Modal from './Modal.svelte';
-	import { fade, scale, slide, blur } from 'svelte/transition';
+	import { scale, blur } from 'svelte/transition';
 
 	interface Props {
 		smoothieKortti: SmoothieKortti;
@@ -11,26 +11,42 @@
 	let { smoothieKortti } = $props();
 
 	// notes kentän arvo
-	let teksti = $state('');
+	let teksti = $state(
+		'asdhiuHGUISGjsrjogijhirsjhosjeoigiodsifjsiojfidiofjISJIOGjiodjihjdirhiodjiogoasjegifjsiojidrjhiodjrihoidrohjidrjhiodiorjiho'
+	);
 
 	let modalAuki = $state(false);
 
-	// avaa smoothie reseptin
-	function avaaModal() {
+	// avaa smoothie reseptin modal ikkunan (toggle)
+	function toggleModal() {
 		modalAuki = !modalAuki;
 	}
 
 	// tämä funktio testaa onko hedelmien määrä kokonaisluku vai desimaaliluku ja palauttaa vastaavan ½, ¼ tai ¾
 	function hedelmaMaaranFormatointi(hedelmanMaara: number) {
-		return hedelmanMaara % 1 === 0
-			? hedelmanMaara.toString()
-			: hedelmanMaara % 1 === 0.75
-				? `${Math.floor(hedelmanMaara)}¾`
-				: hedelmanMaara % 1 === 0.5
-					? `${Math.floor(hedelmanMaara)}½`
-					: hedelmanMaara % 1 === 0.25
-						? `${Math.floor(hedelmanMaara)}¼`
-						: null;
+		// jos hedelmän määrä alkaa numerolla nolla, niin ei lisätä nollaa murto-osan eteen
+		if (hedelmanMaara < 1) {
+			return hedelmanMaara % 1 === 0
+				? hedelmanMaara.toString()
+				: hedelmanMaara % 0.75 === 0
+					? `¾`
+					: hedelmanMaara % 0.5 === 0
+						? `½`
+						: hedelmanMaara % 0.25 === 0
+							? `¼`
+							: null;
+		} else {
+			// jos hedelmän määrä alkaa numerolla yksi tai suurempi, niin lisätään kokonaisluku ennen murto-osaa
+			return hedelmanMaara % 1 === 0
+				? hedelmanMaara.toString()
+				: hedelmanMaara % 1 === 0.75
+					? `${Math.floor(hedelmanMaara)}¾`
+					: hedelmanMaara % 1 === 0.5
+						? `${Math.floor(hedelmanMaara)}½`
+						: hedelmanMaara % 1 === 0.25
+							? `${Math.floor(hedelmanMaara)}¼`
+							: null;
+		}
 	}
 
 	// $inspect(smoothieKortti.ID);
@@ -40,11 +56,21 @@
 	// $inspect(smoothieKortti.ravintoarvotYht);
 	// $inspect(smoothieKortti.pic);
 	// $inspect(smoothieKortti.hedelmatMaara);
+
+	// muuttaa scrollbaring piiloon kun modal on auki
+	let originalOverflow = $state('');
+
+	$effect(() => {
+		if (modalAuki) {
+			originalOverflow = document.body.style.overflow;
+			document.body.style.overflow = 'hidden';
+		} else {
+			document.body.style.overflow = originalOverflow;
+		}
+	});
 </script>
 
 <!-- Kortti -->
-
-<!-- Siirä	onclick={avaaModal} tämä takaisin alempaan diviin -->
 
 <div
 	class="relative flex w-full flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300 hover:bg-orange-200 sm:h-165 sm:w-[47%] lg:w-[31%]"
@@ -54,7 +80,7 @@
 	<!-- Kortin sisältö -->
 	<button
 		class="absolute hidden h-full w-full cursor-pointer sm:block"
-		onclick={avaaModal}
+		onclick={toggleModal}
 		aria-label="modal-button"
 	></button>
 	<img
@@ -74,7 +100,7 @@
 
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Ingredients</h2>
-			<ul class="list-disc space-y-0 pl-5 text-sm">
+			<ul class="list-disc columns-2 space-y-0 py-1.5 pl-5 text-sm">
 				{#each smoothieKortti.hedelmat as hedelma, index}
 					<li class="laila-regular text-gray-600">
 						{hedelmaMaaranFormatointi(smoothieKortti.hedelmatMaara[index])}
@@ -96,18 +122,18 @@
 		</div>
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Notes</h2>
-			<Notes placeholder={'Add notes'} bind:taytto={teksti} />
+			<Notes placeholder={''} bind:taytto={teksti} ellipsisWrapOn={true} />
 		</div>
 	</div>
 	<!-- Tähän loppuu kortin sisältö -->
 
-	<Button buttonText={smoothieKortti.smoothie.name} buttonFunction={avaaModal} />
+	<Button buttonText={smoothieKortti.smoothie.name} buttonFunction={toggleModal} />
 </div>
 
 <!-- MY CODE IS HERE -->
 
 {#if modalAuki}
-	<Modal {avaaModal}>
+	<Modal {toggleModal}>
 		<div>
 			<!-- Card (open) -->
 			<!-- Animaatio modaliin, duration vaihtaa nopeutta -->
@@ -135,7 +161,7 @@
 						class="flex flex-col items-start justify-between [@media(min-width:600px)]:flex-row [@media(min-width:600px)]:items-center"
 					>
 						<div class="flex items-center gap-2">
-							<button onclick={avaaModal} class="material-symbols-outlined pb-1"
+							<button onclick={toggleModal} class="material-symbols-outlined pb-1"
 								>arrow_back_ios</button
 							>
 							<h1 class="laila-medium text-2xl">{smoothieKortti.smoothie.name}</h1>
@@ -149,7 +175,7 @@
 					<!-- Ingredients -->
 					<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 						<h2 class="text-md laila-medium">Ingredients</h2>
-						<ul class="laila-regular list-disc py-1 pl-3 text-sm text-gray-600">
+						<ul class="laila-regular list-disc py-1 pl-3.5 text-sm text-gray-600">
 							{#each smoothieKortti.hedelmat as hedelma, index}
 								<li>
 									{hedelmaMaaranFormatointi(smoothieKortti.hedelmatMaara[index])}
@@ -178,7 +204,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- </div> -->
 		</div>
 	</Modal>
 {/if}
