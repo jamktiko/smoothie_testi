@@ -241,7 +241,7 @@
 		}
 	},
 	{
-		"name": "Mangos",
+		"name": "Mangoes",
 		"id": 21,
 		"family": "Anacardiaceae",
 		"order": "Sapindales",
@@ -661,7 +661,7 @@
 		}
 	},
 	{
-		"name": "Milk",
+		"name": "cup of Milk",
 		"id": 51,
 		"family": "ingredient",
 		"nutritions": {
@@ -673,7 +673,7 @@
 		}
 	},
 	{
-		"name": "Yogurt",
+		"name": "cup of Yogurt",
 		"id": 52,
 		"family": "ingredient",
 		"nutritions": {
@@ -686,7 +686,7 @@
 	},
 
 	{
-		"name": "Almond Milk",
+		"name": "cup of Almond Milk",
 		"id": 54,
 		"family": "ingredient",
 		"nutritions": {
@@ -698,7 +698,7 @@
 		}
 	},
 	{
-		"name": "Coconut Milk",
+		"name": "cup of Coconut Milk",
 		"id": 55,
 		"family": "ingredient",
 		"nutritions": {
@@ -710,7 +710,7 @@
 		}
 	},
 	{
-		"name": "Ice Cream",
+		"name": "cup of Ice Cream",
 		"id": 56,
 		"family": "ingredient",
 		"nutritions": {
@@ -722,7 +722,7 @@
 		}
 	},
 	{
-		"name": "Water",
+		"name": "cup of Water",
 		"id": 57,
 		"family": "ingredient",
 		"nutritions": {

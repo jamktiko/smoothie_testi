@@ -2,7 +2,7 @@
 	{
 		"id": 1,
 		"name": "Berry Bliss",
-		"ingredients": ["Strawberries", "Blueberries", "Raspberries", "Bananas", "Yogurt"],
+		"ingredients": ["Strawberries", "Blueberries", "Raspberries", "Bananas", "cup of Yogurt"],
 		"ingredientsAmount": [5, 5, 5, 1, 1],
 		"pic": "Berry-Bliss-1.jpg",
 		"preparationTimeMinutes": 5
@@ -10,7 +10,7 @@
 	{
 		"id": 2,
 		"name": "Sunny Smile",
-		"ingredients": ["Pineapples", "Mangos", "Bananas", "Milk"],
+		"ingredients": ["Pineapples", "Mangoes", "Bananas", "cup of Milk"],
 		"ingredientsAmount": [1, 1, 1, 1],
 		"pic": "Sunny-Smile-2.jpg",
 		"preparationTimeMinutes": 4
@@ -34,7 +34,7 @@
 	{
 		"id": 5,
 		"name": "Sunset Fusion",
-		"ingredients": ["Peaches", "Mangos", "Raspberries", "Almond Milk"],
+		"ingredients": ["Peaches", "Mangoes", "Raspberries", "cup of Almond Milk"],
 		"ingredientsAmount": [1, 1, 10, 1],
 		"pic": "Sunset-Fusion-5.jpg",
 		"preparationTimeMinutes": 3
@@ -42,7 +42,7 @@
 	{
 		"id": 6,
 		"name": "Summer Kiss",
-		"ingredients": ["Strawberries", "Peaches", "Apples", "Ice Cream"],
+		"ingredients": ["Strawberries", "Peaches", "Apples", "cup of Ice Cream"],
 		"ingredientsAmount": [6, 2, 1, 1],
 		"pic": "Summer-Kiss-6.jpg",
 		"preparationTimeMinutes": 4
@@ -66,7 +66,7 @@
 	{
 		"id": 9,
 		"name": "Tropical Sunrise",
-		"ingredients": ["Jackfruits", "Papayas", "Pineapples", "Coconut Milk"],
+		"ingredients": ["Jackfruits", "Papayas", "Pineapples", "cup of Coconut Milk"],
 		"ingredientsAmount": [1, 1, 1, 1],
 		"pic": "Tropical-Sunrise-9.jpg",
 		"preparationTimeMinutes": 4
@@ -74,7 +74,7 @@
 	{
 		"id": 10,
 		"name": "Peach Paradise",
-		"ingredients": ["Peaches", "Apricots", "Mangos", "Coconut Milk"],
+		"ingredients": ["Peaches", "Apricots", "Mangoes", "cup of Coconut Milk"],
 		"ingredientsAmount": [2, 3, 2, 1],
 		"pic": "Peach-Paradise-10.jpg",
 		"preparationTimeMinutes": 4
