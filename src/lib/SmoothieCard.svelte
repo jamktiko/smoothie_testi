@@ -13,7 +13,6 @@
 	// notes kentän arvo
 	let teksti = $state('');
 
-	// avaa smoothie reseptin
 	let modalAuki = $state(false);
 
 	// avaa smoothie reseptin
