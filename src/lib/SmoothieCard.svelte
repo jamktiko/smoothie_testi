@@ -13,22 +13,25 @@
 	// notes kentän arvo
 	let teksti = $state('');
 
-	// avaa smoothie reseptin
 	let modalAuki = $state(false);
+
+	// avaa smoothie reseptin
 	function avaaModal() {
 		modalAuki = !modalAuki;
 	}
 
-	let originalOverflow: string;
-
-	$effect(() => {
-		if (modalAuki) {
-			originalOverflow = document.body.style.overflow;
-			document.body.style.overflow = 'hidden';
-		} else {
-			document.body.style.overflow = originalOverflow;
-		}
-	});
+	// tämä funktio testaa onko hedelmien määrä kokonaisluku vai desimaaliluku ja palauttaa vastaavan ½, ¼ tai ¾
+	function hedelmaMaaranFormatointi(hedelmanMaara: number) {
+		return hedelmanMaara % 1 === 0
+			? hedelmanMaara.toString()
+			: hedelmanMaara % 1 === 0.75
+				? `${Math.floor(hedelmanMaara)}¾`
+				: hedelmanMaara % 1 === 0.5
+					? `${Math.floor(hedelmanMaara)}½`
+					: hedelmanMaara % 1 === 0.25
+						? `${Math.floor(hedelmanMaara)}¼`
+						: null;
+	}
 
 	// $inspect(smoothieKortti.ID);
 	// $inspect(smoothieKortti.smoothie.name);
@@ -72,7 +75,7 @@
 			<ul class="list-disc space-y-0 pl-5 text-sm">
 				{#each smoothieKortti.hedelmat as hedelma, index}
 					<li class="laila-regular text-gray-600">
-						{smoothieKortti.hedelmatMaara[index]}
+						{hedelmaMaaranFormatointi(smoothieKortti.hedelmatMaara[index])}
 						{hedelma}
 					</li>
 				{/each}
@@ -141,10 +144,10 @@
 					<!-- Ingredients -->
 					<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 						<h2 class="text-md laila-medium">Ingredients</h2>
-						<ul class="laila-regular py-1 text-sm text-gray-600">
+						<ul class="laila-regular list-disc py-1 pl-3 text-sm text-gray-600">
 							{#each smoothieKortti.hedelmat as hedelma, index}
 								<li>
-									• {smoothieKortti.hedelmatMaara[index]}
+									{hedelmaMaaranFormatointi(smoothieKortti.hedelmatMaara[index])}
 									{hedelma}
 								</li>
 							{/each}
