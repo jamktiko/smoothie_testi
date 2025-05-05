@@ -11,7 +11,9 @@
 	let { smoothieKortti } = $props();
 
 	// notes kentän arvo
-	let teksti = $state('');
+	let teksti = $state(
+		'asdhiuHGUISGjsrjogijhirsjhosjeoigiodsifjsiojfidiofjISJIOGjiodjihjdirhiodjiogoasjegifjsiojidrjhiodjrihoidrohjidrjhiodiorjiho'
+	);
 
 	let modalAuki = $state(false);
 
@@ -120,7 +122,7 @@
 		</div>
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Notes</h2>
-			<Notes placeholder={'No notes'} bind:taytto={teksti} />
+			<Notes placeholder={''} bind:taytto={teksti} ellipsisWrapOn={true} />
 		</div>
 	</div>
 	<!-- Tähän loppuu kortin sisältö -->
