@@ -52,6 +52,17 @@
 	// $inspect(smoothieKortti.ravintoarvotYht);
 	// $inspect(smoothieKortti.pic);
 	// $inspect(smoothieKortti.hedelmatMaara);
+
+	let originalOverflow: string;
+
+	$effect(() => {
+		if (modalAuki) {
+			originalOverflow = document.body.style.overflow;
+			document.body.style.overflow = 'hidden';
+		} else {
+			document.body.style.overflow = originalOverflow;
+		}
+	});
 </script>
 
 <!-- Kortti -->
