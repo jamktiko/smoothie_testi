@@ -58,7 +58,7 @@
 
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Ingredients</h2>
-			<ul class="list-disc space-y-0 pl-5 text-sm">
+			<ul class="list-disc columns-2 space-y-0 py-1.5 pl-5 text-sm">
 				{#each smoothieKortti.hedelmat as hedelma, index}
 					<li class="laila-regular text-gray-600">
 						{smoothieKortti.hedelmatMaara[index]}
@@ -80,7 +80,7 @@
 		</div>
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Notes</h2>
-			<Notes placeholder={'Add notes'} bind:taytto={teksti} />
+			<Notes placeholder={'No notes'} bind:taytto={teksti} />
 		</div>
 	</div>
 	<!-- Tähän loppuu kortin sisältö -->
@@ -116,7 +116,9 @@
 						class="flex flex-col items-start justify-between [@media(min-width:600px)]:flex-row [@media(min-width:600px)]:items-center"
 					>
 						<div class="flex items-center gap-2">
-							<button onclick={avaaModal} class="material-symbols-outlined pb-1"
+							<button
+								onclick={avaaModal}
+								class="material-symbols-outlined cursor-pointer pb-1 transition-transform duration-200 hover:scale-125"
 								>arrow_back_ios</button
 							>
 							<h1 class="laila-medium text-2xl">{smoothieKortti.smoothie.name}</h1>
@@ -130,7 +132,7 @@
 					<!-- Ingredients -->
 					<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 						<h2 class="text-md laila-medium">Ingredients</h2>
-						<ul class="laila-regular py-1 text-sm text-gray-600">
+						<ul class="laila-regular py-1.5 text-sm text-gray-600">
 							{#each smoothieKortti.hedelmat as hedelma, index}
 								<li>
 									• {smoothieKortti.hedelmatMaara[index]}
