@@ -11,7 +11,7 @@
 
 <div class="absolute right-4 bottom-4 sm:hidden">
 	<button
-		class="flex items-center rounded-3xl border-2 border-black bg-orange-200 px-4 py-2 text-black transition hover:bg-orange-300"
+		class="flex cursor-pointer items-center rounded-3xl border-2 border-black bg-orange-200 px-4 py-2 text-black transition hover:bg-orange-300"
 		onclick={buttonFunction}
 		disabled={!buttonActive}
 		>{buttonText}
