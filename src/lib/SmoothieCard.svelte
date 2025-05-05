@@ -158,11 +158,11 @@
 					<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 						<h2 class="text-md laila-medium">Nutritional Information</h2>
 						<ul class="laila-regular py-1 text-sm text-gray-600">
-							<li>Calories: {smoothieKortti.ravintoarvotYht.calories.toFixed(1)}</li>
-							<li>Carbohydrates: {smoothieKortti.ravintoarvotYht.carbohydrates.toFixed(1)}</li>
-							<li>Protein: {smoothieKortti.ravintoarvotYht.protein.toFixed(1)}</li>
-							<li>Fat: {smoothieKortti.ravintoarvotYht.fat.toFixed(1)}</li>
-							<li>Sugar: {smoothieKortti.ravintoarvotYht.sugar.toFixed(1)}</li>
+							<li>Calories: {smoothieKortti.ravintoarvotYht.calories.toFixed(1)} kcal</li>
+							<li>Carbohydrates: {smoothieKortti.ravintoarvotYht.carbohydrates.toFixed(1)} g</li>
+							<li>Protein: {smoothieKortti.ravintoarvotYht.protein.toFixed(1)} g</li>
+							<li>Fat: {smoothieKortti.ravintoarvotYht.fat.toFixed(1)} g</li>
+							<li>Sugar: {smoothieKortti.ravintoarvotYht.sugar.toFixed(1)} g</li>
 						</ul>
 					</div>
 
