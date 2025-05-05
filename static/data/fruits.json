@@ -1,6 +1,6 @@
 [
 	{
-		"name": "Persimmon",
+		"name": "Persimmons",
 		"id": 1,
 		"family": "Ebenaceae",
 		"order": "Rosales",
@@ -14,7 +14,7 @@
 		}
 	},
 	{
-		"name": "Strawberry",
+		"name": "Strawberries",
 		"id": 2,
 		"family": "Rosaceae",
 		"order": "Rosales",
@@ -28,7 +28,7 @@
 		}
 	},
 	{
-		"name": "Banana",
+		"name": "Bananas",
 		"id": 3,
 		"family": "Musaceae",
 		"order": "Zingiberales",
@@ -42,7 +42,7 @@
 		}
 	},
 	{
-		"name": "Tomato",
+		"name": "Tomatoes",
 		"id": 4,
 		"nutritions": {
 			"calories": 91.02,
@@ -53,7 +53,7 @@
 		}
 	},
 	{
-		"name": "Pear",
+		"name": "Pears",
 		"id": 5,
 		"nutritions": {
 			"calories": 101.46,
@@ -75,7 +75,7 @@
 		}
 	},
 	{
-		"name": "Blackberry",
+		"name": "Blackberries",
 		"id": 7,
 		"nutritions": {
 			"calories": 2.0,
@@ -86,7 +86,7 @@
 		}
 	},
 	{
-		"name": "Lingonberry",
+		"name": "Lingonberries",
 		"id": 8,
 		"nutritions": {
 			"calories": 0.25,
@@ -97,7 +97,7 @@
 		}
 	},
 	{
-		"name": "Kiwi",
+		"name": "Kiwis",
 		"id": 9,
 		"nutritions": {
 			"calories": 45.75,
@@ -108,7 +108,7 @@
 		}
 	},
 	{
-		"name": "Lychee",
+		"name": "Lychees",
 		"id": 10,
 		"nutritions": {
 			"calories": 6.6,
@@ -119,7 +119,7 @@
 		}
 	},
 	{
-		"name": "Pineapple",
+		"name": "Pineapples",
 		"id": 11,
 		"nutritions": {
 			"calories": 452.5,
@@ -130,7 +130,7 @@
 		}
 	},
 	{
-		"name": "Fig",
+		"name": "Figs",
 		"id": 12,
 		"nutritions": {
 			"calories": 37.0,
@@ -141,7 +141,7 @@
 		}
 	},
 	{
-		"name": "Gooseberry",
+		"name": "Gooseberries",
 		"id": 13,
 		"nutritions": {
 			"calories": 1.89,
@@ -152,7 +152,7 @@
 		}
 	},
 	{
-		"name": "Passionfruit",
+		"name": "Passionfruits",
 		"id": 14,
 		"nutritions": {
 			"calories": 17.46,
@@ -163,7 +163,7 @@
 		}
 	},
 	{
-		"name": "Plum",
+		"name": "Plums",
 		"id": 15,
 		"nutritions": {
 			"calories": 30.36,
@@ -174,7 +174,7 @@
 		}
 	},
 	{
-		"name": "Orange",
+		"name": "Oranges",
 		"id": 16,
 		"nutritions": {
 			"calories": 56.33,
@@ -185,7 +185,7 @@
 		}
 	},
 	{
-		"name": "GreenApple",
+		"name": "GreenApples",
 		"id": 17,
 		"family": "Rosaceae",
 		"order": "Rosales",
@@ -199,7 +199,7 @@
 		}
 	},
 	{
-		"name": "Raspberry",
+		"name": "Raspberries",
 		"id": 18,
 		"family": "Rosaceae",
 		"order": "Rosales",
@@ -213,7 +213,7 @@
 		}
 	},
 	{
-		"name": "Watermelon",
+		"name": "Watermelons",
 		"id": 19,
 		"family": "Cucurbitaceae",
 		"order": "Cucurbitales",
@@ -227,7 +227,7 @@
 		}
 	},
 	{
-		"name": "Lemon",
+		"name": "Lemons",
 		"id": 20,
 		"family": "Rutaceae",
 		"order": "Sapindales",
@@ -241,7 +241,7 @@
 		}
 	},
 	{
-		"name": "Mango",
+		"name": "Mangos",
 		"id": 21,
 		"family": "Anacardiaceae",
 		"order": "Sapindales",
@@ -255,7 +255,7 @@
 		}
 	},
 	{
-		"name": "Blueberry",
+		"name": "Blueberries",
 		"id": 22,
 		"family": "Rosaceae",
 		"order": "Rosales",
@@ -269,7 +269,7 @@
 		}
 	},
 	{
-		"name": "Apple",
+		"name": "Apples",
 		"id": 23,
 		"family": "Rosaceae",
 		"order": "Rosales",
@@ -283,7 +283,7 @@
 		}
 	},
 	{
-		"name": "Guava",
+		"name": "Guavas",
 		"id": 24,
 		"family": "Myrtaceae",
 		"order": "Myrtales",
@@ -297,7 +297,7 @@
 		}
 	},
 	{
-		"name": "Apricot",
+		"name": "Apricots",
 		"id": 25,
 		"family": "Rosaceae",
 		"order": "Rosales",
@@ -311,7 +311,7 @@
 		}
 	},
 	{
-		"name": "Melon",
+		"name": "Melons",
 		"id": 26,
 		"family": "Cucurbitaceae",
 		"order": "Cucurbitaceae",
@@ -325,7 +325,7 @@
 		}
 	},
 	{
-		"name": "Tangerine",
+		"name": "Tangerines",
 		"id": 27,
 		"family": "Rutaceae",
 		"order": "Sapindales",
@@ -339,7 +339,7 @@
 		}
 	},
 	{
-		"name": "Pitahaya",
+		"name": "Pitahayas",
 		"id": 28,
 		"family": "Cactaceae",
 		"order": "Caryophyllales",
@@ -353,7 +353,7 @@
 		}
 	},
 	{
-		"name": "Lime",
+		"name": "Limes",
 		"id": 29,
 		"family": "Rutaceae",
 		"order": "Sapindales",
@@ -367,7 +367,7 @@
 		}
 	},
 	{
-		"name": "Pomegranate",
+		"name": "Pomegranates",
 		"id": 30,
 		"family": "Lythraceae",
 		"order": "Myrtales",
@@ -381,7 +381,7 @@
 		}
 	},
 	{
-		"name": "Dragonfruit",
+		"name": "Dragonfruits",
 		"id": 31,
 		"family": "Cactaceae",
 		"order": "Caryophyllales",
@@ -395,7 +395,7 @@
 		}
 	},
 	{
-		"name": "Grape",
+		"name": "Grapes",
 		"id": 32,
 		"family": "Vitaceae",
 		"order": "Vitales",
@@ -409,7 +409,7 @@
 		}
 	},
 	{
-		"name": "Morus",
+		"name": "Mulberries",
 		"id": 33,
 		"family": "Moraceae",
 		"order": "Rosales",
@@ -423,7 +423,7 @@
 		}
 	},
 	{
-		"name": "Feijoa",
+		"name": "Feijoas",
 		"id": 34,
 		"family": "Myrtaceae",
 		"order": "Myrtoideae",
@@ -437,7 +437,7 @@
 		}
 	},
 	{
-		"name": "Avocado",
+		"name": "Avocados",
 		"id": 35,
 		"family": "Lauraceae",
 		"order": "Laurales",
@@ -451,7 +451,7 @@
 		}
 	},
 	{
-		"name": "Kiwifruit",
+		"name": "Kiwifruits",
 		"id": 36,
 		"family": "Actinidiaceae",
 		"order": "Ericales",
@@ -465,7 +465,7 @@
 		}
 	},
 	{
-		"name": "Cranberry",
+		"name": "Cranberries",
 		"id": 37,
 		"family": "Ericaceae",
 		"order": "Ericales",
@@ -479,7 +479,7 @@
 		}
 	},
 	{
-		"name": "Cherry",
+		"name": "Cherries",
 		"id": 38,
 		"family": "Rosaceae",
 		"order": "Rosales",
@@ -493,7 +493,7 @@
 		}
 	},
 	{
-		"name": "Peach",
+		"name": "Peaches",
 		"id": 39,
 		"family": "Rosaceae",
 		"order": "Rosales",
@@ -507,7 +507,7 @@
 		}
 	},
 	{
-		"name": "Jackfruit",
+		"name": "Jackfruits",
 		"id": 40,
 		"family": "Moraceae",
 		"order": "Rosales",
@@ -521,7 +521,7 @@
 		}
 	},
 	{
-		"name": "Horned Melon",
+		"name": "Horned Melons",
 		"id": 41,
 		"family": "Cucurbitaceae",
 		"order": "Cucurbitales",
@@ -535,7 +535,7 @@
 		}
 	},
 	{
-		"name": "Hazelnut",
+		"name": "Hazelnuts",
 		"id": 42,
 		"family": "Betulaceae",
 		"order": "Fagales",
@@ -549,7 +549,7 @@
 		}
 	},
 	{
-		"name": "Pomelo",
+		"name": "Pomelos",
 		"id": 43,
 		"family": "Rutaceae",
 		"order": "Sapindales",
@@ -563,7 +563,7 @@
 		}
 	},
 	{
-		"name": "Mangosteen",
+		"name": "Mangosteens",
 		"id": 44,
 		"family": "Clusiaceae",
 		"order": "Malpighiales",
@@ -577,7 +577,7 @@
 		}
 	},
 	{
-		"name": "Pumpkin",
+		"name": "Pumpkins",
 		"id": 45,
 		"family": "Cucurbitaceae",
 		"order": "Cucurbitales",
@@ -591,7 +591,7 @@
 		}
 	},
 	{
-		"name": "Japanese Persimmon",
+		"name": "Japanese Persimmons",
 		"id": 46,
 		"family": "Ebenaceae",
 		"order": "Ericales",
@@ -605,7 +605,7 @@
 		}
 	},
 	{
-		"name": "Papaya",
+		"name": "Papayas",
 		"id": 47,
 		"family": "Caricaceae",
 		"order": "Brassicales",
@@ -619,7 +619,7 @@
 		}
 	},
 	{
-		"name": "Annona",
+		"name": "Annonas",
 		"id": 48,
 		"family": "Annonaceae",
 		"order": "Rosales",
@@ -633,7 +633,7 @@
 		}
 	},
 	{
-		"name": "Ceylon Gooseberry",
+		"name": "Ceylon Gooseberries",
 		"id": 49,
 		"family": "Salicaceae",
 		"order": "Malpighiales",
