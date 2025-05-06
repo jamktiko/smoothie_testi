@@ -4,6 +4,7 @@
 	import Button from './Button.svelte';
 	import Modal from './Modal.svelte';
 	import { scale, blur } from 'svelte/transition';
+	import { ingredientFormatointi } from './ingredientFormatointi';
 
 	interface Props {
 		smoothieKortti: SmoothieKortti;
@@ -22,33 +23,6 @@
 			smoothieKortti.smoothie.notes = notesTeksti;
 		}
 		modalAuki = !modalAuki;
-	}
-
-	// tämä funktio testaa onko hedelmien määrä kokonaisluku vai desimaaliluku ja palauttaa vastaavan ½, ¼ tai ¾
-	function hedelmaMaaranFormatointi(hedelmanMaara: number) {
-		// jos hedelmän määrä alkaa numerolla nolla, niin ei lisätä nollaa murto-osan eteen
-		if (hedelmanMaara < 1) {
-			return hedelmanMaara % 1 === 0
-				? hedelmanMaara.toString()
-				: hedelmanMaara % 0.75 === 0
-					? `¾`
-					: hedelmanMaara % 0.5 === 0
-						? `½`
-						: hedelmanMaara % 0.25 === 0
-							? `¼`
-							: null;
-		} else {
-			// jos hedelmän määrä alkaa numerolla yksi tai suurempi, niin lisätään kokonaisluku ennen murto-osaa
-			return hedelmanMaara % 1 === 0
-				? hedelmanMaara.toString()
-				: hedelmanMaara % 1 === 0.75
-					? `${Math.floor(hedelmanMaara)}¾`
-					: hedelmanMaara % 1 === 0.5
-						? `${Math.floor(hedelmanMaara)}½`
-						: hedelmanMaara % 1 === 0.25
-							? `${Math.floor(hedelmanMaara)}¼`
-							: null;
-		}
 	}
 
 	// $inspect(smoothieKortti.ID);
@@ -107,7 +81,7 @@
 			<ul class="list-disc columns-2 space-y-0 py-1.5 pl-5 text-sm">
 				{#each smoothieKortti.hedelmat as hedelma, index}
 					<li class="laila-regular text-gray-600">
-						{hedelmaMaaranFormatointi(smoothieKortti.hedelmatMaara[index])}
+						{ingredientFormatointi(smoothieKortti.hedelmatMaara[index])}
 						{hedelma}
 					</li>
 				{/each}
@@ -184,7 +158,7 @@
 						<ul class="laila-regular list-disc py-1 pl-3.5 text-sm text-gray-600">
 							{#each smoothieKortti.hedelmat as hedelma, index}
 								<li>
-									{hedelmaMaaranFormatointi(smoothieKortti.hedelmatMaara[index])}
+									{ingredientFormatointi(smoothieKortti.hedelmatMaara[index])}
 									{hedelma}
 								</li>
 							{/each}

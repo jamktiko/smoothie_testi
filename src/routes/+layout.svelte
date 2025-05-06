@@ -74,7 +74,8 @@
 					sugar: 0
 				},
 				pic: smoothie.pic,
-				valmistusAika: smoothie.preparationTimeMinutes
+				valmistusAika: smoothie.preparationTimeMinutes,
+				notes: smoothie.notes
 			};
 
 			for (let i = 0; i < smoothie.ingredients.length; i++) {

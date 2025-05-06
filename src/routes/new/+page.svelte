@@ -5,24 +5,46 @@
 	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
 	import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
 	import { fruits as globalFruits } from '$lib/globalFruits.svelte';
+	import type { Fruit } from '$lib/types/fruit';
+	import { amountNumbers as globalAmountNumbers } from '$lib/globalAmountNumbers.svelte';
+	import { ingredientFormatointi } from '$lib/ingredientFormatointi';
 
 	import Notes from '$lib/Notes.svelte';
+	import SmoothieCard from '$lib/SmoothieCard.svelte';
 
 	// Valitut asiat tallennetaan tähän
 	let selected: string[] = $state([]);
 
 	let uudenSmoothienNimi = $state('');
-	let uudenSmoothienValmistusaika = $state(1);
+	let uudenSmoothienValmistusaika: number | null = $state(null);
 	let uudenSmoothienNotet = $state('');
 
 	let ingredientsAmountTaulukko: number[] = $state([]);
 
+	// onMount(() => {
+	// 	// Täytetään ingredientsAmountTaulukko 0-25 luvuilla, joissa on 0.25 desimaali
+	// 	luoIngredientsAmountTaulukko(3, 25);
+	// });
+
+	// luoIngredientsAmountTaulukko(3, 25);
+
+	// function luoIngredientsAmountTaulukko(mihinAstiDesimaaleja: number, mihinAstiLukuja: number) {
+	// 	for (let i = 0; i <= mihinAstiDesimaaleja; i + 0.25) {
+	// 		ingredientsAmountTaulukko.push(i);
+	// 	}
+	// 	for (let i = mihinAstiDesimaaleja + 1; i <= mihinAstiLukuja; i++) {
+	// 		ingredientsAmountTaulukko.push(i);
+	// 	}
+	// }
+
+	let ingredients: Fruit[] = $state([]);
+
 	let amount: number = $state(0);
 	const amounts = [0.5, 1, 2, 3, 4, 5];
-	let lista: string[] = $state([]);
+	let ingredientsLista: string[] = $state([]);
 	function add() {
 		if (selected.length > 0) {
-			lista.push(`${amount} ${selected}`);
+			ingredientsLista.push(`${amount} ${selected}`);
 		}
 	}
 	// Funktio valinnan käsittelemiseen
@@ -31,12 +53,15 @@
 		goto('/');
 	}
 
+	$inspect(globalAmountNumbers.get());
+
 	// ----------------------- DEBUGGAUS ---------------------------
 
 	$inspect(uudenSmoothienNimi);
 	$inspect(uudenSmoothienValmistusaika);
 	$inspect(uudenSmoothienNotet);
 	$inspect(selected);
+	$inspect(ingredientsAmountTaulukko);
 	// $inspect(globalFruits.get());
 </script>
 
@@ -106,19 +131,18 @@
 			<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 				<h2 class="text-md laila-medium">Ingredients</h2>
 				<ul class="laila-regular py-1 text-sm text-gray-600">
-					{#each lista as item}
-						<li>{item}</li>
+					{#each ingredientsLista as ingredient}
+						<li>{ingredient}{ingredientFormatointi(5.5)}</li>
 					{/each}
 
 					<li class="flex flex-row items-center gap-10">
-						<p>{lista}</p>
+						<!-- <p>{ingredientsLista}</p> -->
 						<button
 							class="rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
 							>remove</button
 						>
 					</li>
 					<li class="flex flex-row items-center">
-						<p>• 1/2 cup of milk</p>
 						<button
 							class="rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
 							>remove</button
@@ -132,7 +156,7 @@
 						>
 							<select bind:value={amount}>
 								<option value="" disabled selected hidden>Valitse määrä</option>
-								{#each amounts as a}
+								{#each globalAmountNumbers.get() as a}
 									<option value={a}>{a}</option>
 								{/each}
 							</select>
