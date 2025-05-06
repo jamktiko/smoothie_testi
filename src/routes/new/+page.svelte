@@ -1,22 +1,25 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import type { Fruit } from '$lib/types/fruit';
+	// import type { Fruit } from '$lib/types/fruit';
+	import { fruits as globalFruits } from '$lib/globalFruits.svelte';
+
 	function homePage() {
 		goto('/');
 	}
 
 	import { onMount } from 'svelte';
-	let fruits: Fruit[] = $state([]);
+	// let fruits: Fruit[] = $state(globalFruits.get());
 
-	// Hakee hedelmät fruits.json tiedostosta
-	onMount(async () => {
-		const response = await fetch('/data/fruits.json');
-		fruits = await response.json();
-	});
+	// // Hakee hedelmät fruits.json tiedostosta
+	// onMount(async () => {
+	// 	const response = await fetch('/data/fruits.json');
+	// 	fruits = await response.json();
+	// });
 
 	// Valitut asiat tallennetaan tähän
 	let selected: string[] = $state([]);
 	$inspect(selected);
+	$inspect(globalFruits.get());
 	// Funktio valinnan käsittelemiseen
 </script>
 
@@ -24,7 +27,7 @@
 <h1>Add new recipe</h1>
 <h2>Valitse hedelmiä:</h2>
 <select bind:value={selected}>
-	{#each fruits as fruit}
+	{#each globalFruits.get() as fruit}
 		<option value={fruit.name}>{fruit.name}</option>
 	{/each}
 </select>
