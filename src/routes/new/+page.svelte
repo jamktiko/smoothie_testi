@@ -77,7 +77,10 @@
 			<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 				<h2 class="text-md laila-medium">Ingredients</h2>
 				<ul class="laila-regular py-1 text-sm text-gray-600">
-					<!-- Already added items -->
+					{#each lista as item}
+						<li>{item}</li>
+					{/each}
+
 					<li class="flex flex-row items-center gap-10">
 						<p>{lista}</p>
 						<button
@@ -141,11 +144,7 @@
 		</div>
 	</div>
 </div>
-<ul>
-	{#each lista as item}
-		<li>{item}</li>
-	{/each}
-</ul>
+
 <button id="homepage" onclick={homePage}>Home</button>
 
 <style>
