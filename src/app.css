@@ -55,3 +55,13 @@
 	font-weight: 500;
 	font-style: italic;
 }
+
+body {
+	background-color: rgba(255, 255, 255, 0.764); /* semi-transparent white */
+	background-image: url('/testbg-2.jpg');
+	background-blend-mode: lighten; /* or 'screen' for a soft effect */
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	min-height: 100vh;
+}

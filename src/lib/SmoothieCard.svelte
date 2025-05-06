@@ -67,10 +67,8 @@
 
 <!-- Kortti -->
 
-<!-- Siirä	onclick={avaaModal} tämä takaisin alempaan diviin -->
-
 <div
-	class="relative flex w-full flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300 hover:bg-orange-200 sm:h-165 sm:w-[47%] lg:w-[31%]"
+	class="max-h-auto relative flex w-full flex-col rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300 hover:bg-orange-200 sm:h-165 sm:w-[47%] lg:w-[31%]"
 	in:blur={{ duration: 500 }}
 	out:blur={{ duration: 300 }}
 >
