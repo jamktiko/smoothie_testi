@@ -15,7 +15,7 @@
 
 	let modalAuki = $state(false);
 
-	// avaa smoothie reseptin modal ikkunan (toggle) ja käy päivittämässä smoothiekortin ja smoothien propertyjä
+	// avaa smoothie reseptin modal ikkunan (toggle) ja käy päivittämässä smoothiekortin ja smoothien propertyjä kun suljetaan
 	function toggleModal() {
 		if (modalAuki) {
 			smoothieKortti.notes = notesTeksti;
