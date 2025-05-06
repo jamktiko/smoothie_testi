@@ -1,4 +1,5 @@
 <script lang="ts">
+	// ----------------------- IMPORTIT ---------------------------
 	import { goto } from '$app/navigation';
 	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
 	import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
@@ -128,13 +129,20 @@
 
 <button id="homepage" onclick={homePage}>Home</button>
 <h1>Add new recipe</h1>
-<h2>Valitse hedelmiä:</h2>
-<select bind:value={selected}>
-	{#each globalFruits.get() as fruit}
-		<option value={fruit.name}>{fruit.name}</option>
-	{/each}
-</select>
-<p>{selected}</p>
+<div>
+	<!-- Tästä valitaan raaka-aineen määrä -->
+
+	<!-- Tästä valitaan raaka-aine -->
+	<select bind:value={selected}>
+		{#each globalFruits.get() as fruit}
+			<option value={fruit.name}>{fruit.name}</option>
+		{/each}
+	</select>
+
+	<p>{selected}</p>
+
+	<button id="homepage" onclick={homePage}>Home</button>
+</div>
 
 <style>
 	#homepage {
