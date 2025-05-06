@@ -5,63 +5,98 @@
 	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
 	import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
 	import { fruits as globalFruits } from '$lib/globalFruits.svelte';
-	import type { Fruit } from '$lib/types/fruit';
 	import { amountNumbers as globalAmountNumbers } from '$lib/globalAmountNumbers.svelte';
+	import type { Fruit } from '$lib/types/fruit';
 	import { ingredientFormatointi } from '$lib/ingredientFormatointi';
-
 	import Notes from '$lib/Notes.svelte';
 	import SmoothieCard from '$lib/SmoothieCard.svelte';
+	import { blur } from 'svelte/transition';
+	import type { SmoothieKortti } from '$lib/types/smoothieKortti';
+	import type { Smoothie } from '$lib/types/smoothie';
+	import type { NutritionInfo } from '$lib/types/nutritionInfo';
+	import { luoSmoothieKortti } from '$lib/luoSmoothieKortti';
 
-	// Valitut asiat tallennetaan tähän
-	let selected: string[] = $state([]);
-
-	let uudenSmoothienNimi = $state('');
-	let uudenSmoothienValmistusaika: number | null = $state(null);
-	let uudenSmoothienNotet = $state('');
-
-	let ingredientsAmountTaulukko: number[] = $state([]);
-
-	// onMount(() => {
-	// 	// Täytetään ingredientsAmountTaulukko 0-25 luvuilla, joissa on 0.25 desimaali
-	// 	luoIngredientsAmountTaulukko(3, 25);
-	// });
-
-	// luoIngredientsAmountTaulukko(3, 25);
-
-	// function luoIngredientsAmountTaulukko(mihinAstiDesimaaleja: number, mihinAstiLukuja: number) {
-	// 	for (let i = 0; i <= mihinAstiDesimaaleja; i + 0.25) {
-	// 		ingredientsAmountTaulukko.push(i);
-	// 	}
-	// 	for (let i = mihinAstiDesimaaleja + 1; i <= mihinAstiLukuja; i++) {
-	// 		ingredientsAmountTaulukko.push(i);
-	// 	}
-	// }
-
-	let ingredients: Fruit[] = $state([]);
-
-	let amount: number = $state(0);
-	const amounts = [0.5, 1, 2, 3, 4, 5];
-	let ingredientsLista: string[] = $state([]);
-	function add() {
-		if (selected.length > 0) {
-			ingredientsLista.push(`${amount} ${selected}`);
-		}
-	}
-	// Funktio valinnan käsittelemiseen
+	// ----------------------- FUNKTIOT ---------------------------
 
 	function homePage() {
 		goto('/');
 	}
 
+	function add() {
+		if (selected.length > 0 && amount > 0) {
+			uudenSmoothienIngredients.push(`${selected}`);
+			uudenSmoothienIngredientsAmounts.push(amount);
+		} else {
+			throw new Error('Valitse ensin hedelmä ja määrä!');
+		}
+	}
+
+	function remove(index: number) {
+		uudenSmoothienIngredients.splice(index, 1);
+		uudenSmoothienIngredientsAmounts.splice(index, 1);
+	}
+
+	function createSmoothie() {
+		// console.log('newSmoothie: ', newSmoothie);
+		const newSmoothie: Smoothie = {
+			id: globalSmoothies.get()[globalSmoothies.get().length - 1].id + 1,
+			name: uudenSmoothienNimi,
+			ingredients: uudenSmoothienIngredients,
+			ingredientsAmount: uudenSmoothienIngredientsAmounts,
+			pic: 'https://cdn.pixabay.com/photo/2018/03/16/04/54/healthy-3230225_1280.jpg',
+			preparationTimeMinutes: uudenSmoothienValmistusaika,
+			notes: uudenSmoothienNotet
+		};
+		luoSmoothieKortti(newSmoothie);
+		// const newSmoothieCard: SmoothieKortti = {
+		// 	ID: newSmoothie.id,
+		// 	smoothie: newSmoothie,
+		// 	hedelmat: newSmoothie.ingredients,
+		// 	hedelmatMaara: newSmoothie.ingredientsAmount,
+		// 	ravintoarvot: [],
+		// 	ravintoarvotYht: {
+		// 		calories: 0,
+		// 		carbohydrates: 0,
+		// 		protein: 0,
+		// 		fat: 0,
+		// 		sugar: 0
+		// 	},
+		// 	pic: newSmoothie.pic,
+		// 	valmistusAika: newSmoothie.preparationTimeMinutes,
+		// 	notes: newSmoothie.notes
+		// };
+
+		// console.log('newSmoothieCard: ', newSmoothieCard);
+
+		globalSmoothies.get().push(newSmoothie);
+		// globalSmoothieKortit.get().push(newSmoothieCard);
+		homePage();
+	}
+
+	// ----------------------- MUUTTUJAT --------------------------
+
+	let selected = $state([]);
+	let amount: number = $state(0);
+
+	let uudenSmoothienNimi = $state('');
+	let uudenSmoothienValmistusaika: number = $state(NaN);
+	let uudenSmoothienIngredients: string[] = $state([]);
+	let uudenSmoothienIngredientsAmounts: number[] = $state([]);
+	let uudenSmoothienNotet = $state('');
+
 	$inspect(globalAmountNumbers.get());
 
-	// ----------------------- DEBUGGAUS ---------------------------
+	// ------------------------- DEBUG ----------------------------
 
 	$inspect(uudenSmoothienNimi);
 	$inspect(uudenSmoothienValmistusaika);
 	$inspect(uudenSmoothienNotet);
-	$inspect(selected);
-	$inspect(ingredientsAmountTaulukko);
+	// $inspect(selected);
+	// $inspect(ingredientsAmountTaulukko);
+	$inspect(uudenSmoothienIngredients);
+	$inspect(uudenSmoothienIngredientsAmounts);
+
+	// $inspect(amount);
 	// $inspect(globalFruits.get());
 </script>
 
@@ -76,7 +111,13 @@
 	rel="stylesheet"
 />
 
-<div class="bg-opacity-0 m-0.5 flex flex-wrap justify-center">
+<!-- Outer Div -->
+
+<div
+	class="bg-opacity-0 m-0.5 flex flex-wrap justify-center"
+	in:blur={{ duration: 500 }}
+	out:blur={{ duration: 300 }}
+>
 	<!-- Add Card -->
 	<div
 		class="relative flex w-full max-w-xl flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300"
@@ -99,7 +140,7 @@
 				<div class="flex items-center gap-2">
 					<input
 						bind:value={uudenSmoothienNimi}
-						placeholder="Recipe name"
+						placeholder="Name of smoothie"
 						type="text"
 						class="laila-medium my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-2xl text-slate-600"
 					/>
@@ -119,35 +160,28 @@
 				<input
 					class="my-1 w-45 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
 					type="number"
-					min="0"
+					min="1"
 					max="60"
 					placeholder="Prep time (minutes)"
 					bind:value={uudenSmoothienValmistusaika}
 				/>
-				<!-- <p class="my-1 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600">Prep time</p> -->
 			</div>
 
 			<!-- Ingredients -->
 			<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 				<h2 class="text-md laila-medium">Ingredients</h2>
 				<ul class="laila-regular py-1 text-sm text-gray-600">
-					{#each ingredientsLista as ingredient}
-						<li>{ingredient}{ingredientFormatointi(5.5)}</li>
+					{#each uudenSmoothienIngredients as ingredient, index}
+						<li class="m-1">
+							{ingredientFormatointi(uudenSmoothienIngredientsAmounts[index])}
+							{ingredient}
+							<button
+								onclick={() => remove(index)}
+								class="mx-0.5 rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
+								>Remove</button
+							>
+						</li>
 					{/each}
-
-					<li class="flex flex-row items-center gap-10">
-						<!-- <p>{ingredientsLista}</p> -->
-						<button
-							class="rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
-							>remove</button
-						>
-					</li>
-					<li class="flex flex-row items-center">
-						<button
-							class="rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
-							>remove</button
-						>
-					</li>
 
 					<!-- Buttons at bottom of list -->
 					<li class="mt-3 flex flex-row items-center justify-center gap-10">
@@ -199,8 +233,9 @@
 					class="rounded-xl border-1 bg-slate-50 p-2 px-20 text-slate-600 hover:bg-slate-100 hover:text-black"
 					>Cancel</button
 				>
-				<button class="rounded-xl border-1 bg-orange-200 p-2 px-20 hover:bg-orange-300"
-					>Create</button
+				<button
+					onclick={createSmoothie}
+					class="rounded-xl border-1 bg-orange-200 p-2 px-20 hover:bg-orange-300">Create</button
 				>
 			</div>
 		</div>

@@ -169,6 +169,11 @@
 		padding: 0.5rem 1rem;
 		margin: 0;
 		cursor: pointer;
-		z-index: 100;
+		z-index: 2;
+	}
+
+	#newsmoothiepage:hover {
+		background-color: #626262;
+		transition: background-color 0.3s ease;
 	}
 </style>

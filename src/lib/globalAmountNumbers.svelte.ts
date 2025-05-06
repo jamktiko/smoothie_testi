@@ -2,7 +2,7 @@ class AmountNumbers {
 	private amountNumbers: number[] = $state([]);
 
 	constructor(mihinAstiDesimaaleja: number, mihinAstiLukuja: number) {
-		for (let i = 0; i <= mihinAstiDesimaaleja; i += 0.25) {
+		for (let i = 0.25; i <= mihinAstiDesimaaleja; i += 0.25) {
 			this.amountNumbers.push(i);
 		}
 
@@ -16,4 +16,4 @@ class AmountNumbers {
 	}
 }
 
-export const amountNumbers = new AmountNumbers(3, 25);
+export const amountNumbers = new AmountNumbers(4, 25);
