@@ -167,6 +167,7 @@
 			<!-- buttons below  -->
 			<div class="mt-2 flex flex-row items-center justify-center gap-15">
 				<button
+					onclick={homePage}
 					class="rounded-xl border-1 bg-slate-50 p-2 px-20 text-slate-600 hover:bg-slate-100 hover:text-black"
 					>Cancel</button
 				>
@@ -177,40 +178,3 @@
 		</div>
 	</div>
 </div>
-
-<button id="homepage" onclick={homePage}>Home</button>
-<h1>Add new recipe</h1>
-<div>
-	<!-- Tästä valitaan raaka-aineen määrä -->
-
-	<!-- Tästä valitaan raaka-aine -->
-	<select bind:value={selected}>
-		{#each globalFruits.get() as fruit}
-			<option value={fruit.name}>{fruit.name}</option>
-		{/each}
-	</select>
-
-	<p>{selected}</p>
-
-	<button id="homepage" onclick={homePage}>Home</button>
-</div>
-
-<button id="homepage" onclick={homePage}>Home</button>
-
-<!-- <style>
-	#homepage {
-		position: fixed;
-		bottom: 1rem;
-		left: 1rem;
-		background-color: #767676;
-		color: white;
-		font-family: 'Laila', sans-serif;
-		font-size: 1.5rem;
-		font-weight: 700;
-		border-radius: 0.5rem;
-		padding: 0.5rem 1rem;
-		margin: 0;
-		cursor: pointer;
-		z-index: 100;
-	}
-</style> -->
