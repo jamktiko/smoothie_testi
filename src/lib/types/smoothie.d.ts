@@ -5,6 +5,7 @@ interface Smoothie {
 	ingredientsAmount: number[];
 	pic: string;
 	preparationTimeMinutes: number;
+	notes: string;
 }
 
 export type { Smoothie };

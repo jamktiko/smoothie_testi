@@ -8,17 +8,19 @@
 	interface Props {
 		smoothieKortti: SmoothieKortti;
 	}
-	let { smoothieKortti } = $props();
+	let { smoothieKortti }: Props = $props();
 
 	// notes kentän arvo
-	let teksti = $state(
-		'asdhiuHGUISGjsrjogijhirsjhosjeoigiodsifjsiojfidiofjISJIOGjiodjihjdirhiodjiogoasjegifjsiojidrjhiodjrihoidrohjidrjhiodiorjiho'
-	);
+	let notesTeksti = $state(smoothieKortti.notes);
 
 	let modalAuki = $state(false);
 
-	// avaa smoothie reseptin modal ikkunan (toggle)
+	// avaa smoothie reseptin modal ikkunan (toggle) ja käy päivittämässä smoothiekortin ja smoothien propertyjä
 	function toggleModal() {
+		if (modalAuki) {
+			smoothieKortti.notes = notesTeksti;
+			smoothieKortti.smoothie.notes = notesTeksti;
+		}
 		modalAuki = !modalAuki;
 	}
 
@@ -56,6 +58,8 @@
 	// $inspect(smoothieKortti.ravintoarvotYht);
 	// $inspect(smoothieKortti.pic);
 	// $inspect(smoothieKortti.hedelmatMaara);
+	// $inspect(notesTeksti);
+	// $inspect(smoothieKortti.notes);
 
 	// muuttaa scrollbaring piiloon kun modal on auki
 	let originalOverflow = $state('');
@@ -122,7 +126,7 @@
 		</div>
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Notes</h2>
-			<Notes placeholder={''} bind:taytto={teksti} ellipsisWrapOn={true} />
+			<Notes placeholder={''} bind:taytto={notesTeksti} ellipsisWrapOn={true} />
 		</div>
 	</div>
 	<!-- Tähän loppuu kortin sisältö -->
@@ -200,7 +204,7 @@
 					<!-- Notes -->
 					<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 						<h2 class="text-md laila-medium">Notes</h2>
-						<Notes placeholder={'Add notes'} bind:taytto={teksti} />
+						<Notes placeholder={'Add notes'} bind:taytto={notesTeksti} />
 					</div>
 				</div>
 			</div>

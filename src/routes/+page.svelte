@@ -12,7 +12,10 @@
 	// universal reactivity muuttujat
 	import { fruits as globalFruits } from '$lib/globalFruits.svelte';
 	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
-	import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
+	import {
+		smoothieKortit as globalSmoothieKortit,
+		smoothieKortit
+	} from '$lib/globalSmoothieKortit.svelte';
 
 	import { onMount } from 'svelte';
 	import '../app.css';
@@ -78,7 +81,8 @@
 					sugar: 0
 				},
 				pic: smoothie.pic,
-				valmistusAika: smoothie.preparationTimeMinutes
+				valmistusAika: smoothie.preparationTimeMinutes,
+				notes: smoothie.notes
 			};
 
 			for (let i = 0; i < smoothie.ingredients.length; i++) {
@@ -151,6 +155,7 @@
 	// $inspect(globalSmoothieKortit.get());
 	// $inspect(isSmallScreen);
 	// $inspect(outerWidth);
+	// $inspect(globalSmoothieKortit.get());
 </script>
 
 <link

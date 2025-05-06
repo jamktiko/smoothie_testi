@@ -12,7 +12,8 @@
 		],
 		"ingredientsAmount": [5, 5, 5, 1, 1, 1],
 		"pic": "Berry-Bliss-1.jpg",
-		"preparationTimeMinutes": 5
+		"preparationTimeMinutes": 5,
+		"notes": ""
 	},
 	{
 		"id": 2,
@@ -20,7 +21,8 @@
 		"ingredients": ["Pineapples", "Mangoes", "Bananas", "cup of Milk"],
 		"ingredientsAmount": [1, 1, 1, 1],
 		"pic": "Sunny-Smile-2.jpg",
-		"preparationTimeMinutes": 4
+		"preparationTimeMinutes": 4,
+		"notes": ""
 	},
 	{
 		"id": 3,
@@ -28,7 +30,8 @@
 		"ingredients": ["Kiwis", "Apples", "Pears", "Lemons"],
 		"ingredientsAmount": [2, 2, 1, 1],
 		"pic": "Green-Zing-3.jpg",
-		"preparationTimeMinutes": 6
+		"preparationTimeMinutes": 6,
+		"notes": ""
 	},
 	{
 		"id": 4,
@@ -36,7 +39,8 @@
 		"ingredients": ["Apples", "Bananas", "Pears", "Peaches"],
 		"ingredientsAmount": [2, 1, 1, 1],
 		"pic": "Sweet-Orchard-4.jpg",
-		"preparationTimeMinutes": 3
+		"preparationTimeMinutes": 3,
+		"notes": ""
 	},
 	{
 		"id": 5,
@@ -44,7 +48,8 @@
 		"ingredients": ["Peaches", "Mangoes", "Raspberries", "cup of Almond Milk"],
 		"ingredientsAmount": [1, 1, 10, 1],
 		"pic": "Sunset-Fusion-5.jpg",
-		"preparationTimeMinutes": 3
+		"preparationTimeMinutes": 3,
+		"notes": ""
 	},
 	{
 		"id": 6,
@@ -52,7 +57,8 @@
 		"ingredients": ["Strawberries", "Peaches", "Apples", "cup of Ice Cream"],
 		"ingredientsAmount": [6, 2, 1, 1],
 		"pic": "Summer-Kiss-6.jpg",
-		"preparationTimeMinutes": 4
+		"preparationTimeMinutes": 4,
+		"notes": ""
 	},
 	{
 		"id": 7,
@@ -60,7 +66,8 @@
 		"ingredients": ["Avocados", "Spinach", "Bananas", "Lemons"],
 		"ingredientsAmount": [1, 2, 1, 1],
 		"pic": "Avocado-Spinach-7.jpg",
-		"preparationTimeMinutes": 5
+		"preparationTimeMinutes": 5,
+		"notes": ""
 	},
 	{
 		"id": 8,
@@ -68,7 +75,8 @@
 		"ingredients": ["Pitahayas", "Mangosteens", "Feijoas"],
 		"ingredientsAmount": [1, 1, 2],
 		"pic": "Exotic-Twist-8.jpg",
-		"preparationTimeMinutes": 5
+		"preparationTimeMinutes": 5,
+		"notes": ""
 	},
 	{
 		"id": 9,
@@ -76,7 +84,8 @@
 		"ingredients": ["Jackfruits", "Papayas", "Pineapples", "cup of Coconut Milk"],
 		"ingredientsAmount": [1, 1, 1, 1],
 		"pic": "Tropical-Sunrise-9.jpg",
-		"preparationTimeMinutes": 4
+		"preparationTimeMinutes": 4,
+		"notes": ""
 	},
 	{
 		"id": 10,
@@ -84,7 +93,8 @@
 		"ingredients": ["Peaches", "Apricots", "Mangoes", "cup of Coconut Milk"],
 		"ingredientsAmount": [2, 3, 2, 1],
 		"pic": "Peach-Paradise-10.jpg",
-		"preparationTimeMinutes": 4
+		"preparationTimeMinutes": 4,
+		"notes": ""
 	},
 	{
 		"id": 11,
@@ -92,7 +102,8 @@
 		"ingredients": ["Tangerines", "Lemons", "Pomegranates"],
 		"ingredientsAmount": [2, 1, 2],
 		"pic": "Cirtus-Passion-11.jpg",
-		"preparationTimeMinutes": 3
+		"preparationTimeMinutes": 3,
+		"notes": ""
 	},
 	{
 		"id": 12,
@@ -100,7 +111,8 @@
 		"ingredients": ["Melons", "Dragonfruits", "Kiwis"],
 		"ingredientsAmount": [1, 1, 3],
 		"pic": "Melon-Dream-12.jpg",
-		"preparationTimeMinutes": 4
+		"preparationTimeMinutes": 4,
+		"notes": ""
 	},
 	{
 		"id": 13,
@@ -130,6 +142,7 @@
 		],
 		"ingredientsAmount": [5, 5, 500, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 190000, 1, 1, 1, 1, 4, 1, 1],
 		"pic": "smoothie_placeholder.jpg",
-		"preparationTimeMinutes": 5
+		"preparationTimeMinutes": 5,
+		"notes": ""
 	}
 ]
