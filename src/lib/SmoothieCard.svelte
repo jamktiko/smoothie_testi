@@ -161,7 +161,9 @@
 						class="flex flex-col items-start justify-between [@media(min-width:600px)]:flex-row [@media(min-width:600px)]:items-center"
 					>
 						<div class="flex items-center gap-2">
-							<button onclick={toggleModal} class="material-symbols-outlined pb-1"
+							<button
+								onclick={toggleModal}
+								class="material-symbols-outlined transform cursor-pointer pb-1 transition-transform duration-200 hover:scale-125"
 								>arrow_back_ios</button
 							>
 							<h1 class="laila-medium text-2xl">{smoothieKortti.smoothie.name}</h1>
