@@ -149,7 +149,7 @@
 			<!-- Notes -->
 			<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 				<h2 class="text-md laila-medium">Notes</h2>
-				<Notes placeholder={'Add notes'} taytto={''} ellipsisWrapOn={true} />
+				<Notes placeholder={'Add some notes about this recipe'} taytto={''} ellipsisWrapOn={true} />
 			</div>
 			<!-- <div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 				<h2 class="text-md laila-medium">Notes</h2>
