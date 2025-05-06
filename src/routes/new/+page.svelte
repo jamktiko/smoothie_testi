@@ -10,14 +10,6 @@
 		goto('/');
 	}
 
-	// let fruits: Fruit[] = $state(globalFruits.get());
-
-	// // Hakee hedelmät fruits.json tiedostosta
-	// onMount(async () => {
-	// 	const response = await fetch('/data/fruits.json');
-	// 	fruits = await response.json();
-	// });
-
 	// Valitut asiat tallennetaan tähän
 	let selected: string[] = $state([]);
 
