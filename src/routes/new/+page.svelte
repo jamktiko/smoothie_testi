@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	// import type { Fruit } from '$lib/types/fruit';
+	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
+	import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
 	import { fruits as globalFruits } from '$lib/globalFruits.svelte';
 
 	function homePage() {
@@ -56,11 +57,10 @@
 					class="items-start justify-between [@media(min-width:400px)]:flex-row [@media(min-width:400px)]:items-center"
 				>
 					<div class="flex items-center gap-2">
-						<h1
+						<textarea
 							class="laila-medium my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-2xl text-slate-600"
+							>Recipe Name</textarea
 						>
-							Recipe Name
-						</h1>
 					</div>
 					<p class="my-1 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600">Prep time</p>
 				</div>
