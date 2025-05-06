@@ -57,10 +57,22 @@
 
 	$effect(() => {
 		if (modalAuki) {
+			// Calculate scrollbar width
+			const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+			// Store original values
 			originalOverflow = document.body.style.overflow;
+			const originalPaddingRight = document.body.style.paddingRight;
+
+			// Apply scroll lock + compensate layout shift
 			document.body.style.overflow = 'hidden';
+			document.body.style.paddingRight = `${scrollbarWidth}px`;
+
+			// Store original padding for reset
+			document.body.dataset.originalPaddingRight = originalPaddingRight ?? '';
 		} else {
-			document.body.style.overflow = originalOverflow;
+			document.body.style.overflow = originalOverflow ?? '';
+			document.body.style.paddingRight = document.body.dataset.originalPaddingRight ?? '';
 		}
 	});
 </script>
@@ -70,7 +82,7 @@
 <!-- Siirä	onclick={avaaModal} tämä takaisin alempaan diviin -->
 
 <div
-	class="relative flex w-full flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300 hover:bg-orange-200 sm:h-165 sm:w-[47%] lg:w-[31%]"
+	class="relative flex w-full flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300 hover:bg-orange-200 sm:h-auto sm:w-[47%] lg:w-[31%]"
 	in:blur={{ duration: 500 }}
 	out:blur={{ duration: 300 }}
 >
@@ -139,17 +151,15 @@
 				[@media(max-width:600px)]:top-0
 				[@media(max-width:600px)]:max-h-screen
 				[@media(max-width:600px)]:w-screen"
+			>
 				in:scale={{ duration: 400 }}
 				out:scale={{ duration: 500 }}
-			>
 				<!-- Image -->
-				<div class="relative">
-					<img
-						src={smoothieKortti.pic}
-						alt={smoothieKortti.smoothie.name}
-						class="max-h-70 w-full rounded-xl border-b-2 object-cover"
-					/>
-				</div>
+				<img
+					src={smoothieKortti.pic}
+					alt={smoothieKortti.smoothie.name}
+					class="relative max-h-70 w-full border-b-2 object-cover"
+				/>
 
 				<!-- Content (desktop only text, no button) -->
 				<div class=" flex-1 flex-col overflow-y-auto p-4">
