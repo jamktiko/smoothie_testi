@@ -27,13 +27,7 @@
 <h1>Add new recipe</h1>
 <div>
 	<!-- Tästä valitaan raaka-aineen määrä -->
-	<select bind:value={amount}>
-		<option value="1">1</option>
-		<option value="2">2</option>
-		<option value="3">3</option>
-		<option value="4">4</option>
-		<option value="5">5</option>
-	</select>
+
 	<!-- Tästä valitaan raaka-aine -->
 	<select bind:value={selected}>
 		{#each globalFruits.get() as fruit}
@@ -41,7 +35,7 @@
 		{/each}
 	</select>
 
-	<p>{amount} {selected}</p>
+	<p>{selected}</p>
 
 	<button id="homepage" onclick={homePage}>Home</button>
 </div>
