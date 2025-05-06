@@ -4,6 +4,7 @@
 	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
 	import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
 	import { fruits as globalFruits } from '$lib/globalFruits.svelte';
+	import Notes from '$lib/Notes.svelte';
 
 	function homePage() {
 		goto('/');
@@ -132,10 +133,14 @@
 			</div>
 
 			<!-- Notes -->
-			<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
+			<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
+				<h2 class="text-md laila-medium">Notes</h2>
+				<Notes placeholder={'Add notes'} taytto={''} ellipsisWrapOn={true} />
+			</div>
+			<!-- <div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 				<h2 class="text-md laila-medium">Notes</h2>
 				<p class="laila-regular text-sm text-slate-600">Add some notes about this recipe</p>
-			</div>
+			</div> -->
 
 			<!-- buttons below  -->
 			<div class="mt-2 flex flex-row items-center justify-center gap-15">
