@@ -16,6 +16,8 @@
 
 	import { onMount } from 'svelte';
 	import '../app.css';
+	import Button from '$lib/Button.svelte';
+	import { goto } from '$app/navigation';
 
 	// ----------------------- FUNKTIOT ---------------------------
 
@@ -131,6 +133,10 @@
 		filteroiSmoothieKortteja();
 	});
 
+	function newSmoothie() {
+		goto('../new');
+	}
+
 	// ----------------------- MUUTTUJAT --------------------------
 
 	// let smoothieKortitTaulukko: SmoothieKortti[] = $state([]);
@@ -163,8 +169,8 @@
 	href="https://fonts.googleapis.com/css2?family=Honk&family=Kalnia+Glaze:wght@100..700&family=Laila:wght@300;400;500;600;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merienda:wght@300..900&family=Nabla&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
 	rel="stylesheet"
 />
+<button id="newsmoothiepage" onclick={newSmoothie}>Add recipe</button>
 
-<Header />
 <nav class="flex items-center justify-center">
 	<Searchbar placeholder={'Search smoothies'} bind:value={searchBarinArvo} />
 </nav>
@@ -200,7 +206,6 @@
 </div>
 
 <!-- footer -->
-<Footer footerText={'Ohjelmistoprojekti 1 by Team 2'} />
 
 <!-- <style>
 	/* loading spinner styles */
@@ -248,3 +253,21 @@
 		}
 	}
 </style> -->
+
+<style>
+	#newsmoothiepage {
+		position: fixed;
+		bottom: 1rem;
+		left: 1rem;
+		background-color: #767676;
+		color: white;
+		font-family: 'Laila', sans-serif;
+		font-size: 1.5rem;
+		font-weight: 700;
+		border-radius: 0.5rem;
+		padding: 0.5rem 1rem;
+		margin: 0;
+		cursor: pointer;
+		z-index: 100;
+	}
+</style>
