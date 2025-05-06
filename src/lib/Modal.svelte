@@ -16,7 +16,7 @@
 	aria-label="backdrop"
 ></button>
 
-<div class="modal">
+<div class="absolute">
 	{#if header}
 		<header>
 			{@render header()}
@@ -31,9 +31,3 @@
 		</footer>
 	{/if}
 </div>
-
-<style>
-	.modal {
-		position: absolute;
-	}
-</style>
