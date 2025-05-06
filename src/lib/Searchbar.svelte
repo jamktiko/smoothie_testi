@@ -7,7 +7,9 @@
 	let { placeholder, value = $bindable() }: Props = $props();
 </script>
 
-<div class="relative mx-5 mt-6 flex h-10 w-110 flex-row rounded-xl border-2 p-1.5 pl-4 sm:w-145">
+<div
+	class="relative mx-5 mt-6 flex h-10 w-110 flex-row rounded-xl border-2 bg-white p-1.5 pl-4 sm:w-145"
+>
 	<input
 		type="text"
 		{placeholder}
