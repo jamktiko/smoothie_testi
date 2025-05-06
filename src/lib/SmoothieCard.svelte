@@ -161,7 +161,7 @@
 				<img
 					src={smoothieKortti.pic}
 					alt={smoothieKortti.smoothie.name}
-					class="relative max-h-70 w-full border-b-2 object-cover"
+					class="relative max-h-70 w-full rounded-b-xl border-b-2 object-cover"
 				/>
 
 				<!-- Content (desktop only text, no button) -->
