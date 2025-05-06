@@ -28,6 +28,16 @@
 	$inspect(uudenSmoothienNimi);
 	// $inspect(selected);
 	// $inspect(globalFruits.get());
+	$inspect(selected);
+	$inspect(globalFruits.get());
+	let amount: number = $state(0);
+	const amounts = [0.5, 1, 2, 3, 4, 5];
+	let lista: string[] = $state([]);
+	function add() {
+		if (selected.length > 0) {
+			lista.push(`${amount} ${selected}`);
+		}
+	}
 	// Funktio valinnan käsittelemiseen
 </script>
 
@@ -96,9 +106,12 @@
 			<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 				<h2 class="text-md laila-medium">Ingredients</h2>
 				<ul class="laila-regular py-1 text-sm text-gray-600">
-					<!-- Already added items -->
+					{#each lista as item}
+						<li>{item}</li>
+					{/each}
+
 					<li class="flex flex-row items-center gap-10">
-						<p>• 2 cups strawberries</p>
+						<p>{lista}</p>
 						<button
 							class="rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
 							>remove</button
@@ -116,17 +129,26 @@
 					<li class="mt-3 flex flex-row items-center justify-center gap-10">
 						<button
 							class="flex flex-row items-center justify-center rounded-xl border-1 px-2 py-0.5"
-							><p>Amount</p>
-							<span class="material-symbols-outlined">arrow_drop_down</span></button
 						>
+							<select bind:value={amount}>
+								<option value="" disabled selected hidden>Valitse määrä</option>
+								{#each amounts as a}
+									<option value={a}>{a}</option>
+								{/each}
+							</select>
+						</button>
 						<button
 							class="flex flex-row items-center justify-center rounded-xl border-1 px-10 py-0.5"
-							><p>Add ingredient</p>
-							<span class="material-symbols-outlined">arrow_drop_down</span></button
 						>
+							<select bind:value={selected}>
+								{#each globalFruits.get() as fruit}
+									<option value={fruit.name}>{fruit.name}</option>
+								{/each}
+							</select>
+						</button>
 						<button
 							class="rounded-xl border-1 bg-orange-200 px-10 py-1 text-black hover:bg-orange-300"
-							>Add</button
+							onclick={add}>Add</button
 						>
 					</li>
 				</ul>
@@ -173,7 +195,9 @@
 	<button id="homepage" onclick={homePage}>Home</button>
 </div>
 
-<style>
+<button id="homepage" onclick={homePage}>Home</button>
+
+<!-- <style>
 	#homepage {
 		position: fixed;
 		bottom: 1rem;
@@ -189,4 +213,4 @@
 		cursor: pointer;
 		z-index: 100;
 	}
-</style>
+</style> -->
