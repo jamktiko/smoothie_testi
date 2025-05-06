@@ -4,15 +4,6 @@
 	import { onMount } from 'svelte';
 	import type { Fruit } from '$lib/types/fruit';
 
-	// ----------------------- MUUTTUJAT --------------------------
-	//hedelmien määrät, null tarkoittaa että ei ole valittu mitään
-	type Amount = 1 | 2 | 3 | 4 | 5 | null;
-	//Valittu määrä tallennetaan tähän
-	let amount: Amount = $state(null);
-
-	let fruits: Fruit[] = $state([]);
-	// Valittu hedelmä tallennetaan tähän
-	let selected: string = $state('');
 	// ----------------------- FUNKTIOT ---------------------------
 	//button mikä vie etusivulle
 	function homePage() {
