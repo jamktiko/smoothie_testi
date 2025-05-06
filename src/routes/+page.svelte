@@ -1,8 +1,6 @@
 <script lang="ts">
 	// ----------------------- IMPORTIT ---------------------------
 
-	import type { Smoothie } from '$lib/types/smoothie';
-	import type { Fruit } from '$lib/types/fruit';
 	import type { SmoothieKortti } from '$lib/types/smoothieKortti';
 	import type { NutritionInfo } from '$lib/types/nutritionInfo';
 
@@ -86,12 +84,12 @@
 			for (let i = 0; i < smoothie.ingredients.length; i++) {
 				const ingredient = smoothie.ingredients[i];
 
-				globalFruits.get().forEach((fruit) => {
-					if (fruit.name === ingredient) {
-						uusiSmoothieKortti.hedelmat.push(fruit.name);
-						uusiSmoothieKortti.ravintoarvot.push(fruit.nutritions);
-					}
+				const loytynytIngredient = globalFruits.get().find((fruit) => {
+					return fruit.name === ingredient;
 				});
+
+				uusiSmoothieKortti.hedelmat.push(loytynytIngredient?.name);
+				uusiSmoothieKortti.ravintoarvot.push(loytynytIngredient?.nutritions);
 			}
 			uusiSmoothieKortti.ravintoarvotYht = laskeRavintoarvotYhteensa(
 				uusiSmoothieKortti.ravintoarvot,

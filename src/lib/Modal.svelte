@@ -5,26 +5,31 @@
 		header?: Snippet;
 		children: Snippet;
 		footer?: Snippet;
-		avaaModal: () => void;
+		toggleModal: () => void;
 	}
-	let { header, children, footer, avaaModal }: Props = $props();
+	let { header, children, footer, toggleModal: toggleModal }: Props = $props();
 </script>
 
 <button
 	class="backdrop fixed top-0 left-0 z-10 h-screen w-full bg-black/75"
-	onclick={avaaModal}
+	onclick={toggleModal}
 	aria-label="backdrop"
 ></button>
 
 <div class="modal">
-	<!-- <header>
-		{@render header()}
-	</header> -->
+	{#if header}
+		<header>
+			{@render header()}
+		</header>
+	{/if}
 
 	{@render children()}
-	<!-- <footer>
-		{@render footer()}
-	</footer> -->
+
+	{#if footer}
+		<footer>
+			{@render footer()}
+		</footer>
+	{/if}
 </div>
 
 <style>

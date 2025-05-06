@@ -1,3 +1,4 @@
+// universal reactivity luokka smoothieille mitä voidaan käyttää missä vaan komponentissa
 import type { Smoothie } from '$lib/types/smoothie';
 
 class Smoothies {

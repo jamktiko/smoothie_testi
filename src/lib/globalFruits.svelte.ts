@@ -1,3 +1,4 @@
+// universal reactivity luokka fruitseille mitä voidaan käyttää missä vaan komponentissa
 import type { Fruit } from '$lib/types/fruit';
 
 class Fruits {
