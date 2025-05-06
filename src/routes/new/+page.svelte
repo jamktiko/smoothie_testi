@@ -9,7 +9,6 @@
 		goto('/');
 	}
 
-	import { onMount } from 'svelte';
 	// let fruits: Fruit[] = $state(globalFruits.get());
 
 	// // Hakee hedelmät fruits.json tiedostosta
@@ -20,8 +19,14 @@
 
 	// Valitut asiat tallennetaan tähän
 	let selected: string[] = $state([]);
-	$inspect(selected);
-	$inspect(globalFruits.get());
+
+	let uudenSmoothienNimi = $state('');
+	let uudenSmoothienValmistusaika = $state(1);
+	const valmistusajatMin = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
+	$inspect(uudenSmoothienNimi);
+	// $inspect(selected);
+	// $inspect(globalFruits.get());
 	// Funktio valinnan käsittelemiseen
 </script>
 
@@ -36,96 +41,115 @@
 	rel="stylesheet"
 />
 
-<body>
-	<div class="bg-opacity-0 m-0.5 flex flex-wrap justify-center">
-		<!-- Add Card -->
-		<div
-			class="relative flex w-full max-w-xl flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300"
-		>
-			<!-- Image -->
-			<div class="relative">
-				<img
-					src="https://cdn.pixabay.com/photo/2018/03/16/04/54/healthy-3230225_1280.jpg"
-					alt="Green Smoothie"
-					class="max-h-60 w-full rounded-xl border-b-2 object-cover"
+<div class="bg-opacity-0 m-0.5 flex flex-wrap justify-center">
+	<!-- Add Card -->
+	<div
+		class="relative flex w-full max-w-xl flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300"
+	>
+		<!-- Image -->
+		<div class="relative">
+			<img
+				src="https://cdn.pixabay.com/photo/2018/03/16/04/54/healthy-3230225_1280.jpg"
+				alt="Green Smoothie"
+				class="max-h-60 w-full rounded-xl border-b-2 object-cover"
+			/>
+		</div>
+
+		<!-- Content-->
+		<div class=" flex-1 flex-col overflow-y-auto p-4">
+			<!-- Title and Timer -->
+			<div
+				class="items-start justify-between [@media(min-width:400px)]:flex-row [@media(min-width:400px)]:items-center"
+			>
+				<div class="flex items-center gap-2">
+					<input
+						bind:value={uudenSmoothienNimi}
+						placeholder="Recipe name"
+						type="text"
+						class="laila-medium my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-2xl text-slate-600"
+					/>
+				</div>
+
+				<!-- <select
+					placeholder="Prep time (minutes)"
+					bind:value={uudenSmoothienValmistusaika}
+					class="my-1 w-45 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
+				>
+					<option value="" disabled selected hidden>Valitse määrä</option>
+					{#each valmistusajatMin as a}
+						<option value={a}>{a}</option>
+					{/each}
+				</select> -->
+
+				<input
+					class="my-1 w-45 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
+					type="number"
+					min="0"
+					max="60"
+					placeholder="Prep time (minutes)"
 				/>
+				<!-- <p class="my-1 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600">Prep time</p> -->
 			</div>
 
-			<!-- Content-->
-			<div class=" flex-1 flex-col overflow-y-auto p-4">
-				<!-- Title and Timer -->
-				<div
-					class="items-start justify-between [@media(min-width:400px)]:flex-row [@media(min-width:400px)]:items-center"
-				>
-					<div class="flex items-center gap-2">
-						<textarea
-							class="laila-medium my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-2xl text-slate-600"
-							>Recipe Name</textarea
+			<!-- Ingredients -->
+			<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
+				<h2 class="text-md laila-medium">Ingredients</h2>
+				<ul class="laila-regular py-1 text-sm text-gray-600">
+					<!-- Already added items -->
+					<li class="flex flex-row items-center gap-10">
+						<p>• 2 cups strawberries</p>
+						<button
+							class="rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
+							>remove</button
 						>
-					</div>
-					<p class="my-1 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600">Prep time</p>
-				</div>
+					</li>
+					<li class="flex flex-row items-center">
+						<p>• 1/2 cup of milk</p>
+						<button
+							class="rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
+							>remove</button
+						>
+					</li>
 
-				<!-- Ingredients -->
-				<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
-					<h2 class="text-md laila-medium">Ingredients</h2>
-					<ul class="laila-regular py-1 text-sm text-gray-600">
-						<!-- Already added items -->
-						<li class="flex flex-row items-center gap-10">
-							<p>• 2 cups strawberries</p>
-							<button
-								class="rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
-								>remove</button
-							>
-						</li>
-						<li class="flex flex-row items-center">
-							<p>• 1/2 cup of milk</p>
-							<button
-								class="rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
-								>remove</button
-							>
-						</li>
+					<!-- Buttons at bottom of list -->
+					<li class="mt-3 flex flex-row items-center justify-center gap-10">
+						<button
+							class="flex flex-row items-center justify-center rounded-xl border-1 px-2 py-0.5"
+							><p>Amount</p>
+							<span class="material-symbols-outlined">arrow_drop_down</span></button
+						>
+						<button
+							class="flex flex-row items-center justify-center rounded-xl border-1 px-10 py-0.5"
+							><p>Add ingredient</p>
+							<span class="material-symbols-outlined">arrow_drop_down</span></button
+						>
+						<button
+							class="rounded-xl border-1 bg-orange-200 px-10 py-1 text-black hover:bg-orange-300"
+							>Add</button
+						>
+					</li>
+				</ul>
+			</div>
 
-						<!-- Buttons at bottom of list -->
-						<li class="mt-3 flex flex-row items-center justify-center gap-10">
-							<button
-								class="flex flex-row items-center justify-center rounded-xl border-1 px-2 py-0.5"
-								><p>Amount</p>
-								<span class="material-symbols-outlined">arrow_drop_down</span></button
-							>
-							<button
-								class="flex flex-row items-center justify-center rounded-xl border-1 px-10 py-0.5"
-								><p>Add ingredient</p>
-								<span class="material-symbols-outlined">arrow_drop_down</span></button
-							>
-							<button
-								class="rounded-xl border-1 bg-orange-200 px-10 py-1 text-black hover:bg-orange-300"
-								>Add</button
-							>
-						</li>
-					</ul>
-				</div>
+			<!-- Notes -->
+			<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
+				<h2 class="text-md laila-medium">Notes</h2>
+				<p class="laila-regular text-sm text-slate-600">Add some notes about this recipe</p>
+			</div>
 
-				<!-- Notes -->
-				<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
-					<h2 class="text-md laila-medium">Notes</h2>
-					<p class="laila-regular text-sm text-slate-600">Add some notes about this recipe</p>
-				</div>
-
-				<!-- buttons below  -->
-				<div class="mt-2 flex flex-row items-center justify-center gap-15">
-					<button
-						class="rounded-xl border-1 bg-slate-50 p-2 px-20 text-slate-600 hover:bg-slate-100 hover:text-black"
-						>Cancel</button
-					>
-					<button class="rounded-xl border-1 bg-orange-200 p-2 px-20 hover:bg-orange-300"
-						>Create</button
-					>
-				</div>
+			<!-- buttons below  -->
+			<div class="mt-2 flex flex-row items-center justify-center gap-15">
+				<button
+					class="rounded-xl border-1 bg-slate-50 p-2 px-20 text-slate-600 hover:bg-slate-100 hover:text-black"
+					>Cancel</button
+				>
+				<button class="rounded-xl border-1 bg-orange-200 p-2 px-20 hover:bg-orange-300"
+					>Create</button
+				>
 			</div>
 		</div>
 	</div>
-</body>
+</div>
 
 <button id="homepage" onclick={homePage}>Home</button>
 <h1>Add new recipe</h1>

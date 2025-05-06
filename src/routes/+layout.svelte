@@ -5,6 +5,8 @@
 
 	let { children }: { children: Snippet } = $props();
 	import '../app.css';
+
+	import { onMount } from 'svelte';
 </script>
 
 <Header />
