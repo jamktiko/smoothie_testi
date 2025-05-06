@@ -1,27 +1,22 @@
 <script lang="ts">
 	// ----------------------- IMPORTIT ---------------------------
+
 	import { goto } from '$app/navigation';
 	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
 	import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
 	import { fruits as globalFruits } from '$lib/globalFruits.svelte';
-	import Notes from '$lib/Notes.svelte';
 
-	function homePage() {
-		goto('/');
-	}
+	import Notes from '$lib/Notes.svelte';
 
 	// Valitut asiat tallennetaan tähän
 	let selected: string[] = $state([]);
 
 	let uudenSmoothienNimi = $state('');
 	let uudenSmoothienValmistusaika = $state(1);
-	const valmistusajatMin = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+	let uudenSmoothienNotet = $state('');
 
-	$inspect(uudenSmoothienNimi);
-	// $inspect(selected);
-	// $inspect(globalFruits.get());
-	$inspect(selected);
-	$inspect(globalFruits.get());
+	let ingredientsAmountTaulukko: number[] = $state([]);
+
 	let amount: number = $state(0);
 	const amounts = [0.5, 1, 2, 3, 4, 5];
 	let lista: string[] = $state([]);
@@ -31,6 +26,18 @@
 		}
 	}
 	// Funktio valinnan käsittelemiseen
+
+	function homePage() {
+		goto('/');
+	}
+
+	// ----------------------- DEBUGGAUS ---------------------------
+
+	$inspect(uudenSmoothienNimi);
+	$inspect(uudenSmoothienValmistusaika);
+	$inspect(uudenSmoothienNotet);
+	$inspect(selected);
+	// $inspect(globalFruits.get());
 </script>
 
 <link
@@ -90,6 +97,7 @@
 					min="0"
 					max="60"
 					placeholder="Prep time (minutes)"
+					bind:value={uudenSmoothienValmistusaika}
 				/>
 				<!-- <p class="my-1 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600">Prep time</p> -->
 			</div>
@@ -149,7 +157,11 @@
 			<!-- Notes -->
 			<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 				<h2 class="text-md laila-medium">Notes</h2>
-				<Notes placeholder={'Add some notes about this recipe'} taytto={''} ellipsisWrapOn={true} />
+				<Notes
+					placeholder={'Add some notes about this recipe'}
+					bind:taytto={uudenSmoothienNotet}
+					ellipsisWrapOn={true}
+				/>
 			</div>
 			<!-- <div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 				<h2 class="text-md laila-medium">Notes</h2>
