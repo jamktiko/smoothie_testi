@@ -31,7 +31,7 @@
 	rel="stylesheet"
 />
 
-<div class="bg-opacity-0 m-0.5 flex flex-wrap justify-center">
+<div class="bg-opacity-0 m-0.5 mt-5 flex flex-wrap justify-center">
 	<!-- Add Card -->
 	<div
 		class="relative flex w-full max-w-xl flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300"
@@ -46,7 +46,7 @@
 		</div>
 
 		<!-- Content-->
-		<div class=" flex-1 flex-col overflow-y-auto p-4">
+		<div class="flex-1 flex-col overflow-y-auto p-4">
 			<!-- Title and Timer -->
 			<div
 				class="items-start justify-between [@media(min-width:400px)]:flex-row [@media(min-width:400px)]:items-center"
@@ -65,37 +65,37 @@
 			<!-- Ingredients -->
 			<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 				<h2 class="text-md laila-medium">Ingredients</h2>
-				<ul class="laila-regular py-1 text-sm text-gray-600">
+				<ul class="laila-regular px-1 py-1 text-sm text-gray-600">
 					<!-- Already added items -->
-					<li class="flex flex-row items-center gap-10">
+					<li class="flex flex-row items-center pr-2">
 						<p>• 2 cups strawberries</p>
 						<button
-							class="rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
+							class="my-1 ml-auto cursor-pointer rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
 							>remove</button
 						>
 					</li>
-					<li class="flex flex-row items-center">
+					<li class="flex flex-row items-center pr-2">
 						<p>• 1/2 cup of milk</p>
 						<button
-							class="rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
+							class="ml-auto cursor-pointer rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
 							>remove</button
 						>
 					</li>
 
 					<!-- Buttons at bottom of list -->
-					<li class="mt-3 flex flex-row items-center justify-center gap-10">
+					<li class="mt-3 flex w-full flex-row items-center pr-2">
 						<button
-							class="flex flex-row items-center justify-center rounded-xl border-1 px-2 py-0.5"
+							class="mr-auto flex w-auto cursor-pointer flex-row items-center justify-between rounded-xl border-1 px-5 py-0.5"
 							><p>Amount</p>
 							<span class="material-symbols-outlined">arrow_drop_down</span></button
 						>
 						<button
-							class="flex flex-row items-center justify-center rounded-xl border-1 px-10 py-0.5"
-							><p>Add ingredient</p>
+							class="flex cursor-pointer flex-row items-center justify-between rounded-xl border-1 px-15 py-0.5"
+							><p>Choose ingredient</p>
 							<span class="material-symbols-outlined">arrow_drop_down</span></button
 						>
 						<button
-							class="rounded-xl border-1 bg-orange-200 px-10 py-1 text-black hover:bg-orange-300"
+							class="ml-auto cursor-pointer rounded-xl border-1 bg-orange-200 px-10 py-1 text-black hover:bg-orange-300"
 							>Add</button
 						>
 					</li>
@@ -109,12 +109,13 @@
 			</div>
 
 			<!-- buttons below  -->
-			<div class="mt-2 flex flex-row items-center justify-center gap-15">
+			<div class="mt-2 flex flex-row items-center justify-center gap-5">
 				<button
-					class="hover:text-blackx rounded-xl border-1 bg-slate-50 p-2 px-20 text-slate-600 hover:bg-slate-100"
+					class="cursor-pointer rounded-xl border-1 bg-slate-50 p-2 px-20 text-slate-600 hover:bg-slate-100 hover:text-black"
 					onclick={homePage}>Cancel</button
 				>
-				<button class="rounded-xl border-1 bg-orange-200 p-2 px-20 hover:bg-orange-300"
+				<button
+					class="cursor-pointer rounded-xl border-1 bg-orange-200 p-2 px-20 hover:bg-orange-300"
 					>Create</button
 				>
 			</div>
