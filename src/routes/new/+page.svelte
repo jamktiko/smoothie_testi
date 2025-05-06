@@ -23,6 +23,12 @@
 	$inspect(globalFruits.get());
 	let amount: number = $state(0);
 	const amounts = [0.5, 1, 2, 3, 4, 5];
+	let lista: string[] = $state([]);
+	function add() {
+		if (selected.length > 0) {
+			lista.push(`${amount} ${selected}`);
+		}
+	}
 	// Funktio valinnan käsittelemiseen
 </script>
 
@@ -73,7 +79,7 @@
 				<ul class="laila-regular py-1 text-sm text-gray-600">
 					<!-- Already added items -->
 					<li class="flex flex-row items-center gap-10">
-						<p>• 2 cups strawberries</p>
+						<p>{lista}</p>
 						<button
 							class="rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
 							>remove</button
@@ -110,7 +116,7 @@
 						</button>
 						<button
 							class="rounded-xl border-1 bg-orange-200 px-10 py-1 text-black hover:bg-orange-300"
-							>Add</button
+							onclick={add}>Add</button
 						>
 					</li>
 				</ul>
@@ -135,7 +141,11 @@
 		</div>
 	</div>
 </div>
-
+<ul>
+	{#each lista as item}
+		<li>{item}</li>
+	{/each}
+</ul>
 <button id="homepage" onclick={homePage}>Home</button>
 
 <style>
