@@ -15,28 +15,35 @@
 	});
 
 	// Valitut asiat tallennetaan tähän
-	let selected = $state(new Set());
-
+	let selected: string[] = $state([]);
+	$inspect(selected);
 	// Funktio valinnan käsittelemiseen
-	function toggle(item: string) {
-		if (selected.has(item)) {
-			selected.delete(item);
-		} else {
-			selected.add(item);
-		}
-		// Luo uusi Set, jotta Svelte reagoi muutokseen
-		selected = new Set(selected);
-	}
 </script>
 
-<button onclick={homePage}>Home</button>
+<button id="homepage" onclick={homePage}>Home</button>
 <h1>Add new recipe</h1>
 <h2>Valitse hedelmiä:</h2>
-{#each fruits as item}
-	<label>
-		<input type="checkbox" checked={selected.has(item.name)} onchange={() => toggle(item.name)} />
-		{item.name}
-	</label><br />
-{/each}
+<select bind:value={selected}>
+	{#each fruits as fruit}
+		<option value={fruit.name}>{fruit.name}</option>
+	{/each}
+</select>
+<p>{selected}</p>
 
-<p>Valitut: {Array.from(selected).join(', ')}</p>
+<style>
+	#homepage {
+		position: fixed;
+		bottom: 1rem;
+		left: 1rem;
+		background-color: #767676;
+		color: white;
+		font-family: 'Laila', sans-serif;
+		font-size: 1.5rem;
+		font-weight: 700;
+		border-radius: 0.5rem;
+		padding: 0.5rem 1rem;
+		margin: 0;
+		cursor: pointer;
+		z-index: 100;
+	}
+</style>
