@@ -4,7 +4,7 @@ import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKorti
 import type { Smoothie } from '$lib/types/smoothie';
 import type { NutritionInfo } from '$lib/types/nutritionInfo';
 
-export const luoSmoothieKortti = (smoothie: Smoothie) => {
+export const luoSmoothieKortti = (smoothie: Smoothie, lisataankoAlkuun: boolean = false) => {
 	const uusiSmoothieKortti: SmoothieKortti = {
 		ID: smoothie.id,
 		smoothie: smoothie,
@@ -37,7 +37,13 @@ export const luoSmoothieKortti = (smoothie: Smoothie) => {
 		uusiSmoothieKortti.ravintoarvot,
 		uusiSmoothieKortti.hedelmatMaara
 	);
-	globalSmoothieKortit.get().push(uusiSmoothieKortti);
+
+	if (lisataankoAlkuun) {
+		globalSmoothieKortit.get().unshift(uusiSmoothieKortti);
+	} else {
+		globalSmoothieKortit.get().push(uusiSmoothieKortti);
+	}
+
 	return uusiSmoothieKortti;
 };
 

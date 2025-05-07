@@ -55,7 +55,7 @@
 			preparationTimeMinutes: uudenSmoothienValmistusaika,
 			notes: uudenSmoothienNotet
 		};
-		luoSmoothieKortti(newSmoothie);
+		luoSmoothieKortti(newSmoothie, true);
 		// const newSmoothieCard: SmoothieKortti = {
 		// 	ID: newSmoothie.id,
 		// 	smoothie: newSmoothie,
@@ -76,7 +76,7 @@
 
 		// console.log('newSmoothieCard: ', newSmoothieCard);
 
-		globalSmoothies.get().push(newSmoothie);
+		globalSmoothies.get().unshift(newSmoothie);
 		// globalSmoothieKortit.get().push(newSmoothieCard);
 		homePage();
 	}
