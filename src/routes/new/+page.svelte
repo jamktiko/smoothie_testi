@@ -88,18 +88,25 @@
 	let uudenSmoothienIngredientsAmounts: number[] = $state([]);
 	let uudenSmoothienNotet = $state('');
 
-	$inspect(globalAmountNumbers.get());
+	// ------------------- VIRHEENTARKISTUS ----------------------
+
+	let kunnollinenNimi = $derived(uudenSmoothienNimi.length > 0 ? true : false);
+	let kunnollinenValmistusaika = $derived(isNaN(uudenSmoothienValmistusaika) ? false : true);
+	let kunnollisetIngredients = $derived(uudenSmoothienIngredients.length > 0 ? true : false);
 
 	// ------------------------- DEBUG ----------------------------
 
-	$inspect(uudenSmoothienNimi);
-	$inspect(uudenSmoothienValmistusaika);
-	$inspect(uudenSmoothienNotet);
+	$inspect(kunnollisetIngredients);
+	$inspect(kunnollinenNimi);
+	$inspect(kunnollinenValmistusaika);
+	// $inspect(globalAmountNumbers.get());
+	// $inspect(uudenSmoothienNimi);
+	// $inspect(uudenSmoothienValmistusaika);
+	// $inspect(uudenSmoothienNotet);
 	// $inspect(selected);
 	// $inspect(ingredientsAmountTaulukko);
-	$inspect(uudenSmoothienIngredients);
-	$inspect(uudenSmoothienIngredientsAmounts);
-
+	// $inspect(uudenSmoothienIngredients);
+	// $inspect(uudenSmoothienIngredientsAmounts);
 	// $inspect(amount);
 	// $inspect(globalFruits.get());
 </script>
@@ -144,14 +151,17 @@
 				<div
 					class="items-start justify-between [@media(min-width:400px)]:flex-row [@media(min-width:400px)]:items-center"
 				>
-					<div class="mb-1 flex items-center gap-2">
+					<!-- Name of Smoothie -->
+					<div class="bg mb-1 flex items-center gap-2">
 						<input
 							bind:value={uudenSmoothienNimi}
-							placeholder="Name of smoothie"
+							placeholder={'Name of smoothie'}
 							type="text"
-							class="laila-medium h-9 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black"
+							class={'laila-medium h-9 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black'}
 						/>
 					</div>
+
+					<!-- color: #eb0000; -->
 
 					<!-- <select
 				placeholder="Prep time (minutes)"
