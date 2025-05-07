@@ -15,6 +15,7 @@
 	import type { Smoothie } from '$lib/types/smoothie';
 	import type { NutritionInfo } from '$lib/types/nutritionInfo';
 	import { luoSmoothieKortti } from '$lib/luoSmoothieKortti';
+	import { SmoothieTime } from '$lib/globalSmoothietime.svelte';
 
 	// ----------------------- FUNKTIOT ---------------------------
 
