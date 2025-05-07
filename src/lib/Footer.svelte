@@ -1,11 +1,13 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
+
 	interface Props {
-		footerText: string;
+		children: Snippet;
 	}
 
-	let { footerText }: Props = $props();
+	let { children }: Props = $props();
 </script>
 
 <footer class="flex items-center justify-center border-t-2 bg-rose-100 p-3">
-	<span>{footerText}</span>
+	{@render children()}
 </footer>
