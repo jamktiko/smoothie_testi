@@ -55,3 +55,8 @@
 	font-weight: 500;
 	font-style: italic;
 }
+
+.hover\:laila-medium:hover {
+	font-family: 'Laila', serif;
+	font-weight: 500;
+}

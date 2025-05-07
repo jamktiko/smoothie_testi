@@ -120,7 +120,7 @@
 >
 	<!-- Add Card -->
 	<div
-		class="relative flex w-full max-w-xl flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300"
+		class="relative mb-5 flex w-full max-w-xl flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300"
 	>
 		<!-- Image -->
 		<div class="relative">
@@ -137,12 +137,12 @@
 			<div
 				class="items-start justify-between [@media(min-width:400px)]:flex-row [@media(min-width:400px)]:items-center"
 			>
-				<div class="flex items-center gap-2">
+				<div class="mb-1 flex items-center gap-2">
 					<input
 						bind:value={uudenSmoothienNimi}
 						placeholder="Name of smoothie"
 						type="text"
-						class="laila-medium h-5 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black"
+						class="laila-medium h-9 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black"
 					/>
 				</div>
 
@@ -158,7 +158,7 @@
 				</select> -->
 
 				<input
-					class="laila-light my-1 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
+					class="laila-light my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
 					type="number"
 					min="1"
 					max="60"
@@ -168,7 +168,7 @@
 			</div>
 
 			<!-- Ingredients -->
-			<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
+			<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 				<h2 class="text-md laila-medium">Ingredients</h2>
 				<ul class="laila-regular px-1 py-1 text-sm text-slate-600">
 					{#each uudenSmoothienIngredients as ingredient, index}
@@ -177,35 +177,37 @@
 							{ingredient}
 							<button
 								onclick={() => remove(index)}
-								class="my-1 ml-auto cursor-pointer rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
+								class="laila-regular my-1 ml-auto cursor-pointer rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
 								>Remove</button
 							>
 						</li>
 					{/each}
 
-					<!-- Buttons at bottom of list -->
-					<li class="mt-3 flex w-full flex-row items-center pr-2">
+					<!-- Dropdowns at bottom of list -->
+					<li class="justify-left mt-3 flex w-full flex-col gap-2 pr-2">
+						<div class="grid grid-cols-2 gap-2">
+							<button
+								class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
+							>
+								<select class="w-full focus:outline-none" bind:value={amount}>
+									<option value="" disabled selected hidden>Valitse määrä</option>
+									{#each globalAmountNumbers.get() as a}
+										<option value={a}>{a}</option>
+									{/each}
+								</select>
+							</button>
+							<button
+								class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
+							>
+								<select class="w-full focus:outline-none" bind:value={selected}>
+									{#each globalFruits.get() as fruit}
+										<option value={fruit.name}>{fruit.name}</option>
+									{/each}
+								</select>
+							</button>
+						</div>
 						<button
-							class="mr-auto flex w-auto cursor-pointer flex-row items-center justify-between rounded-xl border-1 px-5 py-0.5"
-						>
-							<select bind:value={amount}>
-								<option value="" disabled selected hidden>Valitse määrä</option>
-								{#each globalAmountNumbers.get() as a}
-									<option value={a}>{a}</option>
-								{/each}
-							</select>
-						</button>
-						<button
-							class="flex cursor-pointer flex-row items-center justify-between rounded-xl border-1 px-15 py-0.5"
-						>
-							<select bind:value={selected}>
-								{#each globalFruits.get() as fruit}
-									<option value={fruit.name}>{fruit.name}</option>
-								{/each}
-							</select>
-						</button>
-						<button
-							class="ml-auto cursor-pointer rounded-xl border-1 bg-orange-200 px-10 py-1 text-black hover:bg-orange-300"
+							class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 px-5 py-1 text-black hover:bg-orange-300 hover:outline-1"
 							onclick={add}>Add</button
 						>
 					</li>
@@ -230,12 +232,12 @@
 			<div class="mt-2 flex flex-row items-center justify-center gap-5">
 				<button
 					onclick={homePage}
-					class="cursor-pointer rounded-xl border-1 bg-slate-50 p-2 px-20 text-slate-600 hover:bg-slate-100 hover:text-black"
+					class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-slate-50 p-2 px-20 text-slate-600 hover:bg-slate-100 hover:text-black hover:outline-1"
 					>Cancel</button
 				>
 				<button
 					onclick={createSmoothie}
-					class="cursor-pointer rounded-xl border-1 bg-orange-200 p-2 px-20 hover:bg-orange-300"
+					class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 p-2 px-20 hover:bg-orange-300 hover:outline-1"
 					>Create</button
 				>
 			</div>
