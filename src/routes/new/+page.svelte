@@ -22,6 +22,10 @@
 
 	// ----------------------- FUNKTIOT ---------------------------
 
+	function toggleVisited(x: boolean) {
+		x = true;
+	}
+
 	function homePage() {
 		goto('/');
 	}
@@ -94,11 +98,19 @@
 	let kunnollinenValmistusaika = $derived(isNaN(uudenSmoothienValmistusaika) ? false : true);
 	let kunnollisetIngredients = $derived(uudenSmoothienIngredients.length > 0 ? true : false);
 
+	let oikeanlaisetSmoothienTiedot = $derived(
+		kunnollinenNimi && kunnollinenValmistusaika && kunnollisetIngredients
+	);
+
+	let visitedNimiKentta = $state(false);
+	let visitedValmistusaikaKentta = $state(false);
+
 	// ------------------------- DEBUG ----------------------------
 
-	$inspect(kunnollisetIngredients);
-	$inspect(kunnollinenNimi);
-	$inspect(kunnollinenValmistusaika);
+	$inspect(visitedNimiKentta);
+	// $inspect(kunnollisetIngredients);
+	// $inspect(kunnollinenNimi);
+	// $inspect(kunnollinenValmistusaika);
 	// $inspect(globalAmountNumbers.get());
 	// $inspect(uudenSmoothienNimi);
 	// $inspect(uudenSmoothienValmistusaika);
@@ -155,6 +167,9 @@
 					<div class="bg mb-1 flex items-center gap-2">
 						<input
 							bind:value={uudenSmoothienNimi}
+							onblur={() => {
+								visitedNimiKentta = true;
+							}}
 							placeholder={'Name of smoothie'}
 							type="text"
 							class={'laila-medium h-9 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black'}
@@ -185,6 +200,9 @@
 
 					<!-- Preparation time (minutes) -->
 					<select
+						onblur={() => {
+							visitedValmistusaikaKentta = true;
+						}}
 						bind:value={uudenSmoothienValmistusaika}
 						class="laila-light my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
 					>
@@ -265,6 +283,7 @@
 						>Cancel</button
 					>
 					<button
+						disabled={!oikeanlaisetSmoothienTiedot}
 						onclick={createSmoothie}
 						class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 p-2 px-20 hover:bg-orange-300 hover:outline-1"
 						>Create</button
@@ -329,5 +348,16 @@
 		100% {
 			transform: rotate(360deg);
 		}
+	}
+
+	button:disabled {
+		background-color: #00000020;
+		color: darkgray;
+		cursor: not-allowed;
+	}
+
+	button:disabled:hover {
+		/* border-width: unset; */
+		outline-width: 0px;
 	}
 </style>
