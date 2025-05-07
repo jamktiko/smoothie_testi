@@ -114,7 +114,7 @@
 <!-- Outer Div -->
 
 <div
-	class="bg-opacity-0 m-0.5 flex flex-wrap justify-center"
+	class="bg-opacity-0 m-0.5 mt-5 flex flex-wrap justify-center"
 	in:blur={{ duration: 500 }}
 	out:blur={{ duration: 300 }}
 >
@@ -142,7 +142,7 @@
 						bind:value={uudenSmoothienNimi}
 						placeholder="Name of smoothie"
 						type="text"
-						class="laila-medium my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-2xl text-slate-600"
+						class="laila-medium h-5 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black"
 					/>
 				</div>
 
@@ -158,7 +158,7 @@
 				</select> -->
 
 				<input
-					class="my-1 w-45 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
+					class="laila-light my-1 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
 					type="number"
 					min="1"
 					max="60"
@@ -170,14 +170,14 @@
 			<!-- Ingredients -->
 			<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 				<h2 class="text-md laila-medium">Ingredients</h2>
-				<ul class="laila-regular py-1 text-sm text-gray-600">
+				<ul class="laila-regular px-1 py-1 text-sm text-slate-600">
 					{#each uudenSmoothienIngredients as ingredient, index}
-						<li class="m-1">
+						<li class="flex flex-row items-center pr-2">
 							{ingredientFormatointi(uudenSmoothienIngredientsAmounts[index])}
 							{ingredient}
 							<button
 								onclick={() => remove(index)}
-								class="mx-0.5 rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
+								class="my-1 ml-auto cursor-pointer rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
 								>Remove</button
 							>
 						</li>
@@ -186,7 +186,7 @@
 					<!-- Buttons at bottom of list -->
 					<li class="mt-3 flex flex-row items-center justify-center gap-10">
 						<button
-							class="flex flex-row items-center justify-center rounded-xl border-1 px-2 py-0.5"
+							class="mr-auto flex w-auto cursor-pointer flex-row items-center justify-between rounded-xl border-1 px-5 py-0.5"
 						>
 							<select bind:value={amount}>
 								<option value="" disabled selected hidden>Valitse määrä</option>
@@ -196,7 +196,7 @@
 							</select>
 						</button>
 						<button
-							class="flex flex-row items-center justify-center rounded-xl border-1 px-10 py-0.5"
+							class="flex cursor-pointer flex-row items-center justify-between rounded-xl border-1 px-15 py-0.5"
 						>
 							<select bind:value={selected}>
 								{#each globalFruits.get() as fruit}
@@ -205,7 +205,7 @@
 							</select>
 						</button>
 						<button
-							class="rounded-xl border-1 bg-orange-200 px-10 py-1 text-black hover:bg-orange-300"
+							class="ml-auto cursor-pointer rounded-xl border-1 bg-orange-200 px-10 py-1 text-black hover:bg-orange-300"
 							onclick={add}>Add</button
 						>
 					</li>
@@ -213,7 +213,7 @@
 			</div>
 
 			<!-- Notes -->
-			<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
+			<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 				<h2 class="text-md laila-medium">Notes</h2>
 				<Notes
 					placeholder={'Add some notes about this recipe'}
@@ -227,15 +227,16 @@
 			</div> -->
 
 			<!-- buttons below  -->
-			<div class="mt-2 flex flex-row items-center justify-center gap-15">
+			<div class="mt-2 flex flex-row items-center justify-center gap-5">
 				<button
 					onclick={homePage}
-					class="rounded-xl border-1 bg-slate-50 p-2 px-20 text-slate-600 hover:bg-slate-100 hover:text-black"
+					class="cursor-pointer rounded-xl border-1 bg-slate-50 p-2 px-20 text-slate-600 hover:bg-slate-100 hover:text-black"
 					>Cancel</button
 				>
 				<button
 					onclick={createSmoothie}
-					class="rounded-xl border-1 bg-orange-200 p-2 px-20 hover:bg-orange-300">Create</button
+					class="cursor-pointer rounded-xl border-1 bg-orange-200 p-2 px-20 hover:bg-orange-300"
+					>Create</button
 				>
 			</div>
 		</div>
