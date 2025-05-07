@@ -118,129 +118,190 @@
 	in:blur={{ duration: 500 }}
 	out:blur={{ duration: 300 }}
 >
-	<!-- Add Card -->
-	<div
-		class="relative mb-5 flex w-full max-w-xl flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300"
-	>
-		<!-- Image -->
-		<div class="relative">
-			<img
-				src="https://cdn.pixabay.com/photo/2018/03/16/04/54/healthy-3230225_1280.jpg"
-				alt="Green Smoothie"
-				class="max-h-60 w-full rounded-xl border-b-2 object-cover"
-			/>
-		</div>
+	{#if globalFruits.get().length > 0}
+		<!-- Add Card -->
+		<div
+			class="relative mb-5 flex w-full max-w-xl flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300"
+			in:blur={{ duration: 500 }}
+			out:blur={{ duration: 300 }}
+		>
+			<!-- Image -->
+			<div class="relative">
+				<img
+					src="https://cdn.pixabay.com/photo/2018/03/16/04/54/healthy-3230225_1280.jpg"
+					alt="Green Smoothie"
+					class="max-h-60 w-full rounded-xl border-b-2 object-cover"
+				/>
+			</div>
 
-		<!-- Content-->
-		<div class="flex-1 flex-col overflow-y-auto p-4">
-			<!-- Title and Timer -->
-			<div
-				class="items-start justify-between [@media(min-width:400px)]:flex-row [@media(min-width:400px)]:items-center"
+			<!-- Content-->
+			<div class="flex-1 flex-col overflow-y-auto p-4">
+				<!-- Title and Timer -->
+				<div
+					class="items-start justify-between [@media(min-width:400px)]:flex-row [@media(min-width:400px)]:items-center"
+				>
+					<div class="mb-1 flex items-center gap-2">
+						<input
+							bind:value={uudenSmoothienNimi}
+							placeholder="Name of smoothie"
+							type="text"
+							class="laila-medium h-9 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black"
+						/>
+					</div>
+
+					<!-- <select
+				placeholder="Prep time (minutes)"
+				bind:value={uudenSmoothienValmistusaika}
+				class="my-1 w-45 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
 			>
-				<div class="mb-1 flex items-center gap-2">
+				<option value="" disabled selected hidden>Valitse määrä</option>
+				{#each valmistusajatMin as a}
+					<option value={a}>{a}</option>
+				{/each}
+			</select> -->
+
 					<input
-						bind:value={uudenSmoothienNimi}
-						placeholder="Name of smoothie"
-						type="text"
-						class="laila-medium h-9 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black"
+						class="laila-light my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
+						type="number"
+						min="1"
+						max="60"
+						placeholder="Prep time (minutes)"
+						bind:value={uudenSmoothienValmistusaika}
 					/>
 				</div>
 
-				<!-- <select
-					placeholder="Prep time (minutes)"
-					bind:value={uudenSmoothienValmistusaika}
-					class="my-1 w-45 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
-				>
-					<option value="" disabled selected hidden>Valitse määrä</option>
-					{#each valmistusajatMin as a}
-						<option value={a}>{a}</option>
-					{/each}
-				</select> -->
+				<!-- Ingredients -->
+				<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
+					<h2 class="text-md laila-medium">Ingredients</h2>
+					<ul class="laila-regular px-1 py-1 text-sm text-slate-600">
+						{#each uudenSmoothienIngredients as ingredient, index}
+							<li class="flex flex-row items-center pr-2">
+								{ingredientFormatointi(uudenSmoothienIngredientsAmounts[index])}
+								{ingredient}
+								<button
+									onclick={() => remove(index)}
+									class="laila-regular my-1 ml-auto cursor-pointer rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
+									>Remove</button
+								>
+							</li>
+						{/each}
 
-				<input
-					class="laila-light my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
-					type="number"
-					min="1"
-					max="60"
-					placeholder="Prep time (minutes)"
-					bind:value={uudenSmoothienValmistusaika}
-				/>
-			</div>
-
-			<!-- Ingredients -->
-			<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
-				<h2 class="text-md laila-medium">Ingredients</h2>
-				<ul class="laila-regular px-1 py-1 text-sm text-slate-600">
-					{#each uudenSmoothienIngredients as ingredient, index}
-						<li class="flex flex-row items-center pr-2">
-							{ingredientFormatointi(uudenSmoothienIngredientsAmounts[index])}
-							{ingredient}
+						<!-- Dropdowns at bottom of list -->
+						<li class="justify-left mt-3 flex w-full flex-col gap-2 pr-2">
+							<div class="grid grid-cols-2 gap-2">
+								<button
+									class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
+								>
+									<select class="w-full focus:outline-none" bind:value={amount}>
+										<option value="" disabled selected hidden>Valitse määrä</option>
+										{#each globalAmountNumbers.get() as a}
+											<option value={a}>{a}</option>
+										{/each}
+									</select>
+								</button>
+								<button
+									class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
+								>
+									<select class="w-full focus:outline-none" bind:value={selected}>
+										{#each globalFruits.get() as fruit}
+											<option value={fruit.name}>{fruit.name}</option>
+										{/each}
+									</select>
+								</button>
+							</div>
 							<button
-								onclick={() => remove(index)}
-								class="laila-regular my-1 ml-auto cursor-pointer rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
-								>Remove</button
+								class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 px-5 py-1 text-black hover:bg-orange-300 hover:outline-1"
+								onclick={add}>Add</button
 							>
 						</li>
-					{/each}
+					</ul>
+				</div>
 
-					<!-- Dropdowns at bottom of list -->
-					<li class="justify-left mt-3 flex w-full flex-col gap-2 pr-2">
-						<div class="grid grid-cols-2 gap-2">
-							<button
-								class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
-							>
-								<select class="w-full focus:outline-none" bind:value={amount}>
-									<option value="" disabled selected hidden>Valitse määrä</option>
-									{#each globalAmountNumbers.get() as a}
-										<option value={a}>{a}</option>
-									{/each}
-								</select>
-							</button>
-							<button
-								class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
-							>
-								<select class="w-full focus:outline-none" bind:value={selected}>
-									{#each globalFruits.get() as fruit}
-										<option value={fruit.name}>{fruit.name}</option>
-									{/each}
-								</select>
-							</button>
-						</div>
-						<button
-							class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 px-5 py-1 text-black hover:bg-orange-300 hover:outline-1"
-							onclick={add}>Add</button
-						>
-					</li>
-				</ul>
-			</div>
+				<!-- Notes -->
+				<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
+					<h2 class="text-md laila-medium">Notes</h2>
+					<Notes
+						placeholder={'Add some notes about this recipe'}
+						bind:taytto={uudenSmoothienNotet}
+						ellipsisWrapOn={true}
+					/>
+				</div>
+				<!-- <div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
+			<h2 class="text-md laila-medium">Notes</h2>
+			<p class="laila-regular text-sm text-slate-600">Add some notes about this recipe</p>
+		</div> -->
 
-			<!-- Notes -->
-			<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
-				<h2 class="text-md laila-medium">Notes</h2>
-				<Notes
-					placeholder={'Add some notes about this recipe'}
-					bind:taytto={uudenSmoothienNotet}
-					ellipsisWrapOn={true}
-				/>
-			</div>
-			<!-- <div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
-				<h2 class="text-md laila-medium">Notes</h2>
-				<p class="laila-regular text-sm text-slate-600">Add some notes about this recipe</p>
-			</div> -->
-
-			<!-- buttons below  -->
-			<div class="mt-2 flex flex-row items-center justify-center gap-5">
-				<button
-					onclick={homePage}
-					class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-slate-50 p-2 px-20 text-slate-600 hover:bg-slate-100 hover:text-black hover:outline-1"
-					>Cancel</button
-				>
-				<button
-					onclick={createSmoothie}
-					class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 p-2 px-20 hover:bg-orange-300 hover:outline-1"
-					>Create</button
-				>
+				<!-- buttons below  -->
+				<div class="mt-2 flex flex-row items-center justify-center gap-5">
+					<button
+						onclick={homePage}
+						class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-slate-50 p-2 px-20 text-slate-600 hover:bg-slate-100 hover:text-black hover:outline-1"
+						>Cancel</button
+					>
+					<button
+						onclick={createSmoothie}
+						class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 p-2 px-20 hover:bg-orange-300 hover:outline-1"
+						>Create</button
+					>
+				</div>
 			</div>
 		</div>
-	</div>
+	{:else}
+		<!-- temporary loading spinner -->
+		<div class="lds-ring">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	{/if}
+
+	<!-- end of Outer Div -->
 </div>
+
+<style>
+	/* loading spinner styles */
+	.lds-ring {
+		/* change color here */
+		color: #f47e60;
+	}
+	.lds-ring,
+	.lds-ring div {
+		box-sizing: border-box;
+	}
+	.lds-ring {
+		display: inline-block;
+		position: relative;
+		width: 80px;
+		height: 80px;
+	}
+	.lds-ring div {
+		box-sizing: border-box;
+		display: block;
+		position: absolute;
+		width: 64px;
+		height: 64px;
+		margin: 8px;
+		border: 8px solid currentColor;
+		border-radius: 50%;
+		animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+		border-color: currentColor transparent transparent transparent;
+	}
+	.lds-ring div:nth-child(1) {
+		animation-delay: -0.45s;
+	}
+	.lds-ring div:nth-child(2) {
+		animation-delay: -0.3s;
+	}
+	.lds-ring div:nth-child(3) {
+		animation-delay: -0.15s;
+	}
+	@keyframes lds-ring {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+</style>
