@@ -24,9 +24,14 @@
 
 	// filtteröi smoothieKortit searchBarin valuen mukaan
 	const filteroiSmoothieKortteja = () => {
-		valitutSmoothieKortit = globalSmoothieKortit.get().filter((smoothieKortti) => {
-			return smoothieKortti.smoothie.name.toLowerCase().includes(searchBarinArvo.toLowerCase());
-		});
+		if (searchBarinArvo.toLowerCase() === 'RickRoll :D'.toLowerCase()) {
+			rickRollVisible = true;
+		} else {
+			rickRollVisible = false;
+			valitutSmoothieKortit = globalSmoothieKortit.get().filter((smoothieKortti) => {
+				return smoothieKortti.smoothie.name.toLowerCase().includes(searchBarinArvo.toLowerCase());
+			});
+		}
 	};
 
 	$effect(() => {
@@ -46,6 +51,7 @@
 	// searchBariin liittyvät muuttujat
 	let searchBarinArvo: string = $state('');
 	let valitutSmoothieKortit: SmoothieKortti[] = $state([]);
+	let rickRollVisible: boolean = $state(false);
 
 	// ------------------------- DEBUG ----------------------------
 
@@ -77,33 +83,35 @@
 </nav>
 
 <div class="m-7 flex flex-wrap justify-center gap-7">
-	{#each valitutSmoothieKortit as smoothieKortti (smoothieKortti.ID)}
-		<SmoothieCard {smoothieKortti} />
-	{:else}
-		<!-- <div class="flex flex-col text-center items-center">
+	{#if rickRollVisible}
+		<div class="flex flex-col items-center text-center">
 			<img
 				src="https://media.tenor.com/JKqs7cUyi9gAAAAj/rick-astley-dance.gif"
 				alt="Get rick rolled :D"
-				class="w-2/3 h-2/3"
+				class="h-2/3 w-2/3"
 			/>
-			<p class="w-1/1 laila-medium-italic text-slate-600 italic">
-				<span class="material-symbols-outlined">music_note</span> Never gonna give you results...
+			<p class="laila-medium-italic w-1/1 text-slate-600 italic">
+				<span class="material-symbols-outlined">music_note</span> Never gonna give you up, never
+				gonna let you down...
 				<span class="material-symbols-outlined">music_note</span>
 			</p>
-			<p class="w-1/1 laila-medium">
-				Either the site isn't loading or the search did not produce any results
-			</p>
-		</div> -->
-
-		<!-- temporary loading spinner -->
-		<div class="lds-ring">
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
+			<!-- <p class="laila-medium w-1/1">
+			Either the site isn't loading or the search did not produce any results
+		</p> -->
 		</div>
-		-->
-	{/each}
+	{:else}
+		{#each valitutSmoothieKortit as smoothieKortti (smoothieKortti.ID)}
+			<SmoothieCard {smoothieKortti} />
+		{:else}
+			<!-- temporary loading spinner -->
+			<div class="lds-ring">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		{/each}
+	{/if}
 </div>
 
 <!-- footer -->
