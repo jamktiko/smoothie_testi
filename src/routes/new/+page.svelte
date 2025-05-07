@@ -188,7 +188,7 @@
 
 						<!-- Dropdowns at bottom of list -->
 						<li class="justify-left mt-3 flex w-full flex-col gap-2 pr-2">
-							<div class="grid grid-cols-2 gap-2">
+							<div class="flex flex-col gap-2 sm:grid sm:grid-cols-2">
 								<button
 									class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
 								>
@@ -235,12 +235,12 @@
 				<div class="mt-2 flex flex-row items-center justify-center gap-5">
 					<button
 						onclick={homePage}
-						class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-slate-50 p-2 px-20 text-slate-600 hover:bg-slate-100 hover:text-black hover:outline-1"
+						class="laila-regular hover:laila-medium w-full cursor-pointer rounded-xl border-1 bg-slate-50 p-2 text-slate-600 hover:bg-slate-100 hover:text-black hover:outline-1"
 						>Cancel</button
 					>
 					<button
 						onclick={createSmoothie}
-						class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 p-2 px-20 hover:bg-orange-300 hover:outline-1"
+						class="laila-regular hover:laila-medium w-full cursor-pointer rounded-xl border-1 bg-orange-200 p-2 hover:bg-orange-300 hover:outline-1"
 						>Create</button
 					>
 				</div>
