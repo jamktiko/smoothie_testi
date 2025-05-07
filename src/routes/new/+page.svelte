@@ -99,7 +99,9 @@
 
 	// ------------------- VIRHEENTARKISTUS ----------------------
 
-	let kunnollinenNimi = $derived(uudenSmoothienNimi.length > 0 ? true : false);
+	let visitedNimiKentta = $state(false);
+
+	let kunnollinenNimi = $derived(uudenSmoothienNimi.length > 0 && visitedNimiKentta ? true : false);
 	let kunnollinenValmistusaika = $derived(isNaN(uudenSmoothienValmistusaika) ? false : true);
 	let kunnollisetIngredients = $derived(uudenSmoothienIngredients.length > 0 ? true : false);
 
@@ -107,15 +109,22 @@
 		kunnollinenNimi && kunnollinenValmistusaika && kunnollisetIngredients
 	);
 
-	let visitedNimiKentta = $state(false);
-	let visitedValmistusaikaKentta = $state(false);
-
 	let kunnollinenAmount = $derived(amount > 0 ? true : false);
 	let kunnollinenIngredient = $derived(selected.length > 1 ? true : false);
 	let kunnollinenAdd = $derived(kunnollinenAmount && kunnollinenIngredient);
+
+	let nimiKenttaStyle = $derived(
+		visitedNimiKentta && !kunnollinenNimi
+			? 'laila-medium h-9 w-full resize-none rounded-xl border-1 bg-rose-100 px-2 py-4 text-rose-700'
+			: 'laila-medium h-9 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black'
+	);
+
+	let nimiKenttaPlaceholder = $derived(
+		visitedNimiKentta && !kunnollinenNimi ? 'Please insert name!' : 'Name of smoothie'
+	);
 	// ------------------------- DEBUG ----------------------------
 
-	$inspect(visitedNimiKentta);
+	// $inspect(visitedNimiKentta);
 	// $inspect(kunnollisetIngredients);
 	// $inspect(kunnollinenNimi);
 	// $inspect(kunnollinenValmistusaika);
@@ -178,9 +187,9 @@
 							onblur={() => {
 								visitedNimiKentta = true;
 							}}
-							placeholder={'Name of smoothie'}
+							placeholder={nimiKenttaPlaceholder}
 							type="text"
-							class={'laila-medium h-9 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black'}
+							class={nimiKenttaStyle}
 						/>
 					</div>
 
@@ -208,9 +217,6 @@
 
 					<!-- Preparation time (minutes) -->
 					<select
-						onblur={() => {
-							visitedValmistusaikaKentta = true;
-						}}
 						bind:value={uudenSmoothienValmistusaika}
 						class="laila-light my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
 					>
