@@ -54,7 +54,7 @@
 				<div class="flex items-center gap-2">
 					<input
 						type="text"
-						class="h-5 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black"
+						class="laila-medium h-5 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black"
 						placeholder="Recipe name"
 						id=""
 					/>
@@ -65,7 +65,7 @@
 			<!-- Ingredients -->
 			<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 				<h2 class="text-md laila-medium">Ingredients</h2>
-				<ul class="laila-regular px-1 py-1 text-sm text-gray-600">
+				<ul class="laila-regular px-1 py-1 text-sm text-slate-600">
 					<!-- Already added items -->
 					<li class="flex flex-row items-center pr-2">
 						<p>• 2 cups strawberries</p>
