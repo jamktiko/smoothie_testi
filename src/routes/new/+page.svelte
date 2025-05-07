@@ -6,6 +6,7 @@
 	import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
 	import { fruits as globalFruits } from '$lib/globalFruits.svelte';
 	import { amountNumbers as globalAmountNumbers } from '$lib/globalAmountNumbers.svelte';
+	import { SmoothieTime } from '$lib/globalSmoothietime.svelte ';
 	import type { Fruit } from '$lib/types/fruit';
 	import { ingredientFormatointi } from '$lib/ingredientFormatointi';
 	import Notes from '$lib/Notes.svelte';
@@ -75,7 +76,7 @@
 
 	// ----------------------- MUUTTUJAT --------------------------
 
-	let selected = $state([]);
+	let selected = $state(' ');
 	let amount: number = $state(0);
 
 	let uudenSmoothienNimi = $state('');
@@ -159,15 +160,15 @@
 					<option value={a}>{a}</option>
 				{/each}
 			</select> -->
-
-					<input
-						class="laila-light my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
-						type="number"
-						min="1"
-						max="60"
-						placeholder="Prep time (minutes)"
+					<select
 						bind:value={uudenSmoothienValmistusaika}
-					/>
+						class="laila-light my-1 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
+					>
+						<option value={NaN} disabled selected hidden>Prep time</option>
+						{#each SmoothieTime as a}
+							<option value={a}>{a} min</option>
+						{/each}
+					</select>
 				</div>
 
 				<!-- Ingredients -->
@@ -186,50 +187,35 @@
 							</li>
 						{/each}
 
-						<!-- Dropdowns at bottom of list -->
-						<li class="justify-left mt-3 flex w-full flex-col gap-2 pr-2">
-							<div class="grid grid-cols-2 gap-2">
-								<button
-									class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
-								>
-									<select class="w-full focus:outline-none" bind:value={amount}>
-										<option value="" disabled selected hidden>Valitse määrä</option>
-										{#each globalAmountNumbers.get() as a}
-											<option value={a}>{a}</option>
-										{/each}
-									</select>
-								</button>
-								<button
-									class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
-								>
-									<select class="w-full focus:outline-none" bind:value={selected}>
-										{#each globalFruits.get() as fruit}
-											<option value={fruit.name}>{fruit.name}</option>
-										{/each}
-									</select>
-								</button>
-							</div>
+						<!-- Buttons at bottom of list -->
+						<li class="mt-3 flex flex-row items-center justify-center gap-10">
 							<button
-								class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 px-5 py-1 text-black hover:bg-orange-300 hover:outline-1"
+								class="mr-auto flex w-auto cursor-pointer flex-row items-center justify-between rounded-xl border-1 px-5 py-0.5"
+							>
+								<select bind:value={amount}>
+									<option value={0} disabled selected hidden>Amount</option>
+									{#each globalAmountNumbers.get() as a}
+										<option value={a}>{a}</option>
+									{/each}
+								</select>
+							</button>
+							<button
+								class="flex cursor-pointer flex-row items-center justify-between rounded-xl border-1 px-15 py-0.5"
+							>
+								<select bind:value={selected}>
+									<option value={' '} disabled selected hidden>Choose ingredient</option>
+									{#each globalFruits.get() as fruit}
+										<option value={fruit.name}>{fruit.name}</option>
+									{/each}
+								</select>
+							</button>
+							<button
+								class="ml-auto cursor-pointer rounded-xl border-1 bg-orange-200 px-10 py-1 text-black hover:bg-orange-300"
 								onclick={add}>Add</button
 							>
 						</li>
 					</ul>
 				</div>
-
-				<!-- Notes -->
-				<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
-					<h2 class="text-md laila-medium">Notes</h2>
-					<Notes
-						placeholder={'Add some notes about this recipe'}
-						bind:taytto={uudenSmoothienNotet}
-						ellipsisWrapOn={true}
-					/>
-				</div>
-				<!-- <div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
-			<h2 class="text-md laila-medium">Notes</h2>
-			<p class="laila-regular text-sm text-slate-600">Add some notes about this recipe</p>
-		</div> -->
 
 				<!-- buttons below  -->
 				<div class="mt-2 flex flex-row items-center justify-center gap-5">
