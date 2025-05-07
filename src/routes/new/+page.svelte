@@ -368,6 +368,7 @@
 
 	button:disabled:hover {
 		/* border-width: unset; */
+		font-weight: 400;
 		outline-width: 0px;
 	}
 </style>
