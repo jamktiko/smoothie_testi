@@ -162,7 +162,7 @@
 					bind:value={uudenSmoothienValmistusaika}
 					class="laila-light my-1 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
 				>
-					<option value={NaN} disabled selected hidden>Prep time (min)</option>
+					<option value={NaN} disabled selected hidden>Prep time</option>
 					{#each SmoothieTime as a}
 						<option value={a}>{a} min</option>
 					{/each}
