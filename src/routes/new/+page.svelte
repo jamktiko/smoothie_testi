@@ -76,7 +76,7 @@
 
 	// ----------------------- MUUTTUJAT --------------------------
 
-	let selected = $state([]);
+	let selected = $state(' ');
 	let amount: number = $state(0);
 
 	let uudenSmoothienNimi = $state('');
@@ -194,7 +194,7 @@
 									class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
 								>
 									<select class="w-full focus:outline-none" bind:value={amount}>
-										<option value="" disabled selected hidden>Valitse määrä</option>
+										<option value={0} disabled selected hidden>Amount</option>
 										{#each globalAmountNumbers.get() as a}
 											<option value={a}>{a}</option>
 										{/each}
@@ -204,6 +204,7 @@
 									class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
 								>
 									<select class="w-full focus:outline-none" bind:value={selected}>
+										<option value={' '} disabled selected hidden>Choose ingredient</option>
 										{#each globalFruits.get() as fruit}
 											<option value={fruit.name}>{fruit.name}</option>
 										{/each}
