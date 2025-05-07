@@ -22,10 +22,6 @@
 
 	// ----------------------- FUNKTIOT ---------------------------
 
-	function toggleVisited(x: boolean) {
-		x = true;
-	}
-
 	function homePage() {
 		goto('/');
 	}
@@ -76,7 +72,7 @@
 
 		// console.log('newSmoothieCard: ', newSmoothieCard);
 
-		globalSmoothies.get().unshift(newSmoothie);
+		globalSmoothies.get().push(newSmoothie);
 		// globalSmoothieKortit.get().push(newSmoothieCard);
 		homePage();
 	}
