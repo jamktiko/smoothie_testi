@@ -81,11 +81,16 @@
 		homePage();
 	}
 
+	$effect(() => {
+		if (kunnollinenAdd) {
+			addDisabled = false;
+		}
+	});
 	// ----------------------- MUUTTUJAT --------------------------
 
 	let selected = $state(' ');
 	let amount: number = $state(0);
-
+	let addDisabled = $state(true);
 	let uudenSmoothienNimi = $state('');
 	let uudenSmoothienValmistusaika: number = $state(NaN);
 	let uudenSmoothienIngredients: string[] = $state([]);
@@ -105,6 +110,9 @@
 	let visitedNimiKentta = $state(false);
 	let visitedValmistusaikaKentta = $state(false);
 
+	let kunnollinenAmount = $derived(amount > 0 ? true : false);
+	let kunnollinenIngredient = $derived(selected.length > 1 ? true : false);
+	let kunnollinenAdd = $derived(kunnollinenAmount && kunnollinenIngredient);
 	// ------------------------- DEBUG ----------------------------
 
 	$inspect(visitedNimiKentta);
@@ -255,7 +263,8 @@
 							</div>
 							<button
 								class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 px-5 py-1 text-black hover:bg-orange-300 hover:outline-1"
-								onclick={add}>Add</button
+								onclick={add}
+								disabled={addDisabled}>Add</button
 							>
 						</li>
 					</ul>
@@ -349,7 +358,6 @@
 			transform: rotate(360deg);
 		}
 	}
-
 	button:disabled {
 		background-color: #00000020;
 		color: darkgray;
