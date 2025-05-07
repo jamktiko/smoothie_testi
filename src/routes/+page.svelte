@@ -80,10 +80,10 @@
 	{#each valitutSmoothieKortit as smoothieKortti (smoothieKortti.ID)}
 		<SmoothieCard {smoothieKortti} />
 	{:else}
-		<div class="flex flex-col text-center items-center">
+		<!-- <div class="flex flex-col text-center items-center">
 			<img
 				src="https://media.tenor.com/JKqs7cUyi9gAAAAj/rick-astley-dance.gif"
-				alt="Get rick rolled xDDDDD"
+				alt="Get rick rolled :D"
 				class="w-2/3 h-2/3"
 			/>
 			<p class="w-1/1 laila-medium-italic text-slate-600 italic">
@@ -93,22 +93,22 @@
 			<p class="w-1/1 laila-medium">
 				Either the site isn't loading or the search did not produce any results
 			</p>
-		</div>
+		</div> -->
 
-		<!-- temporary loading spinner || use this if gif not ok
-	<div class="lds-ring">
+		<!-- temporary loading spinner -->
+		<div class="lds-ring">
 			<div></div>
 			<div></div>
 			<div></div>
 			<div></div>
-		</div> 
--->
+		</div>
+		-->
 	{/each}
 </div>
 
 <!-- footer -->
 
-<!-- <style>
+<style>
 	/* loading spinner styles */
 	.lds-ring {
 		/* change color here */
@@ -153,9 +153,7 @@
 			transform: rotate(360deg);
 		}
 	}
-</style> -->
 
-<style>
 	#newsmoothiepage {
 		position: fixed;
 		bottom: 1rem;
