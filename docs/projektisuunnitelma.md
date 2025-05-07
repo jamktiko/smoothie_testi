@@ -73,6 +73,10 @@ Tavoitteisiin myös kuuluu projetkityöskentelyn taitojen ja käytäntöjen oppi
 | Tailwind sivu 2     | 28.-29.04.2025 | Jun tekee modaali-ikkunan tyylittelyt valmiiksi tailwind playssä |
 | Tyylit sivu 1     | 28.-30.04.2025   | Teemu integroi etusivun tyylit koodiin & troubleshooting  |
 | Modaalityylit     | 30.04.2025 | Jun integroi modaaliikkunan tyylit koodiin & yhteistä modaali-ikkuna troubleshooting |
+| Sivu 1 + Modaali     | 2.-5.05.2025      | Viimeistelya ja bugfixausta ensimmäiseen sivun ja modaalin toimivuuteen       |
+| Sivu 2 lisäys   | 5.-6.05.2025    | Lauri & Janika koodaa, suunnittelijat figma + tailwind     |
+| Sivu 2 integrointi   | 6.-7.5.2025     | Koodin yhdistämiset ja dev team toimivuudet, bugfixing |
+| ............     | pvm        | Kaikki muut tapahtumat listattuna        |
 | ............     | pvm        | Kaikki muut tapahtumat listattuna        |
 | Projekti päättyy | 16.05.2025 | Ohjelmistoprojekti 1 päättyy             |
 
