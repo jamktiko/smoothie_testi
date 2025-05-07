@@ -3,7 +3,10 @@
 
 	import { goto } from '$app/navigation';
 	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
-	import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
+	import {
+		smoothieKortit as globalSmoothieKortit,
+		smoothieKortit
+	} from '$lib/globalSmoothieKortit.svelte';
 	import { fruits as globalFruits } from '$lib/globalFruits.svelte';
 	import { amountNumbers as globalAmountNumbers } from '$lib/globalAmountNumbers.svelte';
 	import type { Fruit } from '$lib/types/fruit';
@@ -161,14 +164,25 @@
 				{/each}
 			</select> -->
 
-					<input
+					<!-- <input
 						class="laila-light my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
 						type="number"
 						min="1"
 						max="60"
 						placeholder="Prep time (minutes)"
 						bind:value={uudenSmoothienValmistusaika}
-					/>
+					/> -->
+
+					<!-- Preparation time (minutes) -->
+					<select
+						bind:value={uudenSmoothienValmistusaika}
+						class="laila-light my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
+					>
+						<option value={NaN} disabled selected hidden>Preparation time</option>
+						{#each SmoothieTime as a}
+							<option value={a}>{a} min</option>
+						{/each}
+					</select>
 				</div>
 
 				<!-- Ingredients -->
