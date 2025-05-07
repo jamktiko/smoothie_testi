@@ -4,49 +4,25 @@
 	import Button from './Button.svelte';
 	import Modal from './Modal.svelte';
 	import { scale, blur } from 'svelte/transition';
+	import { ingredientFormatointi } from './ingredientFormatointi';
 
 	interface Props {
 		smoothieKortti: SmoothieKortti;
 	}
-	let { smoothieKortti } = $props();
+	let { smoothieKortti }: Props = $props();
 
 	// notes kentän arvo
-	let teksti = $state(
-		'asdhiuHGUISGjsrjogijhirsjhosjeoigiodsifjsiojfidiofjISJIOGjiodjihjdirhiodjiogoasjegifjsiojidrjhiodjrihoidrohjidrjhiodiorjiho'
-	);
+	let notesTeksti = $state(smoothieKortti.notes);
 
 	let modalAuki = $state(false);
 
-	// avaa smoothie reseptin modal ikkunan (toggle)
+	// avaa smoothie reseptin modal ikkunan (toggle) ja käy päivittämässä smoothiekortin ja smoothien propertyjä kun suljetaan
 	function toggleModal() {
-		modalAuki = !modalAuki;
-	}
-
-	// tämä funktio testaa onko hedelmien määrä kokonaisluku vai desimaaliluku ja palauttaa vastaavan ½, ¼ tai ¾
-	function hedelmaMaaranFormatointi(hedelmanMaara: number) {
-		// jos hedelmän määrä alkaa numerolla nolla, niin ei lisätä nollaa murto-osan eteen
-		if (hedelmanMaara < 1) {
-			return hedelmanMaara % 1 === 0
-				? hedelmanMaara.toString()
-				: hedelmanMaara % 0.75 === 0
-					? `¾`
-					: hedelmanMaara % 0.5 === 0
-						? `½`
-						: hedelmanMaara % 0.25 === 0
-							? `¼`
-							: null;
-		} else {
-			// jos hedelmän määrä alkaa numerolla yksi tai suurempi, niin lisätään kokonaisluku ennen murto-osaa
-			return hedelmanMaara % 1 === 0
-				? hedelmanMaara.toString()
-				: hedelmanMaara % 1 === 0.75
-					? `${Math.floor(hedelmanMaara)}¾`
-					: hedelmanMaara % 1 === 0.5
-						? `${Math.floor(hedelmanMaara)}½`
-						: hedelmanMaara % 1 === 0.25
-							? `${Math.floor(hedelmanMaara)}¼`
-							: null;
+		if (modalAuki) {
+			smoothieKortti.notes = notesTeksti;
+			smoothieKortti.smoothie.notes = notesTeksti;
 		}
+		modalAuki = !modalAuki;
 	}
 
 	// $inspect(smoothieKortti.ID);
@@ -56,6 +32,8 @@
 	// $inspect(smoothieKortti.ravintoarvotYht);
 	// $inspect(smoothieKortti.pic);
 	// $inspect(smoothieKortti.hedelmatMaara);
+	// $inspect(notesTeksti);
+	// $inspect(smoothieKortti.notes);
 
 	// muuttaa scrollbaring piiloon kun modal on auki
 	let originalOverflow = $state('');
@@ -103,7 +81,7 @@
 			<ul class="list-disc columns-2 space-y-0 py-1.5 pl-5 text-sm">
 				{#each smoothieKortti.hedelmat as hedelma, index}
 					<li class="laila-regular text-gray-600">
-						{hedelmaMaaranFormatointi(smoothieKortti.hedelmatMaara[index])}
+						{ingredientFormatointi(smoothieKortti.hedelmatMaara[index])}
 						{hedelma}
 					</li>
 				{/each}
@@ -122,7 +100,7 @@
 		</div>
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Notes</h2>
-			<Notes placeholder={''} bind:taytto={teksti} ellipsisWrapOn={true} />
+			<Notes placeholder={''} bind:taytto={notesTeksti} ellipsisWrapOn={true} />
 		</div>
 	</div>
 	<!-- Tähän loppuu kortin sisältö -->
@@ -180,7 +158,7 @@
 						<ul class="laila-regular list-disc py-1 pl-3.5 text-sm text-gray-600">
 							{#each smoothieKortti.hedelmat as hedelma, index}
 								<li>
-									{hedelmaMaaranFormatointi(smoothieKortti.hedelmatMaara[index])}
+									{ingredientFormatointi(smoothieKortti.hedelmatMaara[index])}
 									{hedelma}
 								</li>
 							{/each}
@@ -202,7 +180,7 @@
 					<!-- Notes -->
 					<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 						<h2 class="text-md laila-medium">Notes</h2>
-						<Notes placeholder={'Add notes'} bind:taytto={teksti} />
+						<Notes placeholder={'Add notes'} bind:taytto={notesTeksti} />
 					</div>
 				</div>
 			</div>

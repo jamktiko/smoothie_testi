@@ -1,23 +1,103 @@
 <script lang="ts">
+	// ----------------------- IMPORTIT ---------------------------
+
 	import { goto } from '$app/navigation';
+	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
+	import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
+	import { fruits as globalFruits } from '$lib/globalFruits.svelte';
+	import { amountNumbers as globalAmountNumbers } from '$lib/globalAmountNumbers.svelte';
 	import type { Fruit } from '$lib/types/fruit';
+	import { ingredientFormatointi } from '$lib/ingredientFormatointi';
+	import Notes from '$lib/Notes.svelte';
+	import SmoothieCard from '$lib/SmoothieCard.svelte';
+	import { blur } from 'svelte/transition';
+	import type { SmoothieKortti } from '$lib/types/smoothieKortti';
+	import type { Smoothie } from '$lib/types/smoothie';
+	import type { NutritionInfo } from '$lib/types/nutritionInfo';
+	import { luoSmoothieKortti } from '$lib/luoSmoothieKortti';
+
+	// ----------------------- FUNKTIOT ---------------------------
+
 	function homePage() {
 		goto('/');
 	}
 
-	import { onMount } from 'svelte';
-	let fruits: Fruit[] = $state([]);
+	function add() {
+		if (selected.length > 0 && amount > 0) {
+			uudenSmoothienIngredients.push(`${selected}`);
+			uudenSmoothienIngredientsAmounts.push(amount);
+		} else {
+			throw new Error('Valitse ensin hedelmä ja määrä!');
+		}
+	}
 
-	// Hakee hedelmät fruits.json tiedostosta
-	onMount(async () => {
-		const response = await fetch('/data/fruits.json');
-		fruits = await response.json();
-	});
+	function remove(index: number) {
+		uudenSmoothienIngredients.splice(index, 1);
+		uudenSmoothienIngredientsAmounts.splice(index, 1);
+	}
 
-	// Valitut asiat tallennetaan tähän
-	let selected: string[] = $state([]);
-	$inspect(selected);
-	// Funktio valinnan käsittelemiseen
+	function createSmoothie() {
+		// console.log('newSmoothie: ', newSmoothie);
+		const newSmoothie: Smoothie = {
+			id: globalSmoothies.get()[globalSmoothies.get().length - 1].id + 1,
+			name: uudenSmoothienNimi,
+			ingredients: uudenSmoothienIngredients,
+			ingredientsAmount: uudenSmoothienIngredientsAmounts,
+			pic: 'https://cdn.pixabay.com/photo/2018/03/16/04/54/healthy-3230225_1280.jpg',
+			preparationTimeMinutes: uudenSmoothienValmistusaika,
+			notes: uudenSmoothienNotet
+		};
+		luoSmoothieKortti(newSmoothie);
+		// const newSmoothieCard: SmoothieKortti = {
+		// 	ID: newSmoothie.id,
+		// 	smoothie: newSmoothie,
+		// 	hedelmat: newSmoothie.ingredients,
+		// 	hedelmatMaara: newSmoothie.ingredientsAmount,
+		// 	ravintoarvot: [],
+		// 	ravintoarvotYht: {
+		// 		calories: 0,
+		// 		carbohydrates: 0,
+		// 		protein: 0,
+		// 		fat: 0,
+		// 		sugar: 0
+		// 	},
+		// 	pic: newSmoothie.pic,
+		// 	valmistusAika: newSmoothie.preparationTimeMinutes,
+		// 	notes: newSmoothie.notes
+		// };
+
+		// console.log('newSmoothieCard: ', newSmoothieCard);
+
+		globalSmoothies.get().push(newSmoothie);
+		// globalSmoothieKortit.get().push(newSmoothieCard);
+		homePage();
+	}
+
+	// ----------------------- MUUTTUJAT --------------------------
+
+	let selected = $state([]);
+	let amount: number = $state(0);
+
+	let uudenSmoothienNimi = $state('');
+	let uudenSmoothienValmistusaika: number = $state(NaN);
+	let uudenSmoothienIngredients: string[] = $state([]);
+	let uudenSmoothienIngredientsAmounts: number[] = $state([]);
+	let uudenSmoothienNotet = $state('');
+
+	$inspect(globalAmountNumbers.get());
+
+	// ------------------------- DEBUG ----------------------------
+
+	$inspect(uudenSmoothienNimi);
+	$inspect(uudenSmoothienValmistusaika);
+	$inspect(uudenSmoothienNotet);
+	// $inspect(selected);
+	// $inspect(ingredientsAmountTaulukko);
+	$inspect(uudenSmoothienIngredients);
+	$inspect(uudenSmoothienIngredientsAmounts);
+
+	// $inspect(amount);
+	// $inspect(globalFruits.get());
 </script>
 
 <link
@@ -31,7 +111,13 @@
 	rel="stylesheet"
 />
 
-<div class="bg-opacity-0 m-0.5 mt-5 flex flex-wrap justify-center">
+<!-- Outer Div -->
+
+<div
+	class="bg-opacity-0 m-0.5 mt-5 flex flex-wrap justify-center"
+	in:blur={{ duration: 500 }}
+	out:blur={{ duration: 300 }}
+>
 	<!-- Add Card -->
 	<div
 		class="relative flex w-full max-w-xl flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300"
@@ -53,50 +139,74 @@
 			>
 				<div class="flex items-center gap-2">
 					<input
+						bind:value={uudenSmoothienNimi}
+						placeholder="Name of smoothie"
 						type="text"
 						class="laila-medium h-5 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black"
-						placeholder="Recipe name"
-						id=""
 					/>
 				</div>
-				<p class="my-1 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600">Prep time</p>
+
+				<!-- <select
+					placeholder="Prep time (minutes)"
+					bind:value={uudenSmoothienValmistusaika}
+					class="my-1 w-45 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
+				>
+					<option value="" disabled selected hidden>Valitse määrä</option>
+					{#each valmistusajatMin as a}
+						<option value={a}>{a}</option>
+					{/each}
+				</select> -->
+
+				<input
+					class="laila-light my-1 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
+					type="number"
+					min="1"
+					max="60"
+					placeholder="Prep time (minutes)"
+					bind:value={uudenSmoothienValmistusaika}
+				/>
 			</div>
 
 			<!-- Ingredients -->
 			<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 				<h2 class="text-md laila-medium">Ingredients</h2>
 				<ul class="laila-regular px-1 py-1 text-sm text-slate-600">
-					<!-- Already added items -->
-					<li class="flex flex-row items-center pr-2">
-						<p>• 2 cups strawberries</p>
-						<button
-							class="my-1 ml-auto cursor-pointer rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
-							>remove</button
-						>
-					</li>
-					<li class="flex flex-row items-center pr-2">
-						<p>• 1/2 cup of milk</p>
-						<button
-							class="ml-auto cursor-pointer rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
-							>remove</button
-						>
-					</li>
+					{#each uudenSmoothienIngredients as ingredient, index}
+						<li class="flex flex-row items-center pr-2">
+							{ingredientFormatointi(uudenSmoothienIngredientsAmounts[index])}
+							{ingredient}
+							<button
+								onclick={() => remove(index)}
+								class="my-1 ml-auto cursor-pointer rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
+								>Remove</button
+							>
+						</li>
+					{/each}
 
 					<!-- Buttons at bottom of list -->
 					<li class="mt-3 flex w-full flex-row items-center pr-2">
 						<button
 							class="mr-auto flex w-auto cursor-pointer flex-row items-center justify-between rounded-xl border-1 px-5 py-0.5"
-							><p>Amount</p>
-							<span class="material-symbols-outlined">arrow_drop_down</span></button
 						>
+							<select bind:value={amount}>
+								<option value="" disabled selected hidden>Valitse määrä</option>
+								{#each globalAmountNumbers.get() as a}
+									<option value={a}>{a}</option>
+								{/each}
+							</select>
+						</button>
 						<button
 							class="flex cursor-pointer flex-row items-center justify-between rounded-xl border-1 px-15 py-0.5"
-							><p>Choose ingredient</p>
-							<span class="material-symbols-outlined">arrow_drop_down</span></button
 						>
+							<select bind:value={selected}>
+								{#each globalFruits.get() as fruit}
+									<option value={fruit.name}>{fruit.name}</option>
+								{/each}
+							</select>
+						</button>
 						<button
 							class="ml-auto cursor-pointer rounded-xl border-1 bg-orange-200 px-10 py-1 text-black hover:bg-orange-300"
-							>Add</button
+							onclick={add}>Add</button
 						>
 					</li>
 				</ul>
@@ -105,16 +215,26 @@
 			<!-- Notes -->
 			<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 				<h2 class="text-md laila-medium">Notes</h2>
-				<p class="laila-regular text-sm text-slate-600">Add some notes about this recipe</p>
+				<Notes
+					placeholder={'Add some notes about this recipe'}
+					bind:taytto={uudenSmoothienNotet}
+					ellipsisWrapOn={true}
+				/>
 			</div>
+			<!-- <div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
+				<h2 class="text-md laila-medium">Notes</h2>
+				<p class="laila-regular text-sm text-slate-600">Add some notes about this recipe</p>
+			</div> -->
 
 			<!-- buttons below  -->
 			<div class="mt-2 flex flex-row items-center justify-center gap-5">
 				<button
+					onclick={homePage}
 					class="cursor-pointer rounded-xl border-1 bg-slate-50 p-2 px-20 text-slate-600 hover:bg-slate-100 hover:text-black"
-					onclick={homePage}>Cancel</button
+					>Cancel</button
 				>
 				<button
+					onclick={createSmoothie}
 					class="cursor-pointer rounded-xl border-1 bg-orange-200 p-2 px-20 hover:bg-orange-300"
 					>Create</button
 				>
@@ -122,31 +242,3 @@
 		</div>
 	</div>
 </div>
-
-<button id="homepage" onclick={homePage}>Home</button>
-<h1>Add new recipe</h1>
-<h2>Valitse hedelmiä:</h2>
-<select bind:value={selected}>
-	{#each fruits as fruit}
-		<option value={fruit.name}>{fruit.name}</option>
-	{/each}
-</select>
-<p>{selected}</p>
-
-<!-- <style>
-	#homepage {
-		position: fixed;
-		bottom: 1rem;
-		left: 1rem;
-		background-color: #767676;
-		color: white;
-		font-family: 'Laila', sans-serif;
-		font-size: 1.5rem;
-		font-weight: 700;
-		border-radius: 0.5rem;
-		padding: 0.5rem 1rem;
-		margin: 0;
-		cursor: pointer;
-		z-index: 100;
-	}
-</style> -->
