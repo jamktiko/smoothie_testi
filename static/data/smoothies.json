@@ -4,13 +4,13 @@
 		"name": "Berry Bliss",
 		"ingredients": [
 			"Strawberries",
-			"Mangoes",
 			"Blueberries",
 			"Raspberries",
+			"Mangoes",
 			"Bananas",
 			"cup of Yogurt"
 		],
-		"ingredientsAmount": [5, 5, 5, 1, 1, 1],
+		"ingredientsAmount": [5, 5, 5, 0.5, 1, 1],
 		"pic": "Berry-Bliss-1.jpg",
 		"preparationTimeMinutes": 5,
 		"notes": ""
@@ -19,7 +19,7 @@
 		"id": 2,
 		"name": "Sunny Smile",
 		"ingredients": ["Pineapples", "Mangoes", "Bananas", "cup of Milk"],
-		"ingredientsAmount": [1, 1, 1, 1],
+		"ingredientsAmount": [0.5, 1, 1, 2],
 		"pic": "Sunny-Smile-2.jpg",
 		"preparationTimeMinutes": 4,
 		"notes": ""
@@ -28,7 +28,7 @@
 		"id": 3,
 		"name": "Green Zing",
 		"ingredients": ["Kiwis", "Apples", "Pears", "Lemons"],
-		"ingredientsAmount": [2, 2, 1, 1],
+		"ingredientsAmount": [2, 1, 1, 0.5],
 		"pic": "Green-Zing-3.jpg",
 		"preparationTimeMinutes": 6,
 		"notes": ""
@@ -37,7 +37,7 @@
 		"id": 4,
 		"name": "Sweet Orchard",
 		"ingredients": ["Apples", "Bananas", "Pears", "Peaches"],
-		"ingredientsAmount": [2, 1, 1, 1],
+		"ingredientsAmount": [2, 1, 1, 2],
 		"pic": "Sweet-Orchard-4.jpg",
 		"preparationTimeMinutes": 3,
 		"notes": ""
@@ -46,7 +46,7 @@
 		"id": 5,
 		"name": "Sunset Fusion",
 		"ingredients": ["Peaches", "Mangoes", "Raspberries", "cup of Almond Milk"],
-		"ingredientsAmount": [1, 1, 10, 1],
+		"ingredientsAmount": [1, 0.5, 10, 1],
 		"pic": "Sunset-Fusion-5.jpg",
 		"preparationTimeMinutes": 3,
 		"notes": ""
@@ -55,7 +55,7 @@
 		"id": 6,
 		"name": "Summer Kiss",
 		"ingredients": ["Strawberries", "Peaches", "Apples", "cup of Ice Cream"],
-		"ingredientsAmount": [6, 2, 1, 1],
+		"ingredientsAmount": [6, 2, 1, 1.5],
 		"pic": "Summer-Kiss-6.jpg",
 		"preparationTimeMinutes": 4,
 		"notes": ""
@@ -64,7 +64,7 @@
 		"id": 7,
 		"name": "Avocado Spinach",
 		"ingredients": ["Avocados", "Spinach", "Bananas", "Lemons"],
-		"ingredientsAmount": [1, 2, 1, 1],
+		"ingredientsAmount": [0.5, 2, 1, 1],
 		"pic": "Avocado-Spinach-7.jpg",
 		"preparationTimeMinutes": 5,
 		"notes": ""
@@ -82,7 +82,7 @@
 		"id": 9,
 		"name": "Tropical Sunrise",
 		"ingredients": ["Jackfruits", "Papayas", "Pineapples", "cup of Coconut Milk"],
-		"ingredientsAmount": [1, 1, 1, 1],
+		"ingredientsAmount": [1, 1, 0.5, 1],
 		"pic": "Tropical-Sunrise-9.jpg",
 		"preparationTimeMinutes": 4,
 		"notes": ""
@@ -91,7 +91,7 @@
 		"id": 10,
 		"name": "Peach Paradise",
 		"ingredients": ["Peaches", "Apricots", "Mangoes", "cup of Coconut Milk"],
-		"ingredientsAmount": [2, 3, 2, 1],
+		"ingredientsAmount": [2, 3, 1, 2],
 		"pic": "Peach-Paradise-10.jpg",
 		"preparationTimeMinutes": 4,
 		"notes": ""
@@ -100,7 +100,7 @@
 		"id": 11,
 		"name": "Citrus Passion",
 		"ingredients": ["Tangerines", "Lemons", "Pomegranates"],
-		"ingredientsAmount": [2, 1, 2],
+		"ingredientsAmount": [2, 2, 1],
 		"pic": "Cirtus-Passion-11.jpg",
 		"preparationTimeMinutes": 3,
 		"notes": ""
@@ -109,40 +109,9 @@
 		"id": 12,
 		"name": "Melon Dream",
 		"ingredients": ["Melons", "Dragonfruits", "Kiwis"],
-		"ingredientsAmount": [1, 1, 3],
+		"ingredientsAmount": [0.25, 1, 2],
 		"pic": "Melon-Dream-12.jpg",
 		"preparationTimeMinutes": 4,
-		"notes": ""
-	},
-	{
-		"id": 13,
-		"name": "Mörkö smoothie",
-		"ingredients": [
-			"Strawberries",
-			"Mangoes",
-			"Blueberries",
-			"Raspberries",
-			"Bananas",
-			"cup of Yogurt",
-			"Pineapples",
-			"Apples",
-			"Apricots",
-			"Peaches",
-			"Melons",
-			"Papayas",
-			"Peaches",
-			"Pitahayas",
-			"Mangosteens",
-			"Feijoas",
-			"Jackfruits",
-			"Dragonfruits",
-			"Tangerines",
-			"Lemons",
-			"Pomegranates"
-		],
-		"ingredientsAmount": [5, 5, 500, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 190000, 1, 1, 1, 1, 4, 1, 1],
-		"pic": "smoothie_placeholder.jpg",
-		"preparationTimeMinutes": 5,
 		"notes": ""
 	}
 ]
