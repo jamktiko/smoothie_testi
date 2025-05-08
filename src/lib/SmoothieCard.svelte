@@ -108,7 +108,7 @@
 	<Button buttonText={smoothieKortti.smoothie.name} buttonFunction={toggleModal} />
 </div>
 
-<!-- MY CODE IS HERE -->
+<!-- MODAALI BELOW -->
 
 {#if modalAuki}
 	<Modal {toggleModal}>

@@ -70,5 +70,10 @@
 <div class="bg-white/75 bg-[url('/testbg-2.jpg')] bg-auto bg-top bg-repeat-y bg-blend-lighten">
 	<Header />
 	{@render children()}
-	<Footer footerText={'Ohjelmistoprojekti 1 by Team 2'} />
+	<Footer>
+		<span class="items-center justify-center sm:text-left">Froots Smoothie App - 2025</span>
+		<span class="items-center justify-center sm:text-right"
+			>J. Fengari - L. Makkonen - J. Rahikainen - T. Sairi</span
+		>
+	</Footer>
 </div>

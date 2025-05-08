@@ -51,7 +51,7 @@
 			preparationTimeMinutes: uudenSmoothienValmistusaika,
 			notes: uudenSmoothienNotet
 		};
-		luoSmoothieKortti(newSmoothie);
+		luoSmoothieKortti(newSmoothie, true);
 		// const newSmoothieCard: SmoothieKortti = {
 		// 	ID: newSmoothie.id,
 		// 	smoothie: newSmoothie,
@@ -77,29 +77,61 @@
 		homePage();
 	}
 
+	$effect(() => {
+		if (kunnollinenAdd) {
+			addDisabled = false;
+		}
+	});
 	// ----------------------- MUUTTUJAT --------------------------
 
 	let selected = $state(' ');
 	let amount: number = $state(0);
-
+	let addDisabled = $state(true);
 	let uudenSmoothienNimi = $state('');
 	let uudenSmoothienValmistusaika: number = $state(NaN);
 	let uudenSmoothienIngredients: string[] = $state([]);
 	let uudenSmoothienIngredientsAmounts: number[] = $state([]);
 	let uudenSmoothienNotet = $state('');
 
-	$inspect(globalAmountNumbers.get());
+	// ------------------- VIRHEENTARKISTUS ----------------------
 
+	let visitedNimiKentta = $state(false);
+
+	let kunnollinenNimi = $derived(uudenSmoothienNimi.length > 0 && visitedNimiKentta ? true : false);
+	let kunnollinenValmistusaika = $derived(isNaN(uudenSmoothienValmistusaika) ? false : true);
+	let kunnollisetIngredients = $derived(uudenSmoothienIngredients.length > 0 ? true : false);
+
+	let oikeanlaisetSmoothienTiedot = $derived(
+		kunnollinenNimi && kunnollinenValmistusaika && kunnollisetIngredients
+	);
+
+	let kunnollinenAmount = $derived(amount > 0 ? true : false);
+	let kunnollinenIngredient = $derived(selected.length > 1 ? true : false);
+	let kunnollinenAdd = $derived(kunnollinenAmount && kunnollinenIngredient);
+
+	let nimiKenttaStyle = $derived(
+		visitedNimiKentta && !kunnollinenNimi
+			? 'laila-medium h-9 w-full resize-none rounded-xl border-1 bg-rose-50 px-2 py-4 text-rose-700'
+			: 'laila-medium h-9 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black'
+	);
+
+	let nimiKenttaPlaceholder = $derived(
+		visitedNimiKentta && !kunnollinenNimi ? 'Please insert name!' : 'Name of smoothie'
+	);
 	// ------------------------- DEBUG ----------------------------
 
-	$inspect(uudenSmoothienNimi);
-	$inspect(uudenSmoothienValmistusaika);
-	$inspect(uudenSmoothienNotet);
+	// $inspect(visitedNimiKentta);
+	// $inspect(kunnollisetIngredients);
+	// $inspect(kunnollinenNimi);
+	// $inspect(kunnollinenValmistusaika);
+	// $inspect(globalAmountNumbers.get());
+	// $inspect(uudenSmoothienNimi);
+	// $inspect(uudenSmoothienValmistusaika);
+	// $inspect(uudenSmoothienNotet);
 	// $inspect(selected);
 	// $inspect(ingredientsAmountTaulukko);
-	$inspect(uudenSmoothienIngredients);
-	$inspect(uudenSmoothienIngredientsAmounts);
-
+	// $inspect(uudenSmoothienIngredients);
+	// $inspect(uudenSmoothienIngredientsAmounts);
 	// $inspect(amount);
 	// $inspect(globalFruits.get());
 </script>
@@ -144,14 +176,20 @@
 				<div
 					class="items-start justify-between [@media(min-width:400px)]:flex-row [@media(min-width:400px)]:items-center"
 				>
-					<div class="mb-1 flex items-center gap-2">
+					<!-- Name of Smoothie -->
+					<div class="bg mb-1 flex items-center gap-2">
 						<input
 							bind:value={uudenSmoothienNimi}
-							placeholder="Name of smoothie"
+							onblur={() => {
+								visitedNimiKentta = true;
+							}}
+							placeholder={nimiKenttaPlaceholder}
 							type="text"
-							class="laila-medium h-9 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black"
+							class={nimiKenttaStyle}
 						/>
 					</div>
+
+					<!-- color: #eb0000; -->
 
 					<!-- <select
 				placeholder="Prep time (minutes)"
@@ -203,7 +241,7 @@
 
 						<!-- Dropdowns at bottom of list -->
 						<li class="justify-left mt-3 flex w-full flex-col gap-2 pr-2">
-							<div class="grid grid-cols-2 gap-2">
+							<div class="flex flex-col gap-2 sm:grid sm:grid-cols-2">
 								<button
 									class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
 								>
@@ -226,12 +264,26 @@
 								</button>
 							</div>
 							<button
-								class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 px-5 py-1 text-black hover:bg-orange-300 hover:outline-1"
-								onclick={add}>Add</button
+								class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 px-5 py-1 text-black hover:bg-orange-300 hover:outline-1 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-slate-600 disabled:outline-0"
+								onclick={add}
+								disabled={addDisabled}>Add</button
 							>
 						</li>
 					</ul>
 				</div>
+
+				<!-- KORJAAAAAA :) -->
+				<!-- Nutritional Info -->
+				<!-- <div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
+					<h2 class="text-md laila-medium">Nutritional Information</h2>
+					<ul class="laila-regular py-1 text-sm text-gray-600">
+						<li>Calories: {smoothieKortti.ravintoarvotYht.calories.toFixed(1)} kcal</li>
+						<li>Carbohydrates: {smoothieKortti.ravintoarvotYht.carbohydrates.toFixed(1)} g</li>
+						<li>Protein: {smoothieKortti.ravintoarvotYht.protein.toFixed(1)} g</li>
+						<li>Fat: {smoothieKortti.ravintoarvotYht.fat.toFixed(1)} g</li>
+						<li>Sugar: {smoothieKortti.ravintoarvotYht.sugar.toFixed(1)} g</li>
+					</ul>
+				</div> -->
 
 				<!-- Notes -->
 				<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
@@ -251,12 +303,13 @@
 				<div class="mt-2 flex flex-row items-center justify-center gap-5">
 					<button
 						onclick={homePage}
-						class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-slate-50 p-2 px-20 text-slate-600 hover:bg-slate-100 hover:text-black hover:outline-1"
+						class="laila-regular hover:laila-medium w-full cursor-pointer rounded-xl border-1 bg-slate-50 p-2 text-slate-600 hover:bg-slate-100 hover:text-black hover:outline-1"
 						>Cancel</button
 					>
 					<button
+						disabled={!oikeanlaisetSmoothienTiedot}
 						onclick={createSmoothie}
-						class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 p-2 px-20 hover:bg-orange-300 hover:outline-1"
+						class="laila-regular disabled:hover:laila-regular hover:laila-medium w-full cursor-pointer rounded-xl border-1 bg-orange-200 p-2 hover:bg-orange-300 hover:outline-1 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-slate-600 disabled:outline-0"
 						>Create</button
 					>
 				</div>
@@ -319,5 +372,16 @@
 		100% {
 			transform: rotate(360deg);
 		}
+	}
+	button:disabled {
+		background-color: #00000020;
+		color: darkgray;
+		cursor: not-allowed;
+	}
+
+	button:disabled:hover {
+		/* border-width: unset; */
+		font-weight: 400;
+		outline-width: 0px;
 	}
 </style>
