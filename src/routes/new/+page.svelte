@@ -165,7 +165,7 @@
 				<div class="relative">
 					<img
 						src="default-grey-3.png"
-						alt="Default Image"
+						alt="Default"
 						class="max-h-60 w-full rounded-xl border-b-2 object-cover"
 					/>
 				</div>
