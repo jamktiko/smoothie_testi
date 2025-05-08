@@ -82,7 +82,12 @@
 	id="newsmoothiepage"
 	class="laila-medium fixed bottom-12 left-6 z-20 cursor-pointer rounded-xl border-2 bg-orange-100 px-4 py-2 text-lg hover:bg-orange-300 hover:outline-1"
 	onclick={newSmoothie}
-	in:blur={{ duration: 500 }}>New Smoothie</button
+	in:blur={{ duration: 500 }}
+>
+	<span class="hidden sm:block">New Smoothie</span>
+	<div class="flex items-center justify-center sm:hidden">
+		<span class="material-symbols-outlined icon-large">add</span>
+	</div></button
 >
 
 <nav class="flex items-center justify-center">
