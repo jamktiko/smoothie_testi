@@ -201,7 +201,7 @@
 />
 
 <!-- Outer Div -->
-<div class="h-screen">
+<div>
 	<div
 		class="bg-opacity-0 m-0.5 mt-5 flex flex-wrap justify-center"
 		in:blur={{ duration: 500 }}
