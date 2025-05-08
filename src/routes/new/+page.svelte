@@ -95,7 +95,7 @@
 					return fruit.name === uudenSmoothienIngredients[i];
 				});
 
-				console.log(loytynytIngredient);
+				// console.log(loytynytIngredient);
 
 				ravintoarvotYht.calories +=
 					loytynytIngredient?.nutritions.calories * uudenSmoothienIngredientsAmounts[i];
@@ -165,14 +165,14 @@
 	);
 	// ------------------------- DEBUG ----------------------------
 
-	$effect(() => {
-		// koska inspect ei tarpeeksi, debuggausta varten
-		console.log(`Calories: ${uudenSmoothienRavintoarvot.calories.toFixed(1)} kcal`);
-		console.log(`Carbohydrates: ${uudenSmoothienRavintoarvot.carbohydrates.toFixed(1)} g`);
-		console.log(`Protein: ${uudenSmoothienRavintoarvot.protein.toFixed(1)} g`);
-		console.log(`Fat: ${uudenSmoothienRavintoarvot.fat.toFixed(1)} g`);
-		console.log(`Sugar: ${uudenSmoothienRavintoarvot.sugar.toFixed(1)} g`);
-	});
+	// $effect(() => {
+	// 	// koska inspect ei tarpeeksi, debuggausta varten
+	// 	console.log(`Calories: ${uudenSmoothienRavintoarvot.calories.toFixed(1)} kcal`);
+	// 	console.log(`Carbohydrates: ${uudenSmoothienRavintoarvot.carbohydrates.toFixed(1)} g`);
+	// 	console.log(`Protein: ${uudenSmoothienRavintoarvot.protein.toFixed(1)} g`);
+	// 	console.log(`Fat: ${uudenSmoothienRavintoarvot.fat.toFixed(1)} g`);
+	// 	console.log(`Sugar: ${uudenSmoothienRavintoarvot.sugar.toFixed(1)} g`);
+	// });
 	// $inspect(visitedNimiKentta);
 	// $inspect(kunnollisetIngredients);
 	// $inspect(kunnollinenNimi);
