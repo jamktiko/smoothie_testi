@@ -13,7 +13,7 @@
 	import { ingredientFormatointi } from '$lib/ingredientFormatointi';
 	import Notes from '$lib/Notes.svelte';
 	import SmoothieCard from '$lib/SmoothieCard.svelte';
-	import { blur } from 'svelte/transition';
+	import { fade, blur, fly, slide, scale } from 'svelte/transition';
 	import type { SmoothieKortti } from '$lib/types/smoothieKortti';
 	import type { Smoothie } from '$lib/types/smoothie';
 	import type { NutritionInfo } from '$lib/types/nutritionInfo';
@@ -77,11 +77,48 @@
 		homePage();
 	}
 
+	function haeAineksetJaLaskeRavintoarvot(
+		uudenSmoothienIngredients: string[],
+		uudenSmoothienIngredientsAmounts: number[]
+	) {
+		const ravintoarvotYht: NutritionInfo = {
+			calories: 0,
+			carbohydrates: 0,
+			protein: 0,
+			fat: 0,
+			sugar: 0
+		};
+
+		if (uudenSmoothienIngredients.length > 0 && uudenSmoothienIngredientsAmounts.length > 0) {
+			for (let i = 0; i < uudenSmoothienIngredients.length; i++) {
+				const loytynytIngredient = globalFruits.get().find((fruit) => {
+					return fruit.name === uudenSmoothienIngredients[i];
+				});
+
+				console.log(loytynytIngredient);
+
+				ravintoarvotYht.calories +=
+					loytynytIngredient?.nutritions.calories * uudenSmoothienIngredientsAmounts[i];
+				ravintoarvotYht.carbohydrates +=
+					loytynytIngredient?.nutritions.carbohydrates * uudenSmoothienIngredientsAmounts[i];
+				ravintoarvotYht.protein +=
+					loytynytIngredient?.nutritions.protein * uudenSmoothienIngredientsAmounts[i];
+				ravintoarvotYht.fat +=
+					loytynytIngredient?.nutritions.fat * uudenSmoothienIngredientsAmounts[i];
+				ravintoarvotYht.sugar +=
+					loytynytIngredient?.nutritions.sugar * uudenSmoothienIngredientsAmounts[i];
+			}
+		}
+
+		return ravintoarvotYht;
+	}
+
 	$effect(() => {
 		if (kunnollinenAdd) {
 			addDisabled = false;
 		}
 	});
+
 	// ----------------------- MUUTTUJAT --------------------------
 
 	let selected = $state(' ');
@@ -91,6 +128,14 @@
 	let uudenSmoothienValmistusaika: number = $state(NaN);
 	let uudenSmoothienIngredients: string[] = $state([]);
 	let uudenSmoothienIngredientsAmounts: number[] = $state([]);
+
+	let uudenSmoothienRavintoarvot: NutritionInfo = $derived.by(() => {
+		return haeAineksetJaLaskeRavintoarvot(
+			uudenSmoothienIngredients,
+			uudenSmoothienIngredientsAmounts
+		);
+	});
+
 	let uudenSmoothienNotet = $state('');
 
 	// ------------------- VIRHEENTARKISTUS ----------------------
@@ -120,6 +165,14 @@
 	);
 	// ------------------------- DEBUG ----------------------------
 
+	$effect(() => {
+		// koska inspect ei tarpeeksi, debuggausta varten
+		console.log(`Calories: ${uudenSmoothienRavintoarvot.calories.toFixed(1)} kcal`);
+		console.log(`Carbohydrates: ${uudenSmoothienRavintoarvot.carbohydrates.toFixed(1)} g`);
+		console.log(`Protein: ${uudenSmoothienRavintoarvot.protein.toFixed(1)} g`);
+		console.log(`Fat: ${uudenSmoothienRavintoarvot.fat.toFixed(1)} g`);
+		console.log(`Sugar: ${uudenSmoothienRavintoarvot.sugar.toFixed(1)} g`);
+	});
 	// $inspect(visitedNimiKentta);
 	// $inspect(kunnollisetIngredients);
 	// $inspect(kunnollinenNimi);
@@ -189,28 +242,6 @@
 						/>
 					</div>
 
-					<!-- color: #eb0000; -->
-
-					<!-- <select
-				placeholder="Prep time (minutes)"
-				bind:value={uudenSmoothienValmistusaika}
-				class="my-1 w-45 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
-			>
-				<option value="" disabled selected hidden>Valitse määrä</option>
-				{#each valmistusajatMin as a}
-					<option value={a}>{a}</option>
-				{/each}
-			</select> -->
-
-					<!-- <input
-						class="laila-light my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
-						type="number"
-						min="1"
-						max="60"
-						placeholder="Prep time (minutes)"
-						bind:value={uudenSmoothienValmistusaika}
-					/> -->
-
 					<!-- Preparation time (minutes) -->
 					<select
 						bind:value={uudenSmoothienValmistusaika}
@@ -226,8 +257,10 @@
 				<!-- Ingredients -->
 				<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 					<h2 class="text-md laila-medium">Ingredients</h2>
-					<ul class="laila-regular px-1 py-1 text-sm text-slate-600">
+					<ul in:slide={{ duration: 500 }} class="laila-regular px-1 py-1 text-sm text-slate-600">
 						{#each uudenSmoothienIngredients as ingredient, index}
+							<!-- fade, blur, fly, slide, scale -->
+							<!--   *                *          -->
 							<li class="flex flex-row items-center pr-2">
 								{ingredientFormatointi(uudenSmoothienIngredientsAmounts[index])}
 								{ingredient}
@@ -272,18 +305,17 @@
 					</ul>
 				</div>
 
-				<!-- KORJAAAAAA :) -->
 				<!-- Nutritional Info -->
-				<!-- <div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
+				<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 					<h2 class="text-md laila-medium">Nutritional Information</h2>
 					<ul class="laila-regular py-1 text-sm text-gray-600">
-						<li>Calories: {smoothieKortti.ravintoarvotYht.calories.toFixed(1)} kcal</li>
-						<li>Carbohydrates: {smoothieKortti.ravintoarvotYht.carbohydrates.toFixed(1)} g</li>
-						<li>Protein: {smoothieKortti.ravintoarvotYht.protein.toFixed(1)} g</li>
-						<li>Fat: {smoothieKortti.ravintoarvotYht.fat.toFixed(1)} g</li>
-						<li>Sugar: {smoothieKortti.ravintoarvotYht.sugar.toFixed(1)} g</li>
+						<li>Calories: {uudenSmoothienRavintoarvot.calories.toFixed(1)} kcal</li>
+						<li>Carbohydrates: {uudenSmoothienRavintoarvot.carbohydrates.toFixed(1)} g</li>
+						<li>Protein: {uudenSmoothienRavintoarvot.protein.toFixed(1)} g</li>
+						<li>Fat: {uudenSmoothienRavintoarvot.fat.toFixed(1)} g</li>
+						<li>Sugar: {uudenSmoothienRavintoarvot.sugar.toFixed(1)} g</li>
 					</ul>
-				</div> -->
+				</div>
 
 				<!-- Notes -->
 				<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
