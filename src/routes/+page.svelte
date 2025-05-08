@@ -109,7 +109,7 @@
 			<img
 				src="https://media.tenor.com/JKqs7cUyi9gAAAAj/rick-astley-dance.gif"
 				alt="Get rick rolled :D"
-				class="h-2/3 w-2/3"
+				class="h-auto w-auto"
 			/>
 			<p class="laila-medium-italic w-1/1 text-slate-600 italic">
 				<span class="material-symbols-outlined">music_note</span> Never gonna give you up, never
@@ -134,7 +134,7 @@
 				<div></div>
 			</div>
 		{:else}
-			<p>No smoothies found</p>
+			<p class="laila-medium text-2xl">No smoothies found</p>
 		{/if}
 	{/if}
 </div>
