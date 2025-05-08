@@ -60,3 +60,11 @@
 	font-family: 'Laila', serif;
 	font-weight: 500;
 }
+
+.icon-heavy {
+	font-variation-settings: 'wght' 500;
+}
+
+.icon-large {
+	font-size: 1.7rem !important;
+}

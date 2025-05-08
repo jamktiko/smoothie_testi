@@ -80,9 +80,14 @@
 />
 <button
 	id="newsmoothiepage"
-	class="laila-medium fixed bottom-12 left-6 z-20 cursor-pointer rounded-xl border-2 bg-orange-100 px-4 py-2 text-lg hover:bg-orange-300 hover:outline-1"
+	class="laila-medium fixed bottom-6 left-6 z-20 cursor-pointer rounded-xl border-2 bg-orange-100 px-4 py-2 text-2xl shadow-md ring-2 ring-orange-300 ring-offset-2 backdrop-blur-2xl hover:bg-orange-400 hover:ring-orange-400 hover:outline-1 sm:bottom-14 sm:left-15"
 	onclick={newSmoothie}
-	in:blur={{ duration: 500 }}>New Smoothie</button
+	in:blur={{ duration: 500 }}
+>
+	<span class="hidden sm:block">New Smoothie</span>
+	<div class="flex items-center justify-center sm:hidden">
+		<span class="material-symbols-outlined icon-heavy icon-large p-1">add</span>
+	</div></button
 >
 
 <nav class="flex items-center justify-center">
