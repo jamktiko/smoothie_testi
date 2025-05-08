@@ -86,7 +86,7 @@
 	<Searchbar placeholder={'Search smoothies'} bind:value={searchBarinArvo} />
 </nav>
 
-<div class="m-7 flex flex-wrap justify-center gap-7">
+<div class="m-7 flex min-h-screen flex-wrap justify-center gap-7">
 	{#if rickRollVisible}
 		<div class="flex flex-col items-center text-center">
 			<img

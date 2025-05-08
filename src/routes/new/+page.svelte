@@ -111,7 +111,7 @@
 
 	let nimiKenttaStyle = $derived(
 		visitedNimiKentta && !kunnollinenNimi
-			? 'laila-medium h-9 w-full resize-none rounded-xl border-1 bg-rose-100 px-2 py-4 text-rose-700'
+			? 'laila-medium h-9 w-full resize-none rounded-xl border-1 bg-rose-50 px-2 py-4 text-rose-700'
 			: 'laila-medium h-9 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black'
 	);
 
@@ -372,5 +372,16 @@
 		100% {
 			transform: rotate(360deg);
 		}
+	}
+	button:disabled {
+		background-color: #00000020;
+		color: darkgray;
+		cursor: not-allowed;
+	}
+
+	button:disabled:hover {
+		/* border-width: unset; */
+		font-weight: 400;
+		outline-width: 0px;
 	}
 </style>
