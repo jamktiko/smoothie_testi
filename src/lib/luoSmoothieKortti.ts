@@ -57,13 +57,11 @@ const laskeRavintoarvotYhteensa = (ravintoarvot: NutritionInfo[], maara: number[
 		sugar: 0
 	};
 	for (let i = 0; i < ravintoarvot.length; i++) {
-		for (let j = 0; j < maara[i]; j++) {
-			yhteensa.calories += ravintoarvot[i].calories;
-			yhteensa.carbohydrates += ravintoarvot[i].carbohydrates;
-			yhteensa.protein += ravintoarvot[i].protein;
-			yhteensa.fat += ravintoarvot[i].fat;
-			yhteensa.sugar += ravintoarvot[i].sugar;
-		}
+		yhteensa.calories += ravintoarvot[i].calories * maara[i];
+		yhteensa.carbohydrates += ravintoarvot[i].carbohydrates * maara[i];
+		yhteensa.protein += ravintoarvot[i].protein * maara[i];
+		yhteensa.fat += ravintoarvot[i].fat * maara[i];
+		yhteensa.sugar += ravintoarvot[i].sugar * maara[i];
 	}
 	return yhteensa;
 };
