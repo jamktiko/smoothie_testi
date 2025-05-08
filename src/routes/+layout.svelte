@@ -71,6 +71,9 @@
 	<Header />
 	{@render children()}
 	<Footer>
-		<span>Ohjelmistoprojekti 1 by Team 2</span>
+		<span class="items-center justify-center sm:text-left">Froots Smoothie App - 2025</span>
+		<span class="items-center justify-center sm:text-right"
+			>J. Fengari - L. Makkonen - J. Rahikainen - T. Sairi</span
+		>
 	</Footer>
 </div>

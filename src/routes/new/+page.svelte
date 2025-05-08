@@ -264,13 +264,26 @@
 								</button>
 							</div>
 							<button
-								class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 px-5 py-1 text-black hover:bg-orange-300 hover:outline-1"
+								class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 px-5 py-1 text-black hover:bg-orange-300 hover:outline-1 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-slate-600 disabled:outline-0"
 								onclick={add}
 								disabled={addDisabled}>Add</button
 							>
 						</li>
 					</ul>
 				</div>
+
+				<!-- KORJAAAAAA :) -->
+				<!-- Nutritional Info -->
+				<!-- <div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
+					<h2 class="text-md laila-medium">Nutritional Information</h2>
+					<ul class="laila-regular py-1 text-sm text-gray-600">
+						<li>Calories: {smoothieKortti.ravintoarvotYht.calories.toFixed(1)} kcal</li>
+						<li>Carbohydrates: {smoothieKortti.ravintoarvotYht.carbohydrates.toFixed(1)} g</li>
+						<li>Protein: {smoothieKortti.ravintoarvotYht.protein.toFixed(1)} g</li>
+						<li>Fat: {smoothieKortti.ravintoarvotYht.fat.toFixed(1)} g</li>
+						<li>Sugar: {smoothieKortti.ravintoarvotYht.sugar.toFixed(1)} g</li>
+					</ul>
+				</div> -->
 
 				<!-- Notes -->
 				<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
@@ -296,7 +309,7 @@
 					<button
 						disabled={!oikeanlaisetSmoothienTiedot}
 						onclick={createSmoothie}
-						class="laila-regular hover:laila-medium w-full cursor-pointer rounded-xl border-1 bg-orange-200 p-2 hover:bg-orange-300 hover:outline-1"
+						class="laila-regular disabled:hover:laila-regular hover:laila-medium w-full cursor-pointer rounded-xl border-1 bg-orange-200 p-2 hover:bg-orange-300 hover:outline-1 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-slate-600 disabled:outline-0"
 						>Create</button
 					>
 				</div>
@@ -359,15 +372,5 @@
 		100% {
 			transform: rotate(360deg);
 		}
-	}
-	button:disabled {
-		background-color: #00000020;
-		color: darkgray;
-		cursor: not-allowed;
-	}
-
-	button:disabled:hover {
-		/* border-width: unset; */
-		outline-width: 0px;
 	}
 </style>
