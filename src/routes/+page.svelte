@@ -20,6 +20,8 @@
 	import '../app.css';
 	import { goto } from '$app/navigation';
 
+	import { scale, blur } from 'svelte/transition';
+
 	// ----------------------- FUNKTIOT ---------------------------
 
 	// filtteröi smoothieKortit searchBarin valuen mukaan
@@ -79,7 +81,8 @@
 <button
 	id="newsmoothiepage"
 	class="laila-medium fixed bottom-12 left-6 z-20 cursor-pointer rounded-xl border-2 bg-orange-100 px-4 py-2 text-lg hover:bg-orange-300 hover:outline-1"
-	onclick={newSmoothie}>New Smoothie</button
+	onclick={newSmoothie}
+	in:blur={{ duration: 500 }}>New Smoothie</button
 >
 
 <nav class="flex items-center justify-center">
