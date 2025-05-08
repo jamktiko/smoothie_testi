@@ -43,7 +43,15 @@
 	function newSmoothie() {
 		goto('../new');
 	}
-
+	$effect(() => {
+		if (valitutSmoothieKortit.length === 0) {
+			setTimeout(() => {
+				spinnerNakyy = false;
+			}, 1000);
+		} else {
+			spinnerNakyy = true;
+		}
+	});
 	// ----------------------- MUUTTUJAT --------------------------
 
 	// let smoothieKortitTaulukko: SmoothieKortti[] = $state([]);
@@ -54,6 +62,7 @@
 	let searchBarinArvo: string = $state('');
 	let valitutSmoothieKortit: SmoothieKortti[] = $state([]);
 	let rickRollVisible: boolean = $state(false);
+	let spinnerNakyy: boolean = $state(true);
 
 	// ------------------------- DEBUG ----------------------------
 
@@ -111,18 +120,22 @@
 			Either the site isn't loading or the search did not produce any results
 		</p> -->
 		</div>
-	{:else}
+	{:else if valitutSmoothieKortit.length > 0}
 		{#each valitutSmoothieKortit as smoothieKortti (smoothieKortti.ID)}
 			<SmoothieCard {smoothieKortti} />
-		{:else}
-			<!-- temporary loading spinner -->
+		{/each}
+	{:else}
+		<!-- temporary loading spinner -->
+		{#if spinnerNakyy}
 			<div class="lds-ring">
 				<div></div>
 				<div></div>
 				<div></div>
 				<div></div>
 			</div>
-		{/each}
+		{:else}
+			<p>No smoothies found</p>
+		{/if}
 	{/if}
 </div>
 

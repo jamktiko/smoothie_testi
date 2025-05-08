@@ -7,40 +7,52 @@
   - Designers: Jun Fengari, Teemu Sairi
   - Developers: Lauri Makkonen, Janika Rahikainen
 - Overall Project Intro:
-  Our goal is to make a smoothie app.... x
+  Fun & Fresh Smoothie Recipe App: Froots.  
+  View, edit and create new fun recipes, whilst keeping track of your health goals!
 
 ---
 
 ## Goals 
 What are we trying to make and how, who is the end user, what issues are we fixing, what niche are we filling? Tools and approach, end goals for project.  
-How did we achieve those goals?
+How did we achieve those goals?  
+Our goal is to make a smoothie recipe application, where users of any age and demographic can use the app to view recipes equiped with nutritional information, and create their own recipes. The purpose of this application is to allow smoothie-lovers to keep track of their favourite recipes. 
 
 
-## User Story
+## User Story  
+The user story is divided into two sections, Level 1 - Basic is the standard we're aiming for in this project. Level 2 - Advanced has partially been fulfilled in the project, but were planned as additional features to impliment considering time constraints and the real project timeline.  
+
 Level 1 - Basic  
 - As the (small screen) user, I want to click the recipe name button within a recipe card and open the expanded recipe page. 
-- In the recipe page, I can see the recipe ingredients, nutritional information, and additional notes. 
-- As the (large screen) user, I can browse the full recipes on the screen, and scroll down on each recipe card. 
+- In the recipe page, I can see the recipe ingredients, nutritional information, and read/add/modify notes. 
+- As the (large screen) user, I can browse the full recipes on the screen. 
 - As the user I can use the search bar to find a recipe of my choosing from the listing.
+- As the user, I can click the New Smoothie button, and create a smoothie in that page (with custom title, preparation time, ingredients, and notes, and save it to my recipes.
 
 Level 2 - Advanced  
-- In addition to above, as the user, I want to click the add button and open a recipe creation page. In this page, I can upload a picture, fill in the title, ingredients, and additional notes fields, and save it to my recipes. 
+- In addition to above, as the user, I want to click the New Smoothie button, where I can upload a custom picture.
+- In addition, I can also see my recipe ingredients dynamically update nutritional information while creating a new smoothie.
 - As the user, I may also edit and save the notes within ready recipes. 
 - As the user, I am able to view separate tabs: browse recipes, my recipes, and create recipe.
+- As the user, I am able to delete recipes, and edit premade recipes.
 
 ---
 
 ## Design Process 
-- Figma Link: (SmoothieSovellus Sivu): https://www.figma.com/design/hZwyYLCWlpHUJq7bY1xdAD/App-Ideas?node-id=12-65&t=BHifgodVZk2YNkAH-1
-- Design Goals: x (clear card design, fruity and fresh colors with an emphasis on images and recipe clarity, responsive and working layout for both mobile and web views...)
+- Our design goals revolved around making a fun, fruity and fresh smoothie recipe app. We aimed for clear card design and thematic colors. Practical goals included designing the app responsively with layouts for both mobile and web views. The initial designs were completed within figma, and then built and tested on tailwind play, after which they were integrated and tested on the final platform. This led to minor changes to accomodate for browser functionality. 
+The links to each stage of design are provided below. 
+
+- Figma Link: (SmoothieSovellus Sivu): https://www.figma.com/design/hZwyYLCWlpHUJq7bY1xdAD/App-Ideas?node-id=12-65&t=BHifgodVZk2YNkAH-1  
 - Key Screens in Tailwind Play:
-  - First Page (Etusivu): https://play.tailwindcss.com/B2aLLigQWT
-  - Second Page (Modaali-ikkuna / Smoothie Recipe sivu): https://play.tailwindcss.com/BtG0TDeeBk
-- Challenges: x (integrating style into code, card code thing...)
+  - First Page (Home Page): https://play.tailwindcss.com/B2aLLigQWT
+  - Second Page (Modal-window / Smoothie Recipe opened): https://play.tailwindcss.com/BtG0TDeeBk
+  - Third page (Make a new Smoothie): https://play.tailwindcss.com/T0FU2d1kU2
+    
+- Challenges: The main challenges within the design process concerned finding solutions which looked agreeable and also complied with usability best practices. These solutions also needed to fit the overall theme of the application. Practically integrating Tailwind into the readily prepared code from the developer team presented a learning curve, but became easier as the project progressed, and particularly as styles could be replicated throughout the different views. This highlighted the importance of spending more time on the initial design of the application before implimenting styles. 
+Opting to use Tailwind also revealed peculiarities in its capabilities and functionality, but overall was more efficient to use than CSS. 
   
 ## Development Process
 - Tech Stack
-  - Tailwind CSS
+  - x
   - x
   - x
   - x
@@ -52,11 +64,11 @@ Level 2 - Advanced
   - x
 
 ## Tasks by Role
-- Jun Fengari (Dokumentti) and 
+- Jun Fengari (Documentation) and 
 - Lauri Makkonen (Git) and
-- Janika Rahikainen (Laatu + Julkaisu) and
-- Teemu Sairi (Tehtävä) and
-- (jokaisen roolit ja päällikkötehtävät)...
+- Janika Rahikainen (Quality and Publishing) and
+- Teemu Sairi (Tasks) and
+- (jokaisen roolit? ja päällikkötehtävät)...?
   
 
 ## Credits:
@@ -65,7 +77,7 @@ Level 2 - Advanced
 - Font from [Google Material Symbols](https://fonts.google.com/icons).
 - Recipes generated by ChatGPT and Copilot.
 - Images from [Pixabay](https://pixabay.com/) and [Unsplash](https://unsplash.com/)
-- Logo Art & Design by Jun Fengari
+- Logo & Placeholder Image Art by Jun Fengari
 - Background image by <a href="https://unsplash.com/@pawel_czerwinski?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Pawel Czerwinski</a> on <a href="https://unsplash.com/photos/white-and-blue-abstract-painting-mfIplTZLE6E?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 
 ---
