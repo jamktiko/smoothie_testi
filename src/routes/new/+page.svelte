@@ -148,50 +148,50 @@
 />
 
 <!-- Outer Div -->
+<div class="h-screen">
+	<div
+		class="bg-opacity-0 m-0.5 mt-5 flex flex-wrap justify-center"
+		in:blur={{ duration: 500 }}
+		out:blur={{ duration: 300 }}
+	>
+		{#if globalFruits.get().length > 0}
+			<!-- Add Card -->
+			<div
+				class="relative mb-5 flex w-full max-w-xl flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300"
+				in:blur={{ duration: 500 }}
+				out:blur={{ duration: 300 }}
+			>
+				<!-- Image -->
+				<div class="relative">
+					<img
+						src="default-grey-3.png"
+						alt="Default Image"
+						class="max-h-60 w-full rounded-xl border-b-2 object-cover"
+					/>
+				</div>
 
-<div
-	class="bg-opacity-0 m-0.5 mt-5 flex flex-wrap justify-center"
-	in:blur={{ duration: 500 }}
-	out:blur={{ duration: 300 }}
->
-	{#if globalFruits.get().length > 0}
-		<!-- Add Card -->
-		<div
-			class="relative mb-5 flex w-full max-w-xl flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300"
-			in:blur={{ duration: 500 }}
-			out:blur={{ duration: 300 }}
-		>
-			<!-- Image -->
-			<div class="relative">
-				<img
-					src="default-grey-3.png"
-					alt="Default Image"
-					class="max-h-60 w-full rounded-xl border-b-2 object-cover"
-				/>
-			</div>
+				<!-- Content-->
+				<div class="flex-1 flex-col overflow-y-auto p-4">
+					<!-- Title and Timer -->
+					<div
+						class="items-start justify-between [@media(min-width:400px)]:flex-row [@media(min-width:400px)]:items-center"
+					>
+						<!-- Name of Smoothie -->
+						<div class="bg mb-1 flex items-center gap-2">
+							<input
+								bind:value={uudenSmoothienNimi}
+								onblur={() => {
+									visitedNimiKentta = true;
+								}}
+								placeholder={nimiKenttaPlaceholder}
+								type="text"
+								class={nimiKenttaStyle}
+							/>
+						</div>
 
-			<!-- Content-->
-			<div class="flex-1 flex-col overflow-y-auto p-4">
-				<!-- Title and Timer -->
-				<div
-					class="items-start justify-between [@media(min-width:400px)]:flex-row [@media(min-width:400px)]:items-center"
-				>
-					<!-- Name of Smoothie -->
-					<div class="bg mb-1 flex items-center gap-2">
-						<input
-							bind:value={uudenSmoothienNimi}
-							onblur={() => {
-								visitedNimiKentta = true;
-							}}
-							placeholder={nimiKenttaPlaceholder}
-							type="text"
-							class={nimiKenttaStyle}
-						/>
-					</div>
+						<!-- color: #eb0000; -->
 
-					<!-- color: #eb0000; -->
-
-					<!-- <select
+						<!-- <select
 				placeholder="Prep time (minutes)"
 				bind:value={uudenSmoothienValmistusaika}
 				class="my-1 w-45 rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
@@ -202,7 +202,7 @@
 				{/each}
 			</select> -->
 
-					<!-- <input
+						<!-- <input
 						class="laila-light my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
 						type="number"
 						min="1"
@@ -211,70 +211,70 @@
 						bind:value={uudenSmoothienValmistusaika}
 					/> -->
 
-					<!-- Preparation time (minutes) -->
-					<select
-						bind:value={uudenSmoothienValmistusaika}
-						class="laila-light my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
-					>
-						<option value={NaN} disabled selected hidden>Preparation time</option>
-						{#each SmoothieTime as a}
-							<option value={a}>{a} min</option>
-						{/each}
-					</select>
-				</div>
+						<!-- Preparation time (minutes) -->
+						<select
+							bind:value={uudenSmoothienValmistusaika}
+							class="laila-light my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
+						>
+							<option value={NaN} disabled selected hidden>Preparation time</option>
+							{#each SmoothieTime as a}
+								<option value={a}>{a} min</option>
+							{/each}
+						</select>
+					</div>
 
-				<!-- Ingredients -->
-				<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
-					<h2 class="text-md laila-medium">Ingredients</h2>
-					<ul class="laila-regular px-1 py-1 text-sm text-slate-600">
-						{#each uudenSmoothienIngredients as ingredient, index}
-							<li class="flex flex-row items-center pr-2">
-								{ingredientFormatointi(uudenSmoothienIngredientsAmounts[index])}
-								{ingredient}
+					<!-- Ingredients -->
+					<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
+						<h2 class="text-md laila-medium">Ingredients</h2>
+						<ul class="laila-regular px-1 py-1 text-sm text-slate-600">
+							{#each uudenSmoothienIngredients as ingredient, index}
+								<li class="flex flex-row items-center pr-2">
+									{ingredientFormatointi(uudenSmoothienIngredientsAmounts[index])}
+									{ingredient}
+									<button
+										onclick={() => remove(index)}
+										class="laila-regular my-1 ml-auto cursor-pointer rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
+										>Remove</button
+									>
+								</li>
+							{/each}
+
+							<!-- Dropdowns at bottom of list -->
+							<li class="justify-left mt-3 flex w-full flex-col gap-2 pr-2">
+								<div class="flex flex-col gap-2 sm:grid sm:grid-cols-2">
+									<button
+										class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
+									>
+										<select class="w-full focus:outline-none" bind:value={amount}>
+											<option value={0} disabled selected hidden>Amount</option>
+											{#each globalAmountNumbers.get() as a}
+												<option value={a}>{a}</option>
+											{/each}
+										</select>
+									</button>
+									<button
+										class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
+									>
+										<select class="w-full focus:outline-none" bind:value={selected}>
+											<option value={' '} disabled selected hidden>Choose ingredient</option>
+											{#each globalFruits.get() as fruit}
+												<option value={fruit.name}>{fruit.name}</option>
+											{/each}
+										</select>
+									</button>
+								</div>
 								<button
-									onclick={() => remove(index)}
-									class="laila-regular my-1 ml-auto cursor-pointer rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
-									>Remove</button
+									class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 px-5 py-1 text-black hover:bg-orange-300 hover:outline-1"
+									onclick={add}
+									disabled={addDisabled}>Add</button
 								>
 							</li>
-						{/each}
+						</ul>
+					</div>
 
-						<!-- Dropdowns at bottom of list -->
-						<li class="justify-left mt-3 flex w-full flex-col gap-2 pr-2">
-							<div class="flex flex-col gap-2 sm:grid sm:grid-cols-2">
-								<button
-									class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
-								>
-									<select class="w-full focus:outline-none" bind:value={amount}>
-										<option value={0} disabled selected hidden>Amount</option>
-										{#each globalAmountNumbers.get() as a}
-											<option value={a}>{a}</option>
-										{/each}
-									</select>
-								</button>
-								<button
-									class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
-								>
-									<select class="w-full focus:outline-none" bind:value={selected}>
-										<option value={' '} disabled selected hidden>Choose ingredient</option>
-										{#each globalFruits.get() as fruit}
-											<option value={fruit.name}>{fruit.name}</option>
-										{/each}
-									</select>
-								</button>
-							</div>
-							<button
-								class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 px-5 py-1 text-black hover:bg-orange-300 hover:outline-1"
-								onclick={add}
-								disabled={addDisabled}>Add</button
-							>
-						</li>
-					</ul>
-				</div>
-
-				<!-- KORJAAAAAA :) -->
-				<!-- Nutritional Info -->
-				<!-- <div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
+					<!-- KORJAAAAAA :) -->
+					<!-- Nutritional Info -->
+					<!-- <div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 					<h2 class="text-md laila-medium">Nutritional Information</h2>
 					<ul class="laila-regular py-1 text-sm text-gray-600">
 						<li>Calories: {smoothieKortti.ravintoarvotYht.calories.toFixed(1)} kcal</li>
@@ -285,47 +285,48 @@
 					</ul>
 				</div> -->
 
-				<!-- Notes -->
-				<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
-					<h2 class="text-md laila-medium">Notes</h2>
-					<Notes
-						placeholder={'Add some notes about this recipe'}
-						bind:taytto={uudenSmoothienNotet}
-						ellipsisWrapOn={true}
-					/>
-				</div>
-				<!-- <div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
+					<!-- Notes -->
+					<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
+						<h2 class="text-md laila-medium">Notes</h2>
+						<Notes
+							placeholder={'Add some notes about this recipe'}
+							bind:taytto={uudenSmoothienNotet}
+							ellipsisWrapOn={true}
+						/>
+					</div>
+					<!-- <div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Notes</h2>
 			<p class="laila-regular text-sm text-slate-600">Add some notes about this recipe</p>
 		</div> -->
 
-				<!-- buttons below  -->
-				<div class="mt-2 flex flex-row items-center justify-center gap-5">
-					<button
-						onclick={homePage}
-						class="laila-regular hover:laila-medium w-full cursor-pointer rounded-xl border-1 bg-slate-50 p-2 text-slate-600 hover:bg-slate-100 hover:text-black hover:outline-1"
-						>Cancel</button
-					>
-					<button
-						disabled={!oikeanlaisetSmoothienTiedot}
-						onclick={createSmoothie}
-						class="laila-regular hover:laila-medium w-full cursor-pointer rounded-xl border-1 bg-orange-200 p-2 hover:bg-orange-300 hover:outline-1"
-						>Create</button
-					>
+					<!-- buttons below  -->
+					<div class="mt-2 flex flex-row items-center justify-center gap-5">
+						<button
+							onclick={homePage}
+							class="laila-regular hover:laila-medium w-full cursor-pointer rounded-xl border-1 bg-slate-50 p-2 text-slate-600 hover:bg-slate-100 hover:text-black hover:outline-1"
+							>Cancel</button
+						>
+						<button
+							disabled={!oikeanlaisetSmoothienTiedot}
+							onclick={createSmoothie}
+							class="laila-regular hover:laila-medium w-full cursor-pointer rounded-xl border-1 bg-orange-200 p-2 hover:bg-orange-300 hover:outline-1"
+							>Create</button
+						>
+					</div>
 				</div>
 			</div>
-		</div>
-	{:else}
-		<!-- temporary loading spinner -->
-		<div class="lds-ring">
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-		</div>
-	{/if}
+		{:else}
+			<!-- temporary loading spinner -->
+			<div class="lds-ring">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		{/if}
 
-	<!-- end of Outer Div -->
+		<!-- end of Outer Div -->
+	</div>
 </div>
 
 <style>
