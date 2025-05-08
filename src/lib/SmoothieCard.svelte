@@ -121,7 +121,7 @@
 				[@media(max-width:600px)]:max-h-screen
 				[@media(max-width:600px)]:w-screen"
 				in:scale={{ duration: 400 }}
-				out:scale={{ duration: 500 }}
+				out:scale={{ duration: 400 }}
 			>
 				<!-- Image -->
 				<div class="relative">
