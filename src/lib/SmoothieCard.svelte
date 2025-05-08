@@ -68,9 +68,9 @@
 	/>
 	<!-- Nämä menee piiloon mobiilissa -->
 	<div class="hidden flex-1 flex-col overflow-y-auto p-4 sm:flex">
-		<div class="mb-2 flex items-center justify-between">
+		<div class="flex flex-col items-start justify-between md:flex-row md:items-center">
 			<h1 class="laila-medium text-2xl">{smoothieKortti.smoothie.name}</h1>
-			<div class="flex items-center gap-1 text-slate-600">
+			<div class="flex items-end text-slate-600">
 				<span class="laila-regular pt-1">{smoothieKortti.valmistusAika} min</span>
 				<span class="material-symbols-outlined">timer</span>
 			</div>
@@ -117,9 +117,9 @@
 			<!-- Animaatio modaliin, duration vaihtaa nopeutta -->
 			<div
 				class=" fixed top-[10px] left-1/2 z-100 flex max-h-[97vh] w-1/2 -translate-x-1/2 flex-col justify-center overflow-hidden overflow-y-auto rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-900
-				[@media(max-width:600px)]:top-0
-				[@media(max-width:600px)]:max-h-screen
-				[@media(max-width:600px)]:w-screen"
+				[@media(max-width:640px)]:top-0
+				[@media(max-width:640px)]:max-h-screen
+				[@media(max-width:640px)]:w-screen"
 				in:scale={{ duration: 400 }}
 				out:scale={{ duration: 500 }}
 			>
@@ -135,9 +135,7 @@
 				<!-- Content (desktop only text, no button) -->
 				<div class=" flex-1 flex-col overflow-y-auto p-4">
 					<!-- Title and Timer -->
-					<div
-						class="flex flex-col items-start justify-between [@media(min-width:600px)]:flex-row [@media(min-width:600px)]:items-center"
-					>
+					<div class="flex flex-col items-start justify-between md:flex-row md:items-center">
 						<div class="flex items-center gap-2">
 							<button
 								onclick={toggleModal}
