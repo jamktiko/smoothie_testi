@@ -100,7 +100,7 @@
 		</div>
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Notes</h2>
-			<Notes placeholder={''} bind:taytto={notesTeksti} ellipsisWrapOn={true} />
+			<Notes placeholder={'No notes yet'} bind:taytto={notesTeksti} ellipsisWrapOn={true} />
 		</div>
 	</div>
 	<!-- Tähän loppuu kortin sisältö -->
@@ -180,7 +180,7 @@
 					<!-- Notes -->
 					<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 						<h2 class="text-md laila-medium">Notes</h2>
-						<Notes placeholder={'Add notes'} bind:taytto={notesTeksti} />
+						<Notes placeholder={'Add some notes about this recipe'} bind:taytto={notesTeksti} />
 					</div>
 				</div>
 			</div>

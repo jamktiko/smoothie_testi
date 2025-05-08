@@ -47,7 +47,7 @@
 			name: uudenSmoothienNimi,
 			ingredients: uudenSmoothienIngredients,
 			ingredientsAmount: uudenSmoothienIngredientsAmounts,
-			pic: 'https://cdn.pixabay.com/photo/2018/03/16/04/54/healthy-3230225_1280.jpg',
+			pic: 'default-grey-3.png',
 			preparationTimeMinutes: uudenSmoothienValmistusaika,
 			notes: uudenSmoothienNotet
 		};
@@ -164,8 +164,8 @@
 			<!-- Image -->
 			<div class="relative">
 				<img
-					src="https://cdn.pixabay.com/photo/2018/03/16/04/54/healthy-3230225_1280.jpg"
-					alt="Green Smoothie"
+					src="default-grey-3.png"
+					alt="Default Image"
 					class="max-h-60 w-full rounded-xl border-b-2 object-cover"
 				/>
 			</div>
@@ -264,7 +264,7 @@
 								</button>
 							</div>
 							<button
-								class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 px-5 py-1 text-black hover:bg-orange-300 hover:outline-1 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-slate-600 disabled:outline-0"
+								class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 px-5 py-1 text-black hover:bg-orange-300 hover:outline-1"
 								onclick={add}
 								disabled={addDisabled}>Add</button
 							>
@@ -309,7 +309,7 @@
 					<button
 						disabled={!oikeanlaisetSmoothienTiedot}
 						onclick={createSmoothie}
-						class="laila-regular disabled:hover:laila-regular hover:laila-medium w-full cursor-pointer rounded-xl border-1 bg-orange-200 p-2 hover:bg-orange-300 hover:outline-1 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-slate-600 disabled:outline-0"
+						class="laila-regular hover:laila-medium w-full cursor-pointer rounded-xl border-1 bg-orange-200 p-2 hover:bg-orange-300 hover:outline-1"
 						>Create</button
 					>
 				</div>
@@ -373,8 +373,9 @@
 			transform: rotate(360deg);
 		}
 	}
+
 	button:disabled {
-		background-color: #00000020;
+		background-color: rgb(227, 226, 226);
 		color: darkgray;
 		cursor: not-allowed;
 	}
