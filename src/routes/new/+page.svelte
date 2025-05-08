@@ -3,7 +3,10 @@
 
 	import { goto } from '$app/navigation';
 	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
-	import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
+	import {
+		smoothieKortit as globalSmoothieKortit,
+		smoothieKortit
+	} from '$lib/globalSmoothieKortit.svelte';
 	import { fruits as globalFruits } from '$lib/globalFruits.svelte';
 	import { amountNumbers as globalAmountNumbers } from '$lib/globalAmountNumbers.svelte';
 	import type { Fruit } from '$lib/types/fruit';
@@ -15,6 +18,7 @@
 	import type { Smoothie } from '$lib/types/smoothie';
 	import type { NutritionInfo } from '$lib/types/nutritionInfo';
 	import { luoSmoothieKortti } from '$lib/luoSmoothieKortti';
+	import { SmoothieTime } from '$lib/globalSmoothietime.svelte';
 
 	// ----------------------- FUNKTIOT ---------------------------
 
@@ -47,7 +51,7 @@
 			preparationTimeMinutes: uudenSmoothienValmistusaika,
 			notes: uudenSmoothienNotet
 		};
-		luoSmoothieKortti(newSmoothie);
+		luoSmoothieKortti(newSmoothie, true);
 		// const newSmoothieCard: SmoothieKortti = {
 		// 	ID: newSmoothie.id,
 		// 	smoothie: newSmoothie,
@@ -73,29 +77,61 @@
 		homePage();
 	}
 
+	$effect(() => {
+		if (kunnollinenAdd) {
+			addDisabled = false;
+		}
+	});
 	// ----------------------- MUUTTUJAT --------------------------
 
-	let selected = $state([]);
+	let selected = $state(' ');
 	let amount: number = $state(0);
-
+	let addDisabled = $state(true);
 	let uudenSmoothienNimi = $state('');
 	let uudenSmoothienValmistusaika: number = $state(NaN);
 	let uudenSmoothienIngredients: string[] = $state([]);
 	let uudenSmoothienIngredientsAmounts: number[] = $state([]);
 	let uudenSmoothienNotet = $state('');
 
-	$inspect(globalAmountNumbers.get());
+	// ------------------- VIRHEENTARKISTUS ----------------------
 
+	let visitedNimiKentta = $state(false);
+
+	let kunnollinenNimi = $derived(uudenSmoothienNimi.length > 0 && visitedNimiKentta ? true : false);
+	let kunnollinenValmistusaika = $derived(isNaN(uudenSmoothienValmistusaika) ? false : true);
+	let kunnollisetIngredients = $derived(uudenSmoothienIngredients.length > 0 ? true : false);
+
+	let oikeanlaisetSmoothienTiedot = $derived(
+		kunnollinenNimi && kunnollinenValmistusaika && kunnollisetIngredients
+	);
+
+	let kunnollinenAmount = $derived(amount > 0 ? true : false);
+	let kunnollinenIngredient = $derived(selected.length > 1 ? true : false);
+	let kunnollinenAdd = $derived(kunnollinenAmount && kunnollinenIngredient);
+
+	let nimiKenttaStyle = $derived(
+		visitedNimiKentta && !kunnollinenNimi
+			? 'laila-medium h-9 w-full resize-none rounded-xl border-1 bg-rose-100 px-2 py-4 text-rose-700'
+			: 'laila-medium h-9 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black'
+	);
+
+	let nimiKenttaPlaceholder = $derived(
+		visitedNimiKentta && !kunnollinenNimi ? 'Please insert name!' : 'Name of smoothie'
+	);
 	// ------------------------- DEBUG ----------------------------
 
-	$inspect(uudenSmoothienNimi);
-	$inspect(uudenSmoothienValmistusaika);
-	$inspect(uudenSmoothienNotet);
+	// $inspect(visitedNimiKentta);
+	// $inspect(kunnollisetIngredients);
+	// $inspect(kunnollinenNimi);
+	// $inspect(kunnollinenValmistusaika);
+	// $inspect(globalAmountNumbers.get());
+	// $inspect(uudenSmoothienNimi);
+	// $inspect(uudenSmoothienValmistusaika);
+	// $inspect(uudenSmoothienNotet);
 	// $inspect(selected);
 	// $inspect(ingredientsAmountTaulukko);
-	$inspect(uudenSmoothienIngredients);
-	$inspect(uudenSmoothienIngredientsAmounts);
-
+	// $inspect(uudenSmoothienIngredients);
+	// $inspect(uudenSmoothienIngredientsAmounts);
 	// $inspect(amount);
 	// $inspect(globalFruits.get());
 </script>
@@ -140,14 +176,20 @@
 				<div
 					class="items-start justify-between [@media(min-width:400px)]:flex-row [@media(min-width:400px)]:items-center"
 				>
-					<div class="mb-1 flex items-center gap-2">
+					<!-- Name of Smoothie -->
+					<div class="bg mb-1 flex items-center gap-2">
 						<input
 							bind:value={uudenSmoothienNimi}
-							placeholder="Name of smoothie"
+							onblur={() => {
+								visitedNimiKentta = true;
+							}}
+							placeholder={nimiKenttaPlaceholder}
 							type="text"
-							class="laila-medium h-9 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black"
+							class={nimiKenttaStyle}
 						/>
 					</div>
+
+					<!-- color: #eb0000; -->
 
 					<!-- <select
 				placeholder="Prep time (minutes)"
@@ -160,14 +202,25 @@
 				{/each}
 			</select> -->
 
-					<input
+					<!-- <input
 						class="laila-light my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
 						type="number"
 						min="1"
 						max="60"
 						placeholder="Prep time (minutes)"
 						bind:value={uudenSmoothienValmistusaika}
-					/>
+					/> -->
+
+					<!-- Preparation time (minutes) -->
+					<select
+						bind:value={uudenSmoothienValmistusaika}
+						class="laila-light my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
+					>
+						<option value={NaN} disabled selected hidden>Preparation time</option>
+						{#each SmoothieTime as a}
+							<option value={a}>{a} min</option>
+						{/each}
+					</select>
 				</div>
 
 				<!-- Ingredients -->
@@ -193,7 +246,7 @@
 									class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
 								>
 									<select class="w-full focus:outline-none" bind:value={amount}>
-										<option value="" disabled selected hidden>Valitse määrä</option>
+										<option value={0} disabled selected hidden>Amount</option>
 										{#each globalAmountNumbers.get() as a}
 											<option value={a}>{a}</option>
 										{/each}
@@ -203,6 +256,7 @@
 									class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
 								>
 									<select class="w-full focus:outline-none" bind:value={selected}>
+										<option value={' '} disabled selected hidden>Choose ingredient</option>
 										{#each globalFruits.get() as fruit}
 											<option value={fruit.name}>{fruit.name}</option>
 										{/each}
@@ -211,7 +265,8 @@
 							</div>
 							<button
 								class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 px-5 py-1 text-black hover:bg-orange-300 hover:outline-1"
-								onclick={add}>Add</button
+								onclick={add}
+								disabled={addDisabled}>Add</button
 							>
 						</li>
 					</ul>
@@ -239,6 +294,7 @@
 						>Cancel</button
 					>
 					<button
+						disabled={!oikeanlaisetSmoothienTiedot}
 						onclick={createSmoothie}
 						class="laila-regular hover:laila-medium w-full cursor-pointer rounded-xl border-1 bg-orange-200 p-2 hover:bg-orange-300 hover:outline-1"
 						>Create</button
@@ -303,5 +359,15 @@
 		100% {
 			transform: rotate(360deg);
 		}
+	}
+	button:disabled {
+		background-color: #00000020;
+		color: darkgray;
+		cursor: not-allowed;
+	}
+
+	button:disabled:hover {
+		/* border-width: unset; */
+		outline-width: 0px;
 	}
 </style>
