@@ -233,6 +233,7 @@
 						<div class="bg mb-1 flex items-center gap-2">
 							<input
 								bind:value={uudenSmoothienNimi}
+								maxlength={15}
 								onblur={() => {
 									visitedNimiKentta = true;
 								}}
