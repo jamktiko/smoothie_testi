@@ -27,6 +27,13 @@
 	}
 
 	function add() {
+		if (uudenSmoothienIngredients.includes(selected)) {
+			ingredientJoListassaError = true;
+			setTimeout(() => {
+				ingredientJoListassaError = false;
+			}, 1250);
+			throw new Error('Ainesosa on jo lisätty!');
+		}
 		if (selected.length > 0 && amount > 0) {
 			uudenSmoothienIngredients.push(`${selected}`);
 			uudenSmoothienIngredientsAmounts.push(amount);
@@ -137,6 +144,7 @@
 	});
 
 	let uudenSmoothienNotet = $state('');
+	let ingredientJoListassaError = $state(false);
 
 	// ------------------- VIRHEENTARKISTUS ----------------------
 
@@ -183,10 +191,11 @@
 	// $inspect(uudenSmoothienNotet);
 	// $inspect(selected);
 	// $inspect(ingredientsAmountTaulukko);
-	// $inspect(uudenSmoothienIngredients);
+	$inspect(uudenSmoothienIngredients);
 	// $inspect(uudenSmoothienIngredientsAmounts);
 	// $inspect(amount);
 	// $inspect(globalFruits.get());
+	$inspect(ingredientJoListassaError);
 </script>
 
 <link
@@ -300,6 +309,17 @@
 										</select>
 									</button>
 								</div>
+								{#if ingredientJoListassaError}
+									<span out:slide={{ duration: 400, delay: 2000 }}>
+										<p
+											class="laila-regular text-sm text-red-500"
+											out:fade={{ duration: 2000 }}
+											in:slide={{ duration: 400 }}
+										>
+											Ingredient already added!
+										</p></span
+									>
+								{/if}
 								<button
 									class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 px-5 py-1 text-black hover:bg-orange-300 hover:outline-1"
 									onclick={add}
