@@ -95,11 +95,7 @@
 >
 	<span class="hidden sm:block">New Smoothie</span>
 	<div class="flex items-center justify-center sm:hidden">
-<<<<<<< HEAD
 		<span class="material-symbols-outlined icon-heavy icon-large p-1">add</span>
-=======
-		<span class="material-symbols-outlined icon-large">add</span>
->>>>>>> uudensivuntyylit
 	</div></button
 >
 
