@@ -1,12 +1,13 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import { scale } from 'svelte/transition';
+
 	interface Props {
 		header?: Snippet;
 		children: Snippet;
 		footer?: Snippet;
 		toggleModal: () => void;
 	}
+
 	let { header, children, footer, toggleModal: toggleModal }: Props = $props();
 </script>
 
