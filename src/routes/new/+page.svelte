@@ -13,7 +13,7 @@
 	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
 	import { ingredients as globalIngredients } from '$lib/globalIngredients.svelte';
 	import { amountNumbers as globalAmountNumbers } from '$lib/globalAmountNumbers.svelte';
-	import { smoothieTime as globalSmoothieTime } from '$lib/globalSmoothieTime.svelte';
+	import { smoothieTime as globalSmoothieTime } from '$lib/globalSmoothietime.svelte';
 
 	// ----------------------- FUNKTIOT ---------------------------
 
