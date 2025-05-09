@@ -95,11 +95,7 @@
 >
 	<span class="hidden sm:block">New Smoothie</span>
 	<div class="flex items-center justify-center sm:hidden">
-<<<<<<< HEAD
 		<span class="material-symbols-outlined icon-heavy icon-large p-1">add</span>
-=======
-		<span class="material-symbols-outlined icon-large">add</span>
->>>>>>> uudensivuntyylit
 	</div></button
 >
 
@@ -113,7 +109,7 @@
 			<img
 				src="https://media.tenor.com/JKqs7cUyi9gAAAAj/rick-astley-dance.gif"
 				alt="Get rick rolled :D"
-				class="h-auto w-auto"
+				class="h-[320px] w-[280px]"
 			/>
 			<p class="laila-medium-italic w-1/1 text-slate-600 italic">
 				<span class="material-symbols-outlined">music_note</span> Never gonna give you up, never
