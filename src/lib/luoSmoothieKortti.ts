@@ -8,7 +8,7 @@ export const luoSmoothieKortti = (smoothie: Smoothie, lisataankoAlkuun: boolean 
 	const uusiSmoothieKortti: SmoothieKortti = {
 		ID: smoothie.id,
 		smoothie: smoothie,
-		hedelmat: [],
+		ainesosat: [],
 		hedelmatMaara: smoothie.ingredientsAmount,
 		ravintoarvot: [],
 		ravintoarvotYht: {
@@ -30,7 +30,7 @@ export const luoSmoothieKortti = (smoothie: Smoothie, lisataankoAlkuun: boolean 
 			return fruit.name === ingredient;
 		});
 
-		uusiSmoothieKortti.hedelmat.push(loytynytIngredient?.name);
+		uusiSmoothieKortti.ainesosat.push(loytynytIngredient?.name);
 		uusiSmoothieKortti.ravintoarvot.push(loytynytIngredient?.nutritions);
 	}
 	uusiSmoothieKortti.ravintoarvotYht = laskeRavintoarvotYhteensa(
