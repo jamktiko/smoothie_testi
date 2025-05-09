@@ -1,15 +1,16 @@
-// universal reactivity luokka fruitseille mitä voidaan käyttää missä vaan komponentissa
+// universal reactivity luokka ingredientseille mitä voidaan käyttää missä vaan komponentissa
+// "ingredients" on taulukko joka sisältää kaikki Ingredient-objektit
 import type { Ingredient } from '$lib/types/ingredient';
 
 class Ingredients {
-	private fruits: Ingredient[] = $state([]);
+	private ingredients: Ingredient[] = $state([]);
 
 	get() {
-		return this.fruits;
+		return this.ingredients;
 	}
 
 	set(x: Ingredient[]) {
-		this.fruits = x;
+		this.ingredients = x;
 	}
 }
 

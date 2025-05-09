@@ -1,4 +1,3 @@
-<!-- Button.svelte -->
 <script lang="ts">
 	interface Props {
 		buttonText: string;
