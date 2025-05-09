@@ -10,7 +10,7 @@
 	import SmoothieCard from '$lib/SmoothieCard.svelte';
 
 	// universal reactivity muuttujat
-	import { fruits as globalFruits } from '$lib/globalFruits.svelte';
+	import { ingredients as globalIngredients } from '$lib/globalIngredients.svelte';
 	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
 	import {
 		smoothieKortit as globalSmoothieKortit,

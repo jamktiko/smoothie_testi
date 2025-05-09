@@ -1,4 +1,4 @@
-interface Fruit {
+interface Ingredient {
 	name: string;
 	id: number;
 	family: string;
@@ -7,4 +7,4 @@ interface Fruit {
 	nutritions: NutritionInfo;
 }
 
-export type { Fruit };
+export type { Ingredient };

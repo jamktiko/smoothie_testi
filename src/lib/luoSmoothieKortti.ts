@@ -1,5 +1,5 @@
 import type { SmoothieKortti } from '$lib/types/smoothieKortti';
-import { fruits as globalFruits } from '$lib/globalFruits.svelte';
+import { ingredients as globalIngredients } from '$lib/globalIngredients.svelte';
 import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
 import type { Smoothie } from '$lib/types/smoothie';
 import type { NutritionInfo } from '$lib/types/nutritionInfo';
@@ -26,7 +26,7 @@ export const luoSmoothieKortti = (smoothie: Smoothie, lisataankoAlkuun: boolean 
 	for (let i = 0; i < smoothie.ingredients.length; i++) {
 		const ingredient = smoothie.ingredients[i];
 
-		const loytynytIngredient = globalFruits.get().find((fruit) => {
+		const loytynytIngredient = globalIngredients.get().find((fruit) => {
 			return fruit.name === ingredient;
 		});
 

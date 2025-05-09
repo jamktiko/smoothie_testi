@@ -7,9 +7,9 @@
 		smoothieKortit as globalSmoothieKortit,
 		smoothieKortit
 	} from '$lib/globalSmoothieKortit.svelte';
-	import { fruits as globalFruits } from '$lib/globalFruits.svelte';
+	import { ingredients as globalIngredients } from '$lib/globalIngredients.svelte';
 	import { amountNumbers as globalAmountNumbers } from '$lib/globalAmountNumbers.svelte';
-	import type { Fruit } from '$lib/types/fruit';
+	import type { Ingredient } from '$lib/types/ingredient';
 	import { ingredientFormatointi } from '$lib/ingredientFormatointi';
 	import Notes from '$lib/Notes.svelte';
 	import SmoothieCard from '$lib/SmoothieCard.svelte';
@@ -98,7 +98,7 @@
 
 		if (uudenSmoothienIngredients.length > 0 && uudenSmoothienIngredientsAmounts.length > 0) {
 			for (let i = 0; i < uudenSmoothienIngredients.length; i++) {
-				const loytynytIngredient = globalFruits.get().find((fruit) => {
+				const loytynytIngredient = globalIngredients.get().find((fruit) => {
 					return fruit.name === uudenSmoothienIngredients[i];
 				});
 
@@ -216,7 +216,7 @@
 		in:blur={{ duration: 500 }}
 		out:blur={{ duration: 300 }}
 	>
-		{#if globalFruits.get().length > 0}
+		{#if globalIngredients.get().length > 0}
 			<!-- Add Card -->
 			<div
 				class="relative mb-5 flex w-full max-w-xl flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300"
@@ -304,7 +304,7 @@
 									>
 										<select class="w-full focus:outline-none" bind:value={selected}>
 											<option value={' '} disabled selected hidden>Choose ingredient</option>
-											{#each globalFruits.get() as fruit}
+											{#each globalIngredients.get() as fruit}
 												<option value={fruit.name}>{fruit.name}</option>
 											{/each}
 										</select>
