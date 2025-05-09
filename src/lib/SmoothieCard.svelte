@@ -51,13 +51,14 @@
 <!-- Kortti -->
 
 <div
-	class="relative flex max-h-fit w-full flex-col rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300 hover:bg-orange-200 sm:max-h-full sm:w-[47%] lg:w-[31%]"
+	class="relative flex max-h-fit w-full flex-col rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300 hover:bg-orange-200 sm:max-h-full sm:w-[47%] sm:transform sm:transition-transform sm:duration-300 sm:hover:scale-103 lg:w-[31%]"
 	in:blur={{ duration: 500 }}
 	out:blur={{ duration: 300 }}
 >
 	<!-- Kortin sisältö -->
 	<button
-		class="absolute hidden h-full w-full cursor-pointer sm:block"
+		class="absolute hidden h-full w-full cursor-pointer
+			  sm:block"
 		onclick={toggleModal}
 		aria-label="modal-button"
 	></button>
@@ -71,7 +72,7 @@
 		<div class="flex flex-col items-start justify-between md:flex-row md:items-center">
 			<h1 class="laila-medium text-2xl">{smoothieKortti.smoothie.name}</h1>
 			<div class="flex items-end text-slate-600">
-				<span class="laila-regular pt-1">{smoothieKortti.valmistusAika} min</span>
+				<span class="laila-regular mr-1 pt-1">{smoothieKortti.valmistusAika} min</span>
 				<span class="material-symbols-outlined">timer</span>
 			</div>
 		</div>
@@ -130,6 +131,13 @@
 						alt={smoothieKortti.smoothie.name}
 						class="max-h-70 w-full rounded-xl border-b-2 object-cover"
 					/>
+
+					<button
+						onclick={toggleModal}
+						class="absolute top-3 left-3 block cursor-pointer rounded-lg border-2 bg-slate-200 leading-none hover:bg-slate-600 hover:text-white"
+					>
+						<span class="material-symbols-outlined icon-heavy">close</span>
+					</button>
 				</div>
 
 				<!-- Content (desktop only text, no button) -->
@@ -137,11 +145,11 @@
 					<!-- Title and Timer -->
 					<div class="flex flex-col items-start justify-between md:flex-row md:items-center">
 						<div class="flex items-center gap-2">
-							<button
+							<!-- <button
 								onclick={toggleModal}
-								class="material-symbols-outlined transform cursor-pointer pb-1 transition-transform duration-200 hover:scale-125"
-								>arrow_back_ios</button
-							>
+								class="material-symbols-outlined icon-large icon-heavy transform cursor-pointer pb-1 transition-transform duration-200 hover:scale-125"
+								>arrow_back</button
+							> -->
 							<h1 class="laila-medium text-2xl">{smoothieKortti.smoothie.name}</h1>
 						</div>
 						<div class="ml-8 flex items-center gap-1 text-slate-600">
