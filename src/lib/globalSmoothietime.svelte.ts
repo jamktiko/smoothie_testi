@@ -6,4 +6,4 @@ export function createSmoothieTime(maxnumber: number) {
 
 	return smoothieTime;
 }
-export const SmoothieTime = createSmoothieTime(30);
+export const smoothieTime = createSmoothieTime(30);

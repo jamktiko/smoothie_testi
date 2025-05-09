@@ -1,31 +1,28 @@
 <script lang="ts">
 	// ----------------------- IMPORTIT ---------------------------
 
-	import { goto } from '$app/navigation';
-	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
-	import {
-		smoothieKortit as globalSmoothieKortit,
-		smoothieKortit
-	} from '$lib/globalSmoothieKortit.svelte';
-	import { ingredients as globalIngredients } from '$lib/globalIngredients.svelte';
-	import { amountNumbers as globalAmountNumbers } from '$lib/globalAmountNumbers.svelte';
-	import type { Ingredient } from '$lib/types/ingredient';
-	import { ingredientFormatointi } from '$lib/ingredientFormatointi';
-	import Notes from '$lib/Notes.svelte';
-	import SmoothieCard from '$lib/SmoothieCard.svelte';
-	import { fade, blur, fly, slide, scale } from 'svelte/transition';
-	import type { SmoothieKortti } from '$lib/types/smoothieKortti';
 	import type { Smoothie } from '$lib/types/smoothie';
 	import type { NutritionInfo } from '$lib/types/nutritionInfo';
 	import { luoSmoothieKortti } from '$lib/luoSmoothieKortti';
-	import { SmoothieTime } from '$lib/globalSmoothietime.svelte';
+	import { ingredientFormatointi } from '$lib/ingredientFormatointi';
+	import Notes from '$lib/Notes.svelte';
+	import { goto } from '$app/navigation';
+	import { fade, blur, slide } from 'svelte/transition';
+
+	// universal reactivity muuttujat
+	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
+	import { ingredients as globalIngredients } from '$lib/globalIngredients.svelte';
+	import { amountNumbers as globalAmountNumbers } from '$lib/globalAmountNumbers.svelte';
+	import { smoothieTime as globalSmoothieTime } from '$lib/globalSmoothieTime.svelte';
 
 	// ----------------------- FUNKTIOT ---------------------------
 
+	// funktio, joka navigoi etusivulle
 	function homePage() {
 		goto('/');
 	}
 
+	// funktio, joka lisää ainesosan uuteen smoothieen
 	function add() {
 		if (uudenSmoothienIngredients.includes(selected)) {
 			ingredientJoListassaError = true;
@@ -38,17 +35,18 @@
 			uudenSmoothienIngredients.push(`${selected}`);
 			uudenSmoothienIngredientsAmounts.push(amount);
 		} else {
-			throw new Error('Valitse ensin hedelmä ja määrä!');
+			throw new Error('Valitse ensin ainesosa ja määrä!');
 		}
 	}
 
+	// funktio, joka poistaa ainesosan uudesta smoothiesta
 	function remove(ingredient: string, index: number) {
 		uudenSmoothienIngredients = uudenSmoothienIngredients.filter((item) => item !== ingredient);
 		uudenSmoothienIngredientsAmounts.splice(index, 1);
 	}
 
+	// luo uuden smoothien ja uuden smoothieKortin ja lisää kummatkin globaleihin taulukoihin + poistuu takaisin etusivulle
 	function createSmoothie() {
-		// console.log('newSmoothie: ', newSmoothie);
 		const newSmoothie: Smoothie = {
 			id: globalSmoothies.get()[globalSmoothies.get().length - 1].id + 1,
 			name: uudenSmoothienNimi,
@@ -59,31 +57,11 @@
 			notes: uudenSmoothienNotet
 		};
 		luoSmoothieKortti(newSmoothie, true);
-		// const newSmoothieCard: SmoothieKortti = {
-		// 	ID: newSmoothie.id,
-		// 	smoothie: newSmoothie,
-		// 	hedelmat: newSmoothie.ingredients,
-		// 	hedelmatMaara: newSmoothie.ingredientsAmount,
-		// 	ravintoarvot: [],
-		// 	ravintoarvotYht: {
-		// 		calories: 0,
-		// 		carbohydrates: 0,
-		// 		protein: 0,
-		// 		fat: 0,
-		// 		sugar: 0
-		// 	},
-		// 	pic: newSmoothie.pic,
-		// 	valmistusAika: newSmoothie.preparationTimeMinutes,
-		// 	notes: newSmoothie.notes
-		// };
-
-		// console.log('newSmoothieCard: ', newSmoothieCard);
-
 		globalSmoothies.get().push(newSmoothie);
-		// globalSmoothieKortit.get().push(newSmoothieCard);
 		homePage();
 	}
 
+	// hakee ainesosat ja laskee niiden yhteenlasketut ravintoarvot ja palauttaa ne
 	function haeAineksetJaLaskeRavintoarvot(
 		uudenSmoothienIngredients: string[],
 		uudenSmoothienIngredientsAmounts: number[]
@@ -102,8 +80,6 @@
 					return fruit.name === uudenSmoothienIngredients[i];
 				});
 
-				// console.log(loytynytIngredient);
-
 				ravintoarvotYht.calories +=
 					loytynytIngredient?.nutritions.calories * uudenSmoothienIngredientsAmounts[i];
 				ravintoarvotYht.carbohydrates +=
@@ -120,6 +96,7 @@
 		return ravintoarvotYht;
 	}
 
+	// effect joka ottaa add-napin disablen pois päältä kun kaikki on kunnossa
 	$effect(() => {
 		if (kunnollinenAdd) {
 			addDisabled = false;
@@ -128,25 +105,29 @@
 
 	// ----------------------- MUUTTUJAT --------------------------
 
+	// tällä hetkellä valittu ainesosa
 	let selected = $state(' ');
+	// tällä hetkellä valitun ainesosan määrä
 	let amount: number = $state(0);
+	// disabled napin tila
 	let addDisabled = $state(true);
+
+	// uuden smoothien muuttujat:
 	let uudenSmoothienNimi = $state('');
 	let uudenSmoothienValmistusaika: number = $state(NaN);
 	let uudenSmoothienIngredients: string[] = $state([]);
 	let uudenSmoothienIngredientsAmounts: number[] = $state([]);
-
 	let uudenSmoothienRavintoarvot: NutritionInfo = $derived.by(() => {
 		return haeAineksetJaLaskeRavintoarvot(
 			uudenSmoothienIngredients,
 			uudenSmoothienIngredientsAmounts
 		);
 	});
-
 	let uudenSmoothienNotet = $state('');
-	let ingredientJoListassaError = $state(false);
 
-	// ------------------- VIRHEENTARKISTUS ----------------------
+	// -------------------- VIRHEENTARKISTUS -----------------------
+
+	let ingredientJoListassaError = $state(false);
 
 	let visitedNimiKentta = $state(false);
 
@@ -162,15 +143,18 @@
 	let kunnollinenIngredient = $derived(selected.length > 1 ? true : false);
 	let kunnollinenAdd = $derived(kunnollinenAmount && kunnollinenIngredient);
 
+	// nimikentän vaihtuvat tyylit
 	let nimiKenttaStyle = $derived(
 		visitedNimiKentta && !kunnollinenNimi
 			? 'laila-medium h-9 w-full resize-none rounded-xl border-1 bg-rose-50 px-2 py-4 text-rose-700'
 			: 'laila-medium h-9 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black'
 	);
 
+	// nimikentän vaihtuvat placeholderit
 	let nimiKenttaPlaceholder = $derived(
 		visitedNimiKentta && !kunnollinenNimi ? 'Please insert name!' : 'Name of smoothie'
 	);
+
 	// ------------------------- DEBUG ----------------------------
 
 	// $effect(() => {
@@ -191,12 +175,14 @@
 	// $inspect(uudenSmoothienNotet);
 	// $inspect(selected);
 	// $inspect(ingredientsAmountTaulukko);
-	$inspect(uudenSmoothienIngredients);
+	// $inspect(uudenSmoothienIngredients);
 	// $inspect(uudenSmoothienIngredientsAmounts);
 	// $inspect(amount);
 	// $inspect(globalFruits.get());
-	$inspect(ingredientJoListassaError);
+	// $inspect(ingredientJoListassaError);
 </script>
+
+<!-- ----------------------- HTML --------------------------- -->
 
 <link
 	rel="stylesheet"
@@ -209,15 +195,17 @@
 	rel="stylesheet"
 />
 
-<!-- Outer Div -->
+<!-- Footer Fix Div -->
 <div class="h-auto min-h-screen">
+	<!-- Outer Div -->
 	<div
 		class="bg-opacity-0 m-0.5 mt-5 flex h-auto flex-wrap justify-center"
 		in:blur={{ duration: 500 }}
 		out:blur={{ duration: 300 }}
 	>
+		<!-- if data hasn't loaded yet, shows loading spinner -->
 		{#if globalIngredients.get().length > 0}
-			<!-- Add Card -->
+			<!-- New Smoothie Card -->
 			<div
 				class="relative mb-5 flex w-full max-w-xl flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300"
 				in:blur={{ duration: 500 }}
@@ -260,7 +248,7 @@
 							name="Smoothie preparation time"
 						>
 							<option value={NaN} disabled selected hidden>Preparation time</option>
-							{#each SmoothieTime as a}
+							{#each globalSmoothieTime as a}
 								<option value={a}>{a} min</option>
 							{/each}
 						</select>
@@ -388,10 +376,12 @@
 				<div></div>
 			</div>
 		{/if}
-
 		<!-- end of Outer Div -->
 	</div>
+	<!-- end of Footer Fix Div -->
 </div>
+
+<!-- ---------------------- STYLES -------------------------- -->
 
 <style>
 	/* loading spinner styles */
