@@ -1,8 +1,6 @@
 <script lang="ts">
 	// ----------------------- IMPORTIT ---------------------------
 
-	import type { Smoothie } from '$lib/types/smoothie';
-	import type { Fruit } from '$lib/types/fruit';
 	import type { SmoothieKortti } from '$lib/types/smoothieKortti';
 	import type { NutritionInfo } from '$lib/types/nutritionInfo';
 
@@ -11,138 +9,72 @@
 	import Footer from '$lib/Footer.svelte';
 	import SmoothieCard from '$lib/SmoothieCard.svelte';
 
-	import { onMount } from 'svelte';
+	// universal reactivity muuttujat
+	import { fruits as globalFruits } from '$lib/globalFruits.svelte';
+	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
+	import {
+		smoothieKortit as globalSmoothieKortit,
+		smoothieKortit
+	} from '$lib/globalSmoothieKortit.svelte';
+
 	import '../app.css';
+	import { goto } from '$app/navigation';
+
+	import { scale, blur } from 'svelte/transition';
 
 	// ----------------------- FUNKTIOT ---------------------------
 
-	// suoritetaan heti sivun lataamisen jälkeen
-	onMount(async () => {
-		fruits = await haeHedelmat();
-		smoothies = await haeSmoothiet();
-		luoSmoothieKortit();
-	});
-
-	// hakee smoothiet smoothies.json tiedostosta taulukkoon asynkronisesti
-	async function haeSmoothiet() {
-		try {
-			const response = await fetch('/data/smoothies.json');
-			if (!response.ok) {
-				throw new Error('Network response was not ok');
-			}
-			return await response.json();
-		} catch (error) {
-			console.error('Fetch error:', error);
-		}
-	}
-
-	// hakee hedelmät fruits.json tiedostosta taulukkoon asynkronisesti
-	async function haeHedelmat() {
-		return fetch('/data/fruits.json')
-			.then((response) => {
-				if (response.ok) {
-					return response.json();
-				} else {
-					throw new Error('Virhe haettaessa hedelmiä');
-				}
-			})
-			.then((data) => {
-				return data;
-			})
-			.catch((error) => {
-				if (error instanceof Error) {
-					console.error(error.message);
-				} else {
-					console.error(error);
-				}
-			});
-	}
-
-	// luo smoothieKortit smoothieista ja hedelmistä
-	const luoSmoothieKortit = () => {
-		smoothies.forEach((smoothie) => {
-			let uusiSmoothieKortti: SmoothieKortti = {
-				ID: smoothie.id,
-				smoothie: smoothie,
-				hedelmat: [],
-				hedelmatMaara: smoothie.ingredientsAmount,
-				ravintoarvot: [],
-				ravintoarvotYht: {
-					calories: 0,
-					carbohydrates: 0,
-					protein: 0,
-					fat: 0,
-					sugar: 0
-				},
-				pic: smoothie.pic,
-				valmistusAika: smoothie.preparationTimeMinutes
-			};
-
-			for (let i = 0; i < smoothie.ingredients.length; i++) {
-				const ingredient = smoothie.ingredients[i];
-
-				fruits.forEach((fruit) => {
-					if (fruit.name === ingredient) {
-						uusiSmoothieKortti.hedelmat.push(fruit.name);
-						uusiSmoothieKortti.ravintoarvot.push(fruit.nutritions);
-					}
-				});
-			}
-			uusiSmoothieKortti.ravintoarvotYht = laskeRavintoarvotYhteensa(
-				uusiSmoothieKortti.ravintoarvot,
-				uusiSmoothieKortti.hedelmatMaara
-			);
-			smoothieKortitTaulukko.push(uusiSmoothieKortti);
-		});
-	};
-
-	// laskee smoothienKortin ravintoarvojen yhteenlasketut arvot
-	const laskeRavintoarvotYhteensa = (ravintoarvot: NutritionInfo[], maara: number[]) => {
-		let yhteensa = {
-			calories: 0,
-			carbohydrates: 0,
-			protein: 0,
-			fat: 0,
-			sugar: 0
-		};
-		for (let i = 0; i < ravintoarvot.length; i++) {
-			for (let j = 0; j < maara[i]; j++) {
-				yhteensa.calories += ravintoarvot[i].calories;
-				yhteensa.carbohydrates += ravintoarvot[i].carbohydrates;
-				yhteensa.protein += ravintoarvot[i].protein;
-				yhteensa.fat += ravintoarvot[i].fat;
-				yhteensa.sugar += ravintoarvot[i].sugar;
-			}
-		}
-		return yhteensa;
-	};
-
 	// filtteröi smoothieKortit searchBarin valuen mukaan
 	const filteroiSmoothieKortteja = () => {
-		valitutSmoothieKortit = smoothieKortitTaulukko.filter((smoothieKortti) => {
-			return smoothieKortti.smoothie.name.toLowerCase().includes(searchBarinArvo.toLowerCase());
-		});
+		if (searchBarinArvo.toLowerCase() === 'RickRoll :D'.toLowerCase()) {
+			rickRollVisible = true;
+		} else {
+			rickRollVisible = false;
+			valitutSmoothieKortit = globalSmoothieKortit.get().filter((smoothieKortti) => {
+				return smoothieKortti.smoothie.name.toLowerCase().includes(searchBarinArvo.toLowerCase());
+			});
+		}
 	};
 
 	$effect(() => {
 		filteroiSmoothieKortteja();
 	});
 
+	function newSmoothie() {
+		goto('../new');
+	}
+	$effect(() => {
+		if (valitutSmoothieKortit.length === 0) {
+			setTimeout(() => {
+				spinnerNakyy = false;
+			}, 1000);
+		} else {
+			spinnerNakyy = true;
+		}
+	});
 	// ----------------------- MUUTTUJAT --------------------------
 
-	let smoothieKortitTaulukko: SmoothieKortti[] = $state([]);
-	let smoothies: Smoothie[] = $state([]);
-	let fruits: Fruit[] = $state([]);
+	// let smoothieKortitTaulukko: SmoothieKortti[] = $state([]);
+	// let smoothies: Smoothie[] = $state([]);
+	// let fruits: Fruit[] = $state([]);
 
 	// searchBariin liittyvät muuttujat
 	let searchBarinArvo: string = $state('');
 	let valitutSmoothieKortit: SmoothieKortti[] = $state([]);
+	let rickRollVisible: boolean = $state(false);
+	let spinnerNakyy: boolean = $state(true);
 
 	// ------------------------- DEBUG ----------------------------
 
 	// $inspect(smoothies);
 	// $inspect(fruits);
 	// $inspect(searchBarinArvo);
+	// $inspect(globalFruits.get());
+	// $inspect(globalSmoothies.get());
+	// $inspect(globalSmoothieKortit.get());
+	// $inspect(isSmallScreen);
+	// $inspect(outerWidth);
+	// $inspect(globalSmoothieKortit.get());
 </script>
 
 <link
@@ -155,28 +87,59 @@
 	href="https://fonts.googleapis.com/css2?family=Honk&family=Kalnia+Glaze:wght@100..700&family=Laila:wght@300;400;500;600;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merienda:wght@300..900&family=Nabla&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
 	rel="stylesheet"
 />
+<button
+	id="newsmoothiepage"
+	class="laila-medium fixed bottom-6 left-6 z-5 cursor-pointer rounded-xl border-2 bg-orange-100 px-4 py-2 text-2xl shadow-md ring-2 ring-orange-300 ring-offset-2 backdrop-blur-2xl hover:bg-orange-400 hover:ring-orange-400 hover:outline-1 sm:bottom-14 sm:left-15"
+	onclick={newSmoothie}
+	in:blur={{ duration: 500 }}
+>
+	<span class="hidden sm:block">New Smoothie</span>
+	<div class="flex items-center justify-center sm:hidden">
+		<span class="material-symbols-outlined icon-heavy icon-large p-1">add</span>
+	</div></button
+>
 
-<Header />
 <nav class="flex items-center justify-center">
 	<Searchbar placeholder={'Search smoothies'} bind:value={searchBarinArvo} />
 </nav>
 
-<div class="m-7 flex flex-wrap justify-center gap-7">
-	{#each valitutSmoothieKortit as smoothieKortti (smoothieKortti.ID)}
-		<SmoothieCard {smoothieKortti} />
-	{:else}
-		<!-- temporary loading spinner  -->
-		<div class="lds-ring">
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
+<div class="m-7 flex min-h-screen flex-wrap justify-center gap-7">
+	{#if rickRollVisible}
+		<div class="flex flex-col items-center text-center">
+			<img
+				src="https://media.tenor.com/JKqs7cUyi9gAAAAj/rick-astley-dance.gif"
+				alt="Get rick rolled :D"
+				class="h-[320px] w-[280px]"
+			/>
+			<p class="laila-medium-italic w-1/1 text-slate-600 italic">
+				<span class="material-symbols-outlined">music_note</span> Never gonna give you up, never
+				gonna let you down...
+				<span class="material-symbols-outlined">music_note</span>
+			</p>
+			<!-- <p class="laila-medium w-1/1">
+			Either the site isn't loading or the search did not produce any results
+		</p> -->
 		</div>
-	{/each}
+	{:else if valitutSmoothieKortit.length > 0}
+		{#each valitutSmoothieKortit as smoothieKortti (smoothieKortti.ID)}
+			<SmoothieCard {smoothieKortti} />
+		{/each}
+	{:else}
+		<!-- temporary loading spinner -->
+		{#if spinnerNakyy}
+			<div class="lds-ring">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		{:else}
+			<p class="laila-medium text-2xl">No smoothies found</p>
+		{/if}
+	{/if}
 </div>
 
 <!-- footer -->
-<Footer footerText={'Ohjelmistoprojekti 1 by Team 2'} />
 
 <style>
 	/* loading spinner styles */

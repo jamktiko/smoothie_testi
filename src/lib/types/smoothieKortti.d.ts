@@ -7,6 +7,7 @@ interface SmoothieKortti {
 	ravintoarvotYht: NutritionInfo;
 	pic: string;
 	valmistusAika: number;
+	notes: string;
 }
 
 export type { SmoothieKortti };

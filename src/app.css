@@ -37,3 +37,34 @@
 	font-weight: 700;
 	font-style: normal;
 }
+
+.laila-light-italic {
+	font-family: 'Laila', serif;
+	font-weight: 300;
+	font-style: italic;
+}
+
+.laila-regular-italic {
+	font-family: 'Laila', serif;
+	font-weight: 400;
+	font-style: italic;
+}
+
+.laila-medium-italic {
+	font-family: 'Laila', serif;
+	font-weight: 500;
+	font-style: italic;
+}
+
+.hover\:laila-medium:hover {
+	font-family: 'Laila', serif;
+	font-weight: 500;
+}
+
+.icon-heavy {
+	font-variation-settings: 'wght' 500;
+}
+
+.icon-large {
+	font-size: 1.7rem !important;
+}

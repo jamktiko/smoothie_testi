@@ -2,97 +2,116 @@
 	{
 		"id": 1,
 		"name": "Berry Bliss",
-		"ingredients": ["Strawberry", "Blueberry", "Raspberry", "Banana"],
-		"ingredientsAmount": [5, 2, 2, 1],
+		"ingredients": [
+			"Strawberries",
+			"Blueberries",
+			"Raspberries",
+			"Mangoes",
+			"Bananas",
+			"cup of Yogurt"
+		],
+		"ingredientsAmount": [5, 5, 5, 0.5, 1, 1],
 		"pic": "Berry-Bliss-1.jpg",
-		"preparationTimeMinutes": 5
+		"preparationTimeMinutes": 5,
+		"notes": ""
 	},
 	{
 		"id": 2,
 		"name": "Sunny Smile",
-		"ingredients": ["Pineapple", "Mango", "Banana"],
-		"ingredientsAmount": [1, 2, 2],
+		"ingredients": ["Pineapples", "Mangoes", "Bananas", "cup of Milk"],
+		"ingredientsAmount": [0.5, 1, 1, 2],
 		"pic": "Sunny-Smile-2.jpg",
-		"preparationTimeMinutes": 4
+		"preparationTimeMinutes": 4,
+		"notes": ""
 	},
 	{
 		"id": 3,
 		"name": "Green Zing",
-		"ingredients": ["Kiwi", "Green apple", "Pear"],
-		"ingredientsAmount": [4, 2, 3],
+		"ingredients": ["Kiwis", "Apples", "Pears", "Lemons"],
+		"ingredientsAmount": [2, 1, 1, 0.5],
 		"pic": "Green-Zing-3.jpg",
-		"preparationTimeMinutes": 6
+		"preparationTimeMinutes": 6,
+		"notes": ""
 	},
 	{
 		"id": 4,
 		"name": "Sweet Orchard",
-		"ingredients": ["Apple", "Banana", "Pear", "Peach"],
-		"ingredientsAmount": [2, 1, 1, 1],
+		"ingredients": ["Apples", "Bananas", "Pears", "Peaches"],
+		"ingredientsAmount": [2, 1, 1, 2],
 		"pic": "Sweet-Orchard-4.jpg",
-		"preparationTimeMinutes": 3
+		"preparationTimeMinutes": 3,
+		"notes": ""
 	},
 	{
 		"id": 5,
 		"name": "Sunset Fusion",
-		"ingredients": ["Peach", "Mango", "Raspberry"],
-		"ingredientsAmount": [3, 3, 3],
+		"ingredients": ["Peaches", "Mangoes", "Raspberries", "cup of Almond Milk"],
+		"ingredientsAmount": [1, 0.5, 10, 1],
 		"pic": "Sunset-Fusion-5.jpg",
-		"preparationTimeMinutes": 3
+		"preparationTimeMinutes": 3,
+		"notes": ""
 	},
 	{
 		"id": 6,
 		"name": "Summer Kiss",
-		"ingredients": ["Strawberry", "Peach", "Apple"],
-		"ingredientsAmount": [6, 2, 1],
+		"ingredients": ["Strawberries", "Peaches", "Apples", "cup of Ice Cream"],
+		"ingredientsAmount": [6, 2, 1, 1.5],
 		"pic": "Summer-Kiss-6.jpg",
-		"preparationTimeMinutes": 4
+		"preparationTimeMinutes": 4,
+		"notes": ""
 	},
 	{
 		"id": 7,
 		"name": "Avocado Spinach",
-		"ingredients": ["Avocado", "Spinach", "Banana"],
-		"ingredientsAmount": [2, 2, 2],
+		"ingredients": ["Avocados", "Spinach", "Bananas", "Lemons"],
+		"ingredientsAmount": [0.5, 2, 1, 1],
 		"pic": "Avocado-Spinach-7.jpg",
-		"preparationTimeMinutes": 5
+		"preparationTimeMinutes": 5,
+		"notes": ""
 	},
 	{
 		"id": 8,
 		"name": "Exotic Twist",
-		"ingredients": ["Pitahaya", "Mangosteen", "Feijoa"],
-		"ingredientsAmount": [3, 1, 2],
+		"ingredients": ["Pitahayas", "Mangosteens", "Feijoas"],
+		"ingredientsAmount": [1, 1, 2],
 		"pic": "Exotic-Twist-8.jpg",
-		"preparationTimeMinutes": 5
+		"preparationTimeMinutes": 5,
+		"notes": ""
 	},
 	{
 		"id": 9,
 		"name": "Tropical Sunrise",
-		"ingredients": ["Jackfruit", "Papaya", "Pineapple"],
-		"ingredientsAmount": [5, 3, 2],
+		"ingredients": ["Jackfruits", "Papayas", "Pineapples", "cup of Coconut Milk"],
+		"ingredientsAmount": [1, 1, 0.5, 1],
 		"pic": "Tropical-Sunrise-9.jpg",
-		"preparationTimeMinutes": 4
+		"preparationTimeMinutes": 4,
+		"notes": ""
 	},
 	{
 		"id": 10,
 		"name": "Peach Paradise",
-		"ingredients": ["Peach", "Apricot", "Mango"],
-		"ingredientsAmount": [3, 2, 2],
+		"ingredients": ["Peaches", "Apricots", "Mangoes", "cup of Coconut Milk"],
+		"ingredientsAmount": [2, 3, 1, 2],
 		"pic": "Peach-Paradise-10.jpg",
-		"preparationTimeMinutes": 4
+		"preparationTimeMinutes": 4,
+		"notes": ""
 	},
 	{
 		"id": 11,
 		"name": "Citrus Passion",
-		"ingredients": ["Tangerine", "Lemon", "Pomegranate"],
-		"ingredientsAmount": [3, 1, 2],
+		"ingredients": ["Tangerines", "Lemons", "Pomegranates"],
+		"ingredientsAmount": [2, 2, 1],
 		"pic": "Cirtus-Passion-11.jpg",
-		"preparationTimeMinutes": 3
+		"preparationTimeMinutes": 3,
+		"notes": ""
 	},
 	{
 		"id": 12,
 		"name": "Melon Dream",
-		"ingredients": ["Melon", "Dragonfruit", "Kiwi"],
-		"ingredientsAmount": [3, 2, 2],
+		"ingredients": ["Melons", "Dragonfruits", "Kiwis"],
+		"ingredientsAmount": [0.25, 1, 2],
 		"pic": "Melon-Dream-12.jpg",
-		"preparationTimeMinutes": 4
+		"preparationTimeMinutes": 4,
+		"notes": ""
 	}
 ]
