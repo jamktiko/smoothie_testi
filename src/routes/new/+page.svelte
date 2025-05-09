@@ -27,6 +27,13 @@
 	}
 
 	function add() {
+		if (uudenSmoothienIngredients.includes(selected)) {
+			ingredientJoListassaError = true;
+			setTimeout(() => {
+				ingredientJoListassaError = false;
+			}, 1250);
+			throw new Error('Ainesosa on jo lisätty!');
+		}
 		if (selected.length > 0 && amount > 0) {
 			uudenSmoothienIngredients.push(`${selected}`);
 			uudenSmoothienIngredientsAmounts.push(amount);
@@ -35,8 +42,8 @@
 		}
 	}
 
-	function remove(index: number) {
-		uudenSmoothienIngredients.splice(index, 1);
+	function remove(ingredient: string, index: number) {
+		uudenSmoothienIngredients = uudenSmoothienIngredients.filter((item) => item !== ingredient);
 		uudenSmoothienIngredientsAmounts.splice(index, 1);
 	}
 
@@ -95,7 +102,7 @@
 					return fruit.name === uudenSmoothienIngredients[i];
 				});
 
-				console.log(loytynytIngredient);
+				// console.log(loytynytIngredient);
 
 				ravintoarvotYht.calories +=
 					loytynytIngredient?.nutritions.calories * uudenSmoothienIngredientsAmounts[i];
@@ -137,6 +144,7 @@
 	});
 
 	let uudenSmoothienNotet = $state('');
+	let ingredientJoListassaError = $state(false);
 
 	// ------------------- VIRHEENTARKISTUS ----------------------
 
@@ -165,14 +173,14 @@
 	);
 	// ------------------------- DEBUG ----------------------------
 
-	$effect(() => {
-		// koska inspect ei tarpeeksi, debuggausta varten
-		console.log(`Calories: ${uudenSmoothienRavintoarvot.calories.toFixed(1)} kcal`);
-		console.log(`Carbohydrates: ${uudenSmoothienRavintoarvot.carbohydrates.toFixed(1)} g`);
-		console.log(`Protein: ${uudenSmoothienRavintoarvot.protein.toFixed(1)} g`);
-		console.log(`Fat: ${uudenSmoothienRavintoarvot.fat.toFixed(1)} g`);
-		console.log(`Sugar: ${uudenSmoothienRavintoarvot.sugar.toFixed(1)} g`);
-	});
+	// $effect(() => {
+	// 	// koska inspect ei tarpeeksi, debuggausta varten
+	// 	console.log(`Calories: ${uudenSmoothienRavintoarvot.calories.toFixed(1)} kcal`);
+	// 	console.log(`Carbohydrates: ${uudenSmoothienRavintoarvot.carbohydrates.toFixed(1)} g`);
+	// 	console.log(`Protein: ${uudenSmoothienRavintoarvot.protein.toFixed(1)} g`);
+	// 	console.log(`Fat: ${uudenSmoothienRavintoarvot.fat.toFixed(1)} g`);
+	// 	console.log(`Sugar: ${uudenSmoothienRavintoarvot.sugar.toFixed(1)} g`);
+	// });
 	// $inspect(visitedNimiKentta);
 	// $inspect(kunnollisetIngredients);
 	// $inspect(kunnollinenNimi);
@@ -183,10 +191,11 @@
 	// $inspect(uudenSmoothienNotet);
 	// $inspect(selected);
 	// $inspect(ingredientsAmountTaulukko);
-	// $inspect(uudenSmoothienIngredients);
+	$inspect(uudenSmoothienIngredients);
 	// $inspect(uudenSmoothienIngredientsAmounts);
 	// $inspect(amount);
 	// $inspect(globalFruits.get());
+	$inspect(ingredientJoListassaError);
 </script>
 
 <link
@@ -233,6 +242,7 @@
 						<div class="bg mb-1 flex items-center gap-2">
 							<input
 								bind:value={uudenSmoothienNimi}
+								maxlength={15}
 								onblur={() => {
 									visitedNimiKentta = true;
 								}}
@@ -258,14 +268,18 @@
 					<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 						<h2 class="text-md laila-medium">Ingredients</h2>
 						<ul in:slide={{ duration: 500 }} class="laila-regular px-1 py-1 text-sm text-slate-600">
-							{#each uudenSmoothienIngredients as ingredient, index}
+							{#each uudenSmoothienIngredients as ingredient, index (ingredient)}
 								<!-- fade, blur, fly, slide, scale -->
 								<!--   *                *          -->
-								<li class="flex flex-row items-center pr-2">
+								<li
+									class="flex flex-row items-center pr-2"
+									in:slide={{ duration: 300 }}
+									out:slide={{ duration: 300 }}
+								>
 									{ingredientFormatointi(uudenSmoothienIngredientsAmounts[index])}
 									{ingredient}
 									<button
-										onclick={() => remove(index)}
+										onclick={() => remove(ingredient, index)}
 										class="laila-regular my-1 ml-auto cursor-pointer rounded-xl border-1 bg-slate-50 px-2 py-0.5 hover:bg-slate-100 hover:text-black"
 										>Remove</button
 									>
@@ -296,6 +310,17 @@
 										</select>
 									</button>
 								</div>
+								{#if ingredientJoListassaError}
+									<span out:slide={{ duration: 400, delay: 2000 }}>
+										<p
+											class="laila-regular text-sm text-red-500"
+											out:fade={{ duration: 2000 }}
+											in:slide={{ duration: 400 }}
+										>
+											Ingredient already added!
+										</p></span
+									>
+								{/if}
 								<button
 									class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 px-5 py-1 text-black hover:bg-orange-300 hover:outline-1"
 									onclick={add}
