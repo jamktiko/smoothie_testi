@@ -11,12 +11,14 @@
 	let { header, children, footer, toggleModal: toggleModal }: Props = $props();
 </script>
 
+<!-- backdrop -->
 <button
 	class="backdrop fixed top-0 left-0 z-10 h-screen w-full bg-black/75"
 	onclick={toggleModal}
 	aria-label="backdrop"
 ></button>
 
+<!-- modal itse -->
 <div class="modal">
 	{#if header}
 		<header>
@@ -34,6 +36,7 @@
 </div>
 
 <style>
+	/* fiksaus siihen että kortit liikkuu kun modal aukeaa */
 	.modal {
 		position: absolute;
 	}
