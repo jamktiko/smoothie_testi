@@ -2,9 +2,10 @@
 	interface Props {
 		placeholder: string;
 		value: string;
+		name: string;
 	}
 
-	let { placeholder, value = $bindable() }: Props = $props();
+	let { name, placeholder, value = $bindable() }: Props = $props();
 </script>
 
 <div
@@ -13,6 +14,7 @@
 	<input
 		type="text"
 		{placeholder}
+		{name}
 		bind:value
 		class="laila-regular w-full pt-0.5 text-slate-600 focus:outline-none"
 	/>

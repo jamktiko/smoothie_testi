@@ -1,3 +1,5 @@
+// universal reactivity luokka ingredients amounteille mitä voidaan käyttää missä vaan komponentissa
+// "amountNumbers" on taulukko joka määrittää kuinka monta desimaalilukua ja kokonaislukuja voidaan käyttää kun luodaan uuden smoothien ainesosia
 class AmountNumbers {
 	private amountNumbers: number[] = $state([]);
 

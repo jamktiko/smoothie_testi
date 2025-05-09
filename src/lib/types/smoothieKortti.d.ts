@@ -1,7 +1,7 @@
 interface SmoothieKortti {
 	ID: number;
 	smoothie: Smoothie;
-	hedelmat: Fruit[];
+	ainesosat: Fruit[];
 	hedelmatMaara: number[];
 	ravintoarvot: NutritionInfo[];
 	ravintoarvotYht: NutritionInfo;

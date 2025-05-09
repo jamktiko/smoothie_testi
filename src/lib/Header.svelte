@@ -1,11 +1,5 @@
-<script lang="ts">
-	import { goto } from '$app/navigation';
-	function homePage() {
-		goto('/');
-	}
-</script>
-
 <header class="flex h-30 items-center justify-center rounded-xl border-b-2 bg-rose-100">
+	<!-- Logo with link to home page -->
 	<a href="/">
 		<img
 			src="logo-v-2.png"
