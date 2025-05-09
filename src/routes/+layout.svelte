@@ -51,7 +51,7 @@
 				if (response.ok) {
 					return response.json();
 				} else {
-					throw new Error('Virhe haettaessa hedelmiä');
+					throw new Error('Virhe haettaessa ainesosia!');
 				}
 			})
 			.then((data) => {
@@ -66,7 +66,7 @@
 			});
 	}
 
-	// luo kaikki smoothieKortit smoothieista ja hedelmistä
+	// luo kaikki smoothieKortit smoothieista ja ainesosista
 	const luoSmoothieKortit = () => {
 		globalSmoothies.get().forEach((smoothie) => {
 			luoSmoothieKortti(smoothie);
@@ -74,6 +74,7 @@
 	};
 </script>
 
+<!-- html-osio -->
 <div class="bg-white/75 bg-[url('/testbg-2.jpg')] bg-auto bg-top bg-repeat-y bg-blend-lighten">
 	<Header />
 	{@render children()}
