@@ -96,7 +96,7 @@
 
 <!-- searchbar -->
 <nav class="flex items-center justify-center">
-	<Searchbar placeholder={'Search smoothies'} bind:value={searchBarinArvo} />
+	<Searchbar name={'Searchbar'} placeholder={'Search smoothies'} bind:value={searchBarinArvo} />
 </nav>
 
 <!-- outer div -->

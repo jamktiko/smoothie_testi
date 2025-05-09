@@ -51,7 +51,7 @@
 <!-- Kortti -->
 
 <div
-	class="max-h-auto relative flex w-full flex-col rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300 hover:bg-orange-200 sm:h-auto sm:w-[47%] lg:w-[31%]"
+	class="relative flex max-h-fit w-full flex-col rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300 hover:bg-orange-200 sm:max-h-full sm:w-[47%] lg:w-[31%]"
 	in:blur={{ duration: 500 }}
 	out:blur={{ duration: 300 }}
 >
@@ -100,7 +100,12 @@
 		</div>
 		<div class="my-1 rounded-xl border-1 bg-white p-2 pl-3">
 			<h2 class="text-md laila-medium">Notes</h2>
-			<Notes placeholder={'No notes yet'} bind:taytto={notesTeksti} ellipsisWrapOn={true} />
+			<Notes
+				placeholder={'No notes yet'}
+				bind:taytto={notesTeksti}
+				ellipsisWrapOn={true}
+				name={'smoothie notes'}
+			/>
 		</div>
 	</div>
 	<!-- Tähän loppuu kortin sisältö -->
@@ -178,7 +183,11 @@
 					<!-- Notes -->
 					<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 						<h2 class="text-md laila-medium">Notes</h2>
-						<Notes placeholder={'Add some notes about this recipe'} bind:taytto={notesTeksti} />
+						<Notes
+							placeholder={'Add some notes about this recipe'}
+							bind:taytto={notesTeksti}
+							name={'Smoothie notes'}
+						/>
 					</div>
 				</div>
 			</div>

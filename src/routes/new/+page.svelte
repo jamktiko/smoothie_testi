@@ -212,7 +212,7 @@
 <!-- Outer Div -->
 <div class="h-auto min-h-screen">
 	<div
-		class="bg-opacity-0 m-0.5 mt-5 flex flex-wrap justify-center"
+		class="bg-opacity-0 m-0.5 mt-5 flex h-auto flex-wrap justify-center"
 		in:blur={{ duration: 500 }}
 		out:blur={{ duration: 300 }}
 	>
@@ -249,6 +249,7 @@
 								placeholder={nimiKenttaPlaceholder}
 								type="text"
 								class={nimiKenttaStyle}
+								name="new smoothies name"
 							/>
 						</div>
 
@@ -256,6 +257,7 @@
 						<select
 							bind:value={uudenSmoothienValmistusaika}
 							class="laila-light my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
+							name="Smoothie preparation time"
 						>
 							<option value={NaN} disabled selected hidden>Preparation time</option>
 							{#each SmoothieTime as a}
@@ -292,7 +294,11 @@
 									<button
 										class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
 									>
-										<select class="w-full focus:outline-none" bind:value={amount}>
+										<select
+											name="Ingredients amount"
+											class="w-full focus:outline-none"
+											bind:value={amount}
+										>
 											<option value={0} disabled selected hidden>Amount</option>
 											{#each globalAmountNumbers.get() as a}
 												<option value={a}>{a}</option>
@@ -302,7 +308,11 @@
 									<button
 										class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
 									>
-										<select class="w-full focus:outline-none" bind:value={selected}>
+										<select
+											name="Smoothies fruit"
+											class="w-full focus:outline-none"
+											bind:value={selected}
+										>
 											<option value={' '} disabled selected hidden>Choose ingredient</option>
 											{#each globalIngredients.get() as fruit}
 												<option value={fruit.name}>{fruit.name}</option>
@@ -349,6 +359,7 @@
 							placeholder={'Add some notes about this recipe'}
 							bind:taytto={uudenSmoothienNotet}
 							ellipsisWrapOn={true}
+							name={'smoothie notes'}
 						/>
 					</div>
 
