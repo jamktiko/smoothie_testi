@@ -127,8 +127,10 @@
 
 	// -------------------- VIRHEENTARKISTUS -----------------------
 
+	// tarkistaa onko ainesosa jo lisätty (ei sallita samaa ainesosaa kahdesti)
 	let ingredientJoListassaError = $state(false);
 
+	// tarkistaa onko nimikentässä käyty
 	let visitedNimiKentta = $state(false);
 
 	let kunnollinenNimi = $derived(uudenSmoothienNimi.length > 0 && visitedNimiKentta ? true : false);
@@ -143,14 +145,14 @@
 	let kunnollinenIngredient = $derived(selected.length > 1 ? true : false);
 	let kunnollinenAdd = $derived(kunnollinenAmount && kunnollinenIngredient);
 
-	// nimikentän vaihtuvat tyylit
+	// nimikentän vaihtuvat tyylit (error / normal)
 	let nimiKenttaStyle = $derived(
 		visitedNimiKentta && !kunnollinenNimi
 			? 'laila-medium h-9 w-full resize-none rounded-xl border-1 bg-rose-50 px-2 py-4 text-rose-700'
 			: 'laila-medium h-9 w-full resize-none rounded-xl border-1 bg-white px-2 py-4 text-black'
 	);
 
-	// nimikentän vaihtuvat placeholderit
+	// nimikentän vaihtuvat placeholderit (error / normal)
 	let nimiKenttaPlaceholder = $derived(
 		visitedNimiKentta && !kunnollinenNimi ? 'Please insert name!' : 'Name of smoothie'
 	);
@@ -226,7 +228,7 @@
 					<div
 						class="items-start justify-between [@media(min-width:400px)]:flex-row [@media(min-width:400px)]:items-center"
 					>
-						<!-- Name of Smoothie -->
+						<!-- Name of Smoothie input -->
 						<div class="bg mb-1 flex items-center gap-2">
 							<input
 								bind:value={uudenSmoothienNimi}
@@ -241,7 +243,7 @@
 							/>
 						</div>
 
-						<!-- Preparation time (minutes) -->
+						<!-- Preparation time (minutes) input -->
 						<select
 							bind:value={uudenSmoothienValmistusaika}
 							class="laila-light my-1 w-full rounded-xl border-1 bg-white p-1 pl-3 text-slate-600"
@@ -259,8 +261,6 @@
 						<h2 class="text-md laila-medium">Ingredients</h2>
 						<ul in:slide={{ duration: 500 }} class="laila-regular px-1 py-1 text-sm text-slate-600">
 							{#each uudenSmoothienIngredients as ingredient, index (ingredient)}
-								<!-- fade, blur, fly, slide, scale -->
-								<!--   *                *          -->
 								<li
 									class="flex flex-row items-center pr-2"
 									in:slide={{ duration: 300 }}
@@ -279,6 +279,7 @@
 							<!-- Dropdowns at bottom of list -->
 							<li class="justify-left mt-3 flex w-full flex-col gap-2 pr-2">
 								<div class="flex flex-col gap-2 sm:grid sm:grid-cols-2">
+									<!-- Amount of ingredient dropdown -->
 									<button
 										class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
 									>
@@ -293,6 +294,7 @@
 											{/each}
 										</select>
 									</button>
+									<!-- Choose ingredient dropdown -->
 									<button
 										class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
 									>
@@ -308,6 +310,7 @@
 										</select>
 									</button>
 								</div>
+								<!-- virheteksti joka näytetään jos ingredient on jo taulukossa ja painetaan Add -->
 								{#if ingredientJoListassaError}
 									<span out:slide={{ duration: 400, delay: 2000 }}>
 										<p
@@ -319,6 +322,7 @@
 										</p></span
 									>
 								{/if}
+								<!-- Add button -->
 								<button
 									class="laila-regular hover:laila-medium cursor-pointer rounded-xl border-1 bg-orange-200 px-5 py-1 text-black hover:bg-orange-300 hover:outline-1"
 									onclick={add}
@@ -328,7 +332,7 @@
 						</ul>
 					</div>
 
-					<!-- Nutritional Info -->
+					<!-- Nutritional Information -->
 					<div class="my-2 rounded-xl border-1 bg-white p-2 pl-3">
 						<h2 class="text-md laila-medium">Nutritional Information</h2>
 						<ul class="laila-regular py-1 text-sm text-gray-600">
@@ -353,11 +357,13 @@
 
 					<!-- buttons below  -->
 					<div class="mt-2 flex flex-row items-center justify-center gap-5">
+						<!-- Cancel button -->
 						<button
 							onclick={homePage}
 							class="laila-regular hover:laila-medium w-full cursor-pointer rounded-xl border-1 bg-slate-50 p-2 text-slate-600 hover:bg-slate-100 hover:text-black hover:outline-1"
 							>Cancel</button
 						>
+						<!-- Create button -->
 						<button
 							disabled={!oikeanlaisetSmoothienTiedot}
 							onclick={createSmoothie}
@@ -368,7 +374,7 @@
 				</div>
 			</div>
 		{:else}
-			<!-- temporary loading spinner -->
+			<!-- loading spinner -->
 			<div class="lds-ring">
 				<div></div>
 				<div></div>
@@ -436,7 +442,6 @@
 	}
 
 	button:disabled:hover {
-		/* border-width: unset; */
 		font-weight: 400;
 		outline-width: 0px;
 	}
