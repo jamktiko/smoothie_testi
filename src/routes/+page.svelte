@@ -100,7 +100,7 @@
 >
 
 <nav class="flex items-center justify-center">
-	<Searchbar placeholder={'Search smoothies'} bind:value={searchBarinArvo} />
+	<Searchbar name={'Searchbar'} placeholder={'Search smoothies'} bind:value={searchBarinArvo} />
 </nav>
 
 <div class="m-7 flex min-h-screen flex-wrap justify-center gap-7">
