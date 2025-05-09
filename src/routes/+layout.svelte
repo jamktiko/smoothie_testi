@@ -74,7 +74,7 @@
 	};
 </script>
 
-<!-- html-osio -->
+<!-- ----------------------- HTML --------------------------- -->
 <div class="bg-white/75 bg-[url('/testbg-2.jpg')] bg-auto bg-top bg-repeat-y bg-blend-lighten">
 	<Header />
 	{@render children()}
