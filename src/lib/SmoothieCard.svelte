@@ -116,7 +116,7 @@
 			<!-- Card (open) -->
 			<!-- Animaatio modaliin, duration vaihtaa nopeutta -->
 			<div
-				class=" fixed top-[10px] left-1/2 z-100 flex max-h-[97vh] w-1/2 -translate-x-1/2 flex-col justify-center overflow-hidden overflow-y-auto rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-900
+				class=" fixed top-[10px] left-1/2 z-100 flex h-screen max-h-[97vh] w-1/2 -translate-x-1/2 flex-col justify-center overflow-hidden overflow-y-auto rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-900
 				[@media(max-width:640px)]:top-0
 				[@media(max-width:640px)]:max-h-screen
 				[@media(max-width:640px)]:w-screen"

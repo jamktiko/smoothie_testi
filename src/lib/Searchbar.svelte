@@ -8,7 +8,7 @@
 </script>
 
 <div
-	class="relative mx-5 mt-6 flex h-10 w-110 flex-row rounded-xl border-2 bg-white p-1.5 pl-4 sm:w-145"
+	class="relative mx-5 mt-6 flex h-10 w-110 flex-row rounded-xl border-2 bg-white p-1.5 pl-4 sm:w-1/1"
 >
 	<input
 		type="text"

@@ -87,9 +87,9 @@
 	href="https://fonts.googleapis.com/css2?family=Honk&family=Kalnia+Glaze:wght@100..700&family=Laila:wght@300;400;500;600;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merienda:wght@300..900&family=Nabla&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
 	rel="stylesheet"
 />
-<button
+<!-- <button
 	id="newsmoothiepage"
-	class="laila-medium fixed bottom-6 left-6 z-5 cursor-pointer rounded-xl border-2 bg-orange-100 px-4 py-2 text-2xl shadow-md ring-2 ring-orange-300 ring-offset-2 backdrop-blur-2xl hover:bg-orange-400 hover:ring-orange-400 hover:outline-1 sm:bottom-14 sm:left-15"
+	class="laila-medium fixed right-6 z-5 cursor-pointer rounded-xl border-2 bg-orange-100 px-4 py-2 text-2xl shadow-md ring-2 ring-orange-300 ring-offset-2 backdrop-blur-2xl hover:bg-orange-400 hover:ring-orange-400 hover:outline-1 sm:absolute sm:top-10 sm:right-5 [@media(max-width:640px)]:bottom-6"
 	onclick={newSmoothie}
 	in:blur={{ duration: 500 }}
 >
@@ -97,10 +97,25 @@
 	<div class="flex items-center justify-center sm:hidden">
 		<span class="material-symbols-outlined icon-heavy icon-large p-1">add</span>
 	</div></button
->
+> -->
 
-<nav class="flex items-center justify-center">
+<nav class="flex flex-wrap items-center justify-center gap-4 sm:justify-around sm:px-6">
 	<Searchbar placeholder={'Search smoothies'} bind:value={searchBarinArvo} />
+	<button
+		id="newsmoothiepage"
+		class="laila-medium fixed right-6 bottom-6 z-5 mt-5
+			cursor-pointer rounded-xl border-2 bg-orange-100 px-4 py-1 text-2xl shadow-md ring-2
+				ring-orange-300 ring-offset-2 backdrop-blur-2xl hover:bg-orange-400
+				hover:ring-orange-400 hover:outline-1
+			 sm:static sm:w-60 sm:py-1.5 sm:text-lg sm:shadow-none"
+		onclick={newSmoothie}
+		in:blur={{ duration: 500 }}
+	>
+		<span class="hidden whitespace-nowrap sm:block">New Smoothie</span>
+		<div class="flex items-center justify-center sm:hidden">
+			<span class="material-symbols-outlined icon-heavy icon-large p-1">add</span>
+		</div>
+	</button>
 </nav>
 
 <div class="m-7 flex min-h-screen flex-wrap justify-center gap-7">
