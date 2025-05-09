@@ -212,7 +212,7 @@
 <!-- Outer Div -->
 <div class="h-auto min-h-screen">
 	<div
-		class="bg-opacity-0 m-0.5 mt-5 flex flex-wrap justify-center"
+		class="bg-opacity-0 m-0.5 mt-5 flex h-auto flex-wrap justify-center"
 		in:blur={{ duration: 500 }}
 		out:blur={{ duration: 300 }}
 	>
