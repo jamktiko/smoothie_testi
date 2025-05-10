@@ -58,6 +58,7 @@
 			preparationTimeMinutes: uudenSmoothienValmistusaika,
 			notes: uudenSmoothienNotet
 		};
+
 		luoSmoothieKortti(newSmoothie, true);
 		// const newSmoothieCard: SmoothieKortti = {
 		// 	ID: newSmoothie.id,
@@ -79,6 +80,7 @@
 
 		// console.log('newSmoothieCard: ', newSmoothieCard);
 
+		localStorage.setItem(newSmoothie.id.toString(), JSON.stringify(newSmoothie));
 		globalSmoothies.get().push(newSmoothie);
 		// globalSmoothieKortit.get().push(newSmoothieCard);
 		homePage();
@@ -191,11 +193,11 @@
 	// $inspect(uudenSmoothienNotet);
 	// $inspect(selected);
 	// $inspect(ingredientsAmountTaulukko);
-	$inspect(uudenSmoothienIngredients);
+	// $inspect(uudenSmoothienIngredients);
 	// $inspect(uudenSmoothienIngredientsAmounts);
 	// $inspect(amount);
-	// $inspect(globalFruits.get());
-	$inspect(ingredientJoListassaError);
+
+	// $inspect(ingredientJoListassaError);
 </script>
 
 <link

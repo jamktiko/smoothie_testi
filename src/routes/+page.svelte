@@ -21,6 +21,7 @@
 	import { goto } from '$app/navigation';
 
 	import { scale, blur } from 'svelte/transition';
+	import { globalLocalStorage2 as globalLocalStorage } from '$lib/globalLocalStorage.svelte';
 
 	// ----------------------- FUNKTIOT ---------------------------
 
@@ -75,6 +76,8 @@
 	// $inspect(isSmallScreen);
 	// $inspect(outerWidth);
 	// $inspect(globalSmoothieKortit.get());
+	// $inspect(globalSmoothies.get());
+	$inspect(globalLocalStorage.get());
 </script>
 
 <link

@@ -5,6 +5,7 @@
 	import type { SmoothieKortti } from '$lib/types/smoothieKortti';
 	import type { NutritionInfo } from '$lib/types/nutritionInfo';
 	import { luoSmoothieKortti } from '$lib/luoSmoothieKortti';
+	import { globalLocalStorage2 as globalLocalStorage } from '$lib/globalLocalStorage.svelte';
 
 	let { children }: { children: Snippet } = $props();
 	import '../app.css';
@@ -17,10 +18,28 @@
 	import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
 	import type { Smoothie } from '$lib/types/smoothie';
 
+	async function haeLocalStorage() {
+		let loydetytSmoothiet: Smoothie[] = [];
+		for (
+			let i = globalSmoothies.get()[globalSmoothies.get().length - 1].id + 1;
+			i < localStorage.length;
+			i++
+		) {
+			const localStorageData = localStorage.getItem(i.toString());
+			if (localStorageData) {
+				const smoothieData = JSON.parse(localStorageData);
+				loydetytSmoothiet.push(smoothieData);
+			}
+		}
+		return loydetytSmoothiet;
+	}
+
 	// suoritetaan heti sivun lataamisen jälkeen
 	onMount(async () => {
 		globalFruits.set(await haeHedelmat());
 		globalSmoothies.set(await haeSmoothiet());
+		globalLocalStorage.set(await haeLocalStorage());
+
 		luoSmoothieKortit();
 	});
 
