@@ -31,9 +31,11 @@ Level 1 - Basic
 Level 2 - Advanced  
 - In addition to above, as the user, I want to click the New Smoothie button, where I can upload a custom picture.
 - In addition, I can also see my recipe ingredients dynamically update nutritional information while creating a new smoothie.
-- As the user, I may also edit and save the notes within ready recipes. 
-- As the user, I am able to view separate tabs: browse recipes, my recipes, and create recipe.
+- As the user, I may also edit and save the notes within ready recipes.
+- As the user, I am able to favourite recipes, and view my favourites.
+- As the user, I am able to view separate tabs (for example; browse recipes, my recipes, favourites, and create recipe)
 - As the user, I am able to delete recipes, and edit premade recipes.
+
 
 ---
 
