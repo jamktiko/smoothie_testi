@@ -106,12 +106,12 @@
 <div class="flex items-center justify-center">
 	<button
 		id="newsmoothiepage"
-		class="laila-medium fixed right-6 bottom-6 z-5 mt-5
+		class="laila-medium fixed right-10 bottom-12 z-5 mt-5
 			transform cursor-pointer rounded-xl border-3 bg-green-300 px-4 py-1 text-2xl shadow-md
 				ring-2 ring-green-400 ring-offset-2 backdrop-blur-2xl
 				transition-transform duration-300
 			  hover:scale-105 hover:bg-orange-300 hover:ring-orange-400 hover:outline-1
-				sm:static sm:w-60 sm:py-1.5 sm:text-lg sm:shadow-none"
+				sm:w-60 sm:py-1.5 sm:text-lg sm:shadow-none"
 		onclick={newSmoothie}
 		in:blur={{ duration: 500 }}
 	>

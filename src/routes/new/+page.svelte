@@ -54,7 +54,7 @@
 			name: uudenSmoothienNimi,
 			ingredients: uudenSmoothienIngredients,
 			ingredientsAmount: uudenSmoothienIngredientsAmounts,
-			pic: 'default-grey-2.png',
+			pic: 'default-all-leaf.jpg',
 			preparationTimeMinutes: uudenSmoothienValmistusaika,
 			notes: uudenSmoothienNotet
 		};
@@ -226,7 +226,7 @@
 				<!-- Image -->
 				<div class="relative">
 					<img
-						src="default-grey-2.png"
+						src="default-all-leaf.jpg"
 						alt="Default"
 						class="max-h-60 w-full rounded-xl border-b-2 object-cover"
 					/>
