@@ -1,22 +1,31 @@
 <script lang="ts">
+	// ----------------------- IMPORTIT ---------------------------
+
 	import Header from '$lib/Header.svelte';
 	import Footer from '$lib/Footer.svelte';
-	import type { Snippet } from 'svelte';
-	import type { SmoothieKortti } from '$lib/types/smoothieKortti';
-	import type { NutritionInfo } from '$lib/types/nutritionInfo';
 	import { luoSmoothieKortti } from '$lib/luoSmoothieKortti';
 	import { globalLocalStorage2 as globalLocalStorage } from '$lib/globalLocalStorage.svelte';
 
-	let { children }: { children: Snippet } = $props();
 	import '../app.css';
-
 	import { onMount } from 'svelte';
+	import type { Snippet } from 'svelte';
 
 	// universal reactivity muuttujat
-	import { fruits as globalFruits } from '$lib/globalFruits.svelte';
+	import { ingredients as globalIngredients } from '$lib/globalIngredients.svelte';
 	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
-	import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
 	import type { Smoothie } from '$lib/types/smoothie';
+
+	// ------------------------ PROPSIT ---------------------------
+
+	// interface propseille
+	interface Props {
+		children: Snippet;
+	}
+
+	// propsit
+	let { children }: Props = $props();
+
+	// ----------------------- FUNKTIOT ---------------------------
 
 	async function haeLocalStorage() {
 		let loydetytSmoothiet: Smoothie[] = [];
@@ -36,7 +45,7 @@
 
 	// suoritetaan heti sivun lataamisen jälkeen
 	onMount(async () => {
-		globalFruits.set(await haeHedelmat());
+		globalIngredients.set(await haeAinesosat());
 		globalSmoothies.set(await haeSmoothiet());
 		globalLocalStorage.set(await haeLocalStorage());
 
@@ -56,14 +65,14 @@
 		}
 	}
 
-	// hakee hedelmät fruits.json tiedostosta taulukkoon asynkronisesti
-	async function haeHedelmat() {
-		return fetch('/data/fruits.json')
+	// hakee ainesosat ingredients.json tiedostosta taulukkoon asynkronisesti
+	async function haeAinesosat() {
+		return fetch('/data/ingredients.json')
 			.then((response) => {
 				if (response.ok) {
 					return response.json();
 				} else {
-					throw new Error('Virhe haettaessa hedelmiä');
+					throw new Error('Virhe haettaessa ainesosia!');
 				}
 			})
 			.then((data) => {
@@ -78,7 +87,7 @@
 			});
 	}
 
-	// luo kaikki smoothieKortit smoothieista ja hedelmistä
+	// luo kaikki smoothieKortit smoothieista ja ainesosista
 	const luoSmoothieKortit = () => {
 		globalSmoothies.get().forEach((smoothie) => {
 			luoSmoothieKortti(smoothie);
@@ -86,6 +95,7 @@
 	};
 </script>
 
+<!-- ----------------------- HTML --------------------------- -->
 <div class="bg-white/75 bg-[url('/testbg-2.jpg')] bg-auto bg-top bg-repeat-y bg-blend-lighten">
 	<Header />
 	{@render children()}

@@ -2,31 +2,21 @@
 	// ----------------------- IMPORTIT ---------------------------
 
 	import type { SmoothieKortti } from '$lib/types/smoothieKortti';
-	import type { NutritionInfo } from '$lib/types/nutritionInfo';
-
 	import Searchbar from '$lib/Searchbar.svelte';
-	import Header from '$lib/Header.svelte';
-	import Footer from '$lib/Footer.svelte';
 	import SmoothieCard from '$lib/SmoothieCard.svelte';
+	import { goto } from '$app/navigation';
+	import { blur } from 'svelte/transition';
+	import '../app.css';
 
 	// universal reactivity muuttujat
-	import { fruits as globalFruits } from '$lib/globalFruits.svelte';
-	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
-	import {
-		smoothieKortit as globalSmoothieKortit,
-		smoothieKortit
-	} from '$lib/globalSmoothieKortit.svelte';
-
-	import '../app.css';
-	import { goto } from '$app/navigation';
-
-	import { scale, blur } from 'svelte/transition';
 	import { globalLocalStorage2 as globalLocalStorage } from '$lib/globalLocalStorage.svelte';
+	import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
 
 	// ----------------------- FUNKTIOT ---------------------------
 
 	// filtteröi smoothieKortit searchBarin valuen mukaan
 	const filteroiSmoothieKortteja = () => {
+		// rickroll easter egg
 		if (searchBarinArvo.toLowerCase() === 'RickRoll :D'.toLowerCase()) {
 			rickRollVisible = true;
 		} else {
@@ -37,13 +27,17 @@
 		}
 	};
 
+	// searchBarin arvon muuttuessa kutsuu filteroiSmoothieKortteja funktiota
 	$effect(() => {
 		filteroiSmoothieKortteja();
 	});
 
+	// funktio, joka navigoi uuteen smoothie-sivuun
 	function newSmoothie() {
 		goto('../new');
 	}
+
+	// määrää mäkyykö loading-spinneri vai ei
 	$effect(() => {
 		if (valitutSmoothieKortit.length === 0) {
 			setTimeout(() => {
@@ -53,11 +47,8 @@
 			spinnerNakyy = true;
 		}
 	});
-	// ----------------------- MUUTTUJAT --------------------------
 
-	// let smoothieKortitTaulukko: SmoothieKortti[] = $state([]);
-	// let smoothies: Smoothie[] = $state([]);
-	// let fruits: Fruit[] = $state([]);
+	// ----------------------- MUUTTUJAT --------------------------
 
 	// searchBariin liittyvät muuttujat
 	let searchBarinArvo: string = $state('');
@@ -80,6 +71,8 @@
 	$inspect(globalLocalStorage.get());
 </script>
 
+<!-- ----------------------- HTML --------------------------- -->
+
 <link
 	rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
@@ -90,6 +83,8 @@
 	href="https://fonts.googleapis.com/css2?family=Honk&family=Kalnia+Glaze:wght@100..700&family=Laila:wght@300;400;500;600;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merienda:wght@300..900&family=Nabla&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
 	rel="stylesheet"
 />
+
+<!-- new smoothie button -->
 <button
 	id="newsmoothiepage"
 	class="laila-medium fixed bottom-6 left-6 z-5 cursor-pointer rounded-xl border-2 bg-orange-100 px-4 py-2 text-2xl shadow-md ring-2 ring-orange-300 ring-offset-2 backdrop-blur-2xl hover:bg-orange-400 hover:ring-orange-400 hover:outline-1 sm:bottom-14 sm:left-15"
@@ -102,11 +97,14 @@
 	</div></button
 >
 
+<!-- searchbar -->
 <nav class="flex items-center justify-center">
 	<Searchbar name={'Searchbar'} placeholder={'Search smoothies'} bind:value={searchBarinArvo} />
 </nav>
 
+<!-- outer div -->
 <div class="m-7 flex min-h-screen flex-wrap justify-center gap-7">
+	<!-- rickroll easter egg -->
 	{#if rickRollVisible}
 		<div class="flex flex-col items-center text-center">
 			<img
@@ -119,16 +117,14 @@
 				gonna let you down...
 				<span class="material-symbols-outlined">music_note</span>
 			</p>
-			<!-- <p class="laila-medium w-1/1">
-			Either the site isn't loading or the search did not produce any results
-		</p> -->
 		</div>
+		<!-- smoothiekortit -->
 	{:else if valitutSmoothieKortit.length > 0}
 		{#each valitutSmoothieKortit as smoothieKortti (smoothieKortti.ID)}
 			<SmoothieCard {smoothieKortti} />
 		{/each}
 	{:else}
-		<!-- temporary loading spinner -->
+		<!-- loading spinner -->
 		{#if spinnerNakyy}
 			<div class="lds-ring">
 				<div></div>
@@ -140,9 +136,10 @@
 			<p class="laila-medium text-2xl">No smoothies found</p>
 		{/if}
 	{/if}
+	<!-- end of outer div -->
 </div>
 
-<!-- footer -->
+<!-- ---------------------- STYLES -------------------------- -->
 
 <style>
 	/* loading spinner styles */

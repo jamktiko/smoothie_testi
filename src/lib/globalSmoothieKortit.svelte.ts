@@ -1,4 +1,5 @@
-// universal reactivity luokka smoothie-korteille mitä voidaan käyttää missä vaan komponentissa
+// universal reactivity luokka SmoothieKorteille mitä voidaan käyttää missä vaan komponentissa
+// "smoothieKortit" on taulukko joka sisältää kaikki SmoothieKortti-objektit
 import type { SmoothieKortti } from '$lib/types/smoothieKortti';
 
 class SmoothieKortit {

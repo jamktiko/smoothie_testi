@@ -1,14 +1,19 @@
-import type { SmoothieKortti } from '$lib/types/smoothieKortti';
-import { fruits as globalFruits } from '$lib/globalFruits.svelte';
-import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
+// ----------------------- IMPORTIT ---------------------------
+
 import type { Smoothie } from '$lib/types/smoothie';
 import type { NutritionInfo } from '$lib/types/nutritionInfo';
+import type { SmoothieKortti } from '$lib/types/smoothieKortti';
+import { ingredients as globalIngredients } from '$lib/globalIngredients.svelte';
+import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
 
+// ----------------------- FUNKTIOT ---------------------------
+
+// luo SmoothieKortin ja lisää sen SmoothieKortit taulukkoon
 export const luoSmoothieKortti = (smoothie: Smoothie, lisataankoAlkuun: boolean = false) => {
 	const uusiSmoothieKortti: SmoothieKortti = {
 		ID: smoothie.id,
 		smoothie: smoothie,
-		hedelmat: [],
+		ainesosat: [],
 		hedelmatMaara: smoothie.ingredientsAmount,
 		ravintoarvot: [],
 		ravintoarvotYht: {
@@ -26,11 +31,11 @@ export const luoSmoothieKortti = (smoothie: Smoothie, lisataankoAlkuun: boolean 
 	for (let i = 0; i < smoothie.ingredients.length; i++) {
 		const ingredient = smoothie.ingredients[i];
 
-		const loytynytIngredient = globalFruits.get().find((fruit) => {
+		const loytynytIngredient = globalIngredients.get().find((fruit) => {
 			return fruit.name === ingredient;
 		});
 
-		uusiSmoothieKortti.hedelmat.push(loytynytIngredient?.name);
+		uusiSmoothieKortti.ainesosat.push(loytynytIngredient?.name);
 		uusiSmoothieKortti.ravintoarvot.push(loytynytIngredient?.nutritions);
 	}
 	uusiSmoothieKortti.ravintoarvotYht = laskeRavintoarvotYhteensa(
@@ -47,7 +52,7 @@ export const luoSmoothieKortti = (smoothie: Smoothie, lisataankoAlkuun: boolean 
 	return uusiSmoothieKortti;
 };
 
-// laskee smoothienKortin ravintoarvojen yhteenlasketut arvot
+// laskee SmoothienKortin ravintoarvojen yhteenlasketut arvot
 const laskeRavintoarvotYhteensa = (ravintoarvot: NutritionInfo[], maara: number[]) => {
 	const yhteensa = {
 		calories: 0,
@@ -56,6 +61,7 @@ const laskeRavintoarvotYhteensa = (ravintoarvot: NutritionInfo[], maara: number[
 		fat: 0,
 		sugar: 0
 	};
+
 	for (let i = 0; i < ravintoarvot.length; i++) {
 		yhteensa.calories += ravintoarvot[i].calories * maara[i];
 		yhteensa.carbohydrates += ravintoarvot[i].carbohydrates * maara[i];
