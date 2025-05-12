@@ -5,7 +5,7 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import { luoSmoothieKortti } from '$lib/modules/luoSmoothieKortti';
 	import '../app.css';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import type { Snippet } from 'svelte';
 
 	// universal reactivity muuttujat
@@ -27,8 +27,24 @@
 	// suoritetaan heti sivun lataamisen jälkeen
 	onMount(async () => {
 		globalIngredients.set(await haeAinesosat());
-		globalSmoothies.set(await haeSmoothiet());
+		try {
+			const raw = localStorage.getItem('smoothiesLS');
+			if (raw) {
+				const smoothieData = JSON.parse(raw);
+				globalSmoothies.set(smoothieData);
+			} else {
+				globalSmoothies.set(await haeSmoothiet());
+			}
+		} catch (error) {
+			console.error('Error loading smoothies from localStorage:', error);
+		}
+
 		luoSmoothieKortit();
+	});
+
+	onDestroy(() => {
+		// tyhjennetään localStorage kun komponentti tuhotaan
+		// localStorage.setItem('smoothiesLS', JSON.stringify(globalSmoothies.get()));
 	});
 
 	// hakee smoothiet smoothies.json tiedostosta taulukkoon asynkronisesti
@@ -75,7 +91,9 @@
 </script>
 
 <!-- ----------------------- HTML --------------------------- -->
-<div class="bg-white/75 bg-[url('/testbg-2.jpg')] bg-auto bg-top bg-repeat-y bg-blend-lighten">
+<div
+	class="bg-white/75 bg-[url('./images/testbg-2.jpg')] bg-auto bg-top bg-repeat-y bg-blend-lighten"
+>
 	<Header />
 	{@render children()}
 	<div class="mt-15">

@@ -58,6 +58,8 @@
 		};
 		luoSmoothieKortti(newSmoothie, true);
 		globalSmoothies.get().push(newSmoothie);
+		// test
+		localStorage.setItem('smoothiesLS', JSON.stringify(globalSmoothies.get()));
 		homePage();
 	}
 
