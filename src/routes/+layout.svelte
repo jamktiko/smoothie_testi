@@ -5,13 +5,12 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import { luoSmoothieKortti } from '$lib/modules/luoSmoothieKortti';
 	import '../app.css';
-	import { onDestroy, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import type { Snippet } from 'svelte';
 
 	// universal reactivity muuttujat
 	import { ingredients as globalIngredients } from '$lib/globals/globalIngredients.svelte';
 	import { smoothies as globalSmoothies } from '$lib/globals/globalSmoothies.svelte';
-	import { browser } from '$app/environment';
 
 	// ------------------------ PROPSIT ---------------------------
 
@@ -38,6 +37,8 @@
 				globalSmoothies.set(smoothiesData);
 			} else {
 				globalSmoothies.set(await haeSmoothiet());
+				// päivitetään localStoragen muuttuja smoothiesLS
+				localStorage.setItem('smoothiesLS', JSON.stringify(globalSmoothies.get()));
 			}
 		} catch (error) {
 			if (error instanceof Error) {
