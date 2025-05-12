@@ -11,6 +11,7 @@
 	// universal reactivity muuttujat
 	import { ingredients as globalIngredients } from '$lib/globals/globalIngredients.svelte';
 	import { smoothies as globalSmoothies } from '$lib/globals/globalSmoothies.svelte';
+	import { browser } from '$app/environment';
 
 	// ------------------------ PROPSIT ---------------------------
 
@@ -27,24 +28,26 @@
 	// suoritetaan heti sivun lataamisen jälkeen
 	onMount(async () => {
 		globalIngredients.set(await haeAinesosat());
+
+		// joko fetchataan smoothiet smoothies.json tiedostosta tai ladataan ne localStoragesta
+		// riippuen siitä onko localStorage tyhjä vai ei (palauttaa null jos tyhjä)
 		try {
-			const raw = localStorage.getItem('smoothiesLS');
-			if (raw) {
-				const smoothieData = JSON.parse(raw);
-				globalSmoothies.set(smoothieData);
+			const ls = localStorage.getItem('smoothiesLS');
+			if (ls !== null) {
+				const smoothiesData = JSON.parse(ls);
+				globalSmoothies.set(smoothiesData);
 			} else {
 				globalSmoothies.set(await haeSmoothiet());
 			}
 		} catch (error) {
-			console.error('Error loading smoothies from localStorage:', error);
+			if (error instanceof Error) {
+				console.error(error.message);
+			} else {
+				console.error(error);
+			}
 		}
 
 		luoSmoothieKortit();
-	});
-
-	onDestroy(() => {
-		// tyhjennetään localStorage kun komponentti tuhotaan
-		// localStorage.setItem('smoothiesLS', JSON.stringify(globalSmoothies.get()));
 	});
 
 	// hakee smoothiet smoothies.json tiedostosta taulukkoon asynkronisesti
