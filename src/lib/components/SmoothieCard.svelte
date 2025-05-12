@@ -6,7 +6,7 @@
 	import Button from './Button.svelte';
 	import Modal from './Modal.svelte';
 	import { scale, blur } from 'svelte/transition';
-	import { ingredientFormatointi } from './ingredientFormatointi';
+	import { ingredientFormatointi } from '../modules/ingredientFormatointi';
 
 	// ------------------------ PROPSIT ---------------------------
 

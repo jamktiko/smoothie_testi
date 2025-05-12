@@ -1,16 +1,17 @@
 <script lang="ts">
 	// ----------------------- IMPORTIT ---------------------------
 
-	import Header from '$lib/Header.svelte';
-	import Footer from '$lib/Footer.svelte';
-	import { luoSmoothieKortti } from '$lib/luoSmoothieKortti';
+	import Header from '$lib/components/Header.svelte';
+	import Footer from '$lib/components/Footer.svelte';
+	import { luoSmoothieKortti } from '$lib/modules/luoSmoothieKortti';
 	import '../app.css';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import type { Snippet } from 'svelte';
 
 	// universal reactivity muuttujat
-	import { ingredients as globalIngredients } from '$lib/globalIngredients.svelte';
-	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
+	import { ingredients as globalIngredients } from '$lib/globals/globalIngredients.svelte';
+	import { smoothies as globalSmoothies } from '$lib/globals/globalSmoothies.svelte';
+	import { browser } from '$app/environment';
 
 	// ------------------------ PROPSIT ---------------------------
 
@@ -27,7 +28,25 @@
 	// suoritetaan heti sivun lataamisen jälkeen
 	onMount(async () => {
 		globalIngredients.set(await haeAinesosat());
-		globalSmoothies.set(await haeSmoothiet());
+
+		// joko fetchataan smoothiet smoothies.json tiedostosta tai ladataan ne localStoragesta
+		// riippuen siitä onko localStorage tyhjä vai ei (palauttaa null jos tyhjä)
+		try {
+			const ls = localStorage.getItem('smoothiesLS');
+			if (ls !== null) {
+				const smoothiesData = JSON.parse(ls);
+				globalSmoothies.set(smoothiesData);
+			} else {
+				globalSmoothies.set(await haeSmoothiet());
+			}
+		} catch (error) {
+			if (error instanceof Error) {
+				console.error(error.message);
+			} else {
+				console.error(error);
+			}
+		}
+
 		luoSmoothieKortit();
 	});
 
@@ -75,7 +94,9 @@
 </script>
 
 <!-- ----------------------- HTML --------------------------- -->
-<div class="bg-white/75 bg-[url('/testbg-2.jpg')] bg-auto bg-top bg-repeat-y bg-blend-lighten">
+<div
+	class="bg-white/75 bg-[url('./images/testbg-2.jpg')] bg-auto bg-top bg-repeat-y bg-blend-lighten"
+>
 	<Header />
 	{@render children()}
 	<div class="mt-15">

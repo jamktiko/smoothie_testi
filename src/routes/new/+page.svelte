@@ -3,17 +3,17 @@
 
 	import type { Smoothie } from '$lib/types/smoothie';
 	import type { NutritionInfo } from '$lib/types/nutritionInfo';
-	import { luoSmoothieKortti } from '$lib/luoSmoothieKortti';
-	import { ingredientFormatointi } from '$lib/ingredientFormatointi';
-	import Notes from '$lib/Notes.svelte';
+	import { luoSmoothieKortti } from '$lib/modules/luoSmoothieKortti';
+	import { ingredientFormatointi } from '$lib/modules/ingredientFormatointi';
+	import Notes from '$lib/components/Notes.svelte';
 	import { goto } from '$app/navigation';
 	import { fade, blur, slide } from 'svelte/transition';
 
 	// universal reactivity muuttujat
-	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
-	import { ingredients as globalIngredients } from '$lib/globalIngredients.svelte';
-	import { amountNumbers as globalAmountNumbers } from '$lib/globalAmountNumbers.svelte';
-	import { smoothieTime as globalSmoothieTime } from '$lib/globalSmoothietime.svelte';
+	import { smoothies as globalSmoothies } from '$lib/globals/globalSmoothies.svelte';
+	import { ingredients as globalIngredients } from '$lib/globals/globalIngredients.svelte';
+	import { amountNumbers as globalAmountNumbers } from '$lib/globals/globalAmountNumbers.svelte';
+	import { smoothieTime as globalSmoothieTime } from '$lib/globals/globalSmoothieTime.svelte';
 
 	// ----------------------- FUNKTIOT ---------------------------
 
@@ -47,17 +47,22 @@
 
 	// luo uuden smoothien ja uuden smoothieKortin ja lisää kummatkin globaleihin taulukoihin + poistuu takaisin etusivulle
 	function createSmoothie() {
+		const maxId = globalSmoothies
+			.get()
+			.reduce((max, smoothie) => (smoothie.id > max ? smoothie.id : max), -1);
 		const newSmoothie: Smoothie = {
-			id: globalSmoothies.get()[globalSmoothies.get().length - 1].id + 1,
+			id: maxId + 1,
 			name: uudenSmoothienNimi,
 			ingredients: uudenSmoothienIngredients,
 			ingredientsAmount: uudenSmoothienIngredientsAmounts,
-			pic: 'default-grey-3.png',
+			pic: './images/default-grey-3.png',
 			preparationTimeMinutes: uudenSmoothienValmistusaika,
 			notes: uudenSmoothienNotet
 		};
 		luoSmoothieKortti(newSmoothie, true);
-		globalSmoothies.get().push(newSmoothie);
+		globalSmoothies.get().unshift(newSmoothie);
+		// päivitetään localStoragen muuttuja smoothiesLS
+		localStorage.setItem('smoothiesLS', JSON.stringify(globalSmoothies.get()));
 		homePage();
 	}
 
@@ -216,7 +221,7 @@
 				<!-- Image -->
 				<div class="relative">
 					<img
-						src="default-grey-3.png"
+						src="./images/default-grey-3.png"
 						alt="Default"
 						class="max-h-60 w-full rounded-xl border-b-2 object-cover"
 					/>
