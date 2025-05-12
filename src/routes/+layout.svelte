@@ -1,18 +1,16 @@
 <script lang="ts">
 	// ----------------------- IMPORTIT ---------------------------
 
-	import Header from '$lib/Header.svelte';
-	import Footer from '$lib/Footer.svelte';
-	import { luoSmoothieKortti } from '$lib/luoSmoothieKortti';
-	import { globalLocalStorage2 as globalLocalStorage } from '$lib/globalLocalStorage.svelte';
-
+	import Header from '$lib/components/Header.svelte';
+	import Footer from '$lib/components/Footer.svelte';
+	import { luoSmoothieKortti } from '$lib/modules/luoSmoothieKortti';
 	import '../app.css';
 	import { onMount } from 'svelte';
 	import type { Snippet } from 'svelte';
 
 	// universal reactivity muuttujat
-	import { ingredients as globalIngredients } from '$lib/globalIngredients.svelte';
-	import { smoothies as globalSmoothies } from '$lib/globalSmoothies.svelte';
+	import { ingredients as globalIngredients } from '$lib/globals/globalIngredients.svelte';
+	import { smoothies as globalSmoothies } from '$lib/globals/globalSmoothies.svelte';
 	import type { Smoothie } from '$lib/types/smoothie';
 
 	// ------------------------ PROPSIT ---------------------------
@@ -47,7 +45,6 @@
 	onMount(async () => {
 		globalIngredients.set(await haeAinesosat());
 		globalSmoothies.set(await haeSmoothiet());
-		globalLocalStorage.set(await haeLocalStorage());
 
 		luoSmoothieKortit();
 	});

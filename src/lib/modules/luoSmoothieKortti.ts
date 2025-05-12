@@ -3,8 +3,8 @@
 import type { Smoothie } from '$lib/types/smoothie';
 import type { NutritionInfo } from '$lib/types/nutritionInfo';
 import type { SmoothieKortti } from '$lib/types/smoothieKortti';
-import { ingredients as globalIngredients } from '$lib/globalIngredients.svelte';
-import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
+import { ingredients as globalIngredients } from '$lib/globals/globalIngredients.svelte';
+import { smoothieKortit as globalSmoothieKortit } from '$lib/globals/globalSmoothieKortit.svelte';
 
 // ----------------------- FUNKTIOT ---------------------------
 

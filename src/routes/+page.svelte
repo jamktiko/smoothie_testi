@@ -2,15 +2,15 @@
 	// ----------------------- IMPORTIT ---------------------------
 
 	import type { SmoothieKortti } from '$lib/types/smoothieKortti';
-	import Searchbar from '$lib/Searchbar.svelte';
-	import SmoothieCard from '$lib/SmoothieCard.svelte';
+	import Searchbar from '$lib/components/Searchbar.svelte';
+	import SmoothieCard from '$lib/components/SmoothieCard.svelte';
 	import { goto } from '$app/navigation';
 	import { blur } from 'svelte/transition';
 	import '../app.css';
 
 	// universal reactivity muuttujat
 	import { globalLocalStorage2 as globalLocalStorage } from '$lib/globalLocalStorage.svelte';
-	import { smoothieKortit as globalSmoothieKortit } from '$lib/globalSmoothieKortit.svelte';
+	import { smoothieKortit as globalSmoothieKortit } from '$lib/globals/globalSmoothieKortit.svelte';
 
 	// ----------------------- FUNKTIOT ---------------------------
 
