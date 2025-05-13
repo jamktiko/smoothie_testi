@@ -11,6 +11,7 @@
 	// universal reactivity muuttujat
 	import { ingredients as globalIngredients } from '$lib/globals/globalIngredients.svelte';
 	import { smoothies as globalSmoothies } from '$lib/globals/globalSmoothies.svelte';
+	import type { Smoothie } from '$lib/types/smoothie';
 
 	// ------------------------ PROPSIT ---------------------------
 
@@ -23,6 +24,22 @@
 	let { children }: Props = $props();
 
 	// ----------------------- FUNKTIOT ---------------------------
+
+	async function haeLocalStorage() {
+		let loydetytSmoothiet: Smoothie[] = [];
+		for (
+			let i = globalSmoothies.get()[globalSmoothies.get().length - 1].id + 1;
+			i < localStorage.length;
+			i++
+		) {
+			const localStorageData = localStorage.getItem(i.toString());
+			if (localStorageData) {
+				const smoothieData = JSON.parse(localStorageData);
+				loydetytSmoothiet.push(smoothieData);
+			}
+		}
+		return loydetytSmoothiet;
+	}
 
 	// suoritetaan heti sivun lataamisen jälkeen
 	onMount(async () => {

@@ -59,6 +59,7 @@
 			preparationTimeMinutes: uudenSmoothienValmistusaika,
 			notes: uudenSmoothienNotet
 		};
+
 		luoSmoothieKortti(newSmoothie, true);
 		globalSmoothies.get().unshift(newSmoothie);
 		// päivitetään localStoragen muuttuja smoothiesLS
