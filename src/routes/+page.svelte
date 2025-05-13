@@ -9,6 +9,7 @@
 	import '../app.css';
 
 	// universal reactivity muuttujat
+	import { globalLocalStorage2 as globalLocalStorage } from '$lib/globalLocalStorage.svelte';
 	import { smoothieKortit as globalSmoothieKortit } from '$lib/globals/globalSmoothieKortit.svelte';
 
 	// ----------------------- FUNKTIOT ---------------------------
@@ -66,6 +67,8 @@
 	// $inspect(isSmallScreen);
 	// $inspect(outerWidth);
 	// $inspect(globalSmoothieKortit.get());
+	// $inspect(globalSmoothies.get());
+	$inspect(globalLocalStorage.get());
 </script>
 
 <!-- ----------------------- HTML --------------------------- -->
