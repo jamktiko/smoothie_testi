@@ -66,7 +66,7 @@
 <!-- SmoothieKortti -->
 
 <div
-	class="relative flex max-h-fit w-full flex-col rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300 hover:bg-orange-200 sm:max-h-full sm:w-[47%] sm:transform sm:transition-transform sm:duration-300 sm:hover:scale-103 lg:w-[31%]"
+	class="relative flex max-h-fit w-full flex-col overflow-hidden rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300 hover:bg-orange-200 sm:max-h-full sm:w-[47%] sm:transform sm:transition-transform sm:duration-300 sm:hover:scale-103 lg:w-[31%]"
 	in:blur={{ duration: 500 }}
 	out:blur={{ duration: 300 }}
 >
@@ -81,7 +81,7 @@
 	<img
 		src={smoothieKortti.pic}
 		alt={smoothieKortti.smoothie.name}
-		class="h-48 w-full rounded-xl border-b-2 object-cover sm:h-60"
+		class="h-48 w-full rounded-b-xl border-b-2 object-cover sm:h-60"
 	/>
 	<!-- Nämä menee piiloon mobiilissa -->
 	<div class="hidden flex-1 flex-col overflow-y-auto p-4 sm:flex">
@@ -156,7 +156,7 @@
 					<img
 						src={smoothieKortti.pic}
 						alt={smoothieKortti.smoothie.name}
-						class="max-h-70 w-full rounded-xl border-b-2 object-cover"
+						class="max-h-70 w-full rounded-b-xl border-b-2 object-cover"
 					/>
 
 					<button
