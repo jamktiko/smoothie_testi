@@ -99,12 +99,13 @@
 	</div></button
 > -->
 
-<nav class="mb-6 flex flex-wrap items-center justify-center gap-4 sm:justify-around sm:px-6">
+<nav class="flex flex-wrap items-center justify-center gap-4 sm:justify-around sm:px-6">
 	<Searchbar placeholder={'Search smoothies'} bind:value={searchBarinArvo} />
 </nav>
 
 <div class="flex items-center justify-between px-10 pt-5">
-	<h1 class="laila-regular text-3xl">Recipes</h1>
+	<h1 class="laila-medium ml-1 hidden text-3xl sm:block">Recipes</h1>
+	<div class="ml-3 hidden w-full border-1 border-slate-600 sm:block"></div>
 	<button
 		id="newsmoothiepage"
 		class="laila-medium just fixed right-10 bottom-12 z-5 mt-5 transform
