@@ -44,7 +44,26 @@
 	// suoritetaan heti sivun lataamisen jälkeen
 	onMount(async () => {
 		globalIngredients.set(await haeAinesosat());
-		globalSmoothies.set(await haeSmoothiet());
+
+		// joko fetchataan smoothiet smoothies.json tiedostosta tai ladataan ne localStoragesta
+		// riippuen siitä onko localStorage tyhjä vai ei (palauttaa null jos tyhjä)
+		try {
+			const ls = localStorage.getItem('smoothiesLS');
+			if (ls !== null) {
+				const smoothiesData = JSON.parse(ls);
+				globalSmoothies.set(smoothiesData);
+			} else {
+				globalSmoothies.set(await haeSmoothiet());
+				// päivitetään localStoragen muuttuja smoothiesLS
+				localStorage.setItem('smoothiesLS', JSON.stringify(globalSmoothies.get()));
+			}
+		} catch (error) {
+			if (error instanceof Error) {
+				console.error(error.message);
+			} else {
+				console.error(error);
+			}
+		}
 
 		luoSmoothieKortit();
 	});
@@ -93,7 +112,9 @@
 </script>
 
 <!-- ----------------------- HTML --------------------------- -->
-<div class="bg-white/75 bg-[url('/testbg-2.jpg')] bg-auto bg-top bg-repeat-y bg-blend-lighten">
+<div
+	class="bg-white/75 bg-[url('./images/testbg-2.jpg')] bg-auto bg-top bg-repeat-y bg-blend-lighten"
+>
 	<Header />
 	{@render children()}
 	<div class="mt-15">

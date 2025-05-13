@@ -47,8 +47,11 @@
 
 	// luo uuden smoothien ja uuden smoothieKortin ja lisää kummatkin globaleihin taulukoihin + poistuu takaisin etusivulle
 	function createSmoothie() {
+		const maxId = globalSmoothies
+			.get()
+			.reduce((max, smoothie) => (smoothie.id > max ? smoothie.id : max), -1);
 		const newSmoothie: Smoothie = {
-			id: globalSmoothies.get()[globalSmoothies.get().length - 1].id + 1,
+			id: maxId + 1,
 			name: uudenSmoothienNimi,
 			ingredients: uudenSmoothienIngredients,
 			ingredientsAmount: uudenSmoothienIngredientsAmounts,
@@ -58,8 +61,9 @@
 		};
 
 		luoSmoothieKortti(newSmoothie, true);
-		localStorage.setItem(newSmoothie.id.toString(), JSON.stringify(newSmoothie));
-		globalSmoothies.get().push(newSmoothie);
+		globalSmoothies.get().unshift(newSmoothie);
+		// päivitetään localStoragen muuttuja smoothiesLS
+		localStorage.setItem('smoothiesLS', JSON.stringify(globalSmoothies.get()));
 		homePage();
 	}
 
