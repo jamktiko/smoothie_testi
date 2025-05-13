@@ -173,16 +173,16 @@
 					<div class="flex flex-col items-start justify-between md:flex-row md:items-center">
 						<div class="flex items-center gap-2">
 							<!-- Back button -->
-							<button
+							<!-- <button
 								onclick={toggleModal}
 								class="material-symbols-outlined transform cursor-pointer pb-1 transition-transform duration-200 hover:scale-125"
 								>arrow_back_ios</button
-							>
+							> -->
 							<!-- Smoothien nimi -->
 							<h1 class="laila-medium text-2xl">{smoothieKortti.smoothie.name}</h1>
 						</div>
 						<!-- Smoothien valmistusaika -->
-						<div class="ml-8 flex items-center gap-1 text-slate-600">
+						<div class="ml-1 flex items-center gap-1 text-slate-600">
 							<span class="laila-regular pt-1">{smoothieKortti.valmistusAika} min</span>
 							<span class="material-symbols-outlined">timer</span>
 						</div>
