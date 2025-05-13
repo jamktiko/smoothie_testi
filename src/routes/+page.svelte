@@ -82,9 +82,9 @@
 />
 
 <!-- new smoothie button -->
-<button
+<!-- <button
 	id="newsmoothiepage"
-	class="laila-medium fixed bottom-6 left-6 z-5 cursor-pointer rounded-xl border-2 bg-orange-100 px-4 py-2 text-2xl shadow-md ring-2 ring-orange-300 ring-offset-2 backdrop-blur-2xl hover:bg-orange-400 hover:ring-orange-400 hover:outline-1 sm:bottom-14 sm:left-15"
+	class="laila-medium fixed right-6 z-5 cursor-pointer rounded-xl border-2 bg-orange-100 px-4 py-2 text-2xl shadow-md ring-2 ring-orange-300 ring-offset-2 backdrop-blur-2xl hover:bg-orange-400 hover:ring-orange-400 hover:outline-1 sm:absolute sm:top-10 sm:right-5 [@media(max-width:640px)]:bottom-6"
 	onclick={newSmoothie}
 	in:blur={{ duration: 500 }}
 >
@@ -92,14 +92,34 @@
 	<div class="flex items-center justify-center sm:hidden">
 		<span class="material-symbols-outlined icon-heavy icon-large p-1">add</span>
 	</div></button
->
+> -->
 
 <!-- searchbar -->
-<nav class="flex items-center justify-center">
+<nav class="flex flex-wrap items-center justify-center gap-4 sm:justify-around sm:px-6">
 	<Searchbar name={'Searchbar'} placeholder={'Search smoothies'} bind:value={searchBarinArvo} />
 </nav>
 
 <!-- outer div -->
+<div class="flex items-center justify-between px-10 pt-5">
+	<h1 class="laila-medium ml-1 hidden text-3xl sm:block">Recipes</h1>
+	<div class="ml-3 hidden w-full border-1 border-slate-600 sm:block"></div>
+	<button
+		id="newsmoothiepage"
+		class="laila-medium just fixed right-10 bottom-12 z-5 mt-5 transform
+			cursor-pointer rounded-xl border-3 bg-green-300 px-4 py-1 text-2xl shadow-md ring-2
+				ring-green-400 ring-offset-2 backdrop-blur-2xl transition-transform
+				duration-300 hover:scale-105
+			  hover:bg-orange-300 hover:ring-orange-400 hover:outline-1
+				sm:w-20 sm:py-1.5 sm:text-lg sm:shadow-none"
+		onclick={newSmoothie}
+		in:blur={{ duration: 500 }}
+	>
+		<div class="flex items-center justify-center">
+			<span class="material-symbols-outlined icon-heavy icon-large p-1">add</span>
+		</div>
+	</button>
+</div>
+
 <div class="m-7 flex min-h-screen flex-wrap justify-center gap-7">
 	<!-- rickroll easter egg -->
 	{#if rickRollVisible}
