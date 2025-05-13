@@ -101,7 +101,7 @@
 			<ul class="list-disc columns-2 space-y-0 py-1.5 pl-5 text-sm">
 				{#each smoothieKortti.ainesosat as ainesosa, index}
 					<li class="laila-regular text-gray-600">
-						{ingredientFormatointi(smoothieKortti.hedelmatMaara[index])}
+						{ingredientFormatointi(smoothieKortti.ainesosatMaara[index])}
 						{ainesosa}
 					</li>
 				{/each}
@@ -159,6 +159,7 @@
 						class="max-h-70 w-full rounded-b-xl border-b-2 object-cover"
 					/>
 
+					<!-- Close button -->
 					<button
 						onclick={toggleModal}
 						class="absolute top-3 left-3 block cursor-pointer rounded-lg border-2 bg-slate-200 leading-none hover:bg-slate-600 hover:text-white"
@@ -172,12 +173,6 @@
 					<!-- Title and Timer -->
 					<div class="flex flex-col items-start justify-between md:flex-row md:items-center">
 						<div class="flex items-center gap-2">
-							<!-- Back button -->
-							<!-- <button
-								onclick={toggleModal}
-								class="material-symbols-outlined transform cursor-pointer pb-1 transition-transform duration-200 hover:scale-125"
-								>arrow_back_ios</button
-							> -->
 							<!-- Smoothien nimi -->
 							<h1 class="laila-medium text-2xl">{smoothieKortti.smoothie.name}</h1>
 						</div>
@@ -194,7 +189,7 @@
 						<ul class="laila-regular list-disc py-1 pl-3.5 text-sm text-gray-600">
 							{#each smoothieKortti.ainesosat as ainesosa, index}
 								<li>
-									{ingredientFormatointi(smoothieKortti.hedelmatMaara[index])}
+									{ingredientFormatointi(smoothieKortti.ainesosatMaara[index])}
 									{ainesosa}
 								</li>
 							{/each}

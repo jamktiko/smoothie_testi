@@ -82,8 +82,8 @@
 
 		if (uudenSmoothienIngredients.length > 0 && uudenSmoothienIngredientsAmounts.length > 0) {
 			for (let i = 0; i < uudenSmoothienIngredients.length; i++) {
-				const loytynytIngredient = globalIngredients.get().find((fruit) => {
-					return fruit.name === uudenSmoothienIngredients[i];
+				const loytynytIngredient = globalIngredients.get().find((ingredient) => {
+					return ingredient.name === uudenSmoothienIngredients[i];
 				});
 
 				ravintoarvotYht.calories +=
@@ -305,13 +305,13 @@
 										class="w-fill laila-regular flex cursor-pointer flex-row items-center rounded-xl border-1 px-3 py-0.5 hover:outline-1"
 									>
 										<select
-											name="Smoothies fruit"
+											name="Smoothie ingredient"
 											class="w-full focus:outline-none"
 											bind:value={selected}
 										>
 											<option value={' '} disabled selected hidden>Choose ingredient</option>
-											{#each globalIngredients.get() as fruit}
-												<option value={fruit.name}>{fruit.name}</option>
+											{#each globalIngredients.get() as ingredient}
+												<option value={ingredient.name}>{ingredient.name}</option>
 											{/each}
 										</select>
 									</button>
