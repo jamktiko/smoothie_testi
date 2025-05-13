@@ -81,19 +81,6 @@
 	rel="stylesheet"
 />
 
-<!-- new smoothie button -->
-<!-- <button
-	id="newsmoothiepage"
-	class="laila-medium fixed right-6 z-5 cursor-pointer rounded-xl border-2 bg-orange-100 px-4 py-2 text-2xl shadow-md ring-2 ring-orange-300 ring-offset-2 backdrop-blur-2xl hover:bg-orange-400 hover:ring-orange-400 hover:outline-1 sm:absolute sm:top-10 sm:right-5 [@media(max-width:640px)]:bottom-6"
-	onclick={newSmoothie}
-	in:blur={{ duration: 500 }}
->
-	<span class="hidden sm:block">New Smoothie</span>
-	<div class="flex items-center justify-center sm:hidden">
-		<span class="material-symbols-outlined icon-heavy icon-large p-1">add</span>
-	</div></button
-> -->
-
 <!-- searchbar -->
 <nav class="flex flex-wrap items-center justify-center gap-4 sm:justify-around sm:px-6">
 	<Searchbar name={'Searchbar'} placeholder={'Search smoothies'} bind:value={searchBarinArvo} />
