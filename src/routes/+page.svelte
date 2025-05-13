@@ -106,41 +106,42 @@
 		</div>
 	</button>
 </div>
-
-<div class="m-7 flex min-h-screen flex-wrap justify-center gap-7">
-	<!-- rickroll easter egg -->
-	{#if rickRollVisible}
-		<div class="flex flex-col items-center text-center">
-			<img
-				src="https://media.tenor.com/JKqs7cUyi9gAAAAj/rick-astley-dance.gif"
-				alt="Get rick rolled :D"
-				class="h-[320px] w-[280px]"
-			/>
-			<p class="laila-medium-italic w-1/1 text-slate-600 italic">
-				<span class="material-symbols-outlined">music_note</span> Never gonna give you up, never
-				gonna let you down...
-				<span class="material-symbols-outlined">music_note</span>
-			</p>
-		</div>
-		<!-- smoothiekortit -->
-	{:else if valitutSmoothieKortit.length > 0}
-		{#each valitutSmoothieKortit as smoothieKortti (smoothieKortti.ID)}
-			<SmoothieCard {smoothieKortti} />
-		{/each}
-	{:else}
-		<!-- loading spinner -->
-		{#if spinnerNakyy}
-			<div class="lds-ring">
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
+<div class="h-screen">
+	<div class="m-7 flex flex-wrap justify-center gap-7">
+		<!-- rickroll easter egg -->
+		{#if rickRollVisible}
+			<div class="flex flex-col items-center text-center">
+				<img
+					src="https://media.tenor.com/JKqs7cUyi9gAAAAj/rick-astley-dance.gif"
+					alt="Get rick rolled :D"
+					class="h-[320px] w-[280px]"
+				/>
+				<p class="laila-medium-italic w-1/1 text-slate-600 italic">
+					<span class="material-symbols-outlined">music_note</span> Never gonna give you up, never
+					gonna let you down...
+					<span class="material-symbols-outlined">music_note</span>
+				</p>
 			</div>
+			<!-- smoothiekortit -->
+		{:else if valitutSmoothieKortit.length > 0}
+			{#each valitutSmoothieKortit as smoothieKortti (smoothieKortti.ID)}
+				<SmoothieCard {smoothieKortti} />
+			{/each}
 		{:else}
-			<p class="laila-medium text-2xl">No smoothies found</p>
+			<!-- loading spinner -->
+			{#if spinnerNakyy}
+				<div class="lds-ring">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			{:else}
+				<p class="laila-medium text-2xl">No smoothies found</p>
+			{/if}
 		{/if}
-	{/if}
-	<!-- end of outer div -->
+		<!-- end of outer div -->
+	</div>
 </div>
 
 <!-- ---------------------- STYLES -------------------------- -->
