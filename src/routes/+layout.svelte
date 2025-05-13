@@ -113,13 +113,18 @@
 
 <!-- ----------------------- HTML --------------------------- -->
 <div
-	class="bg-white/75 bg-[url('./images/testbg-2.jpg')] bg-auto bg-top bg-repeat-y bg-blend-lighten"
+	class="bg-white/75 bg-[url('/images/testbg-2.jpg')] bg-auto bg-top bg-repeat-y bg-blend-lighten"
 >
 	<Header />
 	{@render children()}
 	<div class="mt-15">
 		<Footer>
-			<span class="items-center justify-center sm:text-left">Froots Smoothie App - 2025</span>
+			<span class="items-center justify-center sm:text-left"
+				>Froots Smoothie App - 2025 - <a
+					href="https://github.com/jamktiko/smoothie_testi"
+					class="hover:laila-medium text-blue-900 hover:text-blue-700">GitHub</a
+				></span
+			>
 			<span class="items-center justify-center sm:text-right"
 				>J. Fengari - L. Makkonen - J. Rahikainen - T. Sairi</span
 			>

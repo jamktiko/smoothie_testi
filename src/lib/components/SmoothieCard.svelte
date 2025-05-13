@@ -66,13 +66,14 @@
 <!-- SmoothieKortti -->
 
 <div
-	class="relative flex max-h-fit w-full flex-col rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300 hover:bg-orange-200 sm:max-h-full sm:w-[47%] lg:w-[31%]"
+	class="relative flex max-h-fit w-full flex-col rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-300 hover:bg-orange-200 sm:max-h-full sm:w-[47%] sm:transform sm:transition-transform sm:duration-300 sm:hover:scale-103 lg:w-[31%]"
 	in:blur={{ duration: 500 }}
 	out:blur={{ duration: 300 }}
 >
 	<!-- SmoothieKortin sisältö -->
 	<button
-		class="absolute hidden h-full w-full cursor-pointer sm:block"
+		class="absolute hidden h-full w-full cursor-pointer
+			  sm:block"
 		onclick={toggleModal}
 		aria-label="modal-button"
 	></button>
@@ -89,7 +90,7 @@
 			<h1 class="laila-medium text-2xl">{smoothieKortti.smoothie.name}</h1>
 			<div class="flex items-end text-slate-600">
 				<!-- Smoothien valmistusaika -->
-				<span class="laila-regular pt-1">{smoothieKortti.valmistusAika} min</span>
+				<span class="laila-regular mr-1 pt-1">{smoothieKortti.valmistusAika} min</span>
 				<span class="material-symbols-outlined">timer</span>
 			</div>
 		</div>
@@ -143,7 +144,7 @@
 			<!-- Card (open) -->
 			<!-- Animaatio modaliin, duration vaihtaa nopeutta -->
 			<div
-				class=" fixed top-[10px] left-1/2 z-100 flex max-h-[97vh] w-1/2 -translate-x-1/2 flex-col justify-center overflow-hidden overflow-y-auto rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-900
+				class=" fixed top-[10px] left-1/2 z-100 flex h-screen max-h-[97vh] w-1/2 -translate-x-1/2 flex-col justify-center overflow-hidden overflow-y-auto rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-900
 				[@media(max-width:640px)]:top-0
 				[@media(max-width:640px)]:max-h-screen
 				[@media(max-width:640px)]:w-screen"
@@ -157,6 +158,13 @@
 						alt={smoothieKortti.smoothie.name}
 						class="max-h-70 w-full rounded-xl border-b-2 object-cover"
 					/>
+
+					<button
+						onclick={toggleModal}
+						class="absolute top-3 left-3 block cursor-pointer rounded-lg border-2 bg-slate-200 leading-none hover:bg-slate-600 hover:text-white"
+					>
+						<span class="material-symbols-outlined icon-heavy">close</span>
+					</button>
 				</div>
 
 				<!-- Content (desktop only text, no button) -->
