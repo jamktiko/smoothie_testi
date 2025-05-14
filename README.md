@@ -48,7 +48,7 @@ cd .\smoothie_testi\
 ```
 
 ```
-npm install --omit=dev
+npm install
 ```
 
 - once done move on to "Executing program"
