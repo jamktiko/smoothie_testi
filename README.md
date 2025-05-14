@@ -48,7 +48,7 @@ cd .\smoothie_testi\
 ```
 
 ```
-npm install --omit=dev
+npm install
 ```
 
 - once done move on to "Executing program"
@@ -83,6 +83,8 @@ All new created smoothies are stored inside LocalStorage, so if you decide to de
 
 ## Version History
 
+- v1.2.3
+  - Updated projektisuunnitelma.md & README.md. Updated package.json to correct version.
 - v1.2.2
   - Updated dependancies, fixed fonts and material icons, added title, updated README.md
 - v1.2.1
