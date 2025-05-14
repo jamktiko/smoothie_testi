@@ -33,7 +33,7 @@ As the user, I am able to delete recipes, and edit premade recipes.
 
 ### Dependencies
 
-- Node.js, Svelte, Vite, Prettier, ESLint, Typescript, TailwindCSS
+- Node.js, Svelte 5, TailwindCSS, Globals, TypeScript, Vite
 
 ### Installing
 
@@ -48,7 +48,7 @@ cd .\smoothie_testi\
 ```
 
 ```
-npm install
+npm install --omit=dev
 ```
 
 - once done move on to "Executing program"
