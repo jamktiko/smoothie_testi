@@ -8,6 +8,8 @@ Our goal is to create a smoothie recipe app that is fun, fresh, and accessible t
 The app allows users to browse a collection of smoothie recipes complete with nutritional information, and also create and save their own recipes. The purpose of our app is to help smoothie enthusiasts keep track of their favourite blends, support their health goals, and discover new flavour combinations with ease.
 We identified a niche for a recipe app that’s both playful in design and practical for smoothies. By combining clear visuals, nutritional insights, and personal recipe creation, Froots fills the gap between casual browsing and health-conscious nutrient tracking.
 
+<hr>
+
 The user story is divided into two sections, Level 1 - Basic is the standard we're aiming for in this project. Level 2 - Advanced has partially been fulfilled in the project, but were planned as additional features to impliment considering time constraints and the real project timeline.
 
 Level 1 - Basic (Completed)
@@ -16,6 +18,7 @@ As the (small screen) user, I want to click the recipe name button within a reci
 In the recipe page, I can see the recipe ingredients, nutritional information, and read/add/modify notes.
 As the (large screen) user, I can browse the full recipes on the screen.
 As the user I can use the search bar to find a recipe of my choosing from the listing.
+
 Level 2 - Advanced (Partially Completed)
 
 As the user, I can click the New Smoothie button, and create a smoothie in that page (with custom title, preparation time, ingredients, and notes, and save it to my recipes.
@@ -31,28 +34,39 @@ As the user, I am able to delete recipes, and edit premade recipes.
 ### Dependencies
 
 - Describe any prerequisites, libraries, frameworks, etc., the sofware uses.
+-
 
 ### Installing
 
-- How/where to download your program
-- Any modifications needed to be made to files/folders
+- Run following commands inside your preferred Terminal:
+
+```
+git clone https://github.com/jamktiko/smoothie_testi
+```
+
+```
+cd .\smoothie_testi\
+```
+
+```
+npm install
+```
+
+- once done move on to "Executing program"
 
 ### Executing program
 
-- How to run the program
-- Step-by-step bullets
+- To start using the app simply run following command:
 
 ```
-code blocks for commands
+npm run dev
 ```
+
+- Vite should open a port which will enable you to run the app inside browser:
 
 ## Help
 
-Any advise for common problems or issues.
-
-```
-command to run if program contains helper info
-```
+All new created smoothies are stored inside LocalStorage, so if you decide to delete your recipes you have to clear cache and cookies from your browser. This will make it so the application starts like first time - with only template recipes showing.
 
 ## Authors
 
@@ -63,10 +77,32 @@ command to run if program contains helper info
 
 ## Version History
 
-- 0.2
-  - Various bug fixes and optimizations
-- 0.1
-  - Initial Release
+- v1.2.1
+  - Updated documentation & code cleanup.
+- v1.2.0
+  - Image clipping fixed. Docs updated, added screenshots.
+- v1.1.4
+  - Added fixed nutritional information and footer.
+- v1.1.3
+  - SmoothieCards mobile search fix.
+- v1.1.1
+  - Modal-window scrollbar fix try.
+- v1.1.0
+  - Fixed image paths. Added new styles.
+- v1.0.6
+  - Background fix try.
+- v1.0.5
+  - Small LocalStorage fix.
+- v1.0.4
+  - Added favicon.
+- v1.0.3
+  - Added LocalStorage and now all new smoothie-objects are added as first element.
+- v1.0.2
+  - Cleaned up code + fixed Smoothietime.svelte filename error.
+- v1.0.1
+  - Fixed footer inside new smoothie recipe page.
+- v1.0.0
+  - First stable version.
 
 ## License
 
