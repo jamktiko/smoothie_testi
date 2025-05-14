@@ -42,46 +42,44 @@ Smoothie sovellus jossa käyttäjä pääsee selaamaan smoothieta ja tarkistelem
 
 Tavoitteena toimiva ja responsiivinen smoothie sovellus, jossa seuraavat käyttötapaukset täyttyvät:  
 
-Taso 1 – Perus
+**Taso 1 – Perus**
 Pienen näytön käyttäjänä haluan klikata reseptikortissa olevaa reseptin nimipainiketta ja avata laajennetun reseptisivun.
 Reseptisivulla voin nähdä reseptin ainesosat, ravintotiedot ja lisähuomautukset.
 Suuren näytön käyttäjänä voin selata reseptejä suoraan näytöllä ja vierittää alaspäin reseptikorteissa.
 Käyttäjänä voin käyttää hakupalkkia löytääkseni haluamani reseptin listauksesta.  
 
-Taso 2 – Edistynyt
+**Taso 2 – Edistynyt**
 Edellisten lisäksi haluan käyttäjänä klikata "lisää" -painiketta ja avata reseptin luontisivun. Tällä sivulla voin ladata kuvan, täyttää otsikon, ainesosat ja lisähuomautukset, ja tallentaa reseptin omiin resepteihini.
 Käyttäjänä voin myös muokata ja tallentaa lisähuomautuksia valmiisiin resepteihin.
 Käyttäjänä voin tarkastella erillisiä välilehtiä: selaa reseptejä, omat reseptit ja luo resepti.
 
-Tavoitteisiin myös kuuluu projetkityöskentelyn taitojen ja käytäntöjen oppiminen. 
+Tavoitteisiin myös kuuluu projektityöskentelyn taitojen ja käytäntöjen oppiminen. 
 
 ## Aikataulu
 
 | Tapahtuma        | Päivämäärä | Muut tiedot/osanottajat                  |
 | ---------------- | ---------- | ---------------------------------------- |
 | Projekti alkaa   | 22.04.2025 | Ohjelmistoprojekti 1 alkaa               |
-| Tietoiskut     | 23.-25.04.2025   | Kaikki muut tapahtumat listattuna |
+| Projektin aiheen suunnittelua + Slackin + Trellon pystytys | 22.04.2025 | Pohditaan ryhmässä aihevalintoja               |
+| Gitin repositoryn pystytys | 23.04.2025 | Git repositoryn valmistelu featureBranch workflowille sopivaksi               |
 | Idean valinta  | 24.04.2025 | Valitaan tuotantoon menevä projekti-idea |
-| Admin          | 24.05.2025 | Täytetään kaikki tarvittavat dokumentit kuten tiimisopimus ja projektisuunnitelma |
-| Tiedostostruktuuri | 24.04.2025 | Kaikki muut tapahtumat listattuna |
-| Testausta ja tutustumista | 24.-25.04.2025 | Työskentelyalustat (VSCode/Git), julkaisualustat. Tutustuttiin toisiemme työskentelyalustoille |
+| Kehitysympäristön pystytys | 24.04.2025 | Developer team ( Lauri & Janika ) |
+| Testausta ja tutustumista | 24.-25.04.2025 | Työskentelyalustat (VSCode/Git), julkaisualustat. Tutustuttiin toisiemme työskentelyalustoille (Figma, Tailwind Play, Svelte) |
 | Komponenttien luonti + työstäminen | 24.-29.04.2025 | Developer team ( Lauri & Janika) |
 | Figma Wireframes | 23.-25.04.2025 | Web näkymän ja mobiilinäkymän wireframet |
-| Viikkopalaveri    | 25.04.2025 | Mennyt viikko ja tulevat tehtävät |
 | Figma Prototypes | 25.-29.04.2025 | Prototyyppien luonti ja suunnittelu |
+| Developing viikko 1     | 28.04-02.05.2025 | Sovelluksen teknisen toteutuksen koodausta |
 | Tailwind sivu 1     | 27.-28.04.2025 | Jun & Teemu työsti ja valmisti yhdessä tailwind playssä |
 | Tailwind sivu 2     | 28.-29.04.2025 | Jun tekee modaali-ikkunan tyylittelyt valmiiksi tailwind playssä |
 | Tyylit sivu 1     | 28.-30.04.2025   | Teemu integroi etusivun tyylit koodiin & troubleshooting  |
 | Modaalityylit     | 30.04.2025 | Jun integroi modaaliikkunan tyylit koodiin & yhteistä modaali-ikkuna troubleshooting |
-| Sivu 1 + Modaali     | 2.-5.05.2025      | Viimeistelya ja bugfixausta ensimmäiseen sivun ja modaalin toimivuuteen       |
-| Sivu 2 lisäys   | 5.-6.05.2025    | Lauri & Janika koodaa, suunnittelijat figma + tailwind     |
-| Sivu 2 integrointi   | 6.-7.5.2025     | Koodin yhdistämiset ja dev team toimivuudet, bugfixing |
-| Sivu 3 suunnittelu ja integrointi | pvm  6.-8.05.2025 | Tailwind play ja siirtäminen koodin sekaan, ja korjauksia |
-| ...........     | pvm        | Kaikki muut tapahtumat listattuna        |
-| ...........     | pvm        | Kaikki muut tapahtumat listattuna        |
-| ...........     | pvm        | Kaikki muut tapahtumat listattuna        |
-| ...........     | pvm        | Kaikki muut tapahtumat listattuna        |
-| ...........     | pvm        | Kaikki muut tapahtumat listattuna        |
+| Developing viikko 2     | 05.-09.05.2025 | Sovelluksen teknisen toteutuksen koodausta + Uuden reseptisivun tekeminen |
+| Sivu 1 + Modaali     | 02.-05.05.2025      | Viimeistelya ja bugfixausta ensimmäiseen sivun ja modaalin toimivuuteen       |
+| Sivu 2 lisäys   | 05.-06.05.2025    | Lauri & Janika koodaa, suunnittelijat figma + tailwind     |
+| Sivu 2 integrointi   | 06.-07.05.2025     | Koodin yhdistämiset ja dev team toimivuudet, bugfixing |
+| Sivu 3 suunnittelu ja integrointi | 06.-08.05.2025 | Tailwind play ja siirtäminen koodin sekaan, ja korjauksia |
+| Loppuviilaus     | 12.-14.05.2025 | Sovellus valmis kokonaisuudessaan        |
+| Loppuesityksen harjoittelu    | 15.05.2025 | Esityksen harjoittelu        |
 | Projekti päättyy | 16.05.2025 | Ohjelmistoprojekti 1 päättyy             |
 
 ## Raportointi, kommunikointi ja dokumentointi
@@ -132,5 +130,3 @@ Versiointi dokumentoinnissa pidetään selkeänä vain yhdellä numerolla dokume
 | Tiiminjäsen sairastuu / Poissaoloja                          | Keski          | Keski   | Kommunikointi ja mahdollisuuden etätyöhön. |
 | Tiiminjäsenten välissä konflikti                             | Keski          | Suuri   | Kommunikointi ja kompromissin löytäminen. |
 | Merge konflikteja | Suuri | Suuri | Kommunikointia asiasta ja selvittelyä että mikä muutos on oikein. |
-| ------------------------------------------------------------ | -------------- | -------- | -------------------------------------- |
-| ------------------------------------------------------------ | -------------- | -------- | -------------------------------------- |
