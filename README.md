@@ -83,6 +83,8 @@ All new created smoothies are stored inside LocalStorage, so if you decide to de
 
 ## Version History
 
+- v1.2.2
+  - Updated dependancies, fixed fonts and material icons, added title, updated README.md
 - v1.2.1
   - Updated documentation & code cleanup.
 - v1.2.0
