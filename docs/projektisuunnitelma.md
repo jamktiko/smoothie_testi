@@ -76,8 +76,12 @@ Tavoitteisiin myös kuuluu projetkityöskentelyn taitojen ja käytäntöjen oppi
 | Sivu 1 + Modaali     | 2.-5.05.2025      | Viimeistelya ja bugfixausta ensimmäiseen sivun ja modaalin toimivuuteen       |
 | Sivu 2 lisäys   | 5.-6.05.2025    | Lauri & Janika koodaa, suunnittelijat figma + tailwind     |
 | Sivu 2 integrointi   | 6.-7.5.2025     | Koodin yhdistämiset ja dev team toimivuudet, bugfixing |
-| ............     | pvm        | Kaikki muut tapahtumat listattuna        |
-| ............     | pvm        | Kaikki muut tapahtumat listattuna        |
+| Sivu 3 suunnittelu ja integrointi | pvm  6.-8.05.2025 | Tailwind play ja siirtäminen koodin sekaan, ja korjauksia |
+| ...........     | pvm        | Kaikki muut tapahtumat listattuna        |
+| ...........     | pvm        | Kaikki muut tapahtumat listattuna        |
+| ...........     | pvm        | Kaikki muut tapahtumat listattuna        |
+| ...........     | pvm        | Kaikki muut tapahtumat listattuna        |
+| ...........     | pvm        | Kaikki muut tapahtumat listattuna        |
 | Projekti päättyy | 16.05.2025 | Ohjelmistoprojekti 1 päättyy             |
 
 ## Raportointi, kommunikointi ja dokumentointi

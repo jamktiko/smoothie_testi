@@ -9,7 +9,6 @@
 	import '../app.css';
 
 	// universal reactivity muuttujat
-	import { globalLocalStorage2 as globalLocalStorage } from '$lib/globalLocalStorage.svelte';
 	import { smoothieKortit as globalSmoothieKortit } from '$lib/globals/globalSmoothieKortit.svelte';
 
 	// ----------------------- FUNKTIOT ---------------------------
@@ -34,7 +33,7 @@
 
 	// funktio, joka navigoi uuteen smoothie-sivuun
 	function newSmoothie() {
-		goto('../new');
+		goto('/new');
 	}
 
 	// määrää mäkyykö loading-spinneri vai ei
@@ -68,7 +67,6 @@
 	// $inspect(outerWidth);
 	// $inspect(globalSmoothieKortit.get());
 	// $inspect(globalSmoothies.get());
-	$inspect(globalLocalStorage.get());
 </script>
 
 <!-- ----------------------- HTML --------------------------- -->

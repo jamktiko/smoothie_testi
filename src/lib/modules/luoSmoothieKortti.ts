@@ -14,7 +14,7 @@ export const luoSmoothieKortti = (smoothie: Smoothie, lisataankoAlkuun: boolean 
 		ID: smoothie.id,
 		smoothie: smoothie,
 		ainesosat: [],
-		hedelmatMaara: smoothie.ingredientsAmount,
+		ainesosatMaara: smoothie.ingredientsAmount,
 		ravintoarvot: [],
 		ravintoarvotYht: {
 			calories: 0,
@@ -31,8 +31,8 @@ export const luoSmoothieKortti = (smoothie: Smoothie, lisataankoAlkuun: boolean 
 	for (let i = 0; i < smoothie.ingredients.length; i++) {
 		const ingredient = smoothie.ingredients[i];
 
-		const loytynytIngredient = globalIngredients.get().find((fruit) => {
-			return fruit.name === ingredient;
+		const loytynytIngredient = globalIngredients.get().find((x) => {
+			return x.name === ingredient;
 		});
 
 		uusiSmoothieKortti.ainesosat.push(loytynytIngredient?.name);
@@ -40,7 +40,7 @@ export const luoSmoothieKortti = (smoothie: Smoothie, lisataankoAlkuun: boolean 
 	}
 	uusiSmoothieKortti.ravintoarvotYht = laskeRavintoarvotYhteensa(
 		uusiSmoothieKortti.ravintoarvot,
-		uusiSmoothieKortti.hedelmatMaara
+		uusiSmoothieKortti.ainesosatMaara
 	);
 
 	if (lisataankoAlkuun) {
