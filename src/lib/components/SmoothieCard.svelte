@@ -144,10 +144,11 @@
 			<!-- Card (open) -->
 			<!-- Animaatio modaliin, duration vaihtaa nopeutta -->
 			<div
-				class=" fixed top-[10px] left-1/2 z-[100] flex max-h-[97dvh] w-1/2 -translate-x-1/2 flex-col justify-center overflow-y-auto rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-900
-				[@media(max-width:640px)]:top-0
-				[@media(max-width:640px)]:max-h-[100dvh]
-				[@media(max-width:640px)]:w-screen"
+				class="fixed top-1/2 left-1/2 z-[100] flex max-h-[97dvh] w-1/2 max-w-xl -translate-x-1/2 -translate-y-1/2 flex-col justify-center overflow-y-auto rounded-xl border-2 bg-rose-100 shadow-lg shadow-slate-900
+  [@media(max-width:640px)]:top-0
+  [@media(max-width:640px)]:max-h-[100dvh]
+  [@media(max-width:640px)]:w-screen
+  [@media(max-width:640px)]:translate-y-0"
 				in:scale={{ duration: 400 }}
 				out:scale={{ duration: 400 }}
 			>
