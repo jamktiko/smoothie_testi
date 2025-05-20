@@ -113,8 +113,8 @@
 					class="hover:laila-medium text-blue-900 hover:text-blue-700">GitHub</a
 				></span
 			>
-			<span class="items-center justify-center sm:text-right"
-				>J. Fengari - L. Makkonen - J. Rahikainen - T. Sairi</span
+			<span class="items-center justify-center sm:ml-2 sm:text-right">
+				J. Fengari - L. Makkonen - J. Rahikainen - T. Sairi</span
 			>
 		</Footer>
 	</div>
