@@ -83,6 +83,10 @@ All new created smoothies are stored inside LocalStorage, so if you decide to de
 
 ## Version History
 
+- v1.2.5
+  - Maximum width added to modal window, and vertical align for larger screens.
+- v1.2.4
+  - Reverted dependencies back where they still worked. Renamed "previous readme.md" to "Documentation.md". Updated package.json & README.md.
 - v1.2.3
   - Updated projektisuunnitelma.md & README.md. Updated package.json to correct version.
 - v1.2.2
