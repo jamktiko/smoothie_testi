@@ -103,7 +103,12 @@
 	<div class="mt-15">
 		<Footer>
 			<span class="items-center justify-center sm:text-left"
-				>Froots Smoothie App - 2025 - <a
+				>Froots App - 2025 - Data from <a
+					href="https://www.fruityvice.com/"
+					class="hover:laila-medium text-blue-900 hover:text-blue-700">FruityVice API</a
+				>
+				-
+				<a
 					href="https://github.com/jamktiko/smoothie_testi"
 					class="hover:laila-medium text-blue-900 hover:text-blue-700">GitHub</a
 				></span
